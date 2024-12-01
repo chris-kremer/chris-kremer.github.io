@@ -21,13 +21,12 @@ print_hi('Tom')
 Welcome to my interactive simulation of market selection. Use the app below to explore how betting markets evolve over time.
 
 <iframe
-    src="https://market-selection.streamlit.app/"
+    src="https://project-anni-9sbq4iuqzyn9ky3bho5s6a.streamlit.app/"
     width="100%"
     height="800"
     frameborder="0"
     allowfullscreen>
 </iframe>
-
 Feel free to adjust the parameters and see how they affect the outcomes.
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
