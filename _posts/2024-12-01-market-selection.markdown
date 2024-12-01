@@ -5,18 +5,18 @@ date: 2024-12-01 10:00:00 +0100
 categories: simulation
 ---
 
-## Predictive ability of markets
+## Predictive Ability of Markets
 
 Markets like the ones for capital allocation and predictions fulfill the function of allocating resources. They provide a selection mechnaism to differentitiate between productive and less productive projects (or likely versus unlikely outcomes). But the important mechanism for why markets have such nice outcomes is not the way allocators influence which projects to fund (which predictions to make), its the way the real world outcomes are able to shape the allocators. 
 
 To illustrate this point I created a very simple toy model. It simulates a market by taking 4 inputs paramters: The number of bettors, the variance of their predictive ability (we assume normal distribution), the number of rounds and the fraction they bet in each round. 
 All bettors have the same initial endowment and invest the same fixed fraction of their current net worth in each round. Each round they eigther win, in which case their input is doubled, or loose, in which case their input is lost.  
 
-# Effects on inequality
+# Effects on Inequality
 
 Running this market for a given number of rounds quickly shows increasing between bettors. The higher the predictive ability of a bettor, the faster she accumulates capital. 
 
-# Effects on market efficiency
+# Effects on Market Efficiency
 
 The bets placed scale linearly with the wealth of the bettor. The higher the bettors wealth, the more sway she has in the market prediction. 
 We found: predictive ability correlates with wealth and wealth correlates (perfectly) with influence in the market. Thus, the participants makeing the best predctions influence market predictions most. 
