@@ -118,7 +118,7 @@ literature shows that lab-field generalizability is often quite good. In
 the following, I will examine the merit of each of those claims and show
 the connections to the claims made by Levitt and List.
 
-## 1. Generalizability is not a primary concern for lab experiments 
+# 1. Generalizability is not a primary concern for lab experiments 
 
 Camerer proposes two viewpoints on experimental economics. The
 scientific view is that "all empirical studies contribute evidence about
@@ -128,7 +128,7 @@ the knowledge for policy actions. Camerer asserts that Levitt and List
 subscribe to the policy view, while most experimentalists hold the
 scientific view.
 
-## 2. Field experiments suffer from the same flaws in generalizability 
+# 2. Field experiments suffer from the same flaws in generalizability 
 
 YCamerer's second main argument asserts that factors that might limit
 the generalizability of lab experiments to the field also create
@@ -137,7 +137,7 @@ problems for generalizing from field results to other field applications
 observation) are not necessarily part of lab experiments and do not
 necessarily impact generalizability to the field (2.2).
 
-## 3. The empirical evidence for differences in lab and field is weak 
+# 3. The empirical evidence for differences in lab and field is weak 
 
 This argument has three parts that all engage with the current
 literature on generalizability. First, the initial study that sought to
@@ -460,4 +460,4 @@ available upon reasonable request to the corresponding author.
     [@Camerer.1999], where he writes extensively on the real-world
     implications of lab findings.
 
-# References
+## References
