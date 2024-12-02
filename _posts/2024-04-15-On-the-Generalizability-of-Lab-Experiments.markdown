@@ -5,7 +5,7 @@ date:   2024-04-15 13:10:40 +0100
 categories: jekyll update
 ---
 
-## Introduction {#introduction .unnumbered}
+## Introduction
 
 This term paper was written as part of the "Social Preference" course at
 Humboldt Universität zu Berlin. It addresses a relatively recent
@@ -20,7 +20,7 @@ List. Then, the second part will summarize Camerer's critique of their
 position before critiquing Camerer's critique and connecting the paper
 to our Social Preference course in the third and fourth parts.
 
-## Summary of the Levitt & List position {#summary-of-the-levitt-list-position .unnumbered}
+## Summary of the Levitt & List position 
 
 Camerer seeks to address the claims made by Steven D. Levitt and John A.
 List in three of their publications
@@ -51,7 +51,7 @@ to exist and to increase with the difficulty of decision-making.
 LL name four key differences between lab and reality, which are
 summarized below:
 
-## Stakes {#stakes .unnumbered}
+# Stakes
 
 Levitt and Lists note that when the stakes of real-world situations
 cannot be replicated in the lab, one can not necessarily assume lab
@@ -62,7 +62,7 @@ assumes that people respond to (monetary) incentives. In the utility
 equation (1), we see that the situation's stakes (v) are a factor in
 utility optimization.
 
-## Pleasing the experimenter {#pleasing-the-experimenter .unnumbered}
+# Pleasing the experimenter
 
 Unlike in the real world, in lab experiments, participants know that an
 experimenter monitors their actions. This alters the scrutiny felt in
@@ -71,7 +71,7 @@ different level of scrutiny would result in systematically different
 actions by the participants as opposed to agents in real-world
 situations.
 
-## Learning effects {#learning-effects .unnumbered}
+# Learning effects
 
 There is a practical limitation for the duration of lab experiments. As
 the utility function (1) states, decision-making is associated with
@@ -84,7 +84,7 @@ experiments cannot replicate the possibility of accumulating learning
 effects, we should not expect lab results to be necessarily equivalent
 to the behaviour observed in the real world.
 
-## Selection effects {#selection-effects .unnumbered}
+# Selection effects 
 
 In economics, lab experiments are typically performed in a university
 setting with students as participants. The specific forms and weights of
@@ -96,7 +96,7 @@ not hold. The subset of students participating in economics experiments
 is significantly different from the whole student population, let alone
 the population at large.
 
-## Conclusion {#conclusion .unnumbered}
+# Conclusion 
 
 List and Levitt advise caution when generalizing lab experiments for
 these four main reasons. They predict that \"behaviour will converge
@@ -108,7 +108,7 @@ qualitative effects, suggest underlying mechanisms that might be at work
 when certain data patterns are observed, provide insights into what can
 happen, and evoke empirical puzzles." [@Levitt.2007]
 
-# Camerer's Critique {#camerers-critique .unnumbered}
+## Camerer's Critique
 
 Camerer's critique [-@Camerer.2011] features three main arguments. (1)
 Generalizability is not a main goal for lab experiments. (2) Most
@@ -118,7 +118,7 @@ literature shows that lab-field generalizability is often quite good. In
 the following, I will examine the merit of each of those claims and show
 the connections to the claims made by Levitt and List.
 
-## 1. Generalizability is not a primary concern for lab experiments {#generalizability-is-not-a-primary-concern-for-lab-experiments .unnumbered}
+## 1. Generalizability is not a primary concern for lab experiments 
 
 Camerer proposes two viewpoints on experimental economics. The
 scientific view is that "all empirical studies contribute evidence about
@@ -128,7 +128,7 @@ the knowledge for policy actions. Camerer asserts that Levitt and List
 subscribe to the policy view, while most experimentalists hold the
 scientific view.
 
-## 2. Field experiments suffer from the same flaws in generalizability {#field-experiments-suffer-from-the-same-flaws-in-generalizability .unnumbered}
+## 2. Field experiments suffer from the same flaws in generalizability 
 
 YCamerer's second main argument asserts that factors that might limit
 the generalizability of lab experiments to the field also create
@@ -137,7 +137,7 @@ problems for generalizing from field results to other field applications
 observation) are not necessarily part of lab experiments and do not
 necessarily impact generalizability to the field (2.2).
 
-## 3. The empirical evidence for differences in lab and field is weak {#the-empirical-evidence-for-differences-in-lab-and-field-is-weak .unnumbered}
+## 3. The empirical evidence for differences in lab and field is weak 
 
 This argument has three parts that all engage with the current
 literature on generalizability. First, the initial study that sought to
@@ -153,7 +153,7 @@ closely matching the circumstances, more than 20 studies find good
 comparability, while only 2 find very different results in lab and
 field. (3.3)
 
-# Validity of Critiques {#validity-of-critiques .unnumbered}
+## Validity of Critiques 
 
 \(1\) Arguing LL do not adhere to the scientific view described by
 Camerer misses the core of their argument. In their writings, Levitt and
@@ -353,7 +353,7 @@ lab and field that might influence results. Level effects and
 differences in effect size can be very important for policy
 consideration.
 
-# Missing critiques {#missing-critiques .unnumbered}
+## Missing critiques 
 
 Beyond the problems with the critiques Camerer has brought forth, there
 were also some critiques that should have been made but were not. The
@@ -373,7 +373,7 @@ itself is the valuable information, it's size. Many of such cases exist,
 where lab results alone have the capacity to move science forward in
 valuable, practical ways.
 
-# Links to the course {#links-to-the-course .unnumbered}
+## Links to the course 
 
 @Camerer.2011 and @Levitt.2007 are highly connected to various parts of
 the course. The most obvious connection is the discussion of general
@@ -382,7 +382,7 @@ and the Camerer paper as a response. In addition to addressing LL and
 Camerer directly, Chapter 6 presented various studies relating to
 problems LL addressed.
 
-## Connections to LL {#connections-to-ll .unnumbered}
+# Connections to LL 
 
 First, the lecture addresses the work of @Hoffman.1996, which explores
 the impact of scrutiny on behaviour in dictator games and shows that
@@ -436,7 +436,7 @@ culture and demography on behaviour aligns with LL's warnings concerning
 the generalizability of results obtained from one group (e.g., students
 in Western countries) to others.
 
-## Connections to Camerer {#connections-to-camerer .unnumbered}
+# Connections to Camerer 
 
 The first part of Camerer's critique develops the concepts of the
 scientific view and the policy view on economic research and accuses LL
@@ -450,7 +450,7 @@ examples of how models, including social preferences, can make different
 predictions for outcomes than neo-classical models, (e.g. @ReyBiel.2008;
 @Dufwenberg.2011), and how this might affect predicted policy outcomes.
 
-# Acknowledgments {#acknowledgments .unnumbered}
+## Acknowledgments
 
 I thank Prof. List for kindly providing the raw data for
 [@List.2006; @list2009] . Data supporting this study's findings are
