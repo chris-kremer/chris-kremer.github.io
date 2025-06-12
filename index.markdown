@@ -4,3 +4,5 @@
 
 layout: home
 ---
+Welcome to my personal site where I share thoughts on economics, technology and data ethics.
+
