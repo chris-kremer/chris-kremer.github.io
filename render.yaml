@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ck-admin
+    runtime: python
+    rootDir: admin
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 2 --timeout 120
+    envVars:
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_REPO
+        value: chris-kremer/chris-kremer.github.io
+      - key: GITHUB_BRANCH
+        value: main
+      - key: SECRET_KEY
+        generateValue: true

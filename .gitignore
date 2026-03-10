@@ -8,6 +8,7 @@ vendor
 
 # Local admin tool — keep off GitHub
 admin.py
+admin/__pycache__/
 
 # AI project (not ready)
 ai_project/
