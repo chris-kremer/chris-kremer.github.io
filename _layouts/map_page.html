@@ -1,0 +1,103 @@
+---
+layout: default
+---
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+<div class="container">
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="page-subtitle">{{ page.subtitle }}</p>{% endif %}
+  </header>
+
+  {{ content }}
+
+  <div id="map-stats" class="map-stats">
+    <span id="stat-routes">— routes</span>
+    <span class="map-stats__sep">·</span>
+    <span id="stat-km">— km</span>
+    <span class="map-stats__sep">·</span>
+    <span id="stat-dates">—</span>
+  </div>
+
+  <div id="berlin-map"></div>
+</div>
+
+<script>
+(function () {
+  var map = L.map('berlin-map', {
+    center: [52.493, 13.404],
+    zoom: 12,
+    zoomControl: true,
+    scrollWheelZoom: true
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  var ROUTE_COLOR = '#2d4739';
+  var ROUTE_WEIGHT = 2.5;
+  var ROUTE_OPACITY = 0.65;
+  var ROUTE_HOVER_OPACITY = 1.0;
+
+  function haversineKm(lat1, lon1, lat2, lon2) {
+    var R = 6371;
+    var dLat = (lat2 - lat1) * Math.PI / 180;
+    var dLon = (lon2 - lon1) * Math.PI / 180;
+    var a = Math.sin(dLat/2)*Math.sin(dLat/2) +
+            Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*
+            Math.sin(dLon/2)*Math.sin(dLon/2);
+    return 2 * R * Math.asin(Math.sqrt(a));
+  }
+
+  fetch('{{ "/assets/data/berlin-routes.geojson" | relative_url }}')
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      var features = data.features;
+      var totalKm = 0;
+      var dates = [];
+
+      features.forEach(function(feat) {
+        var props = feat.properties;
+        totalKm += props.distance_km;
+        if (props.date && props.date !== 'unknown') dates.push(props.date);
+
+        var coords = feat.geometry.coordinates.map(function(c){ return [c[1], c[0]]; });
+
+        var line = L.polyline(coords, {
+          color: ROUTE_COLOR,
+          weight: ROUTE_WEIGHT,
+          opacity: ROUTE_OPACITY,
+          smoothFactor: 1.5
+        }).addTo(map);
+
+        var label = props.date + ' · ' + props.distance_km + ' km';
+        line.bindTooltip(label, { sticky: true, className: 'map-tooltip' });
+
+        line.on('mouseover', function() {
+          this.setStyle({ opacity: ROUTE_HOVER_OPACITY, weight: ROUTE_WEIGHT + 1.5 });
+          this.bringToFront();
+        });
+        line.on('mouseout', function() {
+          this.setStyle({ opacity: ROUTE_OPACITY, weight: ROUTE_WEIGHT });
+        });
+      });
+
+      // Stats bar
+      document.getElementById('stat-routes').textContent = features.length + ' routes';
+      document.getElementById('stat-km').textContent = Math.round(totalKm) + ' km';
+      if (dates.length) {
+        dates.sort();
+        var first = dates[0];
+        var last = dates[dates.length - 1];
+        document.getElementById('stat-dates').textContent =
+          first === last ? first : first + ' – ' + last;
+      }
+    })
+    .catch(function(err) {
+      console.error('Failed to load routes:', err);
+    });
+})();
+</script>

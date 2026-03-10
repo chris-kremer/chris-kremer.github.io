@@ -5,3 +5,9 @@ _site
 vendor
 
 .DS_Store
+
+# Local admin tool — keep off GitHub
+admin.py
+
+# AI project (not ready)
+ai_project/

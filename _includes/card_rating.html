@@ -1,0 +1,8 @@
+<div class="mini-rating">
+  <span class="mini-rating__label">{{ include.label }}</span>
+  <div class="mini-rating__track">
+    {% assign _pct = include.value | times: 100 | divided_by: include.max %}
+    <div class="mini-rating__fill" style="width: {{ _pct }}%"></div>
+  </div>
+  <span class="mini-rating__val">{{ include.value }}</span>
+</div>

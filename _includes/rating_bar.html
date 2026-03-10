@@ -1,0 +1,10 @@
+<div class="rating">
+  <span class="rating__label">{{ include.label }}</span>
+  <div class="rating__bar-row">
+    <div class="rating__track">
+      {% assign _pct = include.value | times: 100 | divided_by: include.max %}
+      <div class="rating__fill" style="width: {{ _pct }}%"></div>
+    </div>
+    <span class="rating__value">{{ include.value }}/{{ include.max }}</span>
+  </div>
+</div>

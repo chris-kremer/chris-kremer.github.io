@@ -1,0 +1,72 @@
+---
+layout: default
+---
+<div class="container">
+<article>
+
+  <header class="entry-header">
+    <div class="entry-eyebrow">
+      <span class="type-badge">Book</span>
+      {% if page.genre %}<span class="tag">{{ page.genre }}</span>{% endif %}
+      {% if page.status %}<span class="status-tag">{{ page.status }}</span>{% endif %}
+    </div>
+    <h1 class="entry-title">{{ page.title }}</h1>
+  </header>
+
+  <div class="entry-panel">
+    <div class="entry-fields">
+      {% if page.author %}
+      <div class="field">
+        <span class="field__label">Author</span>
+        <span class="field__value">{% include person_link.html id=page.author name=page.author_name %}</span>
+      </div>
+      {% endif %}
+      {% if page.date_read %}
+      <div class="field">
+        <span class="field__label">Date Read</span>
+        <span class="field__value">{{ page.date_read }}</span>
+      </div>
+      {% endif %}
+      {% if page.year_published %}
+      <div class="field">
+        <span class="field__label">Published</span>
+        <span class="field__value">{{ page.year_published }}</span>
+      </div>
+      {% endif %}
+      {% if page.style %}
+      <div class="field">
+        <span class="field__label">Writing Style</span>
+        <span class="field__value">{{ page.style }}</span>
+      </div>
+      {% endif %}
+      {% if page.recommended_to %}
+      <div class="field">
+        <span class="field__label">Recommended To</span>
+        <span class="field__value">{{ page.recommended_to }}</span>
+      </div>
+      {% endif %}
+      {% if page.goodreads_rating and page.goodreads_rating > 0 %}
+      <div class="field">
+        <span class="field__label">Goodreads</span>
+        <span class="field__value">{{ page.goodreads_rating }}/5</span>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="entry-ratings">
+      {% if page.addictiveness %}
+        {% include rating_bar.html label="Addictiveness" value=page.addictiveness max=10 %}
+      {% endif %}
+      {% if page.density %}
+        {% include rating_bar.html label="Density" value=page.density max=10 %}
+      {% endif %}
+    </div>
+  </div>
+
+  {% assign _stripped = content | strip %}
+  {% if _stripped != "" %}
+  <div class="entry-prose">{{ content }}</div>
+  {% endif %}
+
+</article>
+</div>

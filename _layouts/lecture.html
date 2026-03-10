@@ -1,0 +1,56 @@
+---
+layout: default
+---
+<div class="container">
+<article>
+
+  <header class="entry-header">
+    <div class="entry-eyebrow">
+      <span class="type-badge">Lecture</span>
+      {% if page.series %}<span class="tag">{{ page.series }}</span>{% endif %}
+      {% if page.institution %}<span class="tag">{{ page.institution }}</span>{% endif %}
+      {% if page.status %}<span class="status-tag">{{ page.status }}</span>{% endif %}
+    </div>
+    <h1 class="entry-title">{{ page.title }}</h1>
+  </header>
+
+  <div class="entry-panel">
+    <div class="entry-fields">
+      {% if page.lecturer %}
+      <div class="field">
+        <span class="field__label">Lecturer</span>
+        <span class="field__value">{% include person_link.html id=page.lecturer %}</span>
+      </div>
+      {% endif %}
+      {% if page.prerequisites %}
+      <div class="field">
+        <span class="field__label">Prerequisites</span>
+        <span class="field__value">{{ page.prerequisites }}</span>
+      </div>
+      {% endif %}
+      {% if page.date_watched %}
+      <div class="field">
+        <span class="field__label">Date Watched</span>
+        <span class="field__value">{{ page.date_watched }}</span>
+      </div>
+      {% endif %}
+      {% if page.recommended_to %}
+      <div class="field">
+        <span class="field__label">Recommended To</span>
+        <span class="field__value">{{ page.recommended_to }}</span>
+      </div>
+      {% endif %}
+    </div>
+    <div class="entry-ratings">
+      {% if page.density %}{% include rating_bar.html label="Density" value=page.density max=10 %}{% endif %}
+      {% if page.clarity %}{% include rating_bar.html label="Clarity" value=page.clarity max=10 %}{% endif %}
+    </div>
+  </div>
+
+  {% assign _stripped = content | strip %}
+  {% if _stripped != "" %}
+  <div class="entry-prose">{{ content }}</div>
+  {% endif %}
+
+</article>
+</div>

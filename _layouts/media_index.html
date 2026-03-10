@@ -1,0 +1,234 @@
+---
+layout: default
+---
+<div class="container--wide">
+<div class="container">
+  <h1>{{ page.title }}</h1>
+</div>
+
+{% assign _stripped = content | strip %}
+{% if _stripped != "" %}
+<div class="container">
+<div class="media-intro">{{ content }}</div>
+</div>
+{% endif %}
+
+{% comment %}── BOOKS ──{% endcomment %}
+{% if site.books.size > 0 %}
+{% assign _books_current = site.books | where: "status", "currently reading" %}
+{% assign _books_read    = site.books | where_exp: "b", "b.status != 'to read' and b.status != 'currently reading'" %}
+{% assign _books_backlog = site.books | where: "status", "to read" %}
+
+{% if _books_current.size > 0 %}
+<div class="container">
+<section class="media-section">
+  <div class="media-section__header">
+    <h2>Currently Reading</h2>
+    <span class="section-count">{{ _books_current.size }}</span>
+  </div>
+  <div class="cards">
+    {% for book in _books_current %}
+    <a href="{{ book.url | relative_url }}" class="card">
+      <p class="card__title">{{ book.title }}</p>
+      {% if book.author_name %}<p class="card__sub">{{ book.author_name }}</p>{% endif %}
+      <div class="card__tags"><span class="status-tag">reading</span></div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+</div>
+{% endif %}
+
+{% if _books_read.size > 0 %}
+<div class="container">
+<section class="media-section">
+  <div class="media-section__header">
+    <h2>Books Read</h2>
+    <span class="section-count">{{ _books_read.size }}</span>
+  </div>
+  <div class="cards">
+    {% for book in _books_read %}
+    <a href="{{ book.url | relative_url }}" class="card">
+      <p class="card__title">{{ book.title }}</p>
+      {% if book.author_name %}<p class="card__sub">{{ book.author_name }}</p>
+      {% elsif book.author %}
+        {% assign _ap = site.people | where: "slug", book.author | first %}
+        <p class="card__sub">{% if _ap %}{{ _ap.name }}{% else %}{{ book.author | replace: "-", " " }}{% endif %}</p>
+      {% endif %}
+      <div class="card__tags">
+        {% if book.genre %}<span class="tag">{{ book.genre }}</span>{% endif %}
+        {% if book.goodreads_rating and book.goodreads_rating > 0 %}<span class="tag">{{ book.goodreads_rating }}★</span>{% endif %}
+        {% if book.date_read %}<span class="status-tag">{{ book.date_read }}</span>{% endif %}
+      </div>
+      {% if book.addictiveness or book.density %}
+      <div class="card__ratings">
+        {% if book.addictiveness %}{% include card_rating.html label="Addictiveness" value=book.addictiveness max=10 %}{% endif %}
+        {% if book.density %}{% include card_rating.html label="Density" value=book.density max=10 %}{% endif %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+</div>
+{% endif %}
+
+{% if _books_backlog.size > 0 %}
+<div class="container">
+<section class="media-section">
+  <div class="media-section__header">
+    <h2>Reading List</h2>
+    <span class="section-count">{{ _books_backlog.size }}</span>
+  </div>
+  <div class="reading-list-grid">
+    {% for book in _books_backlog %}
+    <div class="reading-list-row">
+      <a href="{{ book.url | relative_url }}">{{ book.title }}</a>
+      {% if book.author_name %}<span class="reading-list-row__author">{{ book.author_name }}</span>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+</div>
+{% endif %}
+{% endif %}
+
+{% comment %}── PAPERS ──{% endcomment %}
+{% if site.papers.size > 0 %}
+<div class="container">
+<section class="media-section">
+  <div class="media-section__header">
+    <h2>Papers</h2>
+    <span class="section-count">{{ site.papers.size }}</span>
+  </div>
+  <div class="cards">
+    {% for paper in site.papers %}
+    <a href="{{ paper.url | relative_url }}" class="card">
+      <p class="card__title">{{ paper.title }}</p>
+      {% if paper.authors %}
+      <p class="card__sub">
+        {% for author_id in paper.authors %}
+          {% assign _ap = site.people | where: "slug", author_id | first %}
+          {% if _ap %}{{ _ap.name }}{% else %}{{ author_id | replace: "-", " " }}{% endif %}{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      </p>
+      {% endif %}
+      <div class="card__tags">
+        {% if paper.journal %}<span class="tag">{{ paper.journal }}</span>{% endif %}
+        {% if paper.year_published %}<span class="tag">{{ paper.year_published }}</span>{% endif %}
+      </div>
+      {% if paper.density or paper.importance %}
+      <div class="card__ratings">
+        {% if paper.density %}{% include card_rating.html label="Density" value=paper.density max=10 %}{% endif %}
+        {% if paper.importance %}{% include card_rating.html label="Importance" value=paper.importance max=10 %}{% endif %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+</div>
+{% endif %}
+
+{% comment %}── MOVIES ──{% endcomment %}
+{% if site.movies.size > 0 %}
+<div class="container">
+<section class="media-section">
+  <div class="media-section__header">
+    <h2>Films</h2>
+    <span class="section-count">{{ site.movies.size }}</span>
+  </div>
+  <div class="cards">
+    {% for movie in site.movies %}
+    <a href="{{ movie.url | relative_url }}" class="card">
+      <p class="card__title">{{ movie.title }}</p>
+      {% if movie.director %}
+        {% assign _dp = site.people | where: "slug", movie.director | first %}
+        <p class="card__sub">dir. {% if _dp %}{{ _dp.name }}{% else %}{{ movie.director | replace: "-", " " }}{% endif %}</p>
+      {% endif %}
+      <div class="card__tags">
+        {% if movie.genre %}<span class="tag">{{ movie.genre }}</span>{% endif %}
+        {% if movie.year %}<span class="tag">{{ movie.year }}</span>{% endif %}
+      </div>
+      {% if movie.rewatchability or movie.emotional_impact %}
+      <div class="card__ratings">
+        {% if movie.rewatchability %}{% include card_rating.html label="Rewatchability" value=movie.rewatchability max=10 %}{% endif %}
+        {% if movie.emotional_impact %}{% include card_rating.html label="Impact" value=movie.emotional_impact max=10 %}{% endif %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+</div>
+{% endif %}
+
+{% comment %}── PODCASTS ──{% endcomment %}
+{% if site.podcasts.size > 0 %}
+<div class="container">
+<section class="media-section">
+  <div class="media-section__header">
+    <h2>Podcasts</h2>
+    <span class="section-count">{{ site.podcasts.size }}</span>
+  </div>
+  <div class="cards">
+    {% for pod in site.podcasts %}
+    <a href="{{ pod.url | relative_url }}" class="card">
+      <p class="card__title">{{ pod.title }}</p>
+      <p class="card__sub">
+        {{ pod.series }}{% if pod.host %}
+        {% assign _hp = site.people | where: "slug", pod.host | first %}
+        · {% if _hp %}{{ _hp.name }}{% else %}{{ pod.host | replace: "-", " " }}{% endif %}{% endif %}
+      </p>
+      {% if pod.guest %}
+        {% assign _gp = site.people | where: "slug", pod.guest | first %}
+        {% if _gp %}<p class="card__sub">guest: {{ _gp.name }}</p>{% endif %}
+      {% endif %}
+      <div class="card__tags">
+        {% if pod.type %}<span class="tag">{{ pod.type }}</span>{% endif %}
+        {% if pod.status %}<span class="status-tag">{{ pod.status }}</span>{% endif %}
+      </div>
+      {% if pod.density %}
+      <div class="card__ratings">{% include card_rating.html label="Density" value=pod.density max=10 %}
+      </div>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+</div>
+{% endif %}
+
+{% comment %}── LECTURES ──{% endcomment %}
+{% if site.lectures.size > 0 %}
+<div class="container">
+<section class="media-section">
+  <div class="media-section__header">
+    <h2>Lectures</h2>
+    <span class="section-count">{{ site.lectures.size }}</span>
+  </div>
+  <div class="cards">
+    {% for lec in site.lectures %}
+    <a href="{{ lec.url | relative_url }}" class="card">
+      <p class="card__title">{{ lec.title }}</p>
+      {% if lec.lecturer %}
+        {% assign _lp = site.people | where: "slug", lec.lecturer | first %}
+        <p class="card__sub">{% if _lp %}{{ _lp.name }}{% else %}{{ lec.lecturer | replace: "-", " " }}{% endif %}</p>
+      {% endif %}
+      <div class="card__tags">
+        {% if lec.series %}<span class="tag">{{ lec.series }}</span>{% endif %}
+        {% if lec.institution %}<span class="tag">{{ lec.institution }}</span>{% endif %}
+      </div>
+      {% if lec.density or lec.clarity %}
+      <div class="card__ratings">
+        {% if lec.density %}{% include card_rating.html label="Density" value=lec.density max=10 %}{% endif %}
+        {% if lec.clarity %}{% include card_rating.html label="Clarity" value=lec.clarity max=10 %}{% endif %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+</div>
+{% endif %}
+
+</div>

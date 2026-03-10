@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<div class="container">
+<article>
+
+  <header class="entry-header">
+    <div class="entry-eyebrow">
+      <span class="type-badge">Film</span>
+      {% if page.genre %}<span class="tag">{{ page.genre }}</span>{% endif %}
+      {% if page.year %}<span class="tag">{{ page.year }}</span>{% endif %}
+      {% if page.status %}<span class="status-tag">{{ page.status }}</span>{% endif %}
+    </div>
+    <h1 class="entry-title">{{ page.title }}</h1>
+  </header>
+
+  <div class="entry-panel">
+    <div class="entry-fields">
+      {% if page.director %}
+      <div class="field">
+        <span class="field__label">Director</span>
+        <span class="field__value">{% include person_link.html id=page.director %}</span>
+      </div>
+      {% endif %}
+      {% if page.date_watched %}
+      <div class="field">
+        <span class="field__label">Date Watched</span>
+        <span class="field__value">{{ page.date_watched }}</span>
+      </div>
+      {% endif %}
+      {% if page.recommended_to %}
+      <div class="field">
+        <span class="field__label">Recommended To</span>
+        <span class="field__value">{{ page.recommended_to }}</span>
+      </div>
+      {% endif %}
+    </div>
+    <div class="entry-ratings">
+      {% if page.rewatchability %}{% include rating_bar.html label="Rewatchability" value=page.rewatchability max=10 %}{% endif %}
+      {% if page.cinematography %}{% include rating_bar.html label="Cinematography" value=page.cinematography max=10 %}{% endif %}
+      {% if page.writing %}{% include rating_bar.html label="Writing" value=page.writing max=10 %}{% endif %}
+      {% if page.emotional_impact %}{% include rating_bar.html label="Emotional Impact" value=page.emotional_impact max=10 %}{% endif %}
+    </div>
+  </div>
+
+  {% assign _stripped = content | strip %}
+  {% if _stripped != "" %}
+  <div class="entry-prose">{{ content }}</div>
+  {% endif %}
+
+</article>
+</div>

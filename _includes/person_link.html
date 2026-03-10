@@ -1,0 +1,12 @@
+{% if include.id %}
+  {% assign _person = site.people | where: "slug", include.id | first %}
+  {% if _person %}
+    <a href="{{ _person.url | relative_url }}" class="person-link">{{ _person.name }}</a>
+  {% elsif include.name %}
+    {{ include.name }}
+  {% else %}
+    {{ include.id | replace: "-", " " }}
+  {% endif %}
+{% elsif include.name %}
+  {{ include.name }}
+{% endif %}

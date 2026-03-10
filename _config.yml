@@ -26,6 +26,34 @@ baseurl: ""
 url: ""
 github_username: chris-kremer
 
+# Navigation
+header_pages:
+  - about.markdown
+  - writing/index.md
+  - media/index.md
+  - projects/index.md
+
+# Collections — one per media type + people for cross-linking
+collections:
+  books:
+    output: true
+    permalink: /media/books/:slug/
+  papers:
+    output: true
+    permalink: /media/papers/:slug/
+  movies:
+    output: true
+    permalink: /media/movies/:slug/
+  podcasts:
+    output: true
+    permalink: /media/podcasts/:slug/
+  lectures:
+    output: true
+    permalink: /media/lectures/:slug/
+  people:
+    output: true
+    permalink: /people/:slug/
+
 # Build settings
 theme: minima
 plugins:

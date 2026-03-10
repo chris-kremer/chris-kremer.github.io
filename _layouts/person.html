@@ -1,0 +1,132 @@
+---
+layout: default
+---
+<div class="container">
+
+  <div class="person-header">
+    <h1>{{ page.name }}</h1>
+    {% if page.description %}<p class="person-desc">{{ page.description }}</p>{% endif %}
+    {% if page.website or page.wikipedia %}
+    <div class="person-links">
+      {% if page.website %}<a href="{{ page.website }}">Website</a>{% endif %}
+      {% if page.wikipedia %}<a href="{{ page.wikipedia }}">Wikipedia</a>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+
+  {% assign _stripped = content | strip %}
+  {% if _stripped != "" %}
+  <div class="entry-prose" style="margin-top:0; padding-top:0; border-top:none;">{{ content }}</div>
+  {% endif %}
+
+  <div class="appearances">
+    {% assign _pid = page.slug %}
+
+    {% assign _p_books = "" | split: "" %}
+    {% for item in site.books %}
+      {% if item.author == _pid or item.people contains _pid %}
+        {% assign _p_books = _p_books | push: item %}
+      {% endif %}
+    {% endfor %}
+    {% if _p_books.size > 0 %}
+    <div class="appearances-section">
+      <h2>Books</h2>
+      <ul class="appearance-list">
+        {% for item in _p_books %}
+        <li class="appearance-item">
+          <span class="role">{% if item.author == _pid %}Author{% else %}Mentioned{% endif %}</span>
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% if item.genre %}<span class="tag">{{ item.genre }}</span>{% endif %}
+          {% if item.status %}<span class="status-tag">{{ item.status }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% assign _p_papers = "" | split: "" %}
+    {% for item in site.papers %}
+      {% if item.authors contains _pid or item.people contains _pid %}
+        {% assign _p_papers = _p_papers | push: item %}
+      {% endif %}
+    {% endfor %}
+    {% if _p_papers.size > 0 %}
+    <div class="appearances-section">
+      <h2>Papers</h2>
+      <ul class="appearance-list">
+        {% for item in _p_papers %}
+        <li class="appearance-item">
+          <span class="role">{% if item.authors contains _pid %}Author{% else %}Mentioned{% endif %}</span>
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% if item.journal %}<span class="tag">{{ item.journal }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% assign _p_movies = "" | split: "" %}
+    {% for item in site.movies %}
+      {% if item.director == _pid or item.people contains _pid %}
+        {% assign _p_movies = _p_movies | push: item %}
+      {% endif %}
+    {% endfor %}
+    {% if _p_movies.size > 0 %}
+    <div class="appearances-section">
+      <h2>Films</h2>
+      <ul class="appearance-list">
+        {% for item in _p_movies %}
+        <li class="appearance-item">
+          <span class="role">{% if item.director == _pid %}Director{% else %}Mentioned{% endif %}</span>
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% if item.year %}<span class="tag">{{ item.year }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% assign _p_podcasts = "" | split: "" %}
+    {% for item in site.podcasts %}
+      {% if item.host == _pid or item.guest == _pid or item.people contains _pid %}
+        {% assign _p_podcasts = _p_podcasts | push: item %}
+      {% endif %}
+    {% endfor %}
+    {% if _p_podcasts.size > 0 %}
+    <div class="appearances-section">
+      <h2>Podcasts</h2>
+      <ul class="appearance-list">
+        {% for item in _p_podcasts %}
+        <li class="appearance-item">
+          <span class="role">{% if item.host == _pid %}Host{% elsif item.guest == _pid %}Guest{% else %}Mentioned{% endif %}</span>
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% if item.series %}<span class="tag">{{ item.series }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% assign _p_lectures = "" | split: "" %}
+    {% for item in site.lectures %}
+      {% if item.lecturer == _pid or item.people contains _pid %}
+        {% assign _p_lectures = _p_lectures | push: item %}
+      {% endif %}
+    {% endfor %}
+    {% if _p_lectures.size > 0 %}
+    <div class="appearances-section">
+      <h2>Lectures</h2>
+      <ul class="appearance-list">
+        {% for item in _p_lectures %}
+        <li class="appearance-item">
+          <span class="role">{% if item.lecturer == _pid %}Lecturer{% else %}Mentioned{% endif %}</span>
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% if item.series %}<span class="tag">{{ item.series }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
+</div>

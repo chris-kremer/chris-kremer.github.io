@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<div class="container">
+
+  <div class="home-intro">
+    <span class="eyebrow">{{ site.title }}</span>
+    {% assign _stripped = content | strip %}
+    {% if _stripped != "" %}
+    <div class="intro-text">{{ content }}</div>
+    {% endif %}
+  </div>
+
+  {% if site.posts.size > 0 %}
+  <div class="home-section">
+    <div class="home-section__header">
+      <h2>Writing</h2>
+    </div>
+    <ul class="post-list">
+      {% for post in site.posts limit: 10 %}
+      <li class="post-list__item">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%b %Y" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% assign _reading = site.books | where: "status", "currently reading" %}
+  {% if _reading.size > 0 %}
+  <div class="home-section">
+    <div class="home-section__header">
+      <h2>Currently Reading</h2>
+      <a href="{{ '/media/' | relative_url }}" class="see-all">All media →</a>
+    </div>
+    <div class="reading-strip">
+      {% for book in _reading limit: 6 %}
+      <div class="reading-strip__item">
+        <a href="{{ book.url | relative_url }}">{{ book.title }}</a>
+        {% if book.author_name %}<span class="by">{{ book.author_name }}</span>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>

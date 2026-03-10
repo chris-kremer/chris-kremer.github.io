@@ -1,0 +1,60 @@
+---
+layout: default
+---
+<div class="container">
+<article>
+
+  <header class="entry-header">
+    <div class="entry-eyebrow">
+      <span class="type-badge">Paper</span>
+      {% if page.journal %}<span class="tag">{{ page.journal }}</span>{% endif %}
+      {% if page.year_published %}<span class="tag">{{ page.year_published }}</span>{% endif %}
+    </div>
+    <h1 class="entry-title">{{ page.title }}</h1>
+  </header>
+
+  <div class="entry-panel">
+    <div class="entry-fields">
+      {% if page.authors %}
+      <div class="field">
+        <span class="field__label">Authors</span>
+        <span class="field__value">
+          {% for author_id in page.authors %}
+            {% include person_link.html id=author_id %}{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </span>
+      </div>
+      {% endif %}
+      {% if page.field %}
+      <div class="field">
+        <span class="field__label">Field</span>
+        <span class="field__value">{{ page.field }}</span>
+      </div>
+      {% endif %}
+      {% if page.date_read %}
+      <div class="field">
+        <span class="field__label">Date Read</span>
+        <span class="field__value">{{ page.date_read }}</span>
+      </div>
+      {% endif %}
+      {% if page.recommended_to %}
+      <div class="field">
+        <span class="field__label">Recommended To</span>
+        <span class="field__value">{{ page.recommended_to }}</span>
+      </div>
+      {% endif %}
+    </div>
+    <div class="entry-ratings">
+      {% if page.density %}{% include rating_bar.html label="Density" value=page.density max=10 %}{% endif %}
+      {% if page.importance %}{% include rating_bar.html label="Importance" value=page.importance max=10 %}{% endif %}
+      {% if page.clarity %}{% include rating_bar.html label="Clarity" value=page.clarity max=10 %}{% endif %}
+    </div>
+  </div>
+
+  {% assign _stripped = content | strip %}
+  {% if _stripped != "" %}
+  <div class="entry-prose">{{ content }}</div>
+  {% endif %}
+
+</article>
+</div>
