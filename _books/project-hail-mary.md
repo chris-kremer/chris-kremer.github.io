@@ -1,5 +1,6 @@
 ---
 layout: book
+featured: true
 title: Project Hail Mary
 author: andy-weir
 author_name: Andy Weir

@@ -17,5 +17,9 @@ ai_project/
 behavior-bench/
 prepare_bench_data.py
 
+# Raw GPX files (processed into assets/data/berlin-routes.geojson)
+gpx/
+convert_gpx.py
+
 # Raw Notion export (already imported)
 Notion/

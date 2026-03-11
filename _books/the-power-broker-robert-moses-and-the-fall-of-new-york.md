@@ -1,5 +1,6 @@
 ---
 layout: book
+featured: true
 title: "The Power Broker: Robert Moses and the Fall of New York"
 author: robert-a-caro
 author_name: Robert A. Caro

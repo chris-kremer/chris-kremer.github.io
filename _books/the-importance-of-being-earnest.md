@@ -1,5 +1,6 @@
 ---
 layout: book
+featured: true
 title: The Importance of Being Earnest
 author: oscar-wilde
 author_name: Oscar Wilde

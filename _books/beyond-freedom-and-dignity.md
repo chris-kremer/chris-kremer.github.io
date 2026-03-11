@@ -1,5 +1,6 @@
 ---
 layout: book
+featured: true
 title: Beyond Freedom and Dignity
 author: bf-skinner
 author_name: B.F. Skinner

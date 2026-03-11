@@ -38,8 +38,8 @@ layout: default
   }).addTo(map);
 
   var ROUTE_COLOR = '#2d4739';
-  var ROUTE_WEIGHT = 2.5;
-  var ROUTE_OPACITY = 0.65;
+  var ROUTE_WEIGHT = 2;
+  var ROUTE_OPACITY = 0.45;
   var ROUTE_HOVER_OPACITY = 1.0;
 
   function haversineKm(lat1, lon1, lat2, lon2) {
@@ -51,6 +51,27 @@ layout: default
             Math.sin(dLon/2)*Math.sin(dLon/2);
     return 2 * R * Math.asin(Math.sqrt(a));
   }
+
+  // Neighborhood borders
+  fetch('{{ "/assets/data/berlin-ortsteile.geojson" | relative_url }}')
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      L.geoJSON(data, {
+        style: {
+          color:       '#2d4739',
+          weight:      1,
+          opacity:     0.35,
+          fillColor:   '#2d4739',
+          fillOpacity: 0.04,
+        },
+        onEachFeature: function(feature, layer) {
+          if (feature.properties.name) {
+            layer.bindTooltip(feature.properties.name, { sticky: true, className: 'map-tooltip' });
+          }
+        }
+      }).addTo(map);
+    })
+    .catch(function(err){ console.warn('Could not load neighborhood borders:', err); });
 
   fetch('{{ "/assets/data/berlin-routes.geojson" | relative_url }}')
     .then(function(r){ return r.json(); })
@@ -64,24 +85,39 @@ layout: default
         totalKm += props.distance_km;
         if (props.date && props.date !== 'unknown') dates.push(props.date);
 
-        var coords = feat.geometry.coordinates.map(function(c){ return [c[1], c[0]]; });
+        var raw    = feat.geometry.coordinates.map(function(c){ return [c[1], c[0]]; });
+        var color  = ROUTE_COLOR;
+        var label  = (props.activity || 'route') + ' · ' + props.date + ' · ' + props.distance_km + ' km';
 
-        var line = L.polyline(coords, {
-          color: ROUTE_COLOR,
-          weight: ROUTE_WEIGHT,
-          opacity: ROUTE_OPACITY,
-          smoothFactor: 1.5
-        }).addTo(map);
+        // Split into segments wherever consecutive points jump > 0.3 km
+        var MAX_GAP_KM = 0.3;
+        var segments = [];
+        var seg = [raw[0]];
+        for (var i = 1; i < raw.length; i++) {
+          var d = haversineKm(raw[i-1][0], raw[i-1][1], raw[i][0], raw[i][1]);
+          if (d > MAX_GAP_KM) {
+            if (seg.length > 1) segments.push(seg);
+            seg = [];
+          }
+          seg.push(raw[i]);
+        }
+        if (seg.length > 1) segments.push(seg);
 
-        var label = props.date + ' · ' + props.distance_km + ' km';
-        line.bindTooltip(label, { sticky: true, className: 'map-tooltip' });
-
-        line.on('mouseover', function() {
-          this.setStyle({ opacity: ROUTE_HOVER_OPACITY, weight: ROUTE_WEIGHT + 1.5 });
-          this.bringToFront();
-        });
-        line.on('mouseout', function() {
-          this.setStyle({ opacity: ROUTE_OPACITY, weight: ROUTE_WEIGHT });
+        segments.forEach(function(coords) {
+          var line = L.polyline(coords, {
+            color: color,
+            weight: ROUTE_WEIGHT,
+            opacity: ROUTE_OPACITY,
+            smoothFactor: 1.5
+          }).addTo(map);
+          line.bindTooltip(label, { sticky: true, className: 'map-tooltip' });
+          line.on('mouseover', function() {
+            this.setStyle({ opacity: ROUTE_HOVER_OPACITY, weight: ROUTE_WEIGHT + 1.5 });
+            this.bringToFront();
+          });
+          line.on('mouseout', function() {
+            this.setStyle({ opacity: ROUTE_OPACITY, weight: ROUTE_WEIGHT });
+          });
         });
       });
 

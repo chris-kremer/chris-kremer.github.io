@@ -27,15 +27,15 @@ layout: default
   </div>
   {% endif %}
 
-  {% assign _reading = site.books | where: "status", "currently reading" %}
-  {% if _reading.size > 0 %}
+  {% assign _featured = site.books | where: "featured", true %}
+  {% if _featured.size > 0 %}
   <div class="home-section">
     <div class="home-section__header">
-      <h2>Currently Reading</h2>
+      <h2>Recent Favorites</h2>
       <a href="{{ '/media/' | relative_url }}" class="see-all">All media →</a>
     </div>
     <div class="reading-strip">
-      {% for book in _reading limit: 6 %}
+      {% for book in _featured %}
       <div class="reading-strip__item">
         <a href="{{ book.url | relative_url }}">{{ book.title }}</a>
         {% if book.author_name %}<span class="by">{{ book.author_name }}</span>{% endif %}

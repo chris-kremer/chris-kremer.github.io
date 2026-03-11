@@ -1,5 +1,6 @@
 ---
 layout: book
+featured: true
 title: Infinite Jest
 author_name: David Foster Wallace
 author: david-foster-wallace
