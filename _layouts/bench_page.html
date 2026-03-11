@@ -23,11 +23,14 @@ layout: default
       <button class="bench-tab"        data-tab="countries" role="tab">Country Affinity</button>
       <button class="bench-tab"        data-tab="normed"    role="tab">Standardized View</button>
       <button class="bench-tab"        data-tab="human"     role="tab">Most Human</button>
+      <button class="bench-tab"        data-tab="map"       role="tab">Similarity Map</button>
     </nav>
 
     <!-- Model Profiles -->
     <section class="bench-panel active" data-panel="models">
-      <div class="bench-controls">
+      <div class="chart-container radar-container"><canvas id="radarChart"></canvas></div>
+      <div class="bench-legend" id="radar-legend"></div>
+      <div class="bench-controls" style="margin-top:1.25rem">
         <label class="bench-label">Select models to compare <span class="bench-hint">(up to 10)</span></label>
         <div class="model-select-grid" id="model-checkboxes"></div>
         <div class="filter-row">
@@ -35,8 +38,6 @@ layout: default
           <select id="lab-filter" class="bench-select"><option value="">All labs</option></select>
         </div>
       </div>
-      <div class="chart-container radar-container"><canvas id="radarChart"></canvas></div>
-      <div class="bench-legend" id="radar-legend"></div>
       <p class="bench-note">Scores on a 0–10 scale matching the GPS (Global Preferences Survey) instrument.</p>
     </section>
 
@@ -137,6 +138,19 @@ layout: default
       <div class="chart-container radar-container"><canvas id="normedRadarChart"></canvas></div>
       <div class="bench-legend" id="normed-legend"></div>
       <p class="bench-note">Scale 0–1. Each axis is independently rescaled: 0 (raw) → 0, reference → 0.5, 10 (raw) → 1.</p>
+    </section>
+
+    <!-- Similarity Map -->
+    <section class="bench-panel" data-panel="map">
+      <div class="bench-controls">
+        <div class="dim-options-row">
+          <label class="dim-opt-label"><input type="checkbox" id="map-show-countries" checked> Show countries</label>
+          <label class="dim-opt-label"><input type="checkbox" id="map-show-labels"> Country labels</label>
+        </div>
+      </div>
+      <div class="chart-container scatter-container"><canvas id="mapChart"></canvas></div>
+      <div class="map-legend" id="map-legend"></div>
+      <p class="bench-note">PCA projection into 2 dimensions (PC1 49%, PC2 22% of variance). Each point represents a behavioural profile in the 6-dimensional GPS score space. <strong>Key finding: PC1 separates AI models (right) from humans (left) — models systematically differ from all countries.</strong></p>
     </section>
 
   </div>
@@ -790,6 +804,145 @@ layout: default
     }
 
     renders.human = renderHumanChart;
+
+    // ════════════════════════════════════════════════════════════════
+    // Similarity Map tab
+    // ════════════════════════════════════════════════════════════════
+    const { pca } = data;
+
+    const mapShowCountriesCb = document.getElementById('map-show-countries');
+    const mapShowLabelsCb    = document.getElementById('map-show-labels');
+    const mapCtx             = document.getElementById('mapChart').getContext('2d');
+    let mapChart = null;
+
+    // Plugin: draw ISO labels next to country points
+    const mapLabelsPlugin = {
+      id: 'mapLabels',
+      afterDatasetsDraw(chart, args, pluginOpts) {
+        const opts = pluginOpts || chart.config?.options?.plugins?.mapLabels;
+        if (!opts || !opts.showLabels) return;
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.font = "9px 'DM Sans', sans-serif";
+        ctx.fillStyle = '#aaa89f';
+        chart.data.datasets.forEach((ds, di) => {
+          if (ds.label !== 'Countries') return;
+          const meta = chart.getDatasetMeta(di);
+          meta.data.forEach((pt, i) => {
+            const d = ds.data[i];
+            if (d && d.iso) ctx.fillText(d.iso, pt.x + 5, pt.y + 3);
+          });
+        });
+        ctx.restore();
+      },
+    };
+    Chart.register(mapLabelsPlugin);
+
+    function renderMapChart() {
+      if (!pca) return;
+      const showCountries = mapShowCountriesCb.checked;
+      const showLabels    = mapShowLabelsCb.checked;
+
+      const countryPts = Object.entries(pca.countries).map(([iso, c]) => ({
+        x: c.x, y: c.y, label: `${c.name} (${iso})`, iso,
+      }));
+
+      const modelPts = modelIds.map(mid => {
+        const pc = pca.models[mid];
+        return pc ? { x: pc.x, y: pc.y, label: models[mid].name, mid } : null;
+      }).filter(Boolean);
+
+      const datasets = [];
+
+      if (showCountries) {
+        datasets.push({
+          label: 'Countries',
+          data: countryPts,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          backgroundColor: 'rgba(155,145,130,0.30)',
+          borderColor: 'rgba(130,118,105,0.55)',
+          borderWidth: 1,
+        });
+      }
+
+      datasets.push({
+        label: 'AI Models',
+        data: modelPts,
+        pointRadius: 7,
+        pointHoverRadius: 9,
+        backgroundColor: modelPts.map(d => hexToRgba(models[d.mid].color, 0.88)),
+        borderColor:     modelPts.map(d => models[d.mid].color),
+        borderWidth: 1.5,
+      });
+
+      const ha = pca.special.human_avg;
+      datasets.push({
+        label: 'Human World Avg',
+        data: [{ x: ha.x, y: ha.y, label: 'Human World Avg' }],
+        pointRadius: 11, pointHoverRadius: 13,
+        pointStyle: 'rectRot',
+        backgroundColor: '#2d6a4f',
+        borderColor: '#1a4731',
+        borderWidth: 2,
+      });
+
+      const aa = pca.special.ai_avg;
+      datasets.push({
+        label: 'AI Average',
+        data: [{ x: aa.x, y: aa.y, label: 'AI Average' }],
+        pointRadius: 11, pointHoverRadius: 13,
+        pointStyle: 'rectRot',
+        backgroundColor: '#3355cc',
+        borderColor: '#1a2e7a',
+        borderWidth: 2,
+      });
+
+      if (mapChart) mapChart.destroy();
+      mapChart = new Chart(mapCtx, {
+        type: 'scatter',
+        data: { datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => ctx.raw.label || ctx.dataset.label,
+              },
+            },
+            mapLabels: { showLabels },
+          },
+          scales: {
+            x: {
+              title: { display: true, text: `PC1 — ${pca.explained_variance[0]}% of variance`, color: '#999390', font: { family: "'DM Sans', sans-serif", size: 11 } },
+              ticks: { color: '#999390', font: { family: "'DM Sans', sans-serif", size: 10 } },
+              grid: { color: '#eeeae4' },
+            },
+            y: {
+              title: { display: true, text: `PC2 — ${pca.explained_variance[1]}% of variance`, color: '#999390', font: { family: "'DM Sans', sans-serif", size: 11 } },
+              ticks: { color: '#999390', font: { family: "'DM Sans', sans-serif", size: 10 } },
+              grid: { color: '#eeeae4' },
+            },
+          },
+        },
+      });
+
+      // Legend
+      document.getElementById('map-legend').innerHTML =
+        `<span class="legend-item"><span class="legend-dot" style="background:#2d6a4f;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)"></span>Human World Avg</span>` +
+        `<span class="legend-item"><span class="legend-dot" style="background:#3355cc;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)"></span>AI Average</span>` +
+        modelIds.map(mid => {
+          const m = models[mid];
+          return `<span class="legend-item"><span class="legend-dot" style="background:${m.color}"></span>${m.name}</span>`;
+        }).join('') +
+        (showCountries ? `<span class="legend-item"><span class="legend-dot" style="background:rgba(155,145,130,0.5);border:1px solid rgba(130,118,105,0.6)"></span>Countries</span>` : '');
+    }
+
+    mapShowCountriesCb.addEventListener('change', renderMapChart);
+    mapShowLabelsCb.addEventListener('change', renderMapChart);
+    renders.map = renderMapChart;
 
   } // end init
 })();

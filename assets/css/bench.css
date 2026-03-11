@@ -232,8 +232,14 @@
   max-width: 100%;
 }
 
+.scatter-container {
+  height: 560px;
+  max-width: 100%;
+}
+
 /* ── Legend ─────────────────────────────────────────────────── */
-.bench-legend {
+.bench-legend,
+.map-legend {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
