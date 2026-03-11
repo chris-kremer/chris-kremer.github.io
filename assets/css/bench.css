@@ -502,6 +502,66 @@
   margin-right: 2px;
 }
 
+/* ── Human table ─────────────────────────────────────────────── */
+.human-table-wrap {
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+.human-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.83rem;
+}
+
+.human-table thead th {
+  text-align: right;
+  padding: 0.45rem 0.7rem;
+  color: #6b6865;
+  font-weight: 600;
+  border-bottom: 2px solid #dedad4;
+  white-space: nowrap;
+}
+
+.human-table thead th:first-child {
+  text-align: left;
+}
+
+.human-table tbody tr:hover {
+  background: #f8f6f2;
+}
+
+.human-table-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  white-space: nowrap;
+  color: #1c1b19;
+}
+
+.human-table-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.human-table-cell {
+  text-align: right;
+  padding: 0.4rem 0.7rem;
+  font-variant-numeric: tabular-nums;
+  color: #1c1b19;
+  background: color-mix(in srgb, #c0392b calc(var(--heat) * 0.45), transparent);
+}
+
+.human-table-total {
+  font-weight: 600;
+  border-left: 1px solid #dedad4;
+  background: color-mix(in srgb, #8b1a1a calc(var(--heat) * 0.45), transparent);
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .bench-wrap { padding: 1.5rem 1rem 3rem; }

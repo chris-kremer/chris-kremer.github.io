@@ -110,6 +110,9 @@ layout: default
       </div>
       <div class="chart-container human-bar-container"><canvas id="humanChart"></canvas></div>
       <p class="bench-note" id="human-note"></p>
+      <div class="human-table-wrap">
+        <table class="human-table" id="human-table"></table>
+      </div>
     </section>
 
     <!-- Standardized View -->
@@ -803,7 +806,50 @@ layout: default
       });
     }
 
-    renders.human = renderHumanChart;
+    function renderHumanTable() {
+      const ha = human_avg || {};
+      // Sort models by total squared distance ascending
+      const sorted = [...modelIds].sort((a, b) => {
+        const sumSq = mid => dims.reduce((s, d) => s + Math.pow(models[mid].scores[d] - (ha[d] || 5), 2), 0);
+        return sumSq(a) - sumSq(b);
+      });
+
+      const dimLabels = dims.map(d => dim_labels[d]);
+      let html = '<thead><tr>'
+        + '<th>Model</th>'
+        + dimLabels.map(l => `<th>${l}</th>`).join('')
+        + '<th>Total</th>'
+        + '</tr></thead><tbody>';
+
+      // Find max per-dim sq dist for color scaling
+      const maxPerDim = dims.map(d =>
+        Math.max(...modelIds.map(mid => Math.pow(models[mid].scores[d] - (ha[d] || 5), 2)))
+      );
+      const maxTotal = Math.max(...modelIds.map(mid =>
+        dims.reduce((s, d) => s + Math.pow(models[mid].scores[d] - (ha[d] || 5), 2), 0)
+      ));
+
+      sorted.forEach(mid => {
+        const m = models[mid];
+        const sqDists = dims.map(d => Math.pow(m.scores[d] - (ha[d] || 5), 2));
+        const total = sqDists.reduce((s, v) => s + v, 0);
+
+        html += `<tr>`;
+        html += `<td class="human-table-name"><span class="human-table-dot" style="background:${m.color}"></span>${m.name}</td>`;
+        sqDists.forEach((sq, di) => {
+          const intensity = Math.round((sq / maxPerDim[di]) * 100);
+          html += `<td class="human-table-cell" style="--heat:${intensity}%">${sq.toFixed(2)}</td>`;
+        });
+        const totalIntensity = Math.round((total / maxTotal) * 100);
+        html += `<td class="human-table-cell human-table-total" style="--heat:${totalIntensity}%">${total.toFixed(2)}</td>`;
+        html += `</tr>`;
+      });
+
+      html += '</tbody>';
+      document.getElementById('human-table').innerHTML = html;
+    }
+
+    renders.human = () => { renderHumanChart(); renderHumanTable(); };
 
     // ════════════════════════════════════════════════════════════════
     // Similarity Map tab
