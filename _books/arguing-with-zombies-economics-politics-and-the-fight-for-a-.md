@@ -11,3 +11,7 @@ goodreads_rating: 3
 goodreads_id: 45894180
 people: []
 ---
+
+*These notes are old and were written while reading — they don't necessarily reflect my current views.*
+
+What is the real prevalence and effect of income and wealth inequality?

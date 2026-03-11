@@ -10,3 +10,7 @@ pages: 384
 goodreads_id: 55030
 people: []
 ---
+
+*These notes are old and were written while reading — they don't necessarily reflect my current views.*
+
+There is evolution of planets in the solar system, which causes them to have more circular trajectories. Planets with more elliptical trajectories will sooner or later collide with each other, making them susceptible to this sort of natural selection.

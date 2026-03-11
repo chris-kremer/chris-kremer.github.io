@@ -10,3 +10,7 @@ pages: 81
 goodreads_id: 6763725
 people: []
 ---
+
+*These notes are old and were written while reading — they don't necessarily reflect my current views.*
+
+Nothing runs better on MTV than outrage against MTV.

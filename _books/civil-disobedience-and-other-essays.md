@@ -11,3 +11,9 @@ goodreads_rating: 4
 goodreads_id: 16900
 people: []
 ---
+
+*These notes are old and were written while reading — they don't necessarily reflect my current views.*
+
+The government that governs least, governs best. Abolishment of government is an ideal, but the aim of this essay is to advocate for a smaller government. 
+
+He recalls his prison time which he had to serve due to not paying his taxes. He advocates that it is morally reprehensible to pay an institution that does wrong (waging war against Mexico and supporting slavery).

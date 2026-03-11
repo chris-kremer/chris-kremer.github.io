@@ -10,3 +10,7 @@ pages: 400
 goodreads_id: 35008533
 people: []
 ---
+
+*These notes are old and were written while reading — they don't necessarily reflect my current views.*
+
+Oils: Good olive oil!

@@ -11,3 +11,17 @@ goodreads_rating: 5
 goodreads_id: 58039014
 people: []
 ---
+
+*These notes are old and were written while reading — they don't necessarily reflect my current views.*
+
+Good essays: 
+
+Mikhail Bakunin 
+
+(Josiah Warren)
+
+Benjamin Tucker 
+
+Linda and Morris Tannehill
+
+David Friedman

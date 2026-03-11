@@ -11,3 +11,13 @@ goodreads_rating: 4
 goodreads_id: 129731
 people: []
 ---
+
+*These notes are old and were written while reading — they don't necessarily reflect my current views.*
+
+Psychology plays a dominant role in how we perceive food and hence how we interact with it. Here are some practical tips: 
+
+- Use smaller plates
+- Buy smaller containers of food, or subdivide
+- Focus on eating
+- As a fast eater: eat alone
+- Nice dining

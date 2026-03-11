@@ -11,3 +11,7 @@ goodreads_rating: 4
 goodreads_id: 42585103
 people: []
 ---
+
+*These notes are old and were written while reading — they don't necessarily reflect my current views.*
+
+The view is fundamentally institutional: We should not see capital as things but as legal grants. This strikes me as rather sensible. She makes the argument for land rights, debt, the corporate form and especially limited liability.

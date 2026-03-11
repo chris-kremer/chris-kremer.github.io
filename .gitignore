@@ -12,3 +12,6 @@ admin/__pycache__/
 
 # AI project (not ready)
 ai_project/
+
+# Raw Notion export (already imported)
+Notion/
