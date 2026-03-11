@@ -796,7 +796,7 @@ table {
 //  Map page
 // ═══════════════════════════════════════════════
 
-#berlin-map {
+#berlin-map, #world-map {
   width: 100%;
   height: 520px;
   border-radius: 4px;
@@ -805,6 +805,22 @@ table {
   background: $bg-alt;
 
   @media (max-width: 640px) { height: 380px; }
+}
+
+.map-controls {
+  margin-bottom: 0.5rem;
+}
+
+.map-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-sans;
+  font-size: 0.85rem;
+  color: $text-muted;
+  cursor: pointer;
+  user-select: none;
+  input[type="checkbox"] { accent-color: $accent; cursor: pointer; }
 }
 
 .map-stats {

@@ -11,6 +11,10 @@ layout: default
 
   {{ content }}
 
+  <div class="map-controls">
+    <label class="map-toggle"><input type="checkbox" id="toggle-districts" checked> Show neighborhoods</label>
+  </div>
+
   <div id="map-stats" class="map-stats">
     <span id="stat-routes">— routes</span>
     <span class="map-stats__sep">·</span>
@@ -53,10 +57,11 @@ layout: default
   }
 
   // Neighborhood borders
+  var districtsLayer = null;
   fetch('{{ "/assets/data/berlin-ortsteile.geojson" | relative_url }}')
     .then(function(r){ return r.json(); })
     .then(function(data) {
-      L.geoJSON(data, {
+      districtsLayer = L.geoJSON(data, {
         style: {
           color:       '#2d4739',
           weight:      1,
@@ -70,6 +75,11 @@ layout: default
           }
         }
       }).addTo(map);
+
+      document.getElementById('toggle-districts').addEventListener('change', function() {
+        if (this.checked) { districtsLayer.addTo(map); }
+        else              { districtsLayer.remove(); }
+      });
     })
     .catch(function(err){ console.warn('Could not load neighborhood borders:', err); });
 
