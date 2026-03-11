@@ -15,9 +15,33 @@ layout: default
 
 {% comment %}── BOOKS ──{% endcomment %}
 {% if site.books.size > 0 %}
-{% assign _books_current = site.books | where: "status", "currently reading" %}
-{% assign _books_read    = site.books | where_exp: "b", "b.status != 'to read' and b.status != 'currently reading'" | sort: "title" | reverse %}
-{% assign _books_backlog = site.books | where: "status", "to read" %}
+{% assign _books_current  = site.books | where: "status", "currently reading" %}
+{% assign _books_featured = site.books | where: "featured", true %}
+{% assign _books_read     = site.books | where_exp: "b", "b.status != 'to read' and b.status != 'currently reading'" | sort: "title" | reverse %}
+{% assign _books_backlog  = site.books | where: "status", "to read" %}
+
+{% if _books_featured.size > 0 %}
+<div class="container">
+<section class="media-section">
+  <div class="media-section__header">
+    <h2>Recent Favorites</h2>
+    <span class="section-count">{{ _books_featured.size }}</span>
+  </div>
+  <div class="cards">
+    {% for book in _books_featured %}
+    <a href="{{ book.url | relative_url }}" class="card">
+      <p class="card__title">{{ book.title }}</p>
+      {% if book.author_name %}<p class="card__sub">{{ book.author_name }}</p>
+      {% elsif book.author %}
+        {% assign _ap = site.people | where: "slug", book.author | first %}
+        <p class="card__sub">{% if _ap %}{{ _ap.name }}{% else %}{{ book.author | replace: "-", " " }}{% endif %}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+</div>
+{% endif %}
 
 {% if _books_current.size > 0 %}
 <div class="container">

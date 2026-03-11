@@ -3,4 +3,4 @@ layout: home
 title: Chris Kremer
 ---
 
-Economist. I write about markets, technology, and data ethics.
+Studying economics, writing about all sorts of stuff.

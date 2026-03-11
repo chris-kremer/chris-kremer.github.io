@@ -181,15 +181,12 @@ def all_people(force=False):
     if not force and _people_cache is not None and time.time() - _people_ts < 300:
         return _people_cache
     files = gh_list('_people')
-    def read_person(f):
-        try:
-            content, _ = gh_read(f['path'])
-            fm, _ = parse_md_str(content)
-            return {'slug': f['name'][:-3], 'name': fm.get('name', f['name'][:-3])}
-        except Exception:
-            return {'slug': f['name'][:-3], 'name': f['name'][:-3]}
-    with ThreadPoolExecutor(max_workers=20) as ex:
-        people = sorted(ex.map(read_person, files), key=lambda p: p['name'])
+    # Derive display name from slug to avoid 400+ individual API calls
+    people = sorted(
+        [{'slug': f['name'][:-3], 'name': f['name'][:-3].replace('-', ' ').title()}
+         for f in files],
+        key=lambda p: p['name']
+    )
     _people_cache, _people_ts = people, time.time()
     return people
 
