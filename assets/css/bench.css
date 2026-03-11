@@ -502,6 +502,19 @@
   margin-right: 2px;
 }
 
+/* ── Staircase risk note ─────────────────────────────────────── */
+.risk-hint {
+  font-style: italic;
+  color: #6b6865;
+  margin-left: 0.5rem;
+}
+.risk-hint code {
+  font-size: 0.8rem;
+  background: #f0ece6;
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
 /* ── Human table ─────────────────────────────────────────────── */
 .human-table-wrap {
   overflow-x: auto;

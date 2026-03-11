@@ -52,9 +52,15 @@ layout: default
             <span class="human-dot"></span> Human world avg
           </label>
         </div>
+        <div class="dim-options-row" id="risk-staircase-row" style="display:none">
+          <label class="dim-opt-label risk-warn">
+            <input type="checkbox" id="use-staircase"> Use staircase-only score
+          </label>
+          <span class="bench-hint risk-hint">Many models anchor <code>risk_q</code> to 5 — the staircase lottery captures revealed preference instead.</span>
+        </div>
       </div>
       <div class="chart-container bar-container"><canvas id="barChart"></canvas></div>
-      <p class="bench-note">Models ranked by score. Error bars = ±1 SD across simulated participants. Dashed line = human world average (GPS, Falk et al. 2018).</p>
+      <p class="bench-note" id="dim-note">Models ranked by score. Error bars = ±1 SD across simulated participants. Dashed line = human world average (GPS, Falk et al. 2018).</p>
     </section>
 
     <!-- By Lab -->
@@ -376,8 +382,10 @@ layout: default
     // By Dimension tab
     // ════════════════════════════════════════════════════════════════
     let activeDim = dims[0];
-    const showErrCb  = document.getElementById('show-error-bars');
-    const showHumCb  = document.getElementById('show-human-avg');
+    const showErrCb      = document.getElementById('show-error-bars');
+    const showHumCb      = document.getElementById('show-human-avg');
+    const useStaircaseCb = document.getElementById('use-staircase');
+    const staircaseRow   = document.getElementById('risk-staircase-row');
 
     const dimTabRow = document.getElementById('dim-tabs');
     dims.forEach(d => {
@@ -388,6 +396,7 @@ layout: default
         document.querySelectorAll('.dim-tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeDim = d;
+        staircaseRow.style.display = d === 'risk' ? '' : 'none';
         renderBarChart();
       });
       dimTabRow.appendChild(btn);
@@ -395,13 +404,36 @@ layout: default
 
     showErrCb.addEventListener('change', renderBarChart);
     showHumCb.addEventListener('change', renderBarChart);
+    useStaircaseCb.addEventListener('change', renderBarChart);
 
     const barCtx = document.getElementById('barChart').getContext('2d');
     let barChart = null;
 
+    // Human world avg for staircase-only risk (from GPS country data, same ~5.0)
+    const HUMAN_STAIRCASE_RISK = 4.97; // GPS world avg risk ≈ 5
+
+    function getScore(mid, dim) {
+      if (dim === 'risk' && useStaircaseCb.checked && models[mid].staircase_risk != null)
+        return models[mid].staircase_risk;
+      return models[mid].scores[dim];
+    }
+    function getSd(mid, dim) {
+      if (dim === 'risk' && useStaircaseCb.checked)
+        return (models[mid].sd || {}).staircase_risk || 0;
+      return (models[mid].sd || {})[dim] || 0;
+    }
+
     function renderBarChart() {
-      const sorted = [...modelIds].sort((a, b) => models[b].scores[activeDim] - models[a].scores[activeDim]);
-      const sdArr  = sorted.map(mid => (models[mid].sd || {})[activeDim] || 0);
+      const useStaircase = activeDim === 'risk' && useStaircaseCb.checked;
+      const sorted = [...modelIds].sort((a, b) => getScore(b, activeDim) - getScore(a, activeDim));
+      const sdArr  = sorted.map(mid => getSd(mid, activeDim));
+      const humanVal = useStaircase ? HUMAN_STAIRCASE_RISK
+                     : (human_avg ? human_avg[activeDim] : null);
+
+      const dimNote = document.getElementById('dim-note');
+      dimNote.textContent = useStaircase
+        ? 'Staircase-only risk: score based on revealed preference in the lottery task, ignoring the self-report (risk_q). Many models anchor risk_q to 5 regardless of context.'
+        : 'Models ranked by score. Error bars = ±1 SD across simulated participants. Dashed line = human world average (GPS, Falk et al. 2018).';
 
       if (barChart) barChart.destroy();
       barChart = new Chart(barCtx, {
@@ -409,7 +441,7 @@ layout: default
         data: {
           labels:   sorted.map(mid => models[mid].name),
           datasets: [{
-            data:            sorted.map(mid => models[mid].scores[activeDim]),
+            data:            sorted.map(mid => getScore(mid, activeDim)),
             backgroundColor: sorted.map(mid => hexToRgba(models[mid].color, 0.72)),
             borderColor:     sorted.map(mid => models[mid].color),
             borderWidth: 1.5,
@@ -424,7 +456,7 @@ layout: default
             legend: { display: false },
             errorBars: {
               sdData:    sdArr,
-              humanVal:  human_avg ? human_avg[activeDim] : null,
+              humanVal:  humanVal,
               showSD:    showErrCb.checked,
               showHuman: showHumCb.checked,
             },
@@ -815,9 +847,14 @@ layout: default
       });
 
       const dimLabels = dims.map(d => dim_labels[d]);
+      // Replace "Risk Tolerance" header with note marker
+      const riskIdx = dims.indexOf('risk');
+      const headerLabels = dimLabels.map((l, i) =>
+        i === riskIdx ? `${l} <abbr title="Many models anchor risk_q to 5. See By Dimension → staircase toggle for revealed-preference scores.">⚠︎</abbr>` : l
+      );
       let html = '<thead><tr>'
         + '<th>Model</th>'
-        + dimLabels.map(l => `<th>${l}</th>`).join('')
+        + headerLabels.map(l => `<th>${l}</th>`).join('')
         + '<th>Total</th>'
         + '</tr></thead><tbody>';
 
