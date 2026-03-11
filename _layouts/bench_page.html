@@ -1,0 +1,796 @@
+---
+layout: default
+---
+<link rel="stylesheet" href="{{ '/assets/css/bench.css' | relative_url }}">
+
+<div class="bench-wrap">
+
+  <header class="bench-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="bench-subtitle">{{ page.subtitle }}</p>{% endif %}
+  </header>
+
+  <div class="bench-prose">
+    {{ content }}
+  </div>
+
+  <div class="bench-dashboard" id="bench-dashboard">
+
+    <nav class="bench-tabs" role="tablist">
+      <button class="bench-tab active" data-tab="models"    role="tab">Model Profiles</button>
+      <button class="bench-tab"        data-tab="dims"      role="tab">By Dimension</button>
+      <button class="bench-tab"        data-tab="labs"      role="tab">By Lab</button>
+      <button class="bench-tab"        data-tab="countries" role="tab">Country Affinity</button>
+      <button class="bench-tab"        data-tab="normed"    role="tab">Standardized View</button>
+      <button class="bench-tab"        data-tab="human"     role="tab">Most Human</button>
+    </nav>
+
+    <!-- Model Profiles -->
+    <section class="bench-panel active" data-panel="models">
+      <div class="bench-controls">
+        <label class="bench-label">Select models to compare <span class="bench-hint">(up to 10)</span></label>
+        <div class="model-select-grid" id="model-checkboxes"></div>
+        <div class="filter-row">
+          <label class="bench-label-sm">Filter by lab:</label>
+          <select id="lab-filter" class="bench-select"><option value="">All labs</option></select>
+        </div>
+      </div>
+      <div class="chart-container radar-container"><canvas id="radarChart"></canvas></div>
+      <div class="bench-legend" id="radar-legend"></div>
+      <p class="bench-note">Scores on a 0–10 scale matching the GPS (Global Preferences Survey) instrument.</p>
+    </section>
+
+    <!-- By Dimension -->
+    <section class="bench-panel" data-panel="dims">
+      <div class="bench-controls dim-controls">
+        <label class="bench-label">Dimension</label>
+        <div class="dim-tab-row" id="dim-tabs"></div>
+        <div class="dim-options-row">
+          <label class="dim-opt-label"><input type="checkbox" id="show-error-bars" checked> Error bars (±1 SD)</label>
+          <label class="dim-opt-label"><input type="checkbox" id="show-human-avg" checked>
+            <span class="human-dot"></span> Human world avg
+          </label>
+        </div>
+      </div>
+      <div class="chart-container bar-container"><canvas id="barChart"></canvas></div>
+      <p class="bench-note">Models ranked by score. Error bars = ±1 SD across simulated participants. Dashed line = human world average (GPS, Falk et al. 2018).</p>
+    </section>
+
+    <!-- By Lab -->
+    <section class="bench-panel" data-panel="labs">
+      <div class="bench-controls">
+        <label class="bench-label">Select labs to compare</label>
+        <div class="lab-select-row" id="lab-checkboxes"></div>
+      </div>
+      <div class="chart-container radar-container"><canvas id="labRadarChart"></canvas></div>
+      <div class="bench-legend" id="lab-legend"></div>
+      <p class="bench-note">Lab scores are averages across all models from that lab.</p>
+    </section>
+
+    <!-- Country Affinity -->
+    <section class="bench-panel" data-panel="countries">
+      <div class="bench-controls">
+        <div class="country-mode-row">
+          <button class="country-mode-btn active" data-mode="by-model">By model → countries</button>
+          <button class="country-mode-btn"        data-mode="by-country">By country → models</button>
+        </div>
+        <div id="country-filter-model" class="filter-row">
+          <label class="bench-label-sm">Filter by lab:</label>
+          <select id="country-lab-filter" class="bench-select"><option value="">All labs</option></select>
+        </div>
+        <div id="country-filter-country" style="display:none">
+          <div class="filter-row">
+            <label class="bench-label-sm">Search country:</label>
+            <input type="text" id="country-search" class="bench-select" placeholder="e.g. Germany" style="min-width:180px">
+          </div>
+          <div class="filter-row" style="margin-top:0.5rem">
+            <label class="bench-label-sm">Ranking:</label>
+            <div class="country-mode-row" style="margin-bottom:0">
+              <button class="country-mode-btn active" data-dist="abs">Absolute distance</button>
+              <button class="country-mode-btn"        data-dist="rel">Adjusted <span class="bench-hint">(penalise universally-close models)</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="country-grid" id="country-grid"></div>
+      <p class="bench-note" id="country-note">Top 3 closest countries per model by Euclidean distance in 6-dimensional GPS score space.</p>
+    </section>
+
+    <!-- Most Human -->
+    <section class="bench-panel" data-panel="human">
+      <div class="bench-controls">
+        <div class="filter-row">
+          <label class="bench-label-sm">Metric:</label>
+          <div class="country-mode-row" style="margin-bottom:0">
+            <button class="country-mode-btn active" data-human="world">Distance to GPS world avg</button>
+            <button class="country-mode-btn"        data-human="countries">Avg distance to all countries</button>
+          </div>
+        </div>
+      </div>
+      <div class="chart-container human-bar-container"><canvas id="humanChart"></canvas></div>
+      <p class="bench-note" id="human-note"></p>
+    </section>
+
+    <!-- Standardized View -->
+    <section class="bench-panel" data-panel="normed">
+      <div class="bench-controls normed-controls">
+        <div class="normed-top-row">
+          <div>
+            <label class="bench-label">Reference baseline <span class="bench-hint">— mapped to 0.5 on every axis</span></label>
+            <div class="normed-ref-row" id="normed-ref-btns"></div>
+          </div>
+          <div class="normed-model-wrap" id="normed-custom-model-wrap" style="display:none">
+            <label class="bench-label">Reference model</label>
+            <select id="normed-custom-model" class="bench-select"></select>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <label class="bench-label">Models to display <span class="bench-hint">(up to 10)</span></label>
+          <div class="model-select-grid" id="normed-model-checkboxes"></div>
+          <div class="filter-row">
+            <label class="bench-label-sm">Filter by lab:</label>
+            <select id="normed-lab-filter" class="bench-select"><option value="">All labs</option></select>
+          </div>
+        </div>
+      </div>
+      <div class="normed-note-box" id="normed-ref-desc"></div>
+      <div class="chart-container radar-container"><canvas id="normedRadarChart"></canvas></div>
+      <div class="bench-legend" id="normed-legend"></div>
+      <p class="bench-note">Scale 0–1. Each axis is independently rescaled: 0 (raw) → 0, reference → 0.5, 10 (raw) → 1.</p>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  const DATA_URL = '{{ "/assets/data/behavior-bench.json" | relative_url }}';
+
+  // ── Lazy render registry (fixes scoping: tab handlers run before init) ────────
+  const renders = {};
+
+  // ── Tab switching ─────────────────────────────────────────────────────────────
+  document.querySelectorAll('.bench-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.bench-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.bench-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector(`[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+      if (renders[btn.dataset.tab]) renders[btn.dataset.tab]();
+    });
+  });
+
+  // ── Helpers ───────────────────────────────────────────────────────────────────
+  function hexToRgba(hex, alpha) {
+    hex = hex.replace(/^#/, '');
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
+
+  // Piecewise-linear normalise: ref → 0.5, 0 → 0, 10 → 1
+  function norm(x, ref) {
+    if (ref <= 0)  return 0.5 + (x / 10) * 0.5;
+    if (ref >= 10) return (x / 10) * 0.5;
+    if (x <= ref)  return (x / ref) * 0.5;
+    return 0.5 + ((x - ref) / (10 - ref)) * 0.5;
+  }
+
+  function makeRadarDataset(label, values, color, order) {
+    return {
+      label, data: values, fill: true, order: order || 0,
+      backgroundColor:    hexToRgba(color, 0.10),
+      borderColor:        color,
+      borderWidth:        2,
+      pointBackgroundColor: color,
+      pointBorderColor:   '#fff',
+      pointBorderWidth:   1,
+      pointRadius:        4,
+    };
+  }
+
+  // ── Custom plugin: error bars + human average reference line ──────────────────
+  const errorBarPlugin = {
+    id: 'errorBars',
+    afterDatasetsDraw(chart, args, options) {
+      const opts = options || chart.config.options.plugins.errorBars;
+      if (!opts) return;
+      const ctx      = chart.ctx;
+      const xScale   = chart.scales.x;
+      const meta     = chart.getDatasetMeta(0);
+
+      // Human average vertical dashed line
+      if (opts.showHuman && opts.humanVal != null) {
+        const x = xScale.getPixelForValue(opts.humanVal);
+        const ca = chart.chartArea;
+        ctx.save();
+        ctx.strokeStyle = '#2d6a4f';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 4]);
+        ctx.beginPath();
+        ctx.moveTo(x, ca.top);
+        ctx.lineTo(x, ca.bottom);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+      }
+
+      // Error bars
+      if (opts.showSD && opts.sdData) {
+        meta.data.forEach((bar, i) => {
+          const sd = Math.max(opts.sdData[i] || 0, 0.25);
+          const mean  = chart.data.datasets[0].data[i];
+          const xLow  = xScale.getPixelForValue(Math.max(0, mean - sd));
+          const xHigh = xScale.getPixelForValue(Math.min(10, mean + sd));
+          const y     = bar.y;
+          const cap   = Math.max(3, bar.height / 4);
+
+          ctx.save();
+          ctx.strokeStyle = 'rgba(28,27,25,0.55)';
+          ctx.lineWidth = 1.5;
+          // Whisker line
+          ctx.beginPath(); ctx.moveTo(xLow, y); ctx.lineTo(xHigh, y); ctx.stroke();
+          // Caps
+          ctx.beginPath(); ctx.moveTo(xLow,  y - cap); ctx.lineTo(xLow,  y + cap); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(xHigh, y - cap); ctx.lineTo(xHigh, y + cap); ctx.stroke();
+          ctx.restore();
+        });
+      }
+    },
+  };
+  Chart.register(errorBarPlugin);
+
+  // ── Load data ─────────────────────────────────────────────────────────────────
+  fetch(DATA_URL)
+    .then(r => r.json())
+    .then(init)
+    .catch(() => {
+      document.getElementById('bench-dashboard').innerHTML =
+        '<p class="bench-error">Could not load benchmark data.</p>';
+    });
+
+  function init(data) {
+    const { dims, dim_labels, models, labs, similarity, participants, lab_colors, human_avg } = data;
+    const modelIds  = Object.keys(models);
+    const labNames  = Object.keys(labs);
+    const radarLabels = dims.map(d => dim_labels[d]);
+
+    function radarOptions(maxVal, stepSize) {
+      return {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          r: {
+            min: 0, max: maxVal || 10,
+            ticks: {
+              stepSize: stepSize || 2,
+              color: '#999390',
+              font: { family: "'DM Sans', sans-serif", size: 11 },
+            },
+            pointLabels: {
+              color: '#1c1b19',
+              font: { family: "'DM Sans', sans-serif", size: 12, weight: '500' },
+            },
+            grid:       { color: '#dedad4' },
+            angleLines: { color: '#dedad4' },
+          },
+        },
+      };
+    }
+
+    // ── Shared model checkbox builder ─────────────────────────────────────────
+    function buildModelCheckboxes(containerId, filterLab, selected, maxN, onChange) {
+      const grid = document.getElementById(containerId);
+      grid.innerHTML = '';
+      modelIds.forEach(mid => {
+        const m = models[mid];
+        if (filterLab && m.lab !== filterLab) return;
+        const lbl = document.createElement('label');
+        lbl.className = 'model-chip' + (selected.includes(mid) ? ' checked' : '');
+        lbl.style.setProperty('--chip-color', m.color);
+        const cb = document.createElement('input');
+        cb.type = 'checkbox'; cb.value = mid; cb.checked = selected.includes(mid);
+        cb.addEventListener('change', () => {
+          if (cb.checked) {
+            if (selected.length >= maxN) { cb.checked = false; return; }
+            selected.push(mid);
+          } else {
+            const i = selected.indexOf(mid);
+            if (i > -1) selected.splice(i, 1);
+          }
+          lbl.classList.toggle('checked', cb.checked);
+          onChange();
+        });
+        lbl.appendChild(cb);
+        lbl.append(m.name);
+        grid.appendChild(lbl);
+      });
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    // Model Profiles tab
+    // ════════════════════════════════════════════════════════════════
+    const labFilter = document.getElementById('lab-filter');
+    labNames.forEach(lab => {
+      const o = document.createElement('option');
+      o.value = lab; o.textContent = lab;
+      labFilter.appendChild(o);
+    });
+
+    const selectedModels = modelIds.slice(0, 3);
+    const radarCtx = document.getElementById('radarChart').getContext('2d');
+    let radarChart = new Chart(radarCtx, {
+      type: 'radar',
+      data: { labels: radarLabels, datasets: [] },
+      options: radarOptions(10, 2),
+    });
+
+    function renderRadarChart() {
+      radarChart.data.datasets = selectedModels.map((mid, i) => {
+        const m = models[mid];
+        return makeRadarDataset(m.name, dims.map(d => m.scores[d]), m.color, i);
+      });
+      radarChart.update();
+    }
+    function renderRadarLegend() {
+      document.getElementById('radar-legend').innerHTML = selectedModels.map(mid => {
+        const m = models[mid];
+        return `<span class="legend-item"><span class="legend-dot" style="background:${m.color}"></span>${m.name}${participants[mid] ? `<span class="legend-n">(n≈${participants[mid]})</span>` : ''}</span>`;
+      }).join('');
+    }
+
+    function rebuildModelCheckboxes() {
+      buildModelCheckboxes('model-checkboxes', labFilter.value, selectedModels, 10, () => {
+        renderRadarChart(); renderRadarLegend();
+      });
+    }
+    labFilter.addEventListener('change', rebuildModelCheckboxes);
+    rebuildModelCheckboxes();
+    renderRadarChart();
+    renderRadarLegend();
+
+    // ════════════════════════════════════════════════════════════════
+    // By Dimension tab
+    // ════════════════════════════════════════════════════════════════
+    let activeDim = dims[0];
+    const showErrCb  = document.getElementById('show-error-bars');
+    const showHumCb  = document.getElementById('show-human-avg');
+
+    const dimTabRow = document.getElementById('dim-tabs');
+    dims.forEach(d => {
+      const btn = document.createElement('button');
+      btn.className = 'dim-tab-btn' + (d === activeDim ? ' active' : '');
+      btn.textContent = dim_labels[d];
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.dim-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeDim = d;
+        renderBarChart();
+      });
+      dimTabRow.appendChild(btn);
+    });
+
+    showErrCb.addEventListener('change', renderBarChart);
+    showHumCb.addEventListener('change', renderBarChart);
+
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    let barChart = null;
+
+    function renderBarChart() {
+      const sorted = [...modelIds].sort((a, b) => models[b].scores[activeDim] - models[a].scores[activeDim]);
+      const sdArr  = sorted.map(mid => (models[mid].sd || {})[activeDim] || 0);
+
+      if (barChart) barChart.destroy();
+      barChart = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels:   sorted.map(mid => models[mid].name),
+          datasets: [{
+            data:            sorted.map(mid => models[mid].scores[activeDim]),
+            backgroundColor: sorted.map(mid => hexToRgba(models[mid].color, 0.72)),
+            borderColor:     sorted.map(mid => models[mid].color),
+            borderWidth: 1.5,
+            borderRadius: 3,
+          }],
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            errorBars: {
+              sdData:    sdArr,
+              humanVal:  human_avg ? human_avg[activeDim] : null,
+              showSD:    showErrCb.checked,
+              showHuman: showHumCb.checked,
+            },
+          },
+          scales: {
+            x: {
+              min: 0, max: 10,
+              ticks: { color: '#999390', font: { family: "'DM Sans', sans-serif", size: 11 } },
+              grid:  { color: '#eeeae4' },
+            },
+            y: {
+              ticks: { color: '#1c1b19', font: { family: "'DM Sans', sans-serif", size: 11 } },
+              grid:  { display: false },
+            },
+          },
+        },
+      });
+    }
+
+    renders.dims = renderBarChart;
+
+    // ════════════════════════════════════════════════════════════════
+    // By Lab tab
+    // ════════════════════════════════════════════════════════════════
+    const selectedLabs = labNames.slice(0, Math.min(5, labNames.length));
+    const labCheckRow  = document.getElementById('lab-checkboxes');
+
+    labNames.forEach(lab => {
+      const color = lab_colors[lab] || '#888';
+      const lbl = document.createElement('label');
+      lbl.className = 'lab-chip' + (selectedLabs.includes(lab) ? ' checked' : '');
+      lbl.style.setProperty('--chip-color', color);
+      const cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.value = lab; cb.checked = selectedLabs.includes(lab);
+      cb.addEventListener('change', () => {
+        if (cb.checked) {
+          if (selectedLabs.length >= 8) { cb.checked = false; return; }
+          selectedLabs.push(lab);
+        } else {
+          const i = selectedLabs.indexOf(lab);
+          if (i > -1) selectedLabs.splice(i, 1);
+        }
+        lbl.classList.toggle('checked', cb.checked);
+        renderLabRadar();
+        renderLabLegend();
+      });
+      lbl.appendChild(cb); lbl.append(lab);
+      labCheckRow.appendChild(lbl);
+    });
+
+    const labRadarCtx = document.getElementById('labRadarChart').getContext('2d');
+    let labRadarChart = new Chart(labRadarCtx, {
+      type: 'radar',
+      data: { labels: radarLabels, datasets: [] },
+      options: radarOptions(10, 2),
+    });
+
+    function renderLabRadar() {
+      labRadarChart.data.datasets = selectedLabs.map((lab, i) => {
+        const l     = labs[lab];
+        const color = lab_colors[lab] || '#888';
+        return makeRadarDataset(lab, dims.map(d => l.scores[d] != null ? l.scores[d] : undefined), color, i);
+      });
+      labRadarChart.update();
+    }
+    function renderLabLegend() {
+      document.getElementById('lab-legend').innerHTML = selectedLabs.map(lab => {
+        const color = lab_colors[lab] || '#888';
+        return `<span class="legend-item"><span class="legend-dot" style="background:${color}"></span>${lab}</span>`;
+      }).join('');
+    }
+
+    renders.labs = renderLabRadar;
+    renderLabRadar();
+    renderLabLegend();
+
+    // ════════════════════════════════════════════════════════════════
+    // Country Affinity tab
+    // ════════════════════════════════════════════════════════════════
+    const { country_all } = data;
+    const countryLabFilter  = document.getElementById('country-lab-filter');
+    const countrySearch     = document.getElementById('country-search');
+    const countryNote       = document.getElementById('country-note');
+    let countryMode = 'by-model';
+    let distMode    = 'abs';
+
+    labNames.forEach(lab => {
+      const o = document.createElement('option'); o.value = lab; o.textContent = lab;
+      countryLabFilter.appendChild(o);
+    });
+
+    // Mode toggle (by-model / by-country)
+    document.querySelectorAll('[data-mode]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-mode]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        countryMode = btn.dataset.mode;
+        document.getElementById('country-filter-model').style.display   = countryMode === 'by-model'   ? '' : 'none';
+        document.getElementById('country-filter-country').style.display = countryMode === 'by-country' ? '' : 'none';
+        renderCountryGrid();
+      });
+    });
+
+    // Dist toggle (abs / rel)
+    document.querySelectorAll('[data-dist]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-dist]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        distMode = btn.dataset.dist;
+        renderCountryGrid();
+      });
+    });
+
+    function renderCountryGrid() {
+      const grid = document.getElementById('country-grid');
+      grid.innerHTML = '';
+
+      if (countryMode === 'by-model') {
+        countryNote.textContent = 'Top 3 closest countries per model by Euclidean distance in 6-dimensional GPS score space.';
+        const filterLab = countryLabFilter.value;
+        modelIds.forEach(mid => {
+          const m = models[mid];
+          if (filterLab && m.lab !== filterLab) return;
+          if (!similarity[mid]) return;
+          const top3 = similarity[mid].filter(c => c.rank <= 3);
+          grid.appendChild(makeModelCard(mid, m, top3.map(c => ({
+            flag: flagEmoji(c.iso), name: c.country, dist: c.distance,
+          }))));
+        });
+
+      } else {
+        countryNote.textContent = distMode === 'rel'
+          ? 'Top 3 closest AI models per country, adjusted for each model\'s overall human-likeness (penalises models that are close to everyone).'
+          : 'Top 3 closest AI models per country by raw Euclidean distance in 6-dimensional GPS score space.';
+        const query   = countrySearch.value.trim().toLowerCase();
+        const isos    = Object.keys(country_all).sort((a, b) =>
+          country_all[a].country.localeCompare(country_all[b].country));
+        isos.forEach(iso => {
+          const c    = country_all[iso];
+          if (query && !c.country.toLowerCase().includes(query)) return;
+          const top3 = (distMode === 'rel' ? c.models_rel : c.models_abs).slice(0, 3);
+          const card = document.createElement('div');
+          card.className = 'country-card country-card--reverse';
+          card.innerHTML = `
+            <div class="country-card-header">
+              <span class="country-flag-lg">${flagEmoji(iso)}</span>
+              <span class="country-card-name">${c.country}</span>
+            </div>
+            <ol class="country-card-list">
+              ${top3.map(entry => {
+                const m = models[entry.mid];
+                const name  = m ? m.name  : entry.mid;
+                const color = m ? m.color : '#888';
+                return `<li class="country-card-row">
+                  <span class="country-card-dot" style="background:${color};flex-shrink:0"></span>
+                  <span class="country-card-country">${name}</span>
+                  <span class="country-card-dist">${distMode === 'rel' ? 'r=' + entry.rel_distance : 'd=' + entry.distance}</span>
+                </li>`;
+              }).join('')}
+            </ol>`;
+          grid.appendChild(card);
+        });
+      }
+    }
+
+    function makeModelCard(mid, m, rows) {
+      const card = document.createElement('div');
+      card.className = 'country-card';
+      card.style.setProperty('--card-color', m.color);
+      card.innerHTML = `
+        <div class="country-card-header">
+          <span class="country-card-dot"></span>
+          <span class="country-card-name">${m.name}</span>
+          <span class="country-card-lab">${m.lab}</span>
+        </div>
+        <ol class="country-card-list">
+          ${rows.map(r => `
+            <li class="country-card-row">
+              <span class="country-flag-lg">${r.flag}</span>
+              <span class="country-card-country">${r.name}</span>
+              <span class="country-card-dist">d=${r.dist}</span>
+            </li>`).join('')}
+        </ol>`;
+      return card;
+    }
+
+    countryLabFilter.addEventListener('change', renderCountryGrid);
+    countrySearch.addEventListener('input', renderCountryGrid);
+    renders.countries = renderCountryGrid;
+
+    function flagEmoji(iso) {
+      if (!iso || iso.length !== 2) return '';
+      const offset = 0x1F1E6 - 65;
+      return String.fromCodePoint(iso.toUpperCase().charCodeAt(0) + offset) +
+             String.fromCodePoint(iso.toUpperCase().charCodeAt(1) + offset);
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    // Standardized View tab
+    // ════════════════════════════════════════════════════════════════
+    const REFERENCES = [
+      { id: 'ai-avg',     label: 'AI Average',      desc: 'Reference = mean score across all AI models for each dimension.', scores: null },
+      { id: 'world-human',label: 'World Human Avg', desc: 'Reference = global human average (GPS world mean ≈ 5.0 per dimension by design).', scores: Object.fromEntries(dims.map(d => [d, 5.0])) },
+      { id: 'usa',        label: 'US Average',      desc: 'Reference = US average from the Global Preferences Survey (Falk et al. 2018).', scores: { risk: 5.18, patience: 6.22, posrecip: 5.31, negrecip: 5.02, altruism: 5.61, trust: 5.23 } },
+      { id: 'germany',    label: 'Germany Avg',     desc: 'Reference = Germany average from the GPS.', scores: { risk: 4.93, patience: 5.94, posrecip: 4.88, negrecip: 4.56, altruism: 4.92, trust: 4.82 } },
+      { id: 'custom-model', label: 'Custom model',  desc: "Reference = the selected model's own scores. All others are shown relative to it.", scores: null },
+    ];
+
+    const aiAvgScores = Object.fromEntries(dims.map(d => [
+      d, modelIds.reduce((s, mid) => s + models[mid].scores[d], 0) / modelIds.length
+    ]));
+    REFERENCES.find(r => r.id === 'ai-avg').scores = aiAvgScores;
+
+    let activeRef = 'ai-avg';
+    const normedSelected = modelIds.slice(0, 3);
+
+    const normedRefBtns = document.getElementById('normed-ref-btns');
+    REFERENCES.forEach(ref => {
+      const btn = document.createElement('button');
+      btn.className = 'normed-ref-btn' + (ref.id === activeRef ? ' active' : '');
+      btn.textContent = ref.label;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.normed-ref-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeRef = ref.id;
+        document.getElementById('normed-custom-model-wrap').style.display =
+          ref.id === 'custom-model' ? '' : 'none';
+        updateRefDesc();
+        renderNormedChart();
+      });
+      normedRefBtns.appendChild(btn);
+    });
+
+    const normedCustomModel = document.getElementById('normed-custom-model');
+    modelIds.forEach(mid => {
+      const o = document.createElement('option');
+      o.value = mid; o.textContent = models[mid].name;
+      normedCustomModel.appendChild(o);
+    });
+    normedCustomModel.addEventListener('change', () => {
+      if (activeRef === 'custom-model') renderNormedChart();
+    });
+
+    function getRefScores() {
+      if (activeRef === 'custom-model') {
+        const mid = normedCustomModel.value;
+        return mid ? models[mid].scores : aiAvgScores;
+      }
+      return (REFERENCES.find(r => r.id === activeRef) || {}).scores || aiAvgScores;
+    }
+
+    function updateRefDesc() {
+      const ref = REFERENCES.find(r => r.id === activeRef);
+      document.getElementById('normed-ref-desc').textContent = ref ? ref.desc : '';
+    }
+    updateRefDesc();
+
+    const normedLabFilter = document.getElementById('normed-lab-filter');
+    labNames.forEach(lab => {
+      const o = document.createElement('option'); o.value = lab; o.textContent = lab;
+      normedLabFilter.appendChild(o);
+    });
+
+    function rebuildNormedCheckboxes() {
+      buildModelCheckboxes('normed-model-checkboxes', normedLabFilter.value, normedSelected, 10, () => {
+        renderNormedChart(); renderNormedLegend();
+      });
+    }
+    normedLabFilter.addEventListener('change', rebuildNormedCheckboxes);
+    rebuildNormedCheckboxes();
+
+    const normedRadarCtx = document.getElementById('normedRadarChart').getContext('2d');
+    let normedRadarChart = new Chart(normedRadarCtx, {
+      type: 'radar',
+      data: { labels: radarLabels, datasets: [] },
+      options: radarOptions(1, 0.25),
+    });
+
+    function renderNormedChart() {
+      const refScores = getRefScores();
+      normedRadarChart.data.datasets = [
+        ...normedSelected.map((mid, i) => {
+          const m = models[mid];
+          return makeRadarDataset(m.name, dims.map(d => parseFloat(norm(m.scores[d], refScores[d]).toFixed(3))), m.color, i);
+        }),
+        {
+          label: '— reference',
+          data: dims.map(() => 0.5),
+          fill: false,
+          borderColor: 'rgba(180,160,130,0.6)',
+          borderWidth: 1.5,
+          borderDash: [4, 4],
+          pointRadius: 0,
+          order: 99,
+        },
+      ];
+      normedRadarChart.update();
+      renderNormedLegend();
+    }
+
+    function renderNormedLegend() {
+      document.getElementById('normed-legend').innerHTML =
+        normedSelected.map(mid => {
+          const m = models[mid];
+          return `<span class="legend-item"><span class="legend-dot" style="background:${m.color}"></span>${m.name}</span>`;
+        }).join('') +
+        `<span class="legend-item"><span class="legend-dash"></span>reference</span>`;
+    }
+
+    renders.normed = renderNormedChart;
+
+    // ════════════════════════════════════════════════════════════════
+    // Most Human tab
+    // ════════════════════════════════════════════════════════════════
+    const { model_mean_dist } = data;
+    let humanMetric = 'world';
+
+    document.querySelectorAll('[data-human]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-human]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        humanMetric = btn.dataset.human;
+        renderHumanChart();
+      });
+    });
+
+    // Distance from model to GPS world average (5.0 per dim)
+    function worldDist(mid) {
+      return Math.sqrt(dims.reduce((s, d) => s + Math.pow(models[mid].scores[d] - 5.0, 2), 0));
+    }
+
+    const humanCtx = document.getElementById('humanChart').getContext('2d');
+    let humanChart = null;
+
+    function renderHumanChart() {
+      const getValue = humanMetric === 'world'
+        ? mid => worldDist(mid)
+        : mid => model_mean_dist[mid] || 0;
+
+      const sorted = [...modelIds].sort((a, b) => getValue(a) - getValue(b));
+      const maxVal = Math.max(...sorted.map(getValue));
+
+      document.getElementById('human-note').textContent = humanMetric === 'world'
+        ? 'Euclidean distance from each model\'s GPS scores to the global human average (5.0 on all six dimensions). Shorter = more human-like overall.'
+        : 'Each model\'s average Euclidean distance to all 76 countries in the GPS dataset. Shorter = closer to humanity as a whole.';
+
+      if (humanChart) humanChart.destroy();
+      humanChart = new Chart(humanCtx, {
+        type: 'bar',
+        data: {
+          labels:   sorted.map(mid => models[mid].name),
+          datasets: [{
+            data:            sorted.map(mid => parseFloat(getValue(mid).toFixed(3))),
+            backgroundColor: sorted.map(mid => hexToRgba(models[mid].color, 0.72)),
+            borderColor:     sorted.map(mid => models[mid].color),
+            borderWidth: 1.5,
+            borderRadius: 3,
+          }],
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: {
+              min: 0,
+              max: Math.ceil(maxVal * 1.1),
+              ticks: { color: '#999390', font: { family: "'DM Sans', sans-serif", size: 11 } },
+              grid:  { color: '#eeeae4' },
+              title: { display: true, text: 'Distance (lower = more human-like)', color: '#999390', font: { family: "'DM Sans', sans-serif", size: 11 } },
+            },
+            y: {
+              ticks: { color: '#1c1b19', font: { family: "'DM Sans', sans-serif", size: 11 } },
+              grid:  { display: false },
+            },
+          },
+        },
+      });
+    }
+
+    renders.human = renderHumanChart;
+
+  } // end init
+})();
+</script>

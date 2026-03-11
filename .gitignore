@@ -13,5 +13,9 @@ admin/__pycache__/
 # AI project (not ready)
 ai_project/
 
+# Raw behavior-bench CSVs (processed into assets/data/behavior-bench.json)
+behavior-bench/
+prepare_bench_data.py
+
 # Raw Notion export (already imported)
 Notion/
