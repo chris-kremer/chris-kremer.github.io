@@ -9,7 +9,7 @@ layout: default
   {{ content }}
 
   <ul class="project-list">
-    {% assign project_pages = site.pages | where_exp: "p", "p.path contains 'projects/'" | where_exp: "p", "p.path != 'projects/index.md'" | sort: "title" %}
+    {% assign project_pages = site.pages | where_exp: "p", "p.path contains 'projects/'" | where_exp: "p", "p.path != 'projects/index.md'" | where_exp: "p", "p.listed != false" | sort: "title" %}
     {% for p in project_pages %}
     <li class="project-list__item">
       <a href="{{ p.url | relative_url }}" class="project-list__link">{{ p.title }}</a>

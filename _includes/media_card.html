@@ -1,0 +1,67 @@
+{% assign item = include.item %}
+{% assign kind = include.kind %}
+{% assign archive_kind = include.archive_kind | default: kind %}
+{% assign person_label = "" %}
+{% assign meta_label = "" %}
+
+{% if kind == "book" %}
+  {% if item.author_name %}
+    {% assign person_label = item.author_name %}
+  {% elsif item.author %}
+    {% assign _person = site.people | where: "slug", item.author | first %}
+    {% if _person %}{% assign person_label = _person.name %}{% else %}{% assign person_label = item.author | replace: "-", " " %}{% endif %}
+  {% endif %}
+  {% assign meta_label = item.genre %}
+{% elsif kind == "paper" %}
+  {% capture person_label %}
+    {% for author_id in item.authors %}
+      {% assign _person = site.people | where: "slug", author_id | first %}
+      {% if _person %}{{ _person.name }}{% else %}{{ author_id | replace: "-", " " }}{% endif %}{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  {% endcapture %}
+  {% assign meta_label = item.journal %}
+{% elsif kind == "movie" %}
+  {% if item.director %}
+    {% assign _person = site.people | where: "slug", item.director | first %}
+    {% capture person_label %}dir. {% if _person %}{{ _person.name }}{% else %}{{ item.director | replace: "-", " " }}{% endif %}{% endcapture %}
+  {% endif %}
+  {% assign meta_label = item.genre %}
+{% elsif kind == "podcast" %}
+  {% capture person_label %}{{ item.series }}{% if item.host %}{% assign _person = site.people | where: "slug", item.host | first %} · {% if _person %}{{ _person.name }}{% else %}{{ item.host | replace: "-", " " }}{% endif %}{% endif %}{% endcapture %}
+  {% assign meta_label = item.type %}
+{% elsif kind == "lecture" %}
+  {% if item.lecturer %}
+    {% assign _person = site.people | where: "slug", item.lecturer | first %}
+    {% if _person %}{% assign person_label = _person.name %}{% else %}{% assign person_label = item.lecturer | replace: "-", " " %}{% endif %}
+  {% endif %}
+  {% assign meta_label = item.series %}
+{% endif %}
+
+{% capture search_text %}{{ item.title }} {{ person_label }} {{ meta_label }} {{ item.status }} {{ item.date_read }} {{ item.year }} {{ item.year_published }}{% endcapture %}
+
+<a href="{{ item.url | relative_url }}"
+   class="card"
+   {% if include.archive %}data-media-item data-kind="{{ kind }}" data-archive-kind="{{ archive_kind }}" data-search="{{ search_text | strip_html | strip | downcase | escape }}"{% endif %}>
+  <p class="card__title">{{ item.title }}</p>
+  {% assign person_label_stripped = person_label | strip %}
+  {% if person_label_stripped != "" %}<p class="card__sub">{{ person_label_stripped }}</p>{% endif %}
+  <div class="card__tags">
+    <span class="tag">{{ kind }}</span>
+    {% if meta_label %}<span class="tag">{{ meta_label }}</span>{% endif %}
+    {% if item.goodreads_rating and item.goodreads_rating > 0 %}<span class="tag">{{ item.goodreads_rating }}★</span>{% endif %}
+    {% if item.year %}<span class="status-tag">{{ item.year }}</span>{% endif %}
+    {% if item.year_published %}<span class="status-tag">{{ item.year_published }}</span>{% endif %}
+    {% if item.date_read %}<span class="status-tag">{{ item.date_read }}</span>{% endif %}
+    {% if include.status_label %}<span class="status-tag">{{ include.status_label }}</span>{% elsif item.status %}<span class="status-tag">{{ item.status }}</span>{% endif %}
+  </div>
+  {% if item.addictiveness or item.density or item.importance or item.rewatchability or item.emotional_impact or item.clarity %}
+  <div class="card__ratings">
+    {% if item.addictiveness %}{% include card_rating.html label="Addictiveness" value=item.addictiveness max=10 %}{% endif %}
+    {% if item.density %}{% include card_rating.html label="Density" value=item.density max=10 %}{% endif %}
+    {% if item.importance %}{% include card_rating.html label="Importance" value=item.importance max=10 %}{% endif %}
+    {% if item.rewatchability %}{% include card_rating.html label="Rewatchability" value=item.rewatchability max=10 %}{% endif %}
+    {% if item.emotional_impact %}{% include card_rating.html label="Impact" value=item.emotional_impact max=10 %}{% endif %}
+    {% if item.clarity %}{% include card_rating.html label="Clarity" value=item.clarity max=10 %}{% endif %}
+  </div>
+  {% endif %}
+</a>
