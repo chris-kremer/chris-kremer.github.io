@@ -32,11 +32,13 @@ layout: default
       <h2>Projects</h2>
     </div>
     <ul class="post-list">
-      <li class="post-list__item"><a href="{{ '/projects/dice-experiment/' | relative_url }}">DICE Experiment</a><span class="post-date">Economic experiments across 33 countries.</span></li>
-      <li class="post-list__item"><a href="{{ '/projects/behavior-bench/' | relative_url }}">Behavior Bench (Beta)</a><span class="post-date">How do AI models behave compared to humans?</span></li>
-      <li class="post-list__item"><a href="{{ '/projects/exploring-berlin/' | relative_url }}">Exploring Berlin</a><span class="post-date">Every walk and run, traced.</span></li>
-      <li class="post-list__item"><a href="{{ '/projects/exploring-the-world/' | relative_url }}">Exploring the World</a><span class="post-date">Every walk and run — everywhere.</span></li>
-      <li class="post-list__item"><a href="{{ '/projects/run-app/' | relative_url }}">Run App</a><span class="post-date">An iOS app for tracking and visualizing routes.</span></li>
+      {% assign project_pages = site.pages | where_exp: "p", "p.path contains 'projects/'" | where_exp: "p", "p.path != 'projects/index.md'" | sort: "title" %}
+      {% for project in project_pages %}
+      <li class="post-list__item">
+        <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+        {% if project.subtitle %}<span class="post-date">{{ project.subtitle }}</span>{% endif %}
+      </li>
+      {% endfor %}
     </ul>
   </div>
 

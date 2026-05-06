@@ -59,22 +59,33 @@ theme: minima
 plugins:
   - jekyll-feed
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Keep the public build focused on site content. Jekyll copies any
+# unrecognized top-level files and directories by default, so raw imports,
+# local apps, and generated artifacts need to be excluded explicitly.
+exclude:
+  - .claude/
+  - .github/
+  - .jekyll-cache/
+  - .sass-cache/
+  - __pycache__/
+  - _site/
+  - admin/
+  - ai_project/
+  - behavior-bench/
+  - gpx/
+  - Notion/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - admin.py
+  - convert_gpx.py
+  - convert_routes.py
+  - import_goodreads.py
+  - import_notion.py
+  - import_people.py
+  - ols_minimal.R
+  - prepare_bench_data.py
+  - render.yaml
+  - node_modules/
+  - vendor/

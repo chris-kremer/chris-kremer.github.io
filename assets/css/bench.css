@@ -579,6 +579,46 @@
 @media (max-width: 640px) {
   .bench-wrap { padding: 1.5rem 1rem 3rem; }
   .bench-panel { padding: 1rem; }
-  .bar-container { height: 900px; }
+  .bench-tabs {
+    gap: 0.25rem;
+    padding: 0.35rem;
+  }
+  .bench-tab {
+    flex: 1 0 auto;
+    border: 1px solid #dedad4;
+    border-radius: 4px;
+    margin-bottom: 0;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.78rem;
+    background: #faf8f4;
+  }
+  .bench-tab.active {
+    border-color: #2d4739;
+  }
+  .filter-row,
+  .dim-options-row,
+  .country-mode-row,
+  .normed-top-row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .bench-select {
+    width: 100%;
+  }
+  .model-chip,
+  .lab-chip,
+  .dim-tab-btn,
+  .country-mode-btn {
+    justify-content: center;
+    min-height: 36px;
+  }
+  .bar-container,
+  .human-bar-container { height: 900px; }
+  .scatter-container { height: 440px; }
   .radar-container { max-width: 100%; }
+  .risk-hint {
+    display: block;
+    margin-left: 0;
+  }
 }
