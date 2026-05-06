@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-{% assign _books_current  = site.books | where: "status", "currently reading" %}
-{% assign _books_featured = site.books | where: "featured", true %}
+{% assign _books_current  = site.books | where: "status", "currently reading" | sort: "title" | reverse %}
+{% assign _books_featured = site.books | where: "featured", true | sort: "title" | reverse %}
 {% assign _books_read     = site.books | where_exp: "b", "b.status != 'to read' and b.status != 'currently reading'" | sort: "date_read" | reverse %}
 {% assign _books_backlog  = site.books | where: "status", "to read" | sort: "title" %}
 
