@@ -8,7 +8,7 @@ year_published: 2016
 people: []
 ---
 
-Currently reading.
+Currently reading. Also: super readable — much more accessible than the topic might make it sound.
 
 What I’ve got so far:
 
