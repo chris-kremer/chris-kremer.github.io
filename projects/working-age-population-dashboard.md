@@ -34,16 +34,16 @@ permalink: /projects/working-age-population-dashboard/
 
     <aside class="popdash__controls" aria-label="Scenario controls">
       <div class="popdash__tabs" role="tablist" aria-label="Dashboard controls">
-        <button type="button" id="popdashBlocTab" class="is-active" role="tab" aria-selected="true" aria-controls="popdashBlocPanel" data-panel="bloc">Bloc assignment</button>
+        <button type="button" id="popdashBlocTab" class="is-active" role="tab" aria-selected="true" aria-controls="popdashBlocPanel" data-panel="bloc">Block assignment</button>
         <button type="button" id="popdashChinaTab" role="tab" aria-selected="false" aria-controls="popdashChinaPanel" data-panel="china">China adjustment</button>
       </div>
 
       <section id="popdashBlocPanel" class="popdash__panel" role="tabpanel" aria-labelledby="popdashBlocTab">
         <div class="popdash__panel-head">
-          <h3>Bloc assignment</h3>
+          <h3>Block assignment</h3>
           <button type="button" id="popdashReset">Reset</button>
         </div>
-        <div id="popdashCountryList" class="popdash__blocks" aria-label="Drag countries between blocs"></div>
+        <div id="popdashCountryList" class="popdash__blocks" aria-label="Drag countries between blocks"></div>
       </section>
 
       <section id="popdashChinaPanel" class="popdash__panel" role="tabpanel" aria-labelledby="popdashChinaTab" hidden>
