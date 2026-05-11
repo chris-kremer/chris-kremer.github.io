@@ -19,11 +19,10 @@
 }
 
 .popdash__intro {
-  color: var(--pd-muted);
+  color: var(--pd-text);
   font-family: "Spectral", Georgia, serif;
   font-size: 1rem;
-  font-style: italic;
-  line-height: 1.55;
+  line-height: 1.6;
   margin: -1rem 0 4rem;
   max-width: 46rem;
 }
