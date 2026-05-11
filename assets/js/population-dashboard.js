@@ -35,7 +35,7 @@
 
   const state = {
     chinaAdjust: -15,
-    expandedBlocks: new Set(),
+    blocsExpanded: false,
     assignments: Object.fromEntries(countries.map((country) => {
       if (defaultEast.has(country.name)) return [country.name, "east"];
       if (defaultWest.has(country.name)) return [country.name, "west"];
@@ -99,7 +99,6 @@
           <span>0</span>
         </div>
         <div class="popdash__block-items"></div>
-        <button type="button" class="popdash__block-toggle" data-block-toggle="${block}" hidden></button>
       `;
       column.addEventListener("dragover", (event) => {
         event.preventDefault();
@@ -145,29 +144,34 @@
       items.appendChild(card);
     });
 
+    let hiddenCount = 0;
     els.list.querySelectorAll(".popdash__block").forEach((column) => {
-      const block = column.dataset.block;
-      const expanded = state.expandedBlocks.has(block);
       const cards = Array.from(column.querySelectorAll(".popdash__country"));
       const count = cards.length;
       column.querySelector(".popdash__block-head span").textContent = count;
       cards.forEach((card, index) => {
-        card.hidden = !expanded && index >= 5;
+        const hidden = !state.blocsExpanded && index >= 5;
+        card.hidden = hidden;
+        if (hidden) hiddenCount += 1;
       });
-      const toggle = column.querySelector(".popdash__block-toggle");
-      if (count > 5) {
-        toggle.hidden = false;
-        toggle.textContent = expanded ? "Show fewer" : `Show ${count - 5} more`;
-        toggle.addEventListener("click", () => {
-          if (expanded) {
-            state.expandedBlocks.delete(block);
-          } else {
-            state.expandedBlocks.add(block);
-          }
-          buildCountries();
-        });
-      }
     });
+
+    if (hiddenCount > 0 || state.blocsExpanded) {
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "popdash__block-toggle";
+      toggle.textContent = state.blocsExpanded ? "Show fewer" : "Show more";
+      toggle.addEventListener("click", () => {
+        state.blocsExpanded = !state.blocsExpanded;
+        buildCountries();
+      });
+      const panel = document.getElementById("popdashBlocPanel");
+      if (panel) {
+        const oldToggle = panel.querySelector(".popdash__block-toggle");
+        if (oldToggle) oldToggle.remove();
+        panel.appendChild(toggle);
+      }
+    }
   }
 
   function setAdjustment(value) {
@@ -183,6 +187,7 @@
       state.assignments[country.name] = defaultEast.has(country.name) ? "east" : defaultWest.has(country.name) ? "west" : "none";
     });
     state.chinaAdjust = -15;
+    state.blocsExpanded = false;
     buildCountries();
     setAdjustment(-15);
   }
