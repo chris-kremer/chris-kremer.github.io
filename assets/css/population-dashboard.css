@@ -18,6 +18,16 @@
   margin: 0;
 }
 
+.popdash__intro {
+  color: var(--pd-muted);
+  font-family: "Spectral", Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.55;
+  margin: -1rem 0 1.4rem;
+  max-width: 46rem;
+}
+
 .popdash__grid {
   display: grid;
   gap: 1rem;

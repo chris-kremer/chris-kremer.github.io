@@ -9,6 +9,10 @@ permalink: /projects/working-age-population-dashboard/
 <link rel="stylesheet" href="{{ '/assets/css/population-dashboard.css' | relative_url }}">
 
 <section class="popdash" aria-label="Working-age population block dashboard">
+  <p class="popdash__intro">
+    It has become a popular belief that demographics is destiny. There are heated debates about fertility crises that might hit countries like China, Japan, and South Korea especially hard. In the current conflict between the US and China, this affects both sides. This dashboard allows you to make your assumptions explicit and see how they shift the dynamics of the China-affiliated and US-affiliated blocks.
+  </p>
+
   <div class="popdash__grid">
     <section class="popdash__main">
       <div class="popdash__chart-panel">
