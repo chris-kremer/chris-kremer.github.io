@@ -6,7 +6,7 @@ description: How will the populations the US and China (with their respective al
 permalink: /projects/working-age-population-dashboard/
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/population-dashboard.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/population-dashboard.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
 <section class="popdash" aria-label="Working-age population block dashboard">
   <p class="popdash__intro">
@@ -103,4 +103,4 @@ permalink: /projects/working-age-population-dashboard/
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<script src="{{ '/assets/js/population-dashboard.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/population-dashboard.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
