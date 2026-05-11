@@ -64,6 +64,10 @@ permalink: /projects/working-age-population-dashboard/
   <p class="popdash__note">
     Prototype data are rounded, dashboard-ready approximations based on historical and medium-variant UN-style working-age population trajectories. The China adjustment applies a time-varying alternative-estimate discount to both historical and projected China values, with larger effects in recent and future years.
   </p>
+
+  <p class="popdash__followup">
+    Working population does not automatically translate into economic prowess. In 2025 the US accounted for less than a quarter of China's population while accounting for a similar share of the world's economic output. Here is how the assumed population dynamics could manifest in economic indicators:
+  </p>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
