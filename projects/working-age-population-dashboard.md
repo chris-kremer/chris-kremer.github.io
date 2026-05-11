@@ -96,6 +96,10 @@ permalink: /projects/working-age-population-dashboard/
   <p class="popdash__source-note">
     GDP model uses separate total-population paths and real GDP-per-capita paths for each country. Historical anchors follow <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.KD">World Bank constant-dollar GDP per capita</a> and <a href="https://datacatalog.worldbank.org/search/dataset/0037655/Population-Estimates-and-Projections">population estimate/projection</a> series; projection years use medium-variant demographic paths and conservative continuation assumptions for GDP per capita. The China adjustment discounts both total population and working-age population for China.
   </p>
+
+  <p class="popdash__closing">
+    Even accepting the official numbers on Chinese population and the projected higher per-capita growth rate, the US alone would still be expected to retain the lead in total GDP after losing all its allies. One is free to interpret this analysis in many different ways. The American fear of Chinese economic dominance might be overblown. The growth expectations I adopted from the World Bank might turn out to be very wrong in one direction or another. Many critiques of the method can be made. It does not account for PPP, assumes flat growth rates, and neglects cross-dependencies of per-capita growth and population growth. Yet still, going through the numbers gives an interesting, if simplified, picture of how important demographic dynamics might be.
+  </p>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>

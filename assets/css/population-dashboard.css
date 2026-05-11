@@ -378,6 +378,14 @@
   color: var(--pd-accent);
 }
 
+.popdash__closing {
+  color: var(--pd-text);
+  font-family: "Spectral", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 3rem;
+}
+
 @media (min-width: 980px) {
   .page-body:has(.popdash) {
     margin-left: calc((700px - min(1080px, 100vw - 3rem)) / 2);
