@@ -61,6 +61,8 @@ permalink: /projects/working-age-population-dashboard/
     </aside>
   </div>
 
+  <div class="popdash__section-gap" aria-hidden="true"></div>
+
   <p class="popdash__followup">
     Working population does not automatically translate into economic prowess. In 2025 the US accounted for less than a quarter of China's population while accounting for a similar share of the world's economic output. Here is how the assumed population dynamics could manifest in economic indicators:
   </p>
