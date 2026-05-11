@@ -52,11 +52,11 @@ permalink: /projects/working-age-population-dashboard/
           <output id="popdashChinaOutput" for="popdashChinaAdjust">0%</output>
         </div>
         <label class="popdash__range">
-          <input id="popdashChinaAdjust" type="range" min="-35" max="10" step="1" value="-15">
+          <input id="popdashChinaAdjust" type="range" min="-35" max="10" step="1" value="0">
         </label>
         <div class="popdash__presets" aria-label="China adjustment presets">
-          <button type="button" data-adjust="0">Official baseline</button>
-          <button type="button" data-adjust="-15" class="is-active">Moderate skepticism</button>
+          <button type="button" data-adjust="0" class="is-active">Official baseline</button>
+          <button type="button" data-adjust="-15">Moderate skepticism</button>
           <button type="button" data-adjust="-25">Yi-style low case</button>
         </div>
       </section>

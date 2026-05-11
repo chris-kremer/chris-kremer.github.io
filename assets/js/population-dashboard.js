@@ -34,7 +34,7 @@
   ];
 
   const state = {
-    chinaAdjust: -15,
+    chinaAdjust: 0,
     blocsExpanded: false,
     growthExpanded: false,
     growthAdjustments: Object.fromEntries(countries.map((country) => [country.name, 0])),
@@ -315,7 +315,7 @@
     countries.forEach((country) => {
       state.assignments[country.name] = defaultEast.has(country.name) ? "east" : defaultWest.has(country.name) ? "west" : "none";
     });
-    state.chinaAdjust = -15;
+    state.chinaAdjust = 0;
     state.blocsExpanded = false;
     state.growthExpanded = false;
     Object.keys(state.growthAdjustments).forEach((countryName) => {
@@ -323,7 +323,7 @@
     });
     buildCountries();
     buildGrowth();
-    setAdjustment(-15);
+    setAdjustment(0);
   }
 
   function resetGrowth() {
