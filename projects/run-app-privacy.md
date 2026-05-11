@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "Privacy Policy Run Map"
-date:   2024-12-01
+layout: page
+title: Privacy Policy
+permalink: /projects/run-app/privacy/
+listed: false
 ---
 
 **Privacy Policy for Run Map**

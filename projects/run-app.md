@@ -6,3 +6,5 @@ permalink: /projects/run-app/
 ---
 
 This is my first app development project. In order to properly track my runs and walks (e.g. for [Exploring Berlin](/projects/exploring-berlin/)) I created an iOS app helping to track and visualize all routes. It's currently in App Store review, but you can find the code here: [github.com/chris-kremer/run_map](https://github.com/chris-kremer/run_map)
+
+[Privacy Policy](/projects/run-app/privacy/)
