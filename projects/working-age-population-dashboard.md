@@ -66,7 +66,7 @@ permalink: /projects/working-age-population-dashboard/
   <div class="popdash__section-gap" aria-hidden="true"></div>
 
   <p class="popdash__followup">
-    Working population does not automatically translate into economic prowess. In 2025 the US accounted for less than a quarter of China's population while accounting for a similar share of the world's economic output. Here is how the assumed population dynamics could manifest in economic indicators:
+    Working population does not automatically translate into economic prowess. In 2025 the US accounted for less than a quarter of China's population while accounting for a similar share of the world's economic output. Still, population is a significant determinant of GDP and we can use the assumptions we made on population dynamics to infer economic output in the future. This of course relies on highly uncertain projections about future per capita growth rates that can themselves be dependent on the size of the population. The striking result is not the specifics, but the robustness of the results when changing growth expectations within realistic bounds:
   </p>
 
   <div class="popdash__economic-gap" aria-hidden="true"></div>
