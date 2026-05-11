@@ -85,6 +85,14 @@ permalink: /projects/working-age-population-dashboard/
     <canvas id="popdashGdpChart" width="1280" height="500"></canvas>
   </div>
 
+  <section id="popdashGrowthPanel" class="popdash__panel popdash__panel--growth" aria-label="Growth assignment">
+    <div class="popdash__panel-head">
+      <h3>Growth assignment</h3>
+      <button type="button" id="popdashGrowthReset">Reset growth</button>
+    </div>
+    <div id="popdashGrowthList" class="popdash__blocks popdash__blocks--growth" aria-label="Adjust per capita GDP growth expectations by block"></div>
+  </section>
+
   <p class="popdash__source-note">
     GDP model uses separate total-population paths and real GDP-per-capita paths for each country. Historical anchors follow <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.KD">World Bank constant-dollar GDP per capita</a> and <a href="https://datacatalog.worldbank.org/search/dataset/0037655/Population-Estimates-and-Projections">population estimate/projection</a> series; projection years use medium-variant demographic paths and conservative continuation assumptions for GDP per capita. The China adjustment discounts both total population and working-age population for China.
   </p>

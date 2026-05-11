@@ -36,6 +36,8 @@
   const state = {
     chinaAdjust: -15,
     blocsExpanded: false,
+    growthExpanded: false,
+    growthAdjustments: Object.fromEntries(countries.map((country) => [country.name, 0])),
     assignments: Object.fromEntries(countries.map((country) => {
       if (defaultEast.has(country.name)) return [country.name, "east"];
       if (defaultWest.has(country.name)) return [country.name, "west"];
@@ -48,8 +50,10 @@
     output: document.getElementById("popdashChinaOutput"),
     presets: document.querySelectorAll("[data-adjust]"),
     reset: document.getElementById("popdashReset"),
+    growthReset: document.getElementById("popdashGrowthReset"),
     tabs: document.querySelectorAll(".popdash__tabs button"),
     list: document.getElementById("popdashCountryList"),
+    growthList: document.getElementById("popdashGrowthList"),
     chart: document.getElementById("popdashChart"),
     gdpChart: document.getElementById("popdashGdpChart")
   };
@@ -70,6 +74,22 @@
     });
   }
 
+  function baselineGrowth(country) {
+    const start = country.gdpPerCapita[3];
+    const end = country.gdpPerCapita[country.gdpPerCapita.length - 1];
+    return (Math.pow(end / start, 1 / 25) - 1) * 100;
+  }
+
+  function expectedGrowth(country) {
+    return baselineGrowth(country) + state.growthAdjustments[country.name];
+  }
+
+  function adjustedGdpPerCapita(country, index) {
+    if (index <= 3) return country.gdpPerCapita[index];
+    const yearsAfter2025 = years[index] - 2025;
+    return country.gdpPerCapita[3] * Math.pow(1 + expectedGrowth(country) / 100, yearsAfter2025);
+  }
+
   function blockSeries(block) {
     return years.map((_, index) => countries.reduce((sum, country) => {
       if (state.assignments[country.name] !== block) return sum;
@@ -80,7 +100,7 @@
   function gdpSeries(block) {
     return years.map((_, index) => countries.reduce((sum, country) => {
       if (state.assignments[country.name] !== block) return sum;
-      return sum + (adjustedTotalPopulation(country)[index] * country.gdpPerCapita[index]) / 1000;
+      return sum + (adjustedTotalPopulation(country)[index] * adjustedGdpPerCapita(country, index)) / 1000;
     }, 0));
   }
 
@@ -100,10 +120,19 @@
     return { west: "US", none: "U", east: "CN" }[block];
   }
 
+  function fmtGrowth(value) {
+    return `${value >= 0 ? "+" : ""}${value.toFixed(1)}pp`;
+  }
+
+  function fmtRate(value) {
+    return `${value.toFixed(1)}%`;
+  }
+
   function moveCountry(countryName, block) {
     if (anchors.has(countryName)) return;
     state.assignments[countryName] = block;
     buildCountries();
+    buildGrowth();
     update();
   }
 
@@ -194,6 +223,86 @@
     }
   }
 
+  function changeGrowth(countryName, delta) {
+    state.growthAdjustments[countryName] = Math.round((state.growthAdjustments[countryName] + delta) * 10) / 10;
+    buildGrowth();
+    update();
+  }
+
+  function buildGrowth() {
+    els.growthList.innerHTML = "";
+    ["west", "none", "east"].forEach((block) => {
+      const column = document.createElement("section");
+      column.className = "popdash__block popdash__block--growth";
+      column.dataset.block = block;
+      column.innerHTML = `
+        <div class="popdash__block-head">
+          <strong>${blockLabel(block)}</strong>
+          <span>0</span>
+        </div>
+        <div class="popdash__block-items"></div>
+      `;
+      els.growthList.appendChild(column);
+    });
+
+    countries.forEach((country) => {
+      const block = state.assignments[country.name];
+      const column = els.growthList.querySelector(`[data-block="${block}"]`);
+      const items = column.querySelector(".popdash__block-items");
+      const adjustment = state.growthAdjustments[country.name];
+      const card = document.createElement("article");
+      card.className = "popdash__country popdash__country--growth";
+      card.dataset.country = country.name;
+      card.innerHTML = `
+        <div class="popdash__growth-card-head">
+          <div>
+            <strong>${country.name}</strong>
+            <small>${country.region}</small>
+          </div>
+          <div class="popdash__growth-controls">
+            <button type="button" data-growth-country="${country.name}" data-growth-delta="0.1" aria-label="Increase ${country.name} growth by 0.1 percentage points">↑</button>
+            <button type="button" data-growth-country="${country.name}" data-growth-delta="-0.1" aria-label="Decrease ${country.name} growth by 0.1 percentage points">↓</button>
+          </div>
+        </div>
+        <div class="popdash__growth-rate">
+          <span>${fmtRate(expectedGrowth(country))}</span>
+          <em>${adjustment === 0 ? "baseline" : fmtGrowth(adjustment)}</em>
+        </div>
+      `;
+      items.appendChild(card);
+    });
+
+    let hiddenCount = 0;
+    els.growthList.querySelectorAll(".popdash__block").forEach((column) => {
+      const cards = Array.from(column.querySelectorAll(".popdash__country"));
+      const count = cards.length;
+      column.querySelector(".popdash__block-head span").textContent = count;
+      cards.forEach((card, index) => {
+        const hidden = !state.growthExpanded && index >= 5;
+        card.hidden = hidden;
+        if (hidden) hiddenCount += 1;
+      });
+    });
+
+    document.querySelectorAll("[data-growth-country]").forEach((button) => {
+      button.addEventListener("click", () => changeGrowth(button.dataset.growthCountry, Number(button.dataset.growthDelta)));
+    });
+
+    const oldToggle = document.querySelector(".popdash__growth-toggle");
+    if (oldToggle) oldToggle.remove();
+    if (hiddenCount > 0 || state.growthExpanded) {
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "popdash__block-toggle popdash__growth-toggle";
+      toggle.textContent = state.growthExpanded ? "Show fewer" : "Show more";
+      toggle.addEventListener("click", () => {
+        state.growthExpanded = !state.growthExpanded;
+        buildGrowth();
+      });
+      document.getElementById("popdashGrowthPanel").appendChild(toggle);
+    }
+  }
+
   function setAdjustment(value) {
     state.chinaAdjust = Number(value);
     els.adjust.value = state.chinaAdjust;
@@ -208,8 +317,21 @@
     });
     state.chinaAdjust = -15;
     state.blocsExpanded = false;
+    state.growthExpanded = false;
+    Object.keys(state.growthAdjustments).forEach((countryName) => {
+      state.growthAdjustments[countryName] = 0;
+    });
     buildCountries();
+    buildGrowth();
     setAdjustment(-15);
+  }
+
+  function resetGrowth() {
+    Object.keys(state.growthAdjustments).forEach((countryName) => {
+      state.growthAdjustments[countryName] = 0;
+    });
+    buildGrowth();
+    update();
   }
 
   function showPanel(panelName) {
@@ -330,7 +452,9 @@
   els.adjust.addEventListener("input", (event) => setAdjustment(event.target.value));
   els.presets.forEach((button) => button.addEventListener("click", () => setAdjustment(button.dataset.adjust)));
   els.reset.addEventListener("click", reset);
+  els.growthReset.addEventListener("click", resetGrowth);
   els.tabs.forEach((tab) => tab.addEventListener("click", () => showPanel(tab.dataset.panel)));
   buildCountries();
+  buildGrowth();
   setAdjustment(state.chinaAdjust);
 }());
