@@ -35,6 +35,7 @@
 
   const state = {
     chinaAdjust: -15,
+    expandedBlocks: new Set(),
     assignments: Object.fromEntries(countries.map((country) => {
       if (defaultEast.has(country.name)) return [country.name, "east"];
       if (defaultWest.has(country.name)) return [country.name, "west"];
@@ -98,6 +99,7 @@
           <span>0</span>
         </div>
         <div class="popdash__block-items"></div>
+        <button type="button" class="popdash__block-toggle" data-block-toggle="${block}" hidden></button>
       `;
       column.addEventListener("dragover", (event) => {
         event.preventDefault();
@@ -144,8 +146,27 @@
     });
 
     els.list.querySelectorAll(".popdash__block").forEach((column) => {
-      const count = column.querySelectorAll(".popdash__country").length;
+      const block = column.dataset.block;
+      const expanded = state.expandedBlocks.has(block);
+      const cards = Array.from(column.querySelectorAll(".popdash__country"));
+      const count = cards.length;
       column.querySelector(".popdash__block-head span").textContent = count;
+      cards.forEach((card, index) => {
+        card.hidden = !expanded && index >= 5;
+      });
+      const toggle = column.querySelector(".popdash__block-toggle");
+      if (count > 5) {
+        toggle.hidden = false;
+        toggle.textContent = expanded ? "Show fewer" : `Show ${count - 5} more`;
+        toggle.addEventListener("click", () => {
+          if (expanded) {
+            state.expandedBlocks.delete(block);
+          } else {
+            state.expandedBlocks.add(block);
+          }
+          buildCountries();
+        });
+      }
     });
   }
 

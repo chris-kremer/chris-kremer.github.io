@@ -154,7 +154,6 @@
   background: #f8f5ee;
   border: 1px dashed var(--pd-line);
   border-radius: 5px;
-  min-height: 18rem;
   padding: 0.45rem;
 }
 
@@ -185,7 +184,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.34rem;
-  min-height: 15.5rem;
+  min-height: 4.5rem;
+}
+
+.popdash__block-toggle {
+  margin-top: 0.45rem;
+  width: 100%;
 }
 
 .popdash__country {
