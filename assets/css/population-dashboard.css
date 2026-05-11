@@ -292,13 +292,6 @@
   width: 100%;
 }
 
-.popdash__note {
-  color: var(--pd-muted);
-  font-size: 0.76rem;
-  line-height: 1.45;
-  margin-top: 1rem;
-}
-
 .popdash__followup {
   color: var(--pd-text);
   font-family: "Spectral", Georgia, serif;
