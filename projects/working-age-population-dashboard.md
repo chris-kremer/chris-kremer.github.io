@@ -68,6 +68,26 @@ permalink: /projects/working-age-population-dashboard/
   <p class="popdash__followup">
     Working population does not automatically translate into economic prowess. In 2025 the US accounted for less than a quarter of China's population while accounting for a similar share of the world's economic output. Here is how the assumed population dynamics could manifest in economic indicators:
   </p>
+
+  <div class="popdash__economic-gap" aria-hidden="true"></div>
+
+  <div class="popdash__chart-panel popdash__chart-panel--economic">
+    <div class="popdash__chart-head">
+      <div>
+        <h3>Cumulative GDP</h3>
+        <p>Trillions of constant 2015 US dollars, 2000-2050</p>
+      </div>
+      <div class="popdash__legend" aria-hidden="true">
+        <span><i class="popdash__swatch popdash__swatch--east"></i>Eastern block</span>
+        <span><i class="popdash__swatch popdash__swatch--west"></i>Western block</span>
+      </div>
+    </div>
+    <canvas id="popdashGdpChart" width="1280" height="500"></canvas>
+  </div>
+
+  <p class="popdash__source-note">
+    GDP model uses separate total-population paths and real GDP-per-capita paths for each country. Historical anchors follow <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.KD">World Bank constant-dollar GDP per capita</a> and <a href="https://datacatalog.worldbank.org/search/dataset/0037655/Population-Estimates-and-Projections">population estimate/projection</a> series; projection years use medium-variant demographic paths and conservative continuation assumptions for GDP per capita. The China adjustment discounts both total population and working-age population for China.
+  </p>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>

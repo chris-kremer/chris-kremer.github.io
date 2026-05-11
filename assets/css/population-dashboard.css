@@ -302,11 +302,30 @@
   height: 4rem;
 }
 
+.popdash__economic-gap {
+  height: 2rem;
+}
+
 .popdash__followup {
   color: var(--pd-text);
   font-family: "Spectral", Georgia, serif;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.popdash__chart-panel--economic {
+  margin-top: 0;
+}
+
+.popdash__source-note {
+  color: var(--pd-muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  margin-top: 0.75rem;
+}
+
+.popdash__source-note a {
+  color: var(--pd-accent);
 }
 
 @media (min-width: 980px) {
