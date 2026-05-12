@@ -159,7 +159,7 @@ layout: default
       </div>
       <div class="chart-container scatter-container"><canvas id="mapChart"></canvas></div>
       <div class="map-legend" id="map-legend"></div>
-      <p class="bench-note">PCA projection into 2 dimensions (PC1 49%, PC2 22% of variance). Each point represents a behavioural profile in the 6-dimensional GPS score space. <strong>Key finding: PC1 separates AI models (right) from humans (left) — models systematically differ from all countries.</strong></p>
+      <p class="bench-note" id="map-pca-note">PCA projection into 2 dimensions. Each point represents a behavioural profile in the 6-dimensional GPS score space. <strong>Key finding: PC1 separates AI models (right) from humans (left) — models systematically differ from all countries.</strong></p>
     </section>
 
   </div>
@@ -282,6 +282,10 @@ layout: default
     const modelIds  = Object.keys(models);
     const labNames  = Object.keys(labs);
     const radarLabels = dims.map(d => dim_labels[d]);
+    const pcaNote = document.getElementById('map-pca-note');
+    if (data.pca?.explained_variance && pcaNote) {
+      pcaNote.innerHTML = `PCA projection into 2 dimensions (PC1 ${data.pca.explained_variance[0]}%, PC2 ${data.pca.explained_variance[1]}% of variance). Each point represents a behavioural profile in the 6-dimensional GPS score space. <strong>Key finding: PC1 separates AI models (right) from humans (left) — models systematically differ from all countries.</strong>`;
+    }
 
     function radarOptions(maxVal, stepSize) {
       return {
