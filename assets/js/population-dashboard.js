@@ -36,6 +36,7 @@
   const state = {
     chinaAdjust: 0,
     showDifference: false,
+    showGdpDifference: false,
     blocsExpanded: false,
     growthExpanded: false,
     growthAdjustments: Object.fromEntries(countries.map((country) => [country.name, 0])),
@@ -56,6 +57,7 @@
     list: document.getElementById("popdashCountryList"),
     growthList: document.getElementById("popdashGrowthList"),
     differenceToggle: document.getElementById("popdashDifferenceToggle"),
+    gdpDifferenceToggle: document.getElementById("popdashGdpDifferenceToggle"),
     chart: document.getElementById("popdashChart"),
     gdpChart: document.getElementById("popdashGdpChart")
   };
@@ -426,6 +428,17 @@
           fill: true,
           tension: 0.32,
           pointRadius: 3
+        },
+        {
+          label: "West-East difference",
+          data: [],
+          borderColor: "#6d6259",
+          backgroundColor: "rgba(109, 98, 89, 0.06)",
+          borderDash: [6, 5],
+          fill: false,
+          hidden: true,
+          tension: 0.32,
+          pointRadius: 3
         }
       ]
     },
@@ -460,8 +473,13 @@
     chart.data.datasets[2].data = difference;
     chart.data.datasets[2].hidden = !state.showDifference;
     chart.update();
-    gdpChart.data.datasets[0].data = gdpSeries("east");
-    gdpChart.data.datasets[1].data = gdpSeries("west");
+    const gdpEast = gdpSeries("east");
+    const gdpWest = gdpSeries("west");
+    const gdpDifference = gdpWest.map((value, index) => value - gdpEast[index]);
+    gdpChart.data.datasets[0].data = gdpEast;
+    gdpChart.data.datasets[1].data = gdpWest;
+    gdpChart.data.datasets[2].data = gdpDifference;
+    gdpChart.data.datasets[2].hidden = !state.showGdpDifference;
     gdpChart.update();
   }
 
@@ -472,6 +490,10 @@
   els.tabs.forEach((tab) => tab.addEventListener("click", () => showPanel(tab.dataset.panel)));
   els.differenceToggle.addEventListener("change", (event) => {
     state.showDifference = event.target.checked;
+    update();
+  });
+  els.gdpDifferenceToggle.addEventListener("change", (event) => {
+    state.showGdpDifference = event.target.checked;
     update();
   });
   buildCountries();
