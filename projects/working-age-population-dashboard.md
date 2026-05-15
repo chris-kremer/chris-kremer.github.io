@@ -27,6 +27,10 @@ permalink: /projects/working-age-population-dashboard/
             <span><i class="popdash__swatch popdash__swatch--east"></i>Eastern block</span>
             <span><i class="popdash__swatch popdash__swatch--west"></i>Western block</span>
           </div>
+          <label class="popdash__chart-toggle">
+            <input id="popdashDifferenceToggle" type="checkbox">
+            <span>Show West-East difference</span>
+          </label>
         </div>
         <canvas id="popdashChart" width="1280" height="560"></canvas>
       </div>

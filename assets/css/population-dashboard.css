@@ -325,6 +325,20 @@
   justify-content: flex-end;
 }
 
+.popdash__chart-toggle {
+  align-items: center;
+  color: var(--pd-muted);
+  display: inline-flex;
+  font-size: 0.72rem;
+  gap: 0.35rem;
+  justify-content: flex-end;
+}
+
+.popdash__chart-toggle input {
+  accent-color: var(--pd-accent);
+  margin: 0;
+}
+
 .popdash__legend span {
   align-items: center;
   color: var(--pd-muted);

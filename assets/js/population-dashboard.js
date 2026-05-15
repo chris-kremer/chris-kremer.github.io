@@ -35,6 +35,7 @@
 
   const state = {
     chinaAdjust: 0,
+    showDifference: false,
     blocsExpanded: false,
     growthExpanded: false,
     growthAdjustments: Object.fromEntries(countries.map((country) => [country.name, 0])),
@@ -54,6 +55,7 @@
     tabs: document.querySelectorAll(".popdash__tabs button"),
     list: document.getElementById("popdashCountryList"),
     growthList: document.getElementById("popdashGrowthList"),
+    differenceToggle: document.getElementById("popdashDifferenceToggle"),
     chart: document.getElementById("popdashChart"),
     gdpChart: document.getElementById("popdashGdpChart")
   };
@@ -366,6 +368,17 @@
           fill: true,
           tension: 0.32,
           pointRadius: 3
+        },
+        {
+          label: "West-East difference",
+          data: [],
+          borderColor: "#6d6259",
+          backgroundColor: "rgba(109, 98, 89, 0.06)",
+          borderDash: [6, 5],
+          fill: false,
+          hidden: true,
+          tension: 0.32,
+          pointRadius: 3
         }
       ]
     },
@@ -441,8 +454,11 @@
   function update() {
     const east = blockSeries("east");
     const west = blockSeries("west");
+    const difference = west.map((value, index) => value - east[index]);
     chart.data.datasets[0].data = east;
     chart.data.datasets[1].data = west;
+    chart.data.datasets[2].data = difference;
+    chart.data.datasets[2].hidden = !state.showDifference;
     chart.update();
     gdpChart.data.datasets[0].data = gdpSeries("east");
     gdpChart.data.datasets[1].data = gdpSeries("west");
@@ -454,6 +470,10 @@
   els.reset.addEventListener("click", reset);
   els.growthReset.addEventListener("click", resetGrowth);
   els.tabs.forEach((tab) => tab.addEventListener("click", () => showPanel(tab.dataset.panel)));
+  els.differenceToggle.addEventListener("change", (event) => {
+    state.showDifference = event.target.checked;
+    update();
+  });
   buildCountries();
   buildGrowth();
   setAdjustment(state.chinaAdjust);
