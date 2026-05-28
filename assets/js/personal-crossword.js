@@ -310,7 +310,6 @@
     { answer: "ZIP", clue: "Energy" },
     { answer: "ZENITH", clue: "Highest point" }
   ];
-  const fillClues = new Map(fillBank.map((entry) => [entry.answer, entry.clue]));
   const tinyFillBank = [
     { answer: "AM", clue: "Morning hrs." },
     { answer: "FM", clue: "Radio band" },
@@ -339,6 +338,7 @@
     ,{ answer: "US", clue: "The two of us" }
     ,{ answer: "WE", clue: "Speaker's group" }
   ];
+  const fillClues = new Map([...fillBank, ...tinyFillBank].map((entry) => [entry.answer, entry.clue]));
   const state = {
     entries: samples.map((entry) => ({ ...entry })),
     puzzle: null,
@@ -602,8 +602,7 @@
       trialGrid.set(coord(row, col), { row, col, letter: answer[i], words: ["trial"] });
     }
 
-    return !extractSlots(trialGrid, puzzle.rows, puzzle.cols)
-      .some((slot) => [...existingAnswers].some((existing) => slot.answer.includes(existing) && slot.answer !== existing));
+    return clueableNewSlots(trialGrid, puzzle, existingAnswers, placement);
   }
 
   function canPlaceDetached(answer, placement, grid) {
@@ -649,7 +648,7 @@
       const isPersonal = personalAnswers.has(slot.answer);
       reconciled.push({
         ...slot,
-        clue: isPersonal ? personalClues.get(slot.answer) : fillClues.get(slot.answer) || clueForGenerated(slot.answer),
+        clue: isPersonal ? personalClues.get(slot.answer) : fillClues.get(slot.answer),
         generated: !isPersonal,
         key: `${reconciled.length}-${slot.dir}`
       });
@@ -658,6 +657,7 @@
     const presentPersonal = new Set(reconciled.filter((word) => !word.generated).map((word) => word.answer));
     const allPersonalPresent = [...personalAnswers].every((answer) => presentPersonal.has(answer));
     if (!allPersonalPresent) return;
+    if (reconciled.some((word) => word.generated && !word.clue)) return;
 
     const nextGrid = new Map();
     reconciled.forEach((word) => writeWordToGrid(word, nextGrid));
@@ -738,7 +738,7 @@
 
     placement.implicitSlots.forEach((slot) => {
       const slotKey = `${state.puzzle.placed.length}-${slot.dir}`;
-      const implicitWord = { ...slot, clue: fillClues.get(slot.answer) || clueForGenerated(slot.answer), generated: true, key: slotKey };
+      const implicitWord = { ...slot, clue: fillClues.get(slot.answer), generated: true, key: slotKey };
       writeWordToGrid(implicitWord, state.puzzle.grid);
       state.puzzle.placed.push(implicitWord);
       added.push({ answer: implicitWord.answer, clue: implicitWord.clue, generated: true });
@@ -783,17 +783,22 @@
       .filter((slot) => !existingAnswers.has(slot.answer));
 
     for (const slot of slots) {
-      if (slot.answer.length < 3) return null;
+      if (!fillClues.has(slot.answer)) return null;
     }
     return slots;
   }
 
-  function clueForGenerated(answer) {
-    if (answer.length <= 3) return "Short crossing fill";
-    if (answer.endsWith("ER")) return "One associated with the clue's base word, maybe";
-    if (answer.endsWith("ED")) return "Past-tense fill";
-    if (answer.endsWith("ING")) return "Gerund-style fill";
-    return "Generated crossing fill";
+  function clueableNewSlots(trialGrid, puzzle, existingAnswers, primarySlot) {
+    const existingSlots = new Map(puzzle.placed.map((word) => [slotId(word), word.answer]));
+    return extractSlots(trialGrid, puzzle.rows, puzzle.cols).every((slot) => {
+      const id = slotId(slot);
+      const existingAnswer = existingSlots.get(id);
+      if (existingAnswer) return existingAnswer === slot.answer;
+      if (id === slotId(primarySlot)) return true;
+      if (existingAnswers.has(slot.answer)) return true;
+      if ([...existingAnswers].some((answer) => slot.answer.includes(answer) && slot.answer !== answer)) return false;
+      return fillClues.has(slot.answer);
+    });
   }
 
   function extractSlots(grid, rows, cols) {
