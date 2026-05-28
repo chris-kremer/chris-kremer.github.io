@@ -486,10 +486,12 @@
     const before = unusedStats(state.puzzle);
     const existingAnswers = new Set(state.entries.map((entry) => normalizeAnswer(entry.answer)));
     const personalAnswers = new Set(state.entries.filter((entry) => !entry.generated).map((entry) => normalizeAnswer(entry.answer)));
+    const fillCandidates = diverseCandidates(fillBank, state.puzzle, existingAnswers);
+    const tinyCandidates = diverseCandidates(tinyFillBank, state.puzzle, existingAnswers);
     const suggestions = [];
     let directPlacements = 0;
 
-    for (const candidate of fillBank) {
+    for (const candidate of fillCandidates) {
       if (directPlacements >= 48) break;
       if (existingAnswers.has(candidate.answer)) continue;
 
@@ -504,7 +506,7 @@
     }
 
     if (before.unused > 0 && unusedStats(state.puzzle).unused > before.unused / 2) {
-      for (const candidate of fillBank) {
+      for (const candidate of fillCandidates) {
         if (existingAnswers.has(candidate.answer)) continue;
         const placement = bestFillPlacement(candidate, state.puzzle, existingAnswers, true) || bestDetachedPlacement(candidate, state.puzzle);
         if (!placement) continue;
@@ -516,7 +518,7 @@
     }
 
     if (before.unused > 0 && unusedStats(state.puzzle).unused > before.unused / 2) {
-      for (const candidate of tinyFillBank) {
+      for (const candidate of tinyCandidates) {
         if (existingAnswers.has(candidate.answer)) continue;
         const placement = bestLooseDetachedPlacement(candidate, state.puzzle, personalAnswers);
         if (!placement) continue;
@@ -528,7 +530,7 @@
     }
 
     if (before.unused > 0 && unusedStats(state.puzzle).unused > before.unused / 2) {
-      for (const candidate of fillBank) {
+      for (const candidate of fillCandidates) {
         if (existingAnswers.has(candidate.answer)) continue;
         const placement = bestLooseDetachedPlacement(candidate, state.puzzle, personalAnswers);
         if (!placement) continue;
@@ -555,6 +557,44 @@
     const after = unusedStats(state.puzzle);
     const reduction = before.unused ? Math.round(((before.unused - after.unused) / before.unused) * 100) : 0;
     setStatus(`Added ${suggestions.length} editable fill suggestion${suggestions.length === 1 ? "" : "s"} and reduced unused squares by ${reduction}%.`);
+  }
+
+  function diverseCandidates(candidates, puzzle, existingAnswers) {
+    const usedInitials = new Map();
+    existingAnswers.forEach((answer) => {
+      const initial = answer[0];
+      usedInitials.set(initial, (usedInitials.get(initial) || 0) + 1);
+    });
+
+    const buckets = new Map();
+    candidates
+      .filter((entry) => !existingAnswers.has(entry.answer))
+      .forEach((entry) => {
+        const initial = entry.answer[0];
+        if (!buckets.has(initial)) buckets.set(initial, []);
+        buckets.get(initial).push(entry);
+      });
+
+    buckets.forEach((bucket) => {
+      bucket.sort((a, b) => b.answer.length - a.answer.length || a.answer.localeCompare(b.answer));
+    });
+
+    const seed = puzzleSignature(puzzle);
+    const initials = [...buckets.keys()].sort((a, b) => {
+      const usedDiff = (usedInitials.get(a) || 0) - (usedInitials.get(b) || 0);
+      if (usedDiff) return usedDiff;
+      return seededRank(a, seed) - seededRank(b, seed);
+    });
+
+    const ordered = [];
+    while (initials.length) {
+      for (let index = initials.length - 1; index >= 0; index -= 1) {
+        const bucket = buckets.get(initials[index]);
+        ordered.push(bucket.shift());
+        if (!bucket.length) initials.splice(index, 1);
+      }
+    }
+    return ordered;
   }
 
   function bestDetachedPlacement(candidate, puzzle) {
@@ -1245,6 +1285,22 @@
 
   function normalizeAnswer(value) {
     return String(value || "").toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Z0-9]/g, "");
+  }
+
+  function puzzleSignature(puzzle) {
+    return puzzle.placed
+      .map((word) => `${word.answer}:${word.row}:${word.col}:${word.dir}`)
+      .join("|");
+  }
+
+  function seededRank(value, seed) {
+    let hash = 2166136261;
+    const text = `${seed}|${value}`;
+    for (let index = 0; index < text.length; index += 1) {
+      hash ^= text.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return hash >>> 0;
   }
 
   function coord(row, col) {

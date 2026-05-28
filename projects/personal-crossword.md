@@ -5,7 +5,7 @@ subtitle: A playable crossword maker from your own clues.
 permalink: /projects/personal-crossword/
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/crossword.css?v=3' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/crossword.css?v=4' | relative_url }}">
 
 <main class="crossword-app" data-crossword-app>
   <section class="crossword-shell">
@@ -56,4 +56,4 @@ permalink: /projects/personal-crossword/
   </section>
 </main>
 
-<script src="{{ '/assets/js/personal-crossword.js?v=3' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/personal-crossword.js?v=4' | relative_url }}" defer></script>
