@@ -1120,16 +1120,58 @@
         placed: puzzle.placed.map(({ answer, clue, row, col, dir, key, number, generated }) => ({ answer, clue, row, col, dir, key, number, generated: Boolean(generated) }))
       }
     };
-    return btoa(unescape(encodeURIComponent(JSON.stringify(compact)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+    return encodeBase64Json(compact).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
   }
 
   function decodePuzzle(encoded) {
     try {
       const base64 = encoded.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(encoded.length / 4) * 4, "=");
-      return JSON.parse(decodeURIComponent(escape(atob(base64))));
+      return decodeBase64Json(base64);
     } catch (error) {
       return null;
     }
+  }
+
+  function encodeBase64Json(value) {
+    const text = JSON.stringify(value);
+    if (typeof btoa === "function") return btoa(unescape(encodeURIComponent(text)));
+    return bytesToBase64(new TextEncoder().encode(text));
+  }
+
+  function decodeBase64Json(base64) {
+    if (typeof atob === "function") return JSON.parse(decodeURIComponent(escape(atob(base64))));
+    return JSON.parse(new TextDecoder().decode(base64ToBytes(base64)));
+  }
+
+  function bytesToBase64(bytes) {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    let output = "";
+    for (let index = 0; index < bytes.length; index += 3) {
+      const first = bytes[index];
+      const second = bytes[index + 1];
+      const third = bytes[index + 2];
+      output += alphabet[first >> 2];
+      output += alphabet[((first & 3) << 4) | ((second || 0) >> 4)];
+      output += index + 1 < bytes.length ? alphabet[((second & 15) << 2) | ((third || 0) >> 6)] : "=";
+      output += index + 2 < bytes.length ? alphabet[third & 63] : "=";
+    }
+    return output;
+  }
+
+  function base64ToBytes(base64) {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    const clean = base64.replace(/=+$/, "");
+    const bytes = [];
+    for (let index = 0; index < clean.length; index += 4) {
+      const first = alphabet.indexOf(clean[index]);
+      const second = alphabet.indexOf(clean[index + 1]);
+      const third = alphabet.indexOf(clean[index + 2]);
+      const fourth = alphabet.indexOf(clean[index + 3]);
+      bytes.push((first << 2) | (second >> 4));
+      if (third >= 0) bytes.push(((second & 15) << 4) | (third >> 2));
+      if (fourth >= 0) bytes.push(((third & 3) << 6) | fourth);
+    }
+    return new Uint8Array(bytes);
   }
 
   function revivePuzzle(puzzle) {
