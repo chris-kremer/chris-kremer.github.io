@@ -16,8 +16,11 @@ permalink: /projects/personal-crossword/
       </div>
       <div class="crossword-actions" aria-label="Puzzle actions">
         <button class="cw-button cw-button--primary" type="button" data-action="generate">Generate</button>
+        <button class="cw-button" type="button" data-action="suggest-fill">Suggest Fill</button>
         <button class="cw-button" type="button" data-action="export">Export</button>
+        <button class="cw-button" type="button" data-action="edit-puzzle">Edit Puzzle</button>
         <button class="cw-button" type="button" data-action="check">Check</button>
+        <button class="cw-button" type="button" data-action="reveal-word">Reveal Word</button>
         <button class="cw-button" type="button" data-action="reveal">Reveal</button>
         <button class="cw-button" type="button" data-action="clear">Clear</button>
       </div>

@@ -10,6 +10,8 @@
   --cw-error-bg: #ffe1df;
   --cw-error-border: #e0443e;
   --cw-cell: clamp(1.75rem, 4vw, 2.45rem);
+  --cw-puzzle-cols: 12;
+  --cw-board-width: calc((var(--cw-puzzle-cols) * var(--cw-cell)) + ((var(--cw-puzzle-cols) - 1) * 1px) + 2rem);
   background: var(--cw-bg);
   color: var(--cw-text);
   font-family: "DM Sans", system-ui, -apple-system, sans-serif;
@@ -23,7 +25,7 @@
 .crossword-app textarea { font: inherit; }
 
 .crossword-shell {
-  max-width: 1320px;
+  max-width: min(calc(100vw - 2.5rem), max(1320px, calc(var(--cw-board-width) + 680px)));
   margin: 0 auto;
 }
 
@@ -98,9 +100,13 @@
 
 .crossword-workspace {
   display: grid;
-  grid-template-columns: minmax(250px, 320px) minmax(360px, 1fr) minmax(240px, 320px);
+  grid-template-columns: minmax(240px, 320px) minmax(360px, 1fr) minmax(220px, 320px);
   gap: 1rem;
   padding-top: 1rem;
+}
+
+.crossword-app.is-wide-puzzle .crossword-workspace {
+  grid-template-columns: minmax(220px, 280px) minmax(min(100%, var(--cw-board-width)), 1fr) minmax(210px, 300px);
 }
 
 .crossword-editor,
@@ -144,6 +150,15 @@
 }
 
 .entry-row:last-child { border-bottom: 0; }
+
+.entry-meta {
+  color: var(--cw-muted);
+  display: flex;
+  font-size: 0.68rem;
+  gap: 0.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
 .entry-fields {
   display: grid;
@@ -190,6 +205,7 @@
   display: flex;
   justify-content: center;
   min-height: 520px;
+  min-width: 0;
   overflow: auto;
   padding: 1rem;
 }
@@ -289,12 +305,21 @@
 
 .crossword-app.is-exported .crossword-editor,
 .crossword-app.is-exported [data-action="generate"],
+.crossword-app.is-exported [data-action="suggest-fill"],
 .crossword-app.is-exported [data-action="export"] {
+  display: none;
+}
+
+.crossword-app:not(.is-exported) [data-action="edit-puzzle"] {
   display: none;
 }
 
 .crossword-app.is-exported .crossword-workspace {
   grid-template-columns: minmax(360px, 1fr) minmax(240px, 340px);
+}
+
+.crossword-app.is-exported.is-wide-puzzle .crossword-workspace {
+  grid-template-columns: minmax(min(100%, var(--cw-board-width)), 1fr) minmax(220px, 320px);
 }
 
 @media (max-width: 980px) {
