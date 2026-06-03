@@ -5,23 +5,7 @@ subtitle: Expected-goals summaries for complete StatsBomb World Cup data.
 permalink: /projects/world-cup-xg-analysis/
 ---
 
-This project starts from [StatsBomb Open Data](https://github.com/statsbomb/open-data), using the public men's FIFA World Cup event data that includes shot-level `statsbomb_xg`. To extend the team-level analysis back one more tournament, it also uses [American Soccer Analysis's 2014 World Cup expected-goals table](https://www.americansocceranalysis.com/world-cup-expected-goals-by-team). For pre-tournament strength, it joins in historical FIFA rankings from [Dato-Futbol's FIFA ranking dataset](https://github.com/Dato-Futbol/fifa-ranking), which was scraped from FIFA's official ranking site.
-
-StatsBomb provides complete match/event coverage for 2018 and 2022. Its older men's World Cup data includes selected matches from 1958, 1962, 1970, 1974, 1986, and 1990, but not full tournaments, so I keep those matches in the match-level archive and exclude them from tournament-level rankings. The 2014 ASA data is complete at team level, but not match level; it reports team xGF/xGA per 99m38s of play.
-
-## Data outputs
-
-- [Match xG CSV](/assets/data/world-cup-xg/world_cup_match_xg.csv): every available StatsBomb World Cup match, with home/away xG and a `complete_tournament` flag.
-- [Team xG summary CSV](/assets/data/world-cup-xg/world_cup_team_xg_summary.csv): per-team xG for, xG against, per-game rates, tournament result, and source metadata for complete team-level tournaments.
-- [Team results CSV](/assets/data/world-cup-xg/world_cup_team_results.csv): tournament result for every team in the complete xG tournaments.
-- [Winners xG CSV](/assets/data/world-cup-xg/world_cup_winners_xg_per_game.csv): World Cup winners ranked by xG per game.
-- [FIFA rank + xG CSV](/assets/data/world-cup-xg/world_cup_team_fifa_rank_xg.csv): pre-tournament FIFA rank and points joined to each team xG row.
-- [Team xG scatterplot SVG](/assets/images/world-cup-xg/team_xg_per_game_scatter.svg): every team plotted by tournament year and xG per game.
-- [Result xG scatterplot SVG](/assets/images/world-cup-xg/result_xg_per_game_scatter.svg): every team plotted by tournament result and xG per game.
-- [Team net xG scatterplot SVG](/assets/images/world-cup-xg/team_net_xg_per_game_scatter.svg): every team plotted by tournament year and net xG per game.
-- [Result net xG scatterplot SVG](/assets/images/world-cup-xg/result_net_xg_per_game_scatter.svg): every team plotted by tournament result and net xG per game.
-- [Coverage CSV](/assets/data/world-cup-xg/statsbomb_world_cup_coverage.csv): available StatsBomb match counts by World Cup.
-- [Analysis script](https://github.com/chris-kremer/chris-kremer.github.io/blob/main/scripts/world_cup_xg_analysis.py): reproducible fetch and aggregation script.
+Expected Goals (xG) is a relatively new stat that despite its flaws often gives us interesting insights. Here are some of them on past World Cups. Which World Cup champions had the best attack? Which one the best defense? What seems more important? Who were the teams that could have won but underperformed?
 
 ## Coverage
 
@@ -50,19 +34,31 @@ StatsBomb partial match-level coverage is also archived for older tournaments:
 | 1962 | 1 | No |
 | 1958 | 2 | No |
 
-## Preliminary result: top 3 teams by xG per game
+## Top 3 teams by xG per game
 
-| World Cup | Rank | Team | Matches | xG/game | xG against/game | Tournament result |
-|---:|---:|---|---:|---:|---:|---|
-| 2022 | 1 | Germany | 3 | 2.74 | 0.97 | Group stage exit |
-| 2022 | 2 | Brazil | 5 | 2.10 | 0.36 | Quarter-finals exit |
-| 2022 | 3 | Argentina | 7 | 1.99 | 0.61 | Winner |
-| 2018 | 1 | Brazil | 5 | 2.46 | 0.51 | Quarter-finals exit |
-| 2018 | 2 | Germany | 3 | 2.11 | 1.19 | Group stage exit |
-| 2018 | 3 | Spain | 4 | 1.98 | 1.08 | Round of 16 exit |
-| 2014 | 1 | France | 5 | 2.10 | 0.50 | Quarter-finals exit |
-| 2014 | 2 | Germany | 7 | 1.80 | 0.90 | Winner |
-| 2014 | 3 | Switzerland | 4 | 1.60 | 0.80 | Round of 16 exit |
+### 2022 World Cup
+
+| Rank | Team | Matches | xG/game | xG against/game | Tournament result |
+|---:|---|---:|---:|---:|---|
+| 1 | Germany | 3 | 2.74 | 0.97 | Group stage exit |
+| 2 | Brazil | 5 | 2.10 | 0.36 | Quarter-finals exit |
+| 3 | Argentina | 7 | 1.99 | 0.61 | Winner |
+
+### 2018 World Cup
+
+| Rank | Team | Matches | xG/game | xG against/game | Tournament result |
+|---:|---|---:|---:|---:|---|
+| 1 | Brazil | 5 | 2.46 | 0.51 | Quarter-finals exit |
+| 2 | Germany | 3 | 2.11 | 1.19 | Group stage exit |
+| 3 | Spain | 4 | 1.98 | 1.08 | Round of 16 exit |
+
+### 2014 World Cup
+
+| Rank | Team | Matches | xG/game | xG against/game | Tournament result |
+|---:|---|---:|---:|---:|---|
+| 1 | France | 5 | 2.10 | 0.50 | Quarter-finals exit |
+| 2 | Germany | 7 | 1.80 | 0.90 | Winner |
+| 3 | Switzerland | 4 | 1.60 | 0.80 | Round of 16 exit |
 
 ## World Cup winners by xG per game
 
