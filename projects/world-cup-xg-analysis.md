@@ -15,13 +15,13 @@ Before looking at individual tournaments, a useful first check is whether xG rou
 
 ![Scatterplot of World Cup team xG per game by tournament result](/assets/images/world-cup-xg/result_xg_per_game_scatter.svg)
 
-xG/game is predictive of success in the broad sense, but still noisy in a short knockout tournament. Some strong attacking teams exited early, while the winners were not always the highest-xG teams in their tournament.
+xG/game is predictive of success in the broad sense, but still noisy in a short knockout tournament. Regressing xG/game on ordered tournament result gives R² = 0.10 with p = 0.0015. Some strong attacking teams exited early, while the winners were not always the highest-xG teams in their tournament.
 
 ### Team net xG by tournament result
 
 ![Scatterplot of World Cup team net xG per game by tournament result](/assets/images/world-cup-xg/result_net_xg_per_game_scatter.svg)
 
-Net xG is the cleaner sanity check because it includes defensive shot quality. The general upward pattern is clearer here: better net xG teams tend to advance further, while outliers point to teams that either underperformed or rode finishing, goalkeeping, game state, or penalty variance.
+Net xG is the cleaner sanity check because it includes defensive shot quality. The general upward pattern is clearer here: better net xG teams tend to advance further, and the regression improves to R² = 0.17 with p = 0.00003. Outliers point to teams that either underperformed or rode finishing, goalkeeping, game state, or penalty variance.
 
 ## Time trend in xG
 
@@ -35,7 +35,7 @@ With three team-level xG tournaments, this is still more of a baseline view than
 
 ![Scatterplot of World Cup team net xG per game by tournament year](/assets/images/world-cup-xg/team_net_xg_per_game_scatter.svg)
 
-Net xG adds defensive shot quality to the same view. Brazil 2018, Germany 2022, and Brazil 2022 lead the current complete-tournament sample, while Argentina 2022 is the strongest winner by net xG/game.
+Net xG adds defensive shot quality to the same view. Brazil 2018, Germany 2022, and Brazil 2022 lead the current complete-tournament sample, while Argentina 2022 is the strongest winner by net xG/game. There is no meaningful time trend in this small sample: year predicts xG/game with R² = 0.001 and p = 0.744, and net xG/game with R² = 0.00009 and p = 0.928.
 
 ## Top 3 teams by xG per game
 
