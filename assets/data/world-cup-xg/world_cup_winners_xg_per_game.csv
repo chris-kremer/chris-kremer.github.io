@@ -1,0 +1,4 @@
+season,team,matches,xg_for,xg_against,xg_per_game,xg_against_per_game,net_xg_per_game,tournament_result,fifa_code,fifa_rank_date,fifa_rank_pre_tournament,fifa_points_pre_tournament,data_source,metric_note
+2022,Argentina,7,13.9369,4.2358,1.991,0.6051,1.3859,Winner,ARG,2022-10-06,3,1773.88,StatsBomb Open Data,Shot-level StatsBomb xG summed over complete tournament matches.
+2018,France,7,8.7986,5.9311,1.2569,0.8473,0.4096,Winner,FRA,2018-06-07,7,1198.0,StatsBomb Open Data,Shot-level StatsBomb xG summed over complete tournament matches.
+2014,Germany,7,12.6,6.3,1.8,0.9,0.9,Winner,GER,2014-06-05,2,1300.0,American Soccer Analysis,Team-level xGF/xGA per 99m38s of play; not match-level StatsBomb xG.

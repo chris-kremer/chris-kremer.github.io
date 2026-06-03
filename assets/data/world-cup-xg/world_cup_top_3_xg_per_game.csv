@@ -1,0 +1,10 @@
+season,rank,team,matches,xg_for,xg_against,xg_per_game,xg_against_per_game,net_xg_per_game,tournament_result,fifa_code,fifa_rank_date,fifa_rank_pre_tournament,fifa_points_pre_tournament,data_source,metric_note
+2022,1,Germany,3,8.2311,2.9235,2.7437,0.9745,1.7692,Group stage exit,GER,2022-10-06,11,1650.21,StatsBomb Open Data,Shot-level StatsBomb xG summed over complete tournament matches.
+2022,2,Brazil,5,10.5026,1.813,2.1005,0.3626,1.7379,Quarter-finals exit,BRA,2022-10-06,1,1841.3,StatsBomb Open Data,Shot-level StatsBomb xG summed over complete tournament matches.
+2022,3,Argentina,7,13.9369,4.2358,1.991,0.6051,1.3859,Winner,ARG,2022-10-06,3,1773.88,StatsBomb Open Data,Shot-level StatsBomb xG summed over complete tournament matches.
+2018,1,Brazil,5,12.3124,2.5672,2.4625,0.5134,1.949,Quarter-finals exit,BRA,2018-06-07,2,1431.0,StatsBomb Open Data,Shot-level StatsBomb xG summed over complete tournament matches.
+2018,2,Germany,3,6.3237,3.5831,2.1079,1.1944,0.9136,Group stage exit,GER,2018-06-07,1,1558.0,StatsBomb Open Data,Shot-level StatsBomb xG summed over complete tournament matches.
+2018,3,Spain,4,7.9035,4.3392,1.9759,1.0848,0.8911,Round of 16 exit,ESP,2018-06-07,10,1126.0,StatsBomb Open Data,Shot-level StatsBomb xG summed over complete tournament matches.
+2014,1,France,5,10.5,4.5,2.1,0.9,1.2,Quarter-finals exit,FRA,2014-06-05,17,913.0,American Soccer Analysis,Team-level xGF/xGA per 99m38s of play; not match-level StatsBomb xG.
+2014,2,Germany,7,12.6,6.3,1.8,0.9,0.9,Winner,GER,2014-06-05,2,1300.0,American Soccer Analysis,Team-level xGF/xGA per 99m38s of play; not match-level StatsBomb xG.
+2014,3,Switzerland,4,6.4,6.8,1.6,1.7,-0.1,Round of 16 exit,SUI,2014-06-05,6,1149.0,American Soccer Analysis,Team-level xGF/xGA per 99m38s of play; not match-level StatsBomb xG.

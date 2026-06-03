@@ -1,0 +1,9 @@
+season,statsbomb_season_id,matches_available,expected_tournament_matches,complete_tournament
+2022,106,64,64,True
+2018,3,64,64,True
+1990,55,1,52,False
+1986,54,3,52,False
+1974,51,6,38,False
+1970,272,6,32,False
+1962,270,1,32,False
+1958,269,2,35,False

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600" role="img" aria-labelledby="title desc">
+<title id="title">World Cup team net xG per game by tournament result</title>
+<desc id="desc">Scatterplot of every team in complete StatsBomb World Cup tournaments, with tournament result on the x axis and net xG per game on the y axis.</desc>
+<rect width="980" height="600" fill="#fbfaf7"/>
+<text x="78" y="32" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#222">Team net xG per game by tournament result</text>
+<text x="78" y="54" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">Net xG/game = xG for/game minus xG against/game</text>
+<line x1="78" y1="484.0" x2="938" y2="484.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="488.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">-2.5</text>
+<line x1="78" y1="441.0" x2="938" y2="441.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="445.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">-2.0</text>
+<line x1="78" y1="398.0" x2="938" y2="398.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="402.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">-1.5</text>
+<line x1="78" y1="355.0" x2="938" y2="355.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="359.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">-1.0</text>
+<line x1="78" y1="312.0" x2="938" y2="312.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="316.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">-0.5</text>
+<line x1="78" y1="269.0" x2="938" y2="269.0" stroke="#b8b0a5" stroke-width="1"/>
+<text x="66" y="273.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">0.0</text>
+<line x1="78" y1="226.0" x2="938" y2="226.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="230.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">0.5</text>
+<line x1="78" y1="183.0" x2="938" y2="183.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="187.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">1.0</text>
+<line x1="78" y1="140.0" x2="938" y2="140.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="144.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">1.5</text>
+<line x1="78" y1="97.0" x2="938" y2="97.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="101.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">2.0</text>
+<line x1="78" y1="54.0" x2="938" y2="54.0" stroke="#e5e0d8" stroke-width="1"/>
+<text x="66" y="58.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">2.5</text>
+<line x1="78" y1="484" x2="938" y2="484" stroke="#333" stroke-width="1.2"/>
+<line x1="78" y1="54" x2="78" y2="484" stroke="#333" stroke-width="1.2"/>
+<line x1="78.0" y1="484" x2="78.0" y2="490" stroke="#333" stroke-width="1"/>
+<text transform="translate(78.0 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Group stage exit</text>
+<line x1="200.9" y1="484" x2="200.9" y2="490" stroke="#333" stroke-width="1"/>
+<text transform="translate(200.9 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Round of 16 exit</text>
+<line x1="323.7" y1="484" x2="323.7" y2="490" stroke="#333" stroke-width="1"/>
+<text transform="translate(323.7 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Quarter-finals exit</text>
+<line x1="446.6" y1="484" x2="446.6" y2="490" stroke="#333" stroke-width="1"/>
+<text transform="translate(446.6 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Semi-finals exit</text>
+<line x1="569.4" y1="484" x2="569.4" y2="490" stroke="#333" stroke-width="1"/>
+<text transform="translate(569.4 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Fourth place</text>
+<line x1="692.3" y1="484" x2="692.3" y2="490" stroke="#333" stroke-width="1"/>
+<text transform="translate(692.3 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Third place</text>
+<line x1="815.1" y1="484" x2="815.1" y2="490" stroke="#333" stroke-width="1"/>
+<text transform="translate(815.1 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Runner-up</text>
+<line x1="938.0" y1="484" x2="938.0" y2="490" stroke="#333" stroke-width="1"/>
+<text transform="translate(938.0 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Winner</text>
+<circle cx="86.0" cy="277.6" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Australia: -0.10 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="234.6" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Bosnia and Herzegovina: 0.40 net xG/game, Group stage exit</title></circle>
+<circle cx="89.0" cy="346.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Cameroon: -0.90 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="260.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Croatia: 0.10 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="294.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Ecuador: -0.30 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="217.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 England: 0.60 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="251.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Ghana: 0.20 net xG/game, Group stage exit</title></circle>
+<circle cx="91.2" cy="389.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Honduras: -1.40 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="303.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Iran: -0.40 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="294.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Italy: -0.30 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="234.6" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Ivory Coast: 0.40 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="294.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Japan: -0.30 net xG/game, Group stage exit</title></circle>
+<circle cx="93.4" cy="294.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Portugal: -0.30 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="243.2" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Russia: 0.30 net xG/game, Group stage exit</title></circle>
+<circle cx="87.9" cy="346.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 South Korea: -0.90 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="260.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Spain: 0.10 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="237.2" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Australia: 0.37 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="383.0" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Costa Rica: -1.33 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="340.2" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Egypt: -0.83 net xG/game, Group stage exit</title></circle>
+<circle cx="90.1" cy="190.4" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Germany: 0.91 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="250.4" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Iceland: 0.22 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="328.6" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Iran: -0.69 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="286.2" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Morocco: -0.20 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="289.6" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Nigeria: -0.24 net xG/game, Group stage exit</title></circle>
+<circle cx="92.3" cy="407.6" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Panama: -1.61 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="318.5" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Peru: -0.58 net xG/game, Group stage exit</title></circle>
+<circle cx="86.8" cy="283.6" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Poland: -0.17 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="296.1" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Saudi Arabia: -0.31 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="230.1" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Senegal: 0.45 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="254.1" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Serbia: 0.17 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="371.9" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 South Korea: -1.20 net xG/game, Group stage exit</title></circle>
+<circle cx="89.0" cy="374.1" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Tunisia: -1.22 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="284.4" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Belgium: -0.18 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="340.0" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Cameroon: -0.83 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="262.6" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Canada: 0.07 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="458.7" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Costa Rica: -2.21 net xG/game, Group stage exit</title></circle>
+<circle cx="91.2" cy="276.8" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Denmark: -0.09 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="220.5" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Ecuador: 0.56 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="116.8" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Germany: 1.77 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="319.1" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Ghana: -0.58 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="267.3" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Iran: 0.02 net xG/game, Group stage exit</title></circle>
+<circle cx="93.4" cy="254.1" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Mexico: 0.17 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="336.7" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Qatar: -0.79 net xG/game, Group stage exit</title></circle>
+<circle cx="87.9" cy="364.9" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Saudi Arabia: -1.12 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="389.6" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Serbia: -1.40 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="268.8" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Tunisia: 0.00 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="264.1" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Uruguay: 0.06 net xG/game, Group stage exit</title></circle>
+<circle cx="86.0" cy="347.9" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Wales: -0.92 net xG/game, Group stage exit</title></circle>
+<circle cx="213.0" cy="312.0" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Algeria: -0.50 net xG/game, Round of 16 exit</title></circle>
+<circle cx="194.3" cy="337.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Chile: -0.80 net xG/game, Round of 16 exit</title></circle>
+<circle cx="207.5" cy="251.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Greece: 0.20 net xG/game, Round of 16 exit</title></circle>
+<circle cx="188.8" cy="294.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Mexico: -0.30 net xG/game, Round of 16 exit</title></circle>
+<circle cx="202.0" cy="320.6" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Nigeria: -0.60 net xG/game, Round of 16 exit</title></circle>
+<circle cx="215.2" cy="277.6" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Switzerland: -0.10 net xG/game, Round of 16 exit</title></circle>
+<circle cx="196.5" cy="346.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 United States: -0.90 net xG/game, Round of 16 exit</title></circle>
+<circle cx="209.7" cy="294.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Uruguay: -0.30 net xG/game, Round of 16 exit</title></circle>
+<circle cx="191.0" cy="273.5" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Argentina: -0.05 net xG/game, Round of 16 exit</title></circle>
+<circle cx="204.2" cy="327.7" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Colombia: -0.68 net xG/game, Round of 16 exit</title></circle>
+<circle cx="185.5" cy="332.5" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Denmark: -0.74 net xG/game, Round of 16 exit</title></circle>
+<circle cx="198.7" cy="306.8" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Japan: -0.44 net xG/game, Round of 16 exit</title></circle>
+<circle cx="211.9" cy="358.6" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Mexico: -1.04 net xG/game, Round of 16 exit</title></circle>
+<circle cx="193.2" cy="276.1" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Portugal: -0.08 net xG/game, Round of 16 exit</title></circle>
+<circle cx="206.4" cy="192.4" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Spain: 0.89 net xG/game, Round of 16 exit</title></circle>
+<circle cx="187.7" cy="306.1" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Switzerland: -0.43 net xG/game, Round of 16 exit</title></circle>
+<circle cx="200.9" cy="373.6" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Australia: -1.22 net xG/game, Round of 16 exit</title></circle>
+<circle cx="214.1" cy="278.2" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Japan: -0.11 net xG/game, Round of 16 exit</title></circle>
+<circle cx="195.4" cy="312.9" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Poland: -0.51 net xG/game, Round of 16 exit</title></circle>
+<circle cx="208.6" cy="265.4" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Senegal: 0.04 net xG/game, Round of 16 exit</title></circle>
+<circle cx="189.9" cy="316.9" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 South Korea: -0.56 net xG/game, Round of 16 exit</title></circle>
+<circle cx="203.1" cy="228.6" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Spain: 0.47 net xG/game, Round of 16 exit</title></circle>
+<circle cx="216.3" cy="245.7" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Switzerland: 0.27 net xG/game, Round of 16 exit</title></circle>
+<circle cx="197.6" cy="275.9" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 United States: -0.08 net xG/game, Round of 16 exit</title></circle>
+<circle cx="333.6" cy="226.0" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Belgium: 0.50 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="314.9" cy="260.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Colombia: 0.10 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="328.1" cy="286.2" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Costa Rica: -0.20 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="309.4" cy="165.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 France: 1.20 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="322.6" cy="101.4" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Brazil: 1.95 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="335.8" cy="313.7" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Russia: -0.52 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="317.1" cy="222.0" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Sweden: 0.55 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="330.3" cy="182.2" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Uruguay: 1.01 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="311.6" cy="119.5" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Brazil: 1.74 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="324.8" cy="187.4" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 England: 0.95 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="338.0" cy="287.6" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Netherlands: -0.22 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="319.3" cy="240.2" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Portugal: 0.33 net xG/game, Quarter-finals exit</title></circle>
+<circle cx="578.2" cy="243.2" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Brazil: 0.30 net xG/game, Fourth place</title></circle>
+<circle cx="559.5" cy="222.8" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 England: 0.54 net xG/game, Fourth place</title></circle>
+<circle cx="572.7" cy="282.9" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Morocco: -0.16 net xG/game, Fourth place</title></circle>
+<circle cx="676.9" cy="217.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Netherlands: 0.60 net xG/game, Third place</title></circle>
+<circle cx="690.1" cy="227.4" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Belgium: 0.48 net xG/game, Third place</title></circle>
+<circle cx="703.3" cy="292.0" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 Croatia: -0.27 net xG/game, Third place</title></circle>
+<circle cx="807.4" cy="251.8" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Argentina: 0.20 net xG/game, Runner-up</title></circle>
+<circle cx="820.6" cy="218.4" r="4.8" fill="#246a8f" fill-opacity="0.78"><title>2018 Croatia: 0.59 net xG/game, Runner-up</title></circle>
+<circle cx="801.9" cy="239.8" r="4.8" fill="#ca472f" fill-opacity="0.78"><title>2022 France: 0.34 net xG/game, Runner-up</title></circle>
+<circle cx="930.0" cy="191.6" r="6.4" fill="#6d6a61" fill-opacity="0.78" stroke="#222" stroke-width="1.4"><title>2014 Germany: 0.90 net xG/game, Winner</title></circle>
+<circle cx="930.0" cy="233.8" r="6.4" fill="#246a8f" fill-opacity="0.78" stroke="#222" stroke-width="1.4"><title>2018 France: 0.41 net xG/game, Winner</title></circle>
+<circle cx="930.0" cy="149.8" r="6.4" fill="#ca472f" fill-opacity="0.78" stroke="#222" stroke-width="1.4"><title>2022 Argentina: 1.39 net xG/game, Winner</title></circle>
+<text x="331.6" y="105.4" font-family="Inter, Arial, sans-serif" font-size="12" fill="#222">Brazil 2018</text>
+<text x="95.0" y="120.8" font-family="Inter, Arial, sans-serif" font-size="12" fill="#222">Germany 2022</text>
+<text x="320.6" y="123.5" font-family="Inter, Arial, sans-serif" font-size="12" fill="#222">Brazil 2022</text>
+<text x="939.0" y="153.8" font-family="Inter, Arial, sans-serif" font-size="12" fill="#222">Argentina 2022</text>
+<text x="939.0" y="195.6" font-family="Inter, Arial, sans-serif" font-size="12" fill="#222">Germany 2014</text>
+<text x="939.0" y="237.8" font-family="Inter, Arial, sans-serif" font-size="12" fill="#222">France 2018</text>
+<text x="490.0" y="582" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#333">Tournament result</text>
+<text transform="translate(22 300.0) rotate(-90)" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#333">net xG per game</text>
+<circle cx="748" cy="32" r="5" fill="#6d6a61" fill-opacity="0.78"/><text x="760" y="36" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">2014</text>
+<circle cx="810" cy="32" r="5" fill="#246a8f" fill-opacity="0.78"/><text x="822" y="36" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">2018</text>
+<circle cx="872" cy="32" r="5" fill="#ca472f" fill-opacity="0.78"/><text x="884" y="36" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">2022</text>
+</svg>
