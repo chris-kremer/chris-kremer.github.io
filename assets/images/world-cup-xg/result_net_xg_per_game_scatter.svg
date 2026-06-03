@@ -42,6 +42,8 @@
 <text transform="translate(794.7 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Runner-up</text>
 <line x1="938.0" y1="484" x2="938.0" y2="490" stroke="#333" stroke-width="1"/>
 <text transform="translate(938.0 500) rotate(38)" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">Winner</text>
+<line x1="78.0" y1="295.6" x2="938.0" y2="192.6" stroke="#4f5b64" stroke-width="2.4" stroke-dasharray="7 5" stroke-opacity="0.85"/>
+<text x="850.0" y="182.6" font-family="Inter, Arial, sans-serif" font-size="12" fill="#4f5b64">linear trend</text>
 <circle cx="86.0" cy="277.6" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Australia: -0.10 net xG/game, Group stage exit</title></circle>
 <circle cx="86.0" cy="234.6" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Bosnia and Herzegovina: 0.40 net xG/game, Group stage exit</title></circle>
 <circle cx="89.0" cy="346.4" r="4.8" fill="#6d6a61" fill-opacity="0.78"><title>2014 Cameroon: -0.90 net xG/game, Group stage exit</title></circle>

@@ -7,32 +7,35 @@ permalink: /projects/world-cup-xg-analysis/
 
 Expected Goals (xG) is a relatively new stat that despite its flaws often gives us interesting insights. Here are some of them on past World Cups. Which World Cup champions had the best attack? Which one the best defense? What seems more important? Who were the teams that could have won but underperformed?
 
-## Coverage
+## Sanity checks
 
-| World Cup | Team-level xG source | Match-level xG source |
-|---:|---|---|
-| 2022 | StatsBomb Open Data | StatsBomb Open Data, 64 matches |
-| 2018 | StatsBomb Open Data | StatsBomb Open Data, 64 matches |
-| 2014 | American Soccer Analysis | Not currently included |
+Before looking at individual tournaments, a useful first check is whether xG roughly lines up with tournament advancement. It does: teams with higher xG and especially higher net xG are more likely to move toward the right side of the result axis. The relationship is not perfect, which is exactly where the interesting World Cup stories are.
 
-Historical FIFA rankings are available from December 1992 to September 2024 in the GitHub dataset, which makes them usable for World Cups from 1994 onward. For this project I use the last FIFA ranking release before tournament kickoff:
+### Team xG by tournament result
 
-| World Cup | Ranking date | Top five before tournament |
-|---:|---|---|
-| 2022 | 2022-10-06 | Brazil, Belgium, Argentina, France, England |
-| 2018 | 2018-06-07 | Germany, Brazil, Belgium, Portugal, Argentina |
-| 2014 | 2014-06-05 | Spain, Germany, Brazil, Portugal, Argentina |
+![Scatterplot of World Cup team xG per game by tournament result](/assets/images/world-cup-xg/result_xg_per_game_scatter.svg)
 
-StatsBomb partial match-level coverage is also archived for older tournaments:
+xG/game is predictive of success in the broad sense, but still noisy in a short knockout tournament. Some strong attacking teams exited early, while the winners were not always the highest-xG teams in their tournament.
 
-| World Cup | StatsBomb matches available | Full tournament? |
-|---:|---:|:---:|
-| 1990 | 1 | No |
-| 1986 | 3 | No |
-| 1974 | 6 | No |
-| 1970 | 6 | No |
-| 1962 | 1 | No |
-| 1958 | 2 | No |
+### Team net xG by tournament result
+
+![Scatterplot of World Cup team net xG per game by tournament result](/assets/images/world-cup-xg/result_net_xg_per_game_scatter.svg)
+
+Net xG is the cleaner sanity check because it includes defensive shot quality. The general upward pattern is clearer here: better net xG teams tend to advance further, while outliers point to teams that either underperformed or rode finishing, goalkeeping, game state, or penalty variance.
+
+## Time trend in xG
+
+### Team xG over time
+
+![Scatterplot of World Cup team xG per game by tournament year](/assets/images/world-cup-xg/team_xg_per_game_scatter.svg)
+
+With three team-level xG tournaments, this is still more of a baseline view than a trend analysis. The main visual takeaway is that high xG per game does not map neatly to tournament success: Germany 2014 and Argentina 2022 won with strong attacking profiles, but Brazil 2018, Germany 2022, and France 2014 all ranked very high and exited earlier.
+
+### Team net xG over time
+
+![Scatterplot of World Cup team net xG per game by tournament year](/assets/images/world-cup-xg/team_net_xg_per_game_scatter.svg)
+
+Net xG adds defensive shot quality to the same view. Brazil 2018, Germany 2022, and Brazil 2022 lead the current complete-tournament sample, while Argentina 2022 is the strongest winner by net xG/game.
 
 ## Top 3 teams by xG per game
 
@@ -94,28 +97,14 @@ The xG leaders were not always the top-ranked teams entering the tournament:
 
 This gives the project a useful contrast between prior team strength and tournament chance creation. Early examples: France 2014 and Germany 2022 produced elite xG profiles despite entering outside the top ten by FIFA rank, while Germany 2014 and Argentina 2022 combined strong pre-tournament rank with strong xG profiles.
 
-## Team xG over time
-
-![Scatterplot of World Cup team xG per game by tournament year](/assets/images/world-cup-xg/team_xg_per_game_scatter.svg)
-
-With three team-level xG tournaments, this is still more of a baseline view than a trend analysis. The main visual takeaway is that high xG per game does not map neatly to tournament success: Germany 2014 and Argentina 2022 won with strong attacking profiles, but Brazil 2018, Germany 2022, and France 2014 all ranked very high and exited earlier.
-
-## Team xG by tournament result
-
-![Scatterplot of World Cup team xG per game by tournament result](/assets/images/world-cup-xg/result_xg_per_game_scatter.svg)
-
-This view makes the same point from the result side: xG/game is noisy in a short knockout tournament. The 2018 and 2022 winners are not the highest-xG teams in their tournaments, while some of the strongest xG/game teams exited in the group stage or quarter-finals.
-
-## Team net xG over time
-
-![Scatterplot of World Cup team net xG per game by tournament year](/assets/images/world-cup-xg/team_net_xg_per_game_scatter.svg)
-
-Net xG adds defensive shot quality to the same view. Brazil 2018, Germany 2022, and Brazil 2022 lead the current complete-tournament sample, while Argentina 2022 is the strongest winner by net xG/game.
-
-## Team net xG by tournament result
-
-![Scatterplot of World Cup team net xG per game by tournament result](/assets/images/world-cup-xg/result_net_xg_per_game_scatter.svg)
-
-This result view makes the over-performance question clearer: France 2018 won the tournament with a much lower net xG/game than several teams that exited earlier, while Argentina 2022 sits closer to the top tier.
-
 This first pass sums all non-shootout StatsBomb shots for 2018 and 2022, including penalties taken during normal or extra time. Penalty-shootout attempts are excluded from match xG totals, but shootout outcomes are used to infer tournament results for tied knockout matches. The 2014 rows use American Soccer Analysis's team-level xGF/xGA rates rather than shot-level StatsBomb events.
+
+## Coverage
+
+| World Cup | Team-level xG source | Match-level xG source |
+|---:|---|---|
+| 2022 | StatsBomb Open Data | StatsBomb Open Data, 64 matches |
+| 2018 | StatsBomb Open Data | StatsBomb Open Data, 64 matches |
+| 2014 | American Soccer Analysis | Not currently included |
+
+Historical FIFA rankings are available from December 1992 to September 2024 in the GitHub dataset, which makes them usable for World Cups from 1994 onward. For this project I use the last FIFA ranking release before tournament kickoff:

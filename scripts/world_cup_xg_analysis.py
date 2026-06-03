@@ -462,6 +462,24 @@ def write_result_xg_scatter(rows: list[dict]) -> None:
             f'{esc(result)}</text>'
         )
 
+    regression_points = [(x_index[row["tournament_result"]], float(row["xg_per_game"])) for row in rows]
+    mean_x = sum(point[0] for point in regression_points) / len(regression_points)
+    mean_y = sum(point[1] for point in regression_points) / len(regression_points)
+    variance_x = sum((point[0] - mean_x) ** 2 for point in regression_points)
+    slope = sum((point[0] - mean_x) * (point[1] - mean_y) for point in regression_points) / variance_x
+    intercept = mean_y - slope * mean_x
+    first_prediction = intercept
+    last_prediction = intercept + slope * (len(result_order) - 1)
+    elements.append(
+        f'<line x1="{x_pos(result_order[0]):.1f}" y1="{y_pos(first_prediction):.1f}" '
+        f'x2="{x_pos(result_order[-1]):.1f}" y2="{y_pos(last_prediction):.1f}" '
+        'stroke="#4f5b64" stroke-width="2.4" stroke-dasharray="7 5" stroke-opacity="0.85"/>'
+    )
+    elements.append(
+        f'<text x="{x_pos(result_order[-1]) - 88:.1f}" y="{y_pos(last_prediction) - 10:.1f}" '
+        'font-family="Inter, Arial, sans-serif" font-size="12" fill="#4f5b64">linear trend</text>'
+    )
+
     colors = {
         "2014": "#6d6a61",
         "2018": "#246a8f",
@@ -657,6 +675,24 @@ def write_result_net_xg_scatter(rows: list[dict]) -> None:
             'text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="12" fill="#333">'
             f'{esc(result)}</text>'
         )
+
+    regression_points = [(x_index[row["tournament_result"]], float(row["net_xg_per_game"])) for row in rows]
+    mean_x = sum(point[0] for point in regression_points) / len(regression_points)
+    mean_y = sum(point[1] for point in regression_points) / len(regression_points)
+    variance_x = sum((point[0] - mean_x) ** 2 for point in regression_points)
+    slope = sum((point[0] - mean_x) * (point[1] - mean_y) for point in regression_points) / variance_x
+    intercept = mean_y - slope * mean_x
+    first_prediction = intercept
+    last_prediction = intercept + slope * (len(result_order) - 1)
+    elements.append(
+        f'<line x1="{x_pos(result_order[0]):.1f}" y1="{y_pos(first_prediction):.1f}" '
+        f'x2="{x_pos(result_order[-1]):.1f}" y2="{y_pos(last_prediction):.1f}" '
+        'stroke="#4f5b64" stroke-width="2.4" stroke-dasharray="7 5" stroke-opacity="0.85"/>'
+    )
+    elements.append(
+        f'<text x="{x_pos(result_order[-1]) - 88:.1f}" y="{y_pos(last_prediction) - 10:.1f}" '
+        'font-family="Inter, Arial, sans-serif" font-size="12" fill="#4f5b64">linear trend</text>'
+    )
 
     colors = {"2014": "#6d6a61", "2018": "#246a8f", "2022": "#ca472f"}
     for index, row in enumerate(sorted_rows):
