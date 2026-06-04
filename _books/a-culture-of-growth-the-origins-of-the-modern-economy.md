@@ -1,6 +1,7 @@
 ---
 layout: book
 title: "A Culture of Growth: The Origins of the Modern Economy"
+featured: true
 author: joel-mokyr
 author_name: Joel Mokyr
 status: "read"
