@@ -3,14 +3,16 @@ layout: book
 title: "A Culture of Growth: The Origins of the Modern Economy"
 author: joel-mokyr
 author_name: Joel Mokyr
-status: "currently reading"
+status: "read"
+date_read: 2026-06-04
+goodreads_rating: 5
 year_published: 2016
 people: []
 ---
 
-Currently reading. Also: super readable — much more accessible than the topic might make it sound.
+Finished. Super readable — much more accessible than the topic might make it sound. It ended up being one of the more idea-generating economics/history books I’ve read recently.
 
-What I’ve got so far:
+What I got from it:
 
 ## Core setup
 
@@ -119,4 +121,36 @@ What I’ve got so far:
 - Whether the UAE versus Oman could be a useful contemporary comparison for openness to imported techniques within a partially shared regional/cultural background.
 - Whether current US suspicion toward Chinese technology, and Chinese suspicion toward Western technology, will become a meaningful drag on diffusion and growth.
 
-This one is already producing more research ideas than most books do, which is a good sign.
+## Why not China?
+
+- The ending turns into a more explicit discussion of the classic “why not China?” question.
+- Mokyr’s answer fits the book’s broader argument: China had sophisticated knowledge traditions, but its intellectual and political structure was much more centralized than Europe’s.
+- Centralization mattered partly because it muted competitive pressure. In Europe, fragmented political units had stronger incentives to maintain relatively good governance and compete for useful people, ideas, and techniques; those pressures were weaker under a unified Chinese regime.
+- China also had a powerful classical canon and civil-service examination system. The highest-status intellectual career path pulled talented people into state service and textual mastery rather than practical innovation or revolutionary change in productive systems.
+- The comparison to Thomas More’s *Utopia* is useful: a centralized, state-directed, civil-service-heavy research and enterprise apparatus might look orderly, but it is doubtful it would reproduce the decentralized innovation engine of the Industrial Revolution.
+
+## Useful knowledge, engineers, and status
+
+- A second part of the China argument is status: Mokyr stresses that European growth depended on respect for practically useful knowledge, engineering, tinkering, and applied inquiry.
+- Some Chinese observers of Europe apparently respected European mathematics while dismissing engineers and practical technicians as lower-status or less serious.
+- That distinction is central to the book: useful knowledge is not just knowledge that exists, but knowledge that a society directs toward productive improvement.
+- The point complements the earlier Argentina/elite-status discussion: if practical work is culturally devalued, the people with the most human capital may not apply themselves to the discovery processes that matter for growth.
+
+## Allen, wages, and demand-side explanations
+
+- Mokyr briefly touches the high-wage / cheap-energy / induced-innovation type arguments associated with Robert Allen, but he does not make that debate central here.
+- The book is less a point-by-point refutation of Allen than a positive account of why a certain cultural and institutional environment was unusually good at producing useful knowledge.
+- That is interesting because the Allen–Mokyr debate was my original entry point into Mokyr’s work, but it is not the main drama of this book.
+
+## Side thread: population models and China
+
+- Michael Kremer’s population-driven model of long-run growth is a natural side connection here, especially because China is an obvious test case for population-based explanations.
+- If population size alone drove innovation, China should be a much easier case for explaining the Industrial Revolution’s origin.
+- The China discussion therefore helps show why population-dependent growth models need cultural, institutional, and diffusion-side qualifications.
+
+## Final take
+
+- The book’s strength is the economic perspective: it makes the cultural argument feel less fluffy by tying culture to incentives, status, competition, selection, and knowledge production.
+- The best version of the argument is not “Europe had better ideas” in some vague sense, but that Europe developed a more effective ecology for turning elite beliefs, practical inquiry, openness, and competition into useful knowledge.
+- I’m happy with the book. It sparked a lot of research directions and gave a clearer framework for thinking about why the Industrial Revolution happened where it did.
+
