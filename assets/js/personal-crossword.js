@@ -1144,6 +1144,38 @@
     return true;
   }
 
+  async function loadSavedPuzzle() {
+    const slug = new URLSearchParams(window.location.search).get("saved");
+    if (!slug) return false;
+    if (!/^[a-z0-9-]+$/i.test(slug)) {
+      setStatus("That saved puzzle name is invalid.");
+      return true;
+    }
+
+    try {
+      const response = await fetch(`/assets/crosswords/${slug}.json`, { cache: "no-store" });
+      if (!response.ok) throw new Error("Puzzle not found");
+      const data = await response.json();
+      const entries = Array.isArray(data.entries) ? data.entries : [];
+      state.entries = entries.map(({ answer, clue, generated }) => ({
+        answer: normalizeAnswer(answer),
+        clue: String(clue || "").trim(),
+        generated: Boolean(generated)
+      }));
+      app.classList.add("is-exported");
+      kickerEl.textContent = "Unlisted puzzle";
+      titleEl.textContent = data.title || "Personal Crossword";
+      generate();
+      app.classList.add("is-exported");
+      kickerEl.textContent = "Unlisted puzzle";
+      titleEl.textContent = data.title || "Personal Crossword";
+      setStatus("Unlisted puzzle loaded.");
+    } catch (error) {
+      setStatus("That saved puzzle could not be loaded.");
+    }
+    return true;
+  }
+
   function editExportedPuzzle() {
     if (!state.entries.length && state.puzzle) {
       state.entries = state.puzzle.placed.map(({ answer, clue, generated }) => ({ answer, clue, generated: Boolean(generated) }));
@@ -1321,8 +1353,12 @@
     }[char]));
   }
 
-  if (!window.location.hash.startsWith("#puzzle=") || !loadExportedPuzzle(window.location.href)) {
+  async function initialize() {
+    if (window.location.hash.startsWith("#puzzle=") && loadExportedPuzzle(window.location.href)) return;
+    if (await loadSavedPuzzle()) return;
     renderEntries();
     generate();
   }
+
+  initialize();
 })();
