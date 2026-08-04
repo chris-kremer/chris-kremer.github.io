@@ -1,0 +1,56 @@
+name: Rotate checkpoint
+
+on:
+  schedule:
+    # Offset from the busy top of the hour to reduce GitHub scheduling delays.
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rotate-checkpoint-main
+  cancel-in-progress: false
+
+jobs:
+  rotate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CHECKPOINT_SCHEDULE_SEED: ${{ secrets.CHECKPOINT_SCHEDULE_SEED }}
+
+    steps:
+      - name: Check out main with account credentials
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.CHECKPOINT_PUSH_TOKEN }}
+
+      - name: Configure commit attribution
+        run: |
+          git config user.name "chris-kremer"
+          git config user.email "188252978+chris-kremer@users.noreply.github.com"
+
+      - name: Apply all checkpoint events due so far today
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # A high Poisson tail can produce more than one event in a slot. Each
+          # event gets its own commit and push. The limit is only a safety guard;
+          # any remaining event is picked up by the next scheduled run.
+          for _ in $(seq 1 20); do
+            result="$(python3 .github/scripts/rotate_checkpoint.py)"
+            if [[ "$(jq -r '.changed' <<<"$result")" != "true" ]]; then
+              exit 0
+            fi
+
+            commit_message="$(jq -r '.commit_message' <<<"$result")"
+            git add checkpoint.txt
+            git commit -m "$commit_message"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          done
