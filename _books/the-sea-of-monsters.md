@@ -3,7 +3,7 @@ layout: book
 title: The Sea of Monsters
 author: rick-riordan
 author_name: Rick Riordan
-date_read: "07/04/2021"
+date_read: 2021-04-07
 status: "read"
 year_published: 2006
 pages: 279

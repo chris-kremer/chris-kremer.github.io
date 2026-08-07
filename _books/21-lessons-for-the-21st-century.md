@@ -3,7 +3,7 @@ layout: book
 title: 21 Lessons for the 21st Century
 author_name: Yuval Noah Harari
 author: yuval-noah-harari
-date_read: 10/01/2021
+date_read: 2021-01-10
 style: provocative
 recommended_to: anti-nationalists
 year_published: 2018

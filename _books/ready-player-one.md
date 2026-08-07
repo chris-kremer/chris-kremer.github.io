@@ -3,7 +3,7 @@ layout: book
 title: Ready Player One
 author: ernest-cline
 author_name: Ernest Cline
-date_read: "16/03/2020"
+date_read: 2020-03-16
 status: "read"
 year_published: 2011
 pages: 480

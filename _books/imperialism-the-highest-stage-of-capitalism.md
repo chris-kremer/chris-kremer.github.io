@@ -3,7 +3,7 @@ layout: book
 title: "Imperialism: The Highest Stage of Capitalism"
 author: vladimir-lenin
 author_name: Vladimir Lenin
-date_read: "08/10/2021"
+date_read: 2021-10-08
 status: "read"
 year_published: 1917
 pages: 192

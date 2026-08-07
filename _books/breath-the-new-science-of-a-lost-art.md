@@ -3,7 +3,7 @@ layout: book
 title: "Breath: The New Science of a Lost Art"
 author: james-nestor
 author_name: James Nestor
-date_read: "22/01/2021"
+date_read: 2021-01-22
 status: "read"
 year_published: 2020
 pages: 280

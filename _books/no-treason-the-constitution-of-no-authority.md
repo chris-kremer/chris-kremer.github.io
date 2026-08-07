@@ -3,7 +3,7 @@ layout: book
 title: "No Treason: The Constitution of No Authority"
 author: lysander-spooner
 author_name: Lysander Spooner
-date_read: "13/05/2021"
+date_read: 2021-05-13
 status: "read"
 year_published: 1870
 pages: 48

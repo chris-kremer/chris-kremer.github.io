@@ -3,7 +3,7 @@ layout: book
 title: Hamlet
 author: william-shakespeare
 author_name: William Shakespeare
-date_read: "18/01/2021"
+date_read: 2021-01-18
 status: "read"
 year_published: 1601
 pages: 289

@@ -3,7 +3,7 @@ layout: book
 title: "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything"
 author: steven-d-levitt
 author_name: Steven D. Levitt
-date_read: "23/04/2021"
+date_read: 2021-04-23
 status: "read"
 year_published: 2005
 pages: 268

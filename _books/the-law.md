@@ -3,7 +3,7 @@ layout: book
 title: The Law
 author: frédéric-bastiat
 author_name: Frédéric Bastiat
-date_read: "19/06/2022"
+date_read: 2022-06-19
 status: "read"
 year_published: 1849
 pages: 61

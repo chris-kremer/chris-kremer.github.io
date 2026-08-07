@@ -3,7 +3,7 @@ layout: book
 title: The Republic
 author: plato
 author_name: Plato
-date_read: "15/01/2021"
+date_read: 2021-01-15
 status: "read"
 year_published: -400
 pages: 416

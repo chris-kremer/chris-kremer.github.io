@@ -3,7 +3,7 @@ layout: book
 title: Der Sandmann
 author: eta-hoffmann
 author_name: E.T.A. Hoffmann
-date_read: "02/03/2020"
+date_read: 2020-03-02
 status: "read"
 year_published: 1816
 pages: 83

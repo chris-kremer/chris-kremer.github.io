@@ -4,7 +4,7 @@ featured: true
 title: Project Hail Mary
 author: andy-weir
 author_name: Andy Weir
-date_read: "26/11/2024"
+date_read: 2024-11-26
 status: "read"
 year_published: 2021
 pages: 476

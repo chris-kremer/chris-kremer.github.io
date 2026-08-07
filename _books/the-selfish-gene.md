@@ -3,7 +3,7 @@ layout: book
 title: The Selfish Gene
 author: richard-dawkins
 author_name: Richard Dawkins
-date_read: "07/07/2021"
+date_read: 2021-07-07
 status: "read"
 year_published: 1976
 pages: 360

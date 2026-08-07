@@ -3,7 +3,7 @@ layout: book
 title: QualityLand
 author: marc-uwe-kling
 author_name: Marc-Uwe Kling
-date_read: "29/03/2021"
+date_read: 2021-03-29
 status: "read"
 year_published: 2017
 pages: 384

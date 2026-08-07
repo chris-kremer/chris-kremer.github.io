@@ -3,7 +3,7 @@ layout: book
 title: "Outlive: The Science & Art of Longevity"
 author: peter-attia
 author_name: Peter Attia
-date_read: "01/01/2023"
+date_read: 2023-01-01
 status: "read"
 year_published: 2023
 pages: 496

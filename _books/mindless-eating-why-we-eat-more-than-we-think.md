@@ -3,7 +3,7 @@ layout: book
 title: "Mindless Eating: Why We Eat More Than We Think"
 author: brian-wansink
 author_name: Brian Wansink
-date_read: "30/08/2022"
+date_read: 2022-08-30
 status: "read"
 year_published: 2006
 pages: 276

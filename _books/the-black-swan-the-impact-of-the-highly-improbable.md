@@ -3,7 +3,7 @@ layout: book
 title: "The Black Swan: The Impact of the Highly Improbable"
 author: nassim-nicholas-taleb
 author_name: Nassim Nicholas Taleb
-date_read: "04/03/2022"
+date_read: 2022-03-04
 status: "read"
 year_published: 2007
 pages: 480

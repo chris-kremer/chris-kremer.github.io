@@ -3,7 +3,7 @@ layout: book
 title: Abundance
 author: ezra-klein
 author_name: Ezra Klein
-date_read: "07/04/2025"
+date_read: 2025-04-07
 status: "read"
 year_published: 2025
 pages: 304

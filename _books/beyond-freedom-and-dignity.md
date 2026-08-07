@@ -4,7 +4,7 @@ featured: true
 title: Beyond Freedom and Dignity
 author: bf-skinner
 author_name: B.F. Skinner
-date_read: "30/12/2021"
+date_read: 2021-12-30
 status: "read"
 year_published: 1971
 pages: 240

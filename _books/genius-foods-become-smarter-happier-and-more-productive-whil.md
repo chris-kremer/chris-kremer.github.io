@@ -3,7 +3,7 @@ layout: book
 title: "Genius Foods: Become Smarter, Happier, and More Productive While Protecting Your Brain for Life"
 author: max-lugavere
 author_name: Max Lugavere
-date_read: "26/06/2024"
+date_read: 2024-06-26
 status: "read"
 year_published: 2018
 pages: 400

@@ -3,7 +3,7 @@ layout: book
 title: "Hidden Games: The Surprising Power of Game Theory to Explain Irrational Human Behavior"
 author: erez-yoeli
 author_name: Erez Yoeli
-date_read: "19/04/2022"
+date_read: 2022-04-19
 status: "read twice"
 year_published: 2022
 pages: 368

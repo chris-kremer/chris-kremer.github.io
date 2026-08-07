@@ -3,7 +3,7 @@ layout: book
 title: "Nudge: Improving Decisions About Health, Wealth, and Happiness"
 author: richard-h-thaler
 author_name: Richard H. Thaler
-date_read: "04/06/2021"
+date_read: 2021-06-04
 status: "read"
 year_published: 2008
 pages: 260

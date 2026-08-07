@@ -3,7 +3,7 @@ layout: book
 title: Brave New World
 author: aldous-huxley
 author_name: Aldous Huxley
-date_read: "19/11/2020"
+date_read: 2020-11-19
 status: "read 3 times"
 year_published: 1932
 pages: 288

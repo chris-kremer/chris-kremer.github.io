@@ -3,7 +3,7 @@ layout: book
 title: I See Satan Fall Like Lightning
 author: rené-girard
 author_name: René Girard
-date_read: "19/04/2023"
+date_read: 2023-04-19
 status: "read"
 year_published: 1999
 pages: 215

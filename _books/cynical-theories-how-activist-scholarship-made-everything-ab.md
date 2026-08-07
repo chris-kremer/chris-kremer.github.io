@@ -3,7 +3,7 @@ layout: book
 title: "Cynical Theories: How Activist Scholarship Made Everything about Race, Gender, and Identity—and Why This Harms Everybody"
 author: helen-pluckrose
 author_name: Helen Pluckrose
-date_read: "21/02/2021"
+date_read: 2021-02-21
 status: "read"
 year_published: 2020
 pages: 348

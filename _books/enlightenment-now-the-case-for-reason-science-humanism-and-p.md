@@ -3,7 +3,7 @@ layout: book
 title: "Enlightenment Now: The Case for Reason, Science, Humanism, and Progress"
 author: steven-pinker
 author_name: Steven Pinker
-date_read: "18/03/2021"
+date_read: 2021-03-18
 status: "read"
 year_published: 2018
 pages: 576

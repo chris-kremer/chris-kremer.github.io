@@ -3,7 +3,7 @@ layout: book
 title: The Essential Women of Liberty (Essential Scholars)
 author: fraser-institute
 author_name: Fraser Institute
-date_read: "08/04/2022"
+date_read: 2022-04-08
 status: "read"
 year_published: 2022
 pages: 162

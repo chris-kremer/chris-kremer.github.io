@@ -3,7 +3,7 @@ layout: book
 title: "Shadowplay: Behind the Lines and Under Fire: The Inside Story of Europe's Last War"
 author: tim-marshall
 author_name: Tim Marshall
-date_read: "01/01/2022"
+date_read: 2022-01-01
 status: "read"
 year_published: 2003
 pages: 320

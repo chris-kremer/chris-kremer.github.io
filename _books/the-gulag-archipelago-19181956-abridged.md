@@ -3,7 +3,7 @@ layout: book
 title: The Gulag Archipelago 1918–1956 (Abridged)
 author: aleksandr-solzhenitsyn
 author_name: Aleksandr Solzhenitsyn
-date_read: "08/03/2021"
+date_read: 2021-03-08
 status: "read"
 year_published: 1973
 pages: 512

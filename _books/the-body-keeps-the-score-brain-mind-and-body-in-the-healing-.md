@@ -3,7 +3,7 @@ layout: book
 title: "The Body Keeps the Score: Brain, Mind, and Body in the Healing of Trauma"
 author: bessel-van-der-kolk
 author_name: Bessel van der Kolk
-date_read: "10/04/2024"
+date_read: 2024-04-10
 status: "read"
 year_published: 2014
 pages: 464

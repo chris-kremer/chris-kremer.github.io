@@ -3,7 +3,7 @@ layout: book
 title: "The Qur'an"
 author: anonymous
 author_name: Anonymous
-date_read: "07/04/2025"
+date_read: 2025-04-07
 status: "read"
 year_published: 632
 pages: 456

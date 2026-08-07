@@ -3,7 +3,7 @@ layout: book
 title: "The Language Instinct: How the Mind Creates Language"
 author: steven-pinker
 author_name: Steven Pinker
-date_read: "02/06/2021"
+date_read: 2021-06-02
 status: "read"
 year_published: 1994
 pages: 448

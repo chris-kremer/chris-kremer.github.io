@@ -3,7 +3,7 @@ layout: book
 title: Siddhartha
 author: hermann-hesse
 author_name: Hermann Hesse
-date_read: "25/04/2023"
+date_read: 2023-04-25
 status: "read"
 year_published: 1922
 pages: 152

@@ -3,7 +3,7 @@ layout: book
 title: "Deep Work: Rules for Focused Success in a Distracted World"
 author: cal-newport
 author_name: Cal Newport
-date_read: "17/06/2021"
+date_read: 2021-06-17
 status: "read"
 year_published: 2016
 pages: 296

@@ -3,7 +3,7 @@ layout: book
 title: "Behave: The Biology of Humans at Our Best and Worst"
 author: robert-m-sapolsky
 author_name: Robert M. Sapolsky
-date_read: "28/11/2020"
+date_read: 2020-11-28
 status: "read"
 year_published: 2017
 pages: 790

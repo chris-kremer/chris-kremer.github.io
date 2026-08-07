@@ -3,7 +3,7 @@ layout: book
 title: "Beyond Order: 12 More Rules For Life"
 author: jordan-b-peterson
 author_name: Jordan B. Peterson
-date_read: "06/03/2021"
+date_read: 2021-03-06
 status: "read"
 year_published: 2021
 pages: 382

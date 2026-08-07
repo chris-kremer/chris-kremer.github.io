@@ -3,7 +3,7 @@ layout: book
 title: The Anarchist Handbook
 author: michael-malice
 author_name: Michael Malice
-date_read: "06/05/2022"
+date_read: 2022-05-06
 status: "read"
 year_published: 2021
 pages: 367

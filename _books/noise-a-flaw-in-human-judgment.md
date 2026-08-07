@@ -3,7 +3,7 @@ layout: book
 title: "Noise: A Flaw in Human Judgment"
 author: daniel-kahneman
 author_name: Daniel Kahneman
-date_read: "15/05/2022"
+date_read: 2022-05-15
 status: "read"
 year_published: 2021
 pages: 454

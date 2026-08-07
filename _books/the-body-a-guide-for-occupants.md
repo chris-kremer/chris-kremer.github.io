@@ -3,7 +3,7 @@ layout: book
 title: "The Body: A Guide for Occupants"
 author: bill-bryson
 author_name: Bill Bryson
-date_read: "05/12/2022"
+date_read: 2022-12-05
 status: "read"
 year_published: 2019
 pages: 450

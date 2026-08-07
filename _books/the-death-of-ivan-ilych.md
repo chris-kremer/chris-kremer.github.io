@@ -3,7 +3,7 @@ layout: book
 title: The Death of Ivan Ilych
 author: leo-tolstoy
 author_name: Leo Tolstoy
-date_read: "12/01/2023"
+date_read: 2023-01-12
 status: "read"
 year_published: 1886
 pages: 86

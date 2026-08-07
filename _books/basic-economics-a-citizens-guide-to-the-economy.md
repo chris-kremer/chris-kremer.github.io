@@ -3,7 +3,7 @@ layout: book
 title: "Basic Economics: A Citizen's Guide to the Economy"
 author: thomas-sowell
 author_name: Thomas Sowell
-date_read: "06/05/2021"
+date_read: 2021-05-06
 status: "read twice"
 year_published: 2000
 pages: 448

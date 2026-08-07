@@ -3,7 +3,7 @@ layout: book
 title: "The WEIRDest People in the World: How the West Became Psychologically Peculiar and Particularly Prosperous"
 author: joseph-henrich
 author_name: Joseph Henrich
-date_read: "07/04/2025"
+date_read: 2025-04-07
 status: "read"
 year_published: 2020
 pages: 706

@@ -3,7 +3,7 @@ layout: book
 title: Meditations
 author: marcus-aurelius
 author_name: Marcus Aurelius
-date_read: "18/09/2020"
+date_read: 2020-09-18
 status: "read"
 year_published: 180
 pages: 254

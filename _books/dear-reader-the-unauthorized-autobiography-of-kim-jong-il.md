@@ -3,7 +3,7 @@ layout: book
 title: "Dear Reader: The Unauthorized Autobiography of Kim Jong Il"
 author: michael-malice
 author_name: Michael Malice
-date_read: "10/07/2024"
+date_read: 2024-07-10
 status: "read"
 year_published: 2014
 pages: 420

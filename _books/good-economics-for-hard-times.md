@@ -3,7 +3,7 @@ layout: book
 title: Good Economics for Hard Times
 author: abhijit-v-banerjee
 author_name: Abhijit V. Banerjee
-date_read: "26/05/2021"
+date_read: 2021-05-26
 status: "read twice"
 year_published: 2019
 pages: 432

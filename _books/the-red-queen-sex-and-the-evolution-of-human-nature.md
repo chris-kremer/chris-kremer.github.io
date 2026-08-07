@@ -3,7 +3,7 @@ layout: book
 title: "The Red Queen: Sex and the Evolution of Human Nature"
 author: matt-ridley
 author_name: Matt Ridley
-date_read: "11/12/2023"
+date_read: 2023-12-11
 status: "read"
 year_published: 1993
 pages: 405

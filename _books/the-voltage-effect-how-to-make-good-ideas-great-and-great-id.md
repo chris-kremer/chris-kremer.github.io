@@ -3,7 +3,7 @@ layout: book
 title: "The Voltage Effect: How to Make Good Ideas Great and Great Ideas Scale"
 author: john-a-list
 author_name: John A. List
-date_read: "03/12/2023"
+date_read: 2023-12-03
 status: "read"
 year_published: 2022
 pages: 288

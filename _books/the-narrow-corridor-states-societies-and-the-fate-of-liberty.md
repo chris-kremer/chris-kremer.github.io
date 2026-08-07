@@ -3,7 +3,7 @@ layout: book
 title: "The Narrow Corridor: States, Societies, and the Fate of Liberty"
 author: daron-acemoğlu
 author_name: Daron Acemoğlu
-date_read: "15/03/2022"
+date_read: 2022-03-15
 status: "read"
 year_published: 2019
 pages: 560

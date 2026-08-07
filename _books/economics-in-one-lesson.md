@@ -3,7 +3,7 @@ layout: book
 title: Economics in One Lesson
 author: henry-hazlitt
 author_name: Henry Hazlitt
-date_read: "19/04/2021"
+date_read: 2021-04-19
 status: "read"
 year_published: 1946
 pages: 218

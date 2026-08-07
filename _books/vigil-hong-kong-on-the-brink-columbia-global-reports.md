@@ -3,7 +3,7 @@ layout: book
 title: "Vigil: Hong Kong on the Brink (Columbia Global Reports)"
 author: jeffrey-n-wasserstrom
 author_name: Jeffrey N. Wasserstrom
-date_read: "27/03/2021"
+date_read: 2021-03-27
 status: "read"
 year_published: 2020
 pages: 112

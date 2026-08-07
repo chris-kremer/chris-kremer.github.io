@@ -29,7 +29,6 @@ github_username: chris-kremer
 # Navigation
 header_pages:
   - about.markdown
-  - writing/index.md
   - media/index.md
   - projects/index.md
 

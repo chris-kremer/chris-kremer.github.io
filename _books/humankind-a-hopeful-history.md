@@ -3,7 +3,7 @@ layout: book
 title: "Humankind: A Hopeful History"
 author: rutger-bregman
 author_name: Rutger Bregman
-date_read: "21/11/2021"
+date_read: 2021-11-21
 status: "read"
 year_published: 2019
 pages: 496

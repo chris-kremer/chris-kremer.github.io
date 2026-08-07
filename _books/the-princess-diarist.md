@@ -3,7 +3,7 @@ layout: book
 title: The Princess Diarist
 author: carrie-fisher
 author_name: Carrie Fisher
-date_read: "21/05/2021"
+date_read: 2021-05-21
 status: "read"
 year_published: 2016
 pages: 257

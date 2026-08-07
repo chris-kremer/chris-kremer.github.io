@@ -3,7 +3,7 @@ layout: book
 title: Das Kapital im 21. Jahrhundert
 author: thomas-piketty
 author_name: Thomas Piketty
-date_read: "08/08/2021"
+date_read: 2021-08-08
 status: "read"
 year_published: 2013
 pages: 816

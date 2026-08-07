@@ -2,6 +2,7 @@
 layout: page
 title: World Cup xG Analysis
 subtitle: Expected-goals summaries for complete StatsBomb World Cup data.
+featured: true
 permalink: /projects/world-cup-xg-analysis/
 ---
 

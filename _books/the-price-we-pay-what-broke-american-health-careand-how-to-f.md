@@ -3,7 +3,7 @@ layout: book
 title: "The Price We Pay: What Broke American Health Care—and How to Fix It"
 author: marty-makary
 author_name: Marty Makary
-date_read: "02/05/2024"
+date_read: 2024-05-02
 status: "read"
 year_published: 2019
 pages: 288

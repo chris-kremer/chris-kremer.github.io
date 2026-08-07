@@ -3,7 +3,7 @@ layout: book
 title: "China: The Bubble That Never Pops"
 author: thomas-orlik
 author_name: Thomas Orlik
-date_read: "26/03/2021"
+date_read: 2021-03-26
 status: "read"
 year_published: 2020
 pages: 240

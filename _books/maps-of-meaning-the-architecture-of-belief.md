@@ -3,7 +3,7 @@ layout: book
 title: "Maps of Meaning: The Architecture of Belief"
 author: jordan-b-peterson
 author_name: Jordan B. Peterson
-date_read: "01/02/2021"
+date_read: 2021-02-01
 status: "read"
 year_published: 1999
 pages: 564

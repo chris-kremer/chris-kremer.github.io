@@ -3,7 +3,7 @@ layout: book
 title: Notes from Underground
 author: fyodor-dostoevsky
 author_name: Fyodor Dostoevsky
-date_read: "16/12/2022"
+date_read: 2022-12-16
 status: "read"
 year_published: 1864
 pages: 136

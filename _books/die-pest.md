@@ -3,7 +3,7 @@ layout: book
 title: Die Pest
 author: albert-camus
 author_name: Albert Camus
-date_read: "29/03/2021"
+date_read: 2021-03-29
 status: "read"
 year_published: 1947
 pages: 349

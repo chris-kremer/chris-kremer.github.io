@@ -3,7 +3,7 @@ layout: book
 title: "Waking Up: A Guide to Spirituality Without Religion"
 author: sam-harris
 author_name: Sam Harris
-date_read: "30/03/2022"
+date_read: 2022-03-30
 status: "read"
 year_published: 2014
 pages: 256

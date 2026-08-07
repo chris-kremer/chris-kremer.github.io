@@ -3,7 +3,7 @@ layout: book
 title: "The Gene: An Intimate History"
 author: siddhartha-mukherjee
 author_name: Siddhartha Mukherjee
-date_read: "09/07/2022"
+date_read: 2022-07-09
 status: "read"
 year_published: 2016
 pages: 592

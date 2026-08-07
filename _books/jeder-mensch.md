@@ -3,7 +3,7 @@ layout: book
 title: Jeder Mensch
 author: ferdinand-von-schirach
 author_name: Ferdinand von Schirach
-date_read: "30/11/2021"
+date_read: 2021-11-30
 status: "read"
 year_published: 2021
 pages: 33

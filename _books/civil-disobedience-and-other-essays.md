@@ -3,7 +3,7 @@ layout: book
 title: Civil Disobedience and Other Essays
 author: henry-david-thoreau
 author_name: Henry David Thoreau
-date_read: "04/06/2021"
+date_read: 2021-06-04
 status: "read"
 year_published: 1866
 pages: 188

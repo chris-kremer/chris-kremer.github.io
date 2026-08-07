@@ -3,7 +3,7 @@ layout: book
 title: "The Almanack of Naval Ravikant: A Guide to Wealth and Happiness"
 author: eric-jorgenson
 author_name: Eric Jorgenson
-date_read: "03/07/2023"
+date_read: 2023-07-03
 status: "read"
 year_published: 2020
 pages: 244

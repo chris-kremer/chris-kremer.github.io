@@ -3,7 +3,7 @@ layout: book
 title: Einführung in die Allgemeine Betriebswirtschaftslehre
 author: günter-wöhe
 author_name: Günter Wöhe
-date_read: "09/08/2019"
+date_read: 2019-08-09
 status: "read"
 year_published: 1960
 pages: 0

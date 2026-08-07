@@ -3,7 +3,7 @@ layout: book
 title: "What Money Can't Buy: The Moral Limits of Markets"
 author: michael-j-sandel
 author_name: Michael J. Sandel
-date_read: "12/11/2021"
+date_read: 2021-11-12
 status: "read"
 year_published: 2012
 pages: 256

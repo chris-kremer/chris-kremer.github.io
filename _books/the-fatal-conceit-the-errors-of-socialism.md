@@ -3,7 +3,7 @@ layout: book
 title: "The Fatal Conceit: The Errors of Socialism"
 author: friedrich-a-hayek
 author_name: Friedrich A. Hayek
-date_read: "18/04/2021"
+date_read: 2021-04-18
 status: "read"
 year_published: 1988
 pages: 194

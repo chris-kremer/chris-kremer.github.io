@@ -3,7 +3,7 @@ layout: book
 title: Capital and Ideology
 author: thomas-piketty
 author_name: Thomas Piketty
-date_read: "19/10/2021"
+date_read: 2021-10-19
 status: "read"
 year_published: 2019
 pages: 1104

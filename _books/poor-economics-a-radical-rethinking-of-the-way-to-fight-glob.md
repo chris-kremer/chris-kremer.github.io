@@ -3,7 +3,7 @@ layout: book
 title: "Poor Economics: A Radical Rethinking of the Way to Fight Global Poverty"
 author: abhijit-v-banerjee
 author_name: Abhijit V. Banerjee
-date_read: "01/06/2021"
+date_read: 2021-06-01
 status: "read twice"
 year_published: 2011
 pages: 320

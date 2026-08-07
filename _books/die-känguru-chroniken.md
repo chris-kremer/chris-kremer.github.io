@@ -3,7 +3,7 @@ layout: book
 title: Die Känguru-Chroniken
 author: marc-uwe-kling
 author_name: Marc-Uwe Kling
-date_read: "01/01/2018"
+date_read: 2018-01-01
 status: "read"
 year_published: 2009
 pages: 271

@@ -3,7 +3,7 @@ layout: book
 title: "Lifespan: Why We Age―and Why We Don't Have To"
 author: david-a-sinclair
 author_name: David A. Sinclair
-date_read: "28/08/2022"
+date_read: 2022-08-28
 status: "read"
 year_published: 2019
 pages: 432

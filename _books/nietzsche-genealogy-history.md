@@ -3,7 +3,7 @@ layout: book
 title: "Nietzsche, Genealogy, History"
 author: michel-foucault
 author_name: Michel Foucault
-date_read: "19/04/2021"
+date_read: 2021-04-19
 status: "read"
 year_published: 2001
 goodreads_rating: 4

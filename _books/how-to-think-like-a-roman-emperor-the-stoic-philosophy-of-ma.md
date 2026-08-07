@@ -3,7 +3,7 @@ layout: book
 title: "How to Think Like a Roman Emperor: The Stoic Philosophy of Marcus Aurelius"
 author: donald-j-robertson
 author_name: Donald J. Robertson
-date_read: "06/07/2022"
+date_read: 2022-07-06
 status: "read"
 year_published: 2019
 pages: 304

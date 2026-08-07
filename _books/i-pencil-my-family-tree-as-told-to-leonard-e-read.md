@@ -3,7 +3,7 @@ layout: book
 title: "I, Pencil: My Family Tree As Told to Leonard E. Read"
 author: leonard-edward-read
 author_name: Leonard Edward Read
-date_read: "20/06/2021"
+date_read: 2021-06-20
 status: "read"
 year_published: 1958
 pages: 11

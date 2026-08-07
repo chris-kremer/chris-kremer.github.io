@@ -3,7 +3,7 @@ layout: book
 title: Cosmos
 author: carl-sagan
 author_name: Carl Sagan
-date_read: "28/06/2021"
+date_read: 2021-06-28
 status: "read"
 year_published: 1980
 pages: 384

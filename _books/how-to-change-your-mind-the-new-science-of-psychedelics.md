@@ -3,7 +3,7 @@ layout: book
 title: "How to Change Your Mind: The New Science of Psychedelics"
 author: michael-pollan
 author_name: Michael Pollan
-date_read: "12/02/2024"
+date_read: 2024-02-12
 status: "read"
 year_published: 2018
 pages: 480

@@ -3,7 +3,7 @@ layout: book
 title: "Unbound: How Inequality Constricts Our Economy and What We Can Do about It"
 author: heather-boushey
 author_name: Heather Boushey
-date_read: "18/11/2021"
+date_read: 2021-11-18
 status: "read"
 year_published: 2019
 pages: 304

@@ -3,7 +3,7 @@ layout: book
 title: "The Upside of Irrationality: The Unexpected Benefits of Defying Logic at Work and at Home"
 author: dan-ariely
 author_name: Dan Ariely
-date_read: "23/04/2022"
+date_read: 2022-04-23
 status: "read"
 year_published: 2010
 pages: 334

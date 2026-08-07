@@ -3,7 +3,7 @@ layout: book
 title: "Altered Traits: Science Reveals How Meditation Changes Your Mind, Brain, and Body"
 author: daniel-goleman
 author_name: Daniel Goleman
-date_read: "23/03/2021"
+date_read: 2021-03-23
 status: "read"
 year_published: 2017
 pages: 336

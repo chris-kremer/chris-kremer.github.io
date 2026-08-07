@@ -3,7 +3,7 @@ layout: book
 title: Willhelm Tell
 author: friedrich-schiller
 author_name: Friedrich Schiller
-date_read: "01/01/2020"
+date_read: 2020-01-01
 status: "read"
 year_published: 1804
 pages: 0

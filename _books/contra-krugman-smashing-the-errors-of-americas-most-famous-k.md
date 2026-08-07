@@ -3,7 +3,7 @@ layout: book
 title: "Contra Krugman: Smashing the Errors of America's Most Famous Keynesian"
 author: robert-p-murphy
 author_name: Robert P. Murphy
-date_read: "25/08/2021"
+date_read: 2021-08-25
 status: "read"
 year_published: 2018
 pages: 600

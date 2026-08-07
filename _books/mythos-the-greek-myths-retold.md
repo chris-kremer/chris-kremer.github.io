@@ -3,7 +3,7 @@ layout: book
 title: "Mythos: The Greek Myths Retold"
 author: stephen-fry
 author_name: Stephen Fry
-date_read: "31/01/2022"
+date_read: 2022-01-31
 status: "read"
 year_published: 2017
 pages: 416

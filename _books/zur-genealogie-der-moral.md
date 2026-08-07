@@ -3,7 +3,7 @@ layout: book
 title: Zur Genealogie der Moral
 author: friedrich-nietzsche
 author_name: Friedrich Nietzsche
-date_read: "29/11/2020"
+date_read: 2020-11-29
 status: "read"
 year_published: 1887
 pages: 187

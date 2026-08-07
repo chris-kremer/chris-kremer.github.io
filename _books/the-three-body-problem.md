@@ -3,7 +3,7 @@ layout: book
 title: The Three-Body Problem
 author: liu-cixin
 author_name: Liu Cixin
-date_read: "19/06/2022"
+date_read: 2022-06-19
 status: "read"
 year_published: 2006
 pages: 472

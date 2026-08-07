@@ -256,9 +256,11 @@ table {
   .eyebrow {
     font-family: $font-sc;
     font-size: 0.68rem;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: $accent;
+    margin-top: 0;
     margin-bottom: 0.75rem;
     display: block;
   }

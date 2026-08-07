@@ -3,7 +3,7 @@ layout: book
 title: Der Goldene Topf
 author: eta-hoffmann
 author_name: E.T.A. Hoffmann
-date_read: "01/01/2020"
+date_read: 2020-01-01
 status: "read"
 year_published: 1814
 pages: 94

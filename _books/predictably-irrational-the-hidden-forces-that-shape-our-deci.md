@@ -3,7 +3,7 @@ layout: book
 title: "Predictably Irrational: The Hidden Forces That Shape Our Decisions"
 author: dan-ariely
 author_name: Dan Ariely
-date_read: "11/11/2021"
+date_read: 2021-11-11
 status: "read"
 year_published: 2008
 pages: 247

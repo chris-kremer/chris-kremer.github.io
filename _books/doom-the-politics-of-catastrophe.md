@@ -3,7 +3,7 @@ layout: book
 title: "Doom: The Politics of Catastrophe"
 author: niall-ferguson
 author_name: Niall Ferguson
-date_read: "20/01/2023"
+date_read: 2023-01-20
 status: "read"
 year_published: 2021
 pages: 496

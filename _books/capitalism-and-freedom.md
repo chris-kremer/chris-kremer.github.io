@@ -3,7 +3,7 @@ layout: book
 title: Capitalism and Freedom
 author: milton-friedman
 author_name: Milton Friedman
-date_read: "08/06/2020"
+date_read: 2020-06-08
 status: "read"
 year_published: 1962
 pages: 208

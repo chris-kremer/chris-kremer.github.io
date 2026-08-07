@@ -3,7 +3,7 @@ layout: book
 title: "How Emotions Are Made: The Secret Life of the Brain"
 author: lisa-feldman-barrett
 author_name: Lisa Feldman Barrett
-date_read: "03/07/2022"
+date_read: 2022-07-03
 status: "read"
 year_published: 2017
 pages: 425

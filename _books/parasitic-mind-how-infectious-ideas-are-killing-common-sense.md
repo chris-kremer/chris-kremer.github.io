@@ -3,7 +3,7 @@ layout: book
 title: "Parasitic Mind: How Infectious Ideas Are Killing Common Sense"
 author: gad-saad
 author_name: Gad Saad
-date_read: "27/10/2021"
+date_read: 2021-10-27
 status: "read"
 year_published: 2020
 pages: 264

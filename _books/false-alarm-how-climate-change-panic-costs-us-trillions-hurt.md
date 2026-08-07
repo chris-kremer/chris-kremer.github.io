@@ -3,7 +3,7 @@ layout: book
 title: "False Alarm: How Climate Change Panic Costs Us Trillions, Hurts the Poor, and Fails to Fix the Planet"
 author: bjørn-lomborg
 author_name: Bjørn Lomborg
-date_read: "01/01/2022"
+date_read: 2022-01-01
 status: "read"
 year_published: 2020
 pages: 320

@@ -3,7 +3,7 @@ layout: book
 title: Chess Story
 author: stefan-zweig
 author_name: Stefan Zweig
-date_read: "27/03/2021"
+date_read: 2021-03-27
 status: "read"
 year_published: 1942
 pages: 104

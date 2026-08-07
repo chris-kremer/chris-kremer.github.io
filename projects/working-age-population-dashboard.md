@@ -2,6 +2,7 @@
 layout: page
 title: Working-Age Population Trajectories
 subtitle: Interactive East-West demographic scenarios
+featured: true
 description: How will the populations the US and China (with their respective allies) evolve?
 permalink: /projects/working-age-population-dashboard/
 ---

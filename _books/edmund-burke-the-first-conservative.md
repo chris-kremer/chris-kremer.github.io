@@ -3,7 +3,7 @@ layout: book
 title: "Edmund Burke: The First Conservative"
 author: jesse-norman
 author_name: Jesse Norman
-date_read: "10/03/2022"
+date_read: 2022-03-10
 status: "read"
 year_published: 2013
 pages: 336

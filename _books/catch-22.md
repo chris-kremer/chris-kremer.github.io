@@ -3,7 +3,7 @@ layout: book
 title: Catch-22
 author: joseph-heller
 author_name: Joseph Heller
-date_read: "18/03/2022"
+date_read: 2022-03-18
 status: "read"
 year_published: 1961
 pages: 453

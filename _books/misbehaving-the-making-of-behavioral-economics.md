@@ -3,7 +3,7 @@ layout: book
 title: "Misbehaving: The Making of Behavioral Economics"
 author: richard-h-thaler
 author_name: Richard H. Thaler
-date_read: "13/11/2020"
+date_read: 2020-11-13
 status: "read"
 year_published: 2016
 pages: 358

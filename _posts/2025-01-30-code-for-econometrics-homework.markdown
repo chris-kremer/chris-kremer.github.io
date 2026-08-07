@@ -2,6 +2,7 @@
 layout: post
 title: "Code for Econometrics Homework"
 date: 2025-01-30
+listed: false
 ---
 
 A minimal implementation of Ordinary Least Squares regression in R, demonstrating manual computation of coefficients, standard errors, hypothesis tests, and robust inference.

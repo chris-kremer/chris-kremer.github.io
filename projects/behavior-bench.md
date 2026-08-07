@@ -2,6 +2,7 @@
 layout: bench_page
 title: Behavior Bench (Beta)
 subtitle: How do AI models behave compared to humans?
+featured: true
 permalink: /projects/behavior-bench/
 ---
 

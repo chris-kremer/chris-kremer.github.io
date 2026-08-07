@@ -3,7 +3,7 @@ layout: book
 title: "Flow: The Psychology of Optimal Experience"
 author: mihály-csíkszentmihályi
 author_name: Mihály Csíkszentmihályi
-date_read: "15/03/2021"
+date_read: 2021-03-15
 status: "read"
 year_published: 1990
 pages: 303

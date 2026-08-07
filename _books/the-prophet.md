@@ -3,7 +3,7 @@ layout: book
 title: The Prophet
 author: kahlil-gibran
 author_name: Kahlil Gibran
-date_read: "01/08/2023"
+date_read: 2023-08-01
 status: "read"
 year_published: 1923
 pages: 127

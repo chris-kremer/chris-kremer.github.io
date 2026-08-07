@@ -3,7 +3,7 @@ layout: book
 title: "Blink: The Power of Thinking Without Thinking"
 author: malcolm-gladwell
 author_name: Malcolm Gladwell
-date_read: "20/03/2021"
+date_read: 2021-03-20
 status: "read"
 year_published: 2005
 pages: 296

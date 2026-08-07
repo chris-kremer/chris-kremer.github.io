@@ -3,7 +3,7 @@ layout: book
 title: "On Tyranny: Twenty Lessons from the Twentieth Century"
 author: timothy-snyder
 author_name: Timothy Snyder
-date_read: "01/06/2023"
+date_read: 2023-06-01
 status: "read"
 year_published: 2017
 pages: 127

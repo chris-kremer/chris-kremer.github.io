@@ -4,7 +4,7 @@ title: "The Power Broker: Robert Moses and the Fall of New York"
 author_name: Robert A. Caro
 author: robert-a-caro
 genre: Biography
-date_read: 29/12/2025
+date_read: 2025-12-29
 style: magisterial
 recommended_to: "those interested in power & ambition (and/or urban planning)"
 year_published: 1974

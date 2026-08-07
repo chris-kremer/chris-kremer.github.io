@@ -3,7 +3,7 @@ layout: book
 title: "The Elephant in the Brain: Hidden Motives in Everyday Life"
 author: kevin-simler
 author_name: Kevin Simler
-date_read: "02/11/2022"
+date_read: 2022-11-02
 status: "read"
 year_published: 2017
 pages: 408

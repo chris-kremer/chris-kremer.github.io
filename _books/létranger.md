@@ -3,7 +3,7 @@ layout: book
 title: "L'Étranger"
 author: albert-camus
 author_name: Albert Camus
-date_read: "22/02/2024"
+date_read: 2024-02-22
 status: "read"
 year_published: 1942
 pages: 184

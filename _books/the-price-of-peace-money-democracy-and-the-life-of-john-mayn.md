@@ -3,7 +3,7 @@ layout: book
 title: "The Price of Peace: Money, Democracy, and the Life of John Maynard Keynes"
 author: zachary-d-carter
 author_name: Zachary D. Carter
-date_read: "08/12/2021"
+date_read: 2021-12-08
 status: "read"
 year_published: 2020
 pages: 656

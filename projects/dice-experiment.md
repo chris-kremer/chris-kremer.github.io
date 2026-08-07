@@ -2,6 +2,7 @@
 layout: page
 title: DICE Experiment
 subtitle: Economic experiments across 33 countries.
+featured: true
 permalink: /projects/dice-experiment/
 ---
 

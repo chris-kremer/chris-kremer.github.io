@@ -3,7 +3,7 @@ layout: book
 title: "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones"
 author: james-clear
 author_name: James Clear
-date_read: "22/09/2020"
+date_read: 2020-09-22
 status: "read 3 times"
 year_published: 2018
 pages: 319

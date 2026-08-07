@@ -3,7 +3,7 @@ layout: book
 title: At the Existentialist Café
 author: sarah-bakewell
 author_name: Sarah Bakewell
-date_read: "04/12/2020"
+date_read: 2020-12-04
 status: "read twice"
 year_published: 2016
 pages: 440

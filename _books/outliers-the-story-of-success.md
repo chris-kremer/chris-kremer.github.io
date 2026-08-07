@@ -3,7 +3,7 @@ layout: book
 title: "Outliers: The Story of Success"
 author: malcolm-gladwell
 author_name: Malcolm Gladwell
-date_read: "11/12/2020"
+date_read: 2020-12-11
 status: "read"
 year_published: 2008
 pages: 309

@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Chris Kremer
+description: Economics master's student working on behavioral economics, artificial intelligence, and empirical research.
 ---
 
-Studying economics, writing about all sorts of stuff.
+Economics master's student at Humboldt-Universität zu Berlin, working on behavioral economics, artificial intelligence, and empirical research.

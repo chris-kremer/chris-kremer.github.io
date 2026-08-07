@@ -3,7 +3,7 @@ layout: book
 title: "Gott: ein Theaterstück"
 author: ferdinand-von-schirach
 author_name: Ferdinand von Schirach
-date_read: "18/03/2022"
+date_read: 2022-03-18
 status: "read"
 year_published: 2020
 pages: 153

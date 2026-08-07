@@ -3,7 +3,7 @@ layout: book
 title: Piranesi
 author: susanna-clarke
 author_name: Susanna Clarke
-date_read: "25/04/2023"
+date_read: 2023-04-25
 status: "read"
 year_published: 2020
 pages: 245

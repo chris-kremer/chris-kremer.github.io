@@ -3,7 +3,7 @@ layout: book
 title: "Antifragile: Things That Gain from Disorder"
 author: nassim-nicholas-taleb
 author_name: Nassim Nicholas Taleb
-date_read: "28/10/2021"
+date_read: 2021-10-28
 status: "read"
 year_published: 2012
 pages: 426

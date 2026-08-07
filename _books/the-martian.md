@@ -3,7 +3,7 @@ layout: book
 title: The Martian
 author: andy-weir
 author_name: Andy Weir
-date_read: "18/11/2024"
+date_read: 2024-11-18
 status: "read"
 year_published: 2011
 pages: 369

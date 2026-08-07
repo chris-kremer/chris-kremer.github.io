@@ -3,7 +3,7 @@ layout: book
 title: Crime and Punishment
 author: fyodor-dostoevsky
 author_name: Fyodor Dostoevsky
-date_read: "07/11/2020"
+date_read: 2020-11-07
 status: "read"
 year_published: 1866
 pages: 671

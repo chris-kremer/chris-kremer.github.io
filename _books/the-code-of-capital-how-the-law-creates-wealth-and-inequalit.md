@@ -3,7 +3,7 @@ layout: book
 title: "The Code of Capital: How the Law Creates Wealth and Inequality"
 author: katharina-pistor
 author_name: Katharina Pistor
-date_read: "22/07/2021"
+date_read: 2021-07-22
 status: "read"
 year_published: 2019
 pages: 320

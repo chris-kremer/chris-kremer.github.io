@@ -3,7 +3,7 @@ layout: book
 title: "The Spirit Level: Why More Equal Societies Almost Always Do Better"
 author: richard-g-wilkinson
 author_name: Richard G. Wilkinson
-date_read: "02/02/2024"
+date_read: 2024-02-02
 status: "read"
 year_published: 2009
 pages: 352

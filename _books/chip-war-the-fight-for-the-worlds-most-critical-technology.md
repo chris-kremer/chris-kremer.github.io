@@ -3,7 +3,7 @@ layout: book
 title: "Chip War: The Fight for the World's Most Critical Technology"
 author: chris-miller
 author_name: Chris Miller
-date_read: "06/04/2024"
+date_read: 2024-04-06
 status: "read"
 year_published: 2022
 pages: 431

@@ -3,7 +3,7 @@ layout: book
 title: Circe
 author: madeline-miller
 author_name: Madeline Miller
-date_read: "24/06/2021"
+date_read: 2021-06-24
 status: "read"
 year_published: 2018
 pages: 393

@@ -3,7 +3,7 @@ layout: book
 title: "The Blank Slate: The Modern Denial of Human Nature"
 author: steven-pinker
 author_name: Steven Pinker
-date_read: "04/07/2021"
+date_read: 2021-07-04
 status: "read"
 year_published: 2002
 pages: 560

@@ -3,6 +3,7 @@ layout: post
 title: "The Behavioural Economics of Artificial Agents (DRAFT)"
 date: 2024-12-01 10:00:00 +0100
 categories: Economics
+listed: false
 ---
 
 # Why should we care?

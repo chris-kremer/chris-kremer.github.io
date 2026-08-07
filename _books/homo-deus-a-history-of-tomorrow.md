@@ -3,7 +3,7 @@ layout: book
 title: "Homo Deus: A History of Tomorrow"
 author: yuval-noah-harari
 author_name: Yuval Noah Harari
-date_read: "13/01/2021"
+date_read: 2021-01-13
 status: "read"
 year_published: 2015
 pages: 450

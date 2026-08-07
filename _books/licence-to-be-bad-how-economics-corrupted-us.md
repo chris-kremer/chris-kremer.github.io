@@ -3,7 +3,7 @@ layout: book
 title: "Licence to be Bad: How Economics Corrupted Us"
 author: jonathan-aldred
 author_name: Jonathan Aldred
-date_read: "18/08/2021"
+date_read: 2021-08-18
 status: "read"
 year_published: 2019
 pages: 320

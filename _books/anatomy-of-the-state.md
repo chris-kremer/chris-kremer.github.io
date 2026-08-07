@@ -3,7 +3,7 @@ layout: book
 title: Anatomy of the State
 author: murray-n-rothbard
 author_name: Murray N. Rothbard
-date_read: "24/04/2021"
+date_read: 2021-04-24
 status: "read"
 year_published: 1974
 pages: 60

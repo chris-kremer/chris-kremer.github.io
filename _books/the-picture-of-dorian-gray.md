@@ -3,7 +3,7 @@ layout: book
 title: The Picture of Dorian Gray
 author: oscar-wilde
 author_name: Oscar Wilde
-date_read: "09/06/2021"
+date_read: 2021-06-09
 status: "read"
 year_published: 1890
 pages: 253

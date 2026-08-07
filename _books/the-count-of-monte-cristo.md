@@ -3,7 +3,7 @@ layout: book
 title: The Count of Monte Cristo
 author: alexandre-dumas
 author_name: Alexandre Dumas
-date_read: "01/01/2020"
+date_read: 2020-01-01
 status: "read"
 year_published: 1844
 pages: 1276

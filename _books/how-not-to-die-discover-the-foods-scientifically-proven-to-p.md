@@ -3,7 +3,7 @@ layout: book
 title: "How Not to Die: Discover the Foods Scientifically Proven to Prevent and Reverse Disease"
 author: michael-greger
 author_name: Michael Greger
-date_read: "03/11/2020"
+date_read: 2020-11-03
 status: "read"
 year_published: 2015
 pages: 576

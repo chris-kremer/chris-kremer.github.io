@@ -3,7 +3,7 @@ layout: book
 title: Nathan der Weise
 author: gotthold-ephraim-lessing
 author_name: Gotthold Ephraim Lessing
-date_read: "01/01/2020"
+date_read: 2020-01-01
 status: "read"
 year_published: 1779
 pages: 160

@@ -3,7 +3,7 @@ layout: book
 title: "Animal Spirits: How Human Psychology Drives the Economy, and Why It Matters for Global Capitalism"
 author: george-a-akerlof
 author_name: George A. Akerlof
-date_read: "31/05/2022"
+date_read: 2022-05-31
 status: "read"
 year_published: 2008
 pages: 248

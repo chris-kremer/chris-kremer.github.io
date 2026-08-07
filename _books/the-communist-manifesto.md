@@ -3,7 +3,7 @@ layout: book
 title: The Communist Manifesto
 author: karl-marx
 author_name: Karl Marx
-date_read: "01/01/2020"
+date_read: 2020-01-01
 status: "read"
 year_published: 1848
 pages: 288

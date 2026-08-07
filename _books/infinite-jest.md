@@ -5,7 +5,7 @@ title: Infinite Jest
 author_name: David Foster Wallace
 author: david-foster-wallace
 genre: fiction
-date_read: 12/01/2025
+date_read: 2025-01-12
 style: sharp
 recommended_to: everyone alive in the 2020s willing to take on a project and embrace it
 year_published: 1996

@@ -3,7 +3,7 @@ layout: book
 title: Golden Son
 author: pierce-brown
 author_name: Pierce Brown
-date_read: "31/01/2021"
+date_read: 2021-01-31
 status: "read"
 year_published: 2015
 pages: 466

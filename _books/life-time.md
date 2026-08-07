@@ -3,7 +3,7 @@ layout: book
 title: Life Time
 author: russell-foster
 author_name: Russell Foster
-date_read: "18/03/2024"
+date_read: 2024-03-18
 status: "read"
 year_published: 2022
 pages: 480

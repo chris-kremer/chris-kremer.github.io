@@ -3,7 +3,7 @@ layout: book
 title: The Captive Mind
 author: czesław-miłosz
 author_name: Czesław Miłosz
-date_read: "16/10/2024"
+date_read: 2024-10-16
 status: "read"
 year_published: 1953
 pages: 272

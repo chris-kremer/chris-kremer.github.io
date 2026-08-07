@@ -3,7 +3,7 @@ layout: book
 title: "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future"
 author: ashlee-vance
 author_name: Ashlee Vance
-date_read: "17/11/2020"
+date_read: 2020-11-17
 status: "read"
 year_published: 2015
 pages: 392

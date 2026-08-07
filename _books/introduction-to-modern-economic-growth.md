@@ -3,7 +3,7 @@ layout: book
 title: Introduction to Modern Economic Growth
 author: daron-acemoğlu
 author_name: Daron Acemoğlu
-date_read: "28/11/2023"
+date_read: 2023-11-28
 status: "read"
 year_published: 2008
 pages: 1008

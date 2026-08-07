@@ -3,7 +3,7 @@ layout: book
 title: Only Dull People Are Brilliant at Breakfast
 author: oscar-wilde
 author_name: Oscar Wilde
-date_read: "08/10/2021"
+date_read: 2021-10-08
 status: "read"
 year_published: 2016
 pages: 60

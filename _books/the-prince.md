@@ -3,7 +3,7 @@ layout: book
 title: The Prince
 author: niccolò-machiavelli
 author_name: Niccolò Machiavelli
-date_read: "05/01/2020"
+date_read: 2020-01-05
 status: "read"
 year_published: 1532
 pages: 144
