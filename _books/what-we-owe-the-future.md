@@ -3,14 +3,15 @@ layout: book
 title: What We Owe the Future
 author: william-macaskill
 author_name: William MacAskill
-status: "currently reading"
+status: "read"
+date_read: 2026-08-07
 year_published: 2022
 pages: 335
 goodreads_id: 59802037
 people: []
 ---
 
-Currently reading. Notes through Chapter 2.
+Finished August 7, 2026.
 
 ## Longtermism's basic case
 
@@ -53,3 +54,21 @@ My reservation is that this position can still become self-serving. It risks imp
 MacAskill appropriately raises the paradox of tolerance. Institutions committed to openness must contend with intolerant doctrines that reject pluralism and demand universal compliance. His response appears to be that this is a real problem open institutions simply have to manage rather than something with a clean theoretical solution.
 
 That is acceptable, although a proper solution would have been more impressive. Overall: not mind-blowing, but a fine and defensible treatment so far.
+
+## A much weaker ending
+
+The final part is by far the weakest. MacAskill plugs 80,000 Hours and advertises effective altruism in a way that feels more self-promotional than argumentative. Even the name bothers me: “effective altruism” seems to assume the success it is meant to demonstrate; **efficient altruism** would be a more honest description of the project.
+
+The discussion of economic growth is especially confused. MacAskill argues that growth must eventually end because the universe contains a finite number of atoms, but a few pages later acknowledges that growth is not merely physical-input accumulation and can also come through total factor productivity. The atoms argument may constrain input growth, but it does not by itself establish the end of value-producing innovation or productivity growth.
+
+The book then closes with sweeping claims that it is “almost always wrong to lie” and that violence is not the answer under uncertainty—which, on this account, is nearly always the relevant condition. These may or may not be defensible positions, but introducing them on the final page without doing the philosophical work is remarkably weak.
+
+## Solar subsidies and causal inference
+
+MacAskill also credits the German Greens and German solar subsidies with helping drive down the cost of solar panels, pointing to the fact that prices fell during the subsidy period. But solar-panel prices have fallen during essentially every period since the technology's invention. Temporal coincidence is not causal evidence, and I do not know of credible evidence supporting the strong version of this claim.
+
+That is a particularly bad look for a writer associated with rationalism and effective altruism: the argument does not meet the evidentiary standard that intellectual milieu claims to prize.
+
+## Final reaction
+
+What bothers me most is the sense of highly intelligent people finding intricate ways to feel morally superior by rationalizing away ordinary human morality. The result feels pretentious rather than clarifying. It strongly reminds me of Camus' *The Fall*: moral performance and judgment becoming a way of elevating oneself over others.
