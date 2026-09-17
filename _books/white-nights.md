@@ -20,3 +20,7 @@ A lonely young dreamer meets Nastenka, who is waiting for the man she loves to r
 ## Grand emotion on a tiny canvas
 
 It may be the most Russian thing I have read: objectively, very little happens, yet everything is rendered with enormous romantic and emotional grandeur, as if it were the most important event in the world. That disproportion could seem ridiculous, but it is also what gives the story its sweetness. A small, fleeting encounter becomes emotionally total for the people inside it.
+
+## Character and critique
+
+The story is also a surprisingly rich character study, especially of the narrator. There is real depth beneath his romantic excess, along with social commentary that never hardens into a stinging polemic. The critique feels more compassionate and ambivalent—something like “it is great, but it is terrible.” That, too, feels distinctly Russian. For such a small book, it contains a remarkable amount of character and social texture.
