@@ -3,7 +3,8 @@ layout: book
 title: Utopia
 author: thomas-more
 author_name: Thomas More
-status: "currently reading"
+status: "read"
+date_read: 2026-09-17
 year_published: 1516
 pages: 113
 goodreads_id: 18414
