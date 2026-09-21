@@ -1,0 +1,1774 @@
+{
+  "infinite-jest": {
+    "cover": "/assets/images/library/infinite-jest.jpg"
+  },
+  "project-hail-mary": {
+    "isbn": "9780593135204",
+    "cover": "/assets/images/library/9780593135204.jpg"
+  },
+  "beyond-freedom-and-dignity": {
+    "isbn": "9780872206274",
+    "cover": "/assets/images/library/9780872206274.jpg"
+  },
+  "the-importance-of-being-earnest": {
+    "isbn": "9781580495806",
+    "cover": "/assets/images/library/9781580495806.jpg"
+  },
+  "1984": {
+    "cover": "/assets/images/library/1984.jpg"
+  },
+  "the-beginning-of-infinity-explanations-that-transform-the-wo": {
+    "isbn": "9780670022755",
+    "cover": "/assets/images/library/9780670022755.jpg"
+  },
+  "abundance": {
+    "isbn": "9781668023488",
+    "cover": "/assets/images/library/9781668023488.jpg"
+  },
+  "why-nations-fail-the-origins-of-power-prosperity-and-poverty": {
+    "isbn": "9780307719218",
+    "cover": "/assets/images/library/9780307719218.jpg"
+  },
+  "piranesi": {
+    "isbn": "9781635575637",
+    "cover": "/assets/images/library/9781635575637.jpg"
+  },
+  "21-lessons-for-the-21st-century": {
+    "isbn": "9780525512172",
+    "cover": "/assets/images/library/9780525512172.jpg"
+  },
+  "altered-traits-science-reveals-how-meditation-changes-your-m": {
+    "isbn": "9780399184383",
+    "cover": "/assets/images/library/9780399184383.jpg"
+  },
+  "anarchy-state-and-utopia": {
+    "isbn": "9780465097203",
+    "cover": "/assets/images/library/9780465097203.jpg"
+  },
+  "anatomy-of-the-state": {
+    "isbn": "9781933550480",
+    "cover": "/assets/images/library/9781933550480.jpg"
+  },
+  "animal-spirits-how-human-psychology-drives-the-economy-and-w": {
+    "isbn": "9780691142333",
+    "cover": "/assets/images/library/9780691142333.jpg"
+  },
+  "antifragile-things-that-gain-from-disorder": {
+    "isbn": "9781400067824",
+    "cover": "/assets/images/library/9781400067824.jpg"
+  },
+  "arguing-with-zombies-economics-politics-and-the-fight-for-a": {
+    "isbn": "9781324005018",
+    "cover": "/assets/images/library/9781324005018.jpg"
+  },
+  "atlas-shrugged": {
+    "isbn": "9780452011878",
+    "cover": "/assets/images/library/9780452011878.jpg"
+  },
+  "basic-economics-a-citizens-guide-to-the-economy": {
+    "isbn": "9780465081455",
+    "cover": "/assets/images/library/9780465081455.jpg"
+  },
+  "beyond-order-12-more-rules-for-life": {
+    "isbn": "9780593084649",
+    "cover": "/assets/images/library/9780593084649.jpg"
+  },
+  "blink-the-power-of-thinking-without-thinking": {
+    "isbn": "9780316010665",
+    "cover": "/assets/images/library/9780316010665.jpg"
+  },
+  "brave-new-world": {
+    "isbn": "9780060929879",
+    "cover": "/assets/images/library/9780060929879.jpg"
+  },
+  "breath-the-new-science-of-a-lost-art": {
+    "isbn": "9780735213616",
+    "cover": "/assets/images/library/9780735213616.jpg"
+  },
+  "cant-hurt-me-master-your-mind-and-defy-the-odds": {
+    "isbn": "1544512260"
+  },
+  "capitalist-realism-is-there-no-alternative": {
+    "isbn": "9781846943171",
+    "cover": "/assets/images/library/9781846943171.jpg"
+  },
+  "catch-22": {
+    "isbn": "9780684833392",
+    "cover": "/assets/images/library/9780684833392.jpg"
+  },
+  "civil-disobedience-and-other-essays": {
+    "isbn": "9781420925227",
+    "cover": "/assets/images/library/9781420925227.jpg"
+  },
+  "cosmos": {
+    "isbn": "9780375508325"
+  },
+  "deep-work-rules-for-focused-success-in-a-distracted-world": {
+    "isbn": "9781455586691"
+  },
+  "die-pest": {
+    "isbn": "9783499225000"
+  },
+  "edmund-burke-the-first-conservative": {
+    "isbn": "9780465058976"
+  },
+  "emotional-intelligence-why-it-can-matter-more-than-iq": {
+    "isbn": "9780553804911"
+  },
+  "enlightenment-now-the-case-for-reason-science-humanism-and-p": {
+    "isbn": "9780525427575"
+  },
+  "genius-foods-become-smarter-happier-and-more-productive-whil": {
+    "isbn": "9780062562890"
+  },
+  "golden-son": {
+    "isbn": "9780345539823"
+  },
+  "hamlet": {
+    "isbn": "9780521618748"
+  },
+  "hidden-games-the-surprising-power-of-game-theory-to-explain": {
+    "isbn": "9781549193156"
+  },
+  "how-to-avoid-a-climate-disaster-the-solutions-we-have-and-th": {
+    "isbn": "9780241448304"
+  },
+  "i-see-satan-fall-like-lightning": {
+    "isbn": "9781570753190"
+  },
+  "influence-the-psychology-of-persuasion": {
+    "isbn": "9780061241895"
+  },
+  "invisible-women-data-bias-in-a-world-designed-for-men": {
+    "isbn": "9781419729072"
+  },
+  "lifespan-why-we-ageand-why-we-dont-have-to": {
+    "isbn": "9781501191978"
+  },
+  "mans-search-for-meaning": {
+    "isbn": "9780807014295"
+  },
+  "maps-of-meaning-the-architecture-of-belief": {
+    "isbn": "9780415922227"
+  },
+  "mindless-eating-why-we-eat-more-than-we-think": {
+    "isbn": "9780553804348"
+  },
+  "no-treason-the-constitution-of-no-authority": {
+    "isbn": "9781419137198"
+  },
+  "notes-from-underground": {
+    "isbn": "9780679734529"
+  },
+  "nudge-improving-decisions-about-health-wealth-and-happiness": {
+    "isbn": "9780143115267"
+  },
+  "poor-economics-a-radical-rethinking-of-the-way-to-fight-glob": {
+    "isbn": "9781586487980"
+  },
+  "red-rising": {
+    "isbn": "9780345539786"
+  },
+  "skin-in-the-game-the-hidden-asymmetries-in-daily-life": {
+    "isbn": "9780241300657"
+  },
+  "the-age-of-surveillance-capitalism-the-fight-for-a-human-fut": {
+    "isbn": "9781610395694"
+  },
+  "the-black-swan-the-impact-of-the-highly-improbable": {
+    "isbn": "9781400063512"
+  },
+  "the-blank-slate-the-modern-denial-of-human-nature": {
+    "isbn": "9780142003343"
+  },
+  "the-code-of-capital-how-the-law-creates-wealth-and-inequalit": {
+    "isbn": "9780691178974"
+  },
+  "the-elephant-in-the-brain-hidden-motives-in-everyday-life": {
+    "isbn": "9780190496012"
+  },
+  "the-essential-james-buchanan-essential-scholars": {
+    "isbn": "9780889756380"
+  },
+  "the-fatal-conceit-the-errors-of-socialism": {
+    "isbn": "9780226320663"
+  },
+  "the-gulag-archipelago-19181956-abridged": {
+    "isbn": "9780060007768"
+  },
+  "the-happiness-hypothesis-finding-modern-truth-in-ancient-wis": {
+    "isbn": "9780465028023"
+  },
+  "the-language-instinct-how-the-mind-creates-language": {
+    "isbn": "9780060958336"
+  },
+  "the-picture-of-dorian-gray": {
+    "isbn": "9780141439570"
+  },
+  "the-power-broker-robert-moses-and-the-fall-of-new-york": {
+    "isbn": "9780394720241"
+  },
+  "the-price-of-peace-money-democracy-and-the-life-of-john-mayn": {
+    "isbn": "9780525509035"
+  },
+  "the-republic": {
+    "isbn": "9780140449143"
+  },
+  "the-tyranny-of-merit-whats-become-of-the-common-good": {
+    "isbn": "9780241407608"
+  },
+  "the-willpower-instinct-how-self-control-works-why-it-matters": {
+    "isbn": "9781583334386"
+  },
+  "unbound-how-inequality-constricts-our-economy-and-what-we-ca": {
+    "isbn": "9780674919310"
+  },
+  "vigil-hong-kong-on-the-brink-columbia-global-reports": {
+    "isbn": "9781733623742"
+  },
+  "waking-up-a-guide-to-spirituality-without-religion": {
+    "isbn": "9781451636017"
+  },
+  "what-money-cant-buy-the-moral-limits-of-markets": {
+    "isbn": "9780374203030"
+  },
+  "zur-genealogie-der-moral": {
+    "isbn": "9783150071236"
+  },
+  "surely-youre-joking-mr-feynman-adventures-of-a-curious-chara": {
+    "isbn": "9780393355628"
+  },
+  "12-rules-for-life-an-antidote-to-chaos": {
+    "isbn": "9780345816023"
+  },
+  "a-course-in-behavioral-economics": {
+    "isbn": "9780230304543"
+  },
+  "a-farewell-to-arms": {
+    "isbn": "9780099910107"
+  },
+  "a-game-of-thrones": {
+    "isbn": "9780553588484"
+  },
+  "a-game-of-thrones-1": {
+    "isbn": "9780345536150"
+  },
+  "a-man-called-ove": {
+    "isbn": "9781476738017"
+  },
+  "a-monetary-history-of-the-united-states-1867-1960": {
+    "isbn": "9780691003542"
+  },
+  "a-random-walk-down-wall-street-the-time-tested-strategy-for": {
+    "isbn": "9781324002185"
+  },
+  "a-short-history-of-nearly-everything": {
+    "isbn": "9780767908184"
+  },
+  "a-tale-of-two-cities": {
+    "isbn": "9780141439600"
+  },
+  "a-theory-of-justice": {
+    "isbn": "9780674017726"
+  },
+  "a-theory-of-socialism-and-capitalism-economics-politics-and": {
+    "isbn": "9780898382792"
+  },
+  "a-vindication-of-the-rights-of-men": {
+    "isbn": "9781573921060"
+  },
+  "a-vindication-of-the-rights-of-woman": {
+    "isbn": "9780141441252"
+  },
+  "a-war-like-no-other-how-the-athenians-spartans-fought-the-pe": {
+    "isbn": "9780812969702"
+  },
+  "action-1893-essay-on-a-critique-of-life-and-a-science-of-pra": {
+    "isbn": "9780268021771"
+  },
+  "advanced-macroeconomics": {
+    "isbn": "9780072877304"
+  },
+  "against-intellectual-monopoly": {
+    "isbn": "9780521879286"
+  },
+  "age-later-secrets-of-the-healthiest-sharpest-centenarians": {
+    "isbn": "9781250230850"
+  },
+  "all-it-takes-is-guts-a-minority-view": {
+    "isbn": "9780895265692"
+  },
+  "an-enquiry-concerning-human-understanding": {
+    "isbn": "9781420926996"
+  },
+  "an-inquiry-into-the-nature-and-causes-of-the-wealth-of-natio": {
+    "isbn": "9780226763743"
+  },
+  "an-introduction-to-political-philosophy": {
+    "isbn": "9780199296095"
+  },
+  "analyzing-policy-choices-conflicts-and-practices-the-new-ins": {
+    "isbn": "9780393973990"
+  },
+  "anti-piketty-capital-for-the-21st-century": {
+    "isbn": "9781944424251"
+  },
+  "anxious-people": {
+    "isbn": "9781982121600"
+  },
+  "aphorismen-zur-lebensweisheit": {
+    "isbn": "9783458319238"
+  },
+  "aphorisms-on-love-and-hate": {
+    "isbn": "9780141397900"
+  },
+  "armchair-economist-economics-everyday-life": {
+    "isbn": "9780029177761"
+  },
+  "at-the-existentialist-café": {
+    "isbn": "9780701186586"
+  },
+  "bad-samaritans-the-myth-of-free-trade-and-the-secret-history": {
+    "isbn": "9781596913998"
+  },
+  "bahnwärter-thiel": {
+    "isbn": "9783150066171"
+  },
+  "barbarians-at-the-gate-the-fall-of-rjr-nabisco": {
+    "isbn": "9780060536350"
+  },
+  "bearing-false-witness-debunking-centuries-of-anti-catholic-h": {
+    "isbn": "9781599474991"
+  },
+  "behave-the-biology-of-humans-at-our-best-and-worst": {
+    "isbn": "9781594205071"
+  },
+  "being-and-nothingness": {
+    "isbn": "9780415278485"
+  },
+  "being-and-time": {
+    "isbn": "9780060638504"
+  },
+  "beyond-good-and-evil": {
+    "isbn": "9780140449235"
+  },
+  "boom-and-bust-a-global-history-of-financial-bubbles": {
+    "isbn": "9781108421256"
+  },
+  "born-a-crime-stories-from-a-south-african-childhood": {
+    "isbn": "9780385689229"
+  },
+  "bowling-alone-the-collapse-and-revival-of-american-community": {
+    "isbn": "9780743203043"
+  },
+  "breakneck-chinas-quest-to-engineer-the-future": {
+    "isbn": "9781324106036"
+  },
+  "build-baby-build-the-science-and-ethics-of-housing-regulatio": {
+    "isbn": "9781952223419"
+  },
+  "bureaucracy": {
+    "isbn": "9780910884341"
+  },
+  "candide": {
+    "isbn": "9780486266893"
+  },
+  "capital-and-ideology": {
+    "isbn": "9780674980822"
+  },
+  "capitalism-and-freedom": {
+    "isbn": "9780226264219"
+  },
+  "capitalism-socialism-and-democracy": {
+    "isbn": "9780415107624"
+  },
+  "capitalism-competition-conflict-crises": {
+    "isbn": "9780199390632"
+  },
+  "chaos-making-a-new-science": {
+    "isbn": "9780140092509"
+  },
+  "chess-story": {
+    "isbn": "9781590171691"
+  },
+  "china-the-bubble-that-never-pops": {
+    "isbn": "9780190877408"
+  },
+  "chip-war-the-fight-for-the-worlds-most-critical-technology": {
+    "isbn": "9781982172008"
+  },
+  "circe": {
+    "isbn": "9780316556347"
+  },
+  "collapse-how-societies-choose-to-fail-or-succeed": {
+    "isbn": "9780143036555"
+  },
+  "common-sense-the-rights-of-man-and-other-essential-writings": {
+    "isbn": "9780451528896"
+  },
+  "communication-with-the-spirit-world-of-god": {
+    "isbn": "9780974807331"
+  },
+  "contra-krugman-smashing-the-errors-of-americas-most-famous-k": {
+    "isbn": "9781722331795"
+  },
+  "create-your-own-economy-the-path-to-prosperity-in-a-disorder": {
+    "isbn": "9780525951230"
+  },
+  "critique-of-cynical-reason": {
+    "isbn": "9780816615865"
+  },
+  "critique-of-judgment": {
+    "isbn": "9780872200258"
+  },
+  "critique-of-practical-reason": {
+    "isbn": "9780521599627"
+  },
+  "critique-of-pure-reason": {
+    "isbn": "9780521657297"
+  },
+  "critique-of-the-gotha-program": {
+    "isbn": "9781434463098"
+  },
+  "culture-and-the-evolutionary-process": {
+    "isbn": "9780226069333"
+  },
+  "cynical-theories-how-activist-scholarship-made-everything-ab": {
+    "isbn": "9781634312028"
+  },
+  "das-globalisierungs-paradox-die-demokratie-und-die-zukunft-d": {
+    "isbn": "9783406613517"
+  },
+  "das-kapital": {
+    "isbn": "9780895267115"
+  },
+  "das-kapital-im-21-jahrhundert": {
+    "isbn": "9783406671319"
+  },
+  "das-känguru-manifest": {
+    "isbn": "9783548373836"
+  },
+  "dear-reader-the-unauthorized-autobiography-of-kim-jong-il": {
+    "isbn": "9781495283253"
+  },
+  "debt-the-first-5000-years": {
+    "isbn": "9781933633862"
+  },
+  "deep-utopia-life-and-meaning-in-a-solved-world": {
+    "isbn": "9781646871643"
+  },
+  "defending-the-undefendable": {
+    "isbn": "9780930073053"
+  },
+  "demian-die-geschichte-von-emil-sinclairs-jugend": {
+    "isbn": "9783518367063"
+  },
+  "democracy-at-work-a-cure-for-capitalism": {
+    "isbn": "9781608462476"
+  },
+  "democracy-the-god-that-failed": {
+    "isbn": "9780765808684"
+  },
+  "der-gang-vor-die-hunde": {
+    "isbn": "9783037920435"
+  },
+  "der-goldene-topf": {
+    "isbn": "9781409928256"
+  },
+  "der-großinquisitor": {
+    "isbn": "9783150062562"
+  },
+  "der-sandmann": {
+    "isbn": "9783458326342"
+  },
+  "der-sozialismus-der-zukunft": {
+    "isbn": "9783406777349"
+  },
+  "der-zerbrochne-krug": {
+    "isbn": "9783150000915"
+  },
+  "deutschland-ein-wintermärchen": {
+    "isbn": "9783938484142"
+  },
+  "die-inflation-kommt-und-wie-sie-sich-jetzt-schon-schützen-kö": {
+    "isbn": "9783862483372"
+  },
+  "die-känguru-chroniken": {
+    "isbn": "9783548372570"
+  },
+  "die-leiden-des-jungen-werther": {
+    "isbn": "9783150000670"
+  },
+  "die-räuber": {
+    "isbn": "9783150000151"
+  },
+  "die-welt-als-wille-und-vorstellung": {
+    "isbn": "9783423306713"
+  },
+  "die-wundersame-geldvermehrung-staatsverschuldung-negativzins": {
+    "isbn": "9783451825798"
+  },
+  "die-würde-ist-antastbar": {
+    "isbn": "9783492056588"
+  },
+  "discipline-and-punish-the-birth-of-the-prison": {
+    "isbn": "9780679752554"
+  },
+  "discourses-and-selected-writings": {
+    "isbn": "9780140449464"
+  },
+  "do-hard-things-why-we-get-resilience-wrong-and-the-surprisin": {
+    "isbn": "9780063098619"
+  },
+  "do-markets-corrupt-our-morals": {
+    "isbn": "9783030184155"
+  },
+  "dominion-how-the-christian-revolution-remade-the-world": {
+    "isbn": "9780465093502"
+  },
+  "dont-trust-your-gut-using-data-to-get-what-you-really-want-i": {
+    "isbn": "9780062880918"
+  },
+  "doom-the-politics-of-catastrophe": {
+    "isbn": "9780241488447"
+  },
+  "drawdown-the-most-comprehensive-plan-ever-proposed-to-revers": {
+    "isbn": "9780143130444"
+  },
+  "dune": {
+    "isbn": "9780593099322"
+  },
+  "dune-messiah": {
+    "isbn": "9780593098233"
+  },
+  "ecce-homo": {
+    "isbn": "9780140445152"
+  },
+  "economic-facts-and-fallacies": {
+    "isbn": "9780465003495"
+  },
+  "economic-theory-of-the-leisure-class": {
+    "isbn": "9780853452614"
+  },
+  "economical-writing": {
+    "isbn": "9781577660637"
+  },
+  "economics-evolving-a-history-of-economic-thought": {
+    "isbn": "9780691148427"
+  },
+  "economics-of-good-and-evil-the-quest-for-economic-meaning-fr": {
+    "isbn": "9780199767205"
+  },
+  "educated": {
+    "isbn": "9780399590504"
+  },
+  "efficiently-inefficient-how-smart-money-invests-and-market-p": {
+    "isbn": "9780691166193"
+  },
+  "ego-is-the-enemy": {
+    "isbn": "9781591847816"
+  },
+  "einführung-in-das-controlling": {
+    "isbn": "9783791015040"
+  },
+  "einführung-in-die-allgemeine-betriebswirtschaftslehre": {
+    "isbn": "9783800632541"
+  },
+  "elon-musk": {
+    "isbn": "9781982181284"
+  },
+  "elon-musk-tesla-spacex-and-the-quest-for-a-fantastic-future": {
+    "isbn": "9780062301239"
+  },
+  "emilia-galotti": {
+    "isbn": "9783150000458"
+  },
+  "empire-of-pain-the-secret-history-of-the-sackler-dynasty": {
+    "isbn": "9780385545686"
+  },
+  "end-this-depression-now": {
+    "isbn": "9780393088779"
+  },
+  "enders-game": {
+    "isbn": "9780812550702"
+  },
+  "equality-and-efficiency-the-big-tradeoff": {
+    "isbn": "9780815764755"
+  },
+  "eristische-dialektik-von": {
+    "isbn": "9781981729623"
+  },
+  "essays": {
+    "isbn": "9780140178975"
+  },
+  "essays-and-aphorisms": {
+    "isbn": "9780140442274"
+  },
+  "ethics": {
+    "isbn": "9780140435719"
+  },
+  "ethics-in-the-real-world-86-brief-essays-on-things-that-matt": {
+    "isbn": "9781925355857"
+  },
+  "evolution-of-desire-a-life-of-rené-girard-studies-in-violenc": {
+    "isbn": "9781611862836"
+  },
+  "exercised-why-something-we-never-evolved-to-do-is-healthy-an": {
+    "isbn": "9781524746988"
+  },
+  "existentialism-is-a-humanism": {
+    "isbn": "9780300115468"
+  },
+  "expressivism-pragmatism-and-representationalism": {
+    "isbn": "9781107009844"
+  },
+  "factfulness-ten-reasons-were-wrong-about-the-world-and-why-t": {
+    "isbn": "9781473637467"
+  },
+  "false-alarm-how-climate-change-panic-costs-us-trillions-hurt": {
+    "isbn": "9781541647466"
+  },
+  "faust": {
+    "isbn": "9780385031141"
+  },
+  "faust-first-part": {
+    "isbn": "9780553213485"
+  },
+  "fear-and-trembling": {
+    "isbn": "9780143037576"
+  },
+  "fight-club": {
+    "isbn": "9780393355949"
+  },
+  "first-in-his-class-a-biography-of-bill-clinton": {
+    "isbn": "9780684818900"
+  },
+  "flash-boys-a-wall-street-revolt": {
+    "isbn": "9780393351590"
+  },
+  "fooled-by-randomness-the-hidden-role-of-chance-in-life-and-i": {
+    "isbn": "9780812975215"
+  },
+  "fooling-some-of-the-people-all-of-the-time-a-long-short-and": {
+    "isbn": "9780470481547"
+  },
+  "foucaults-pendulum": {
+    "isbn": "9780156032971"
+  },
+  "freakonomics-a-rogue-economist-explores-the-hidden-side-of-e": {
+    "isbn": "9780061234002"
+  },
+  "free-will": {
+    "isbn": "9781451683400"
+  },
+  "freedom-memoirs-1954-2021": {
+    "isbn": "9781250319906"
+  },
+  "games-people-play": {
+    "isbn": "9780345032799"
+  },
+  "gaming-the-metrics-misconduct-and-manipulation-in-academic-r": {
+    "isbn": "9780262537933"
+  },
+  "gekränkte-freiheit-aspekte-des-libertären-autoritarismus": {
+    "isbn": "9783518430712"
+  },
+  "general-theory-of-employment-interest-and-money-great-minds": {
+    "isbn": "9781573921398"
+  },
+  "good-economics-for-hard-times": {
+    "isbn": "9781610399500"
+  },
+  "gorgias": {
+    "isbn": "9780140449044"
+  },
+  "gott-ein-theaterstück": {
+    "isbn": "9783630876290"
+  },
+  "governing-the-commons-the-evolution-of-institutions-for-coll": {
+    "isbn": "9780521405997"
+  },
+  "government-versus-markets-the-changing-economic-role-of-the": {
+    "isbn": "9781107096530"
+  },
+  "gravitys-rainbow": {
+    "isbn": "9780143039945"
+  },
+  "guns-germs-and-steel-the-fates-of-human-societies": {
+    "isbn": "9780739467350"
+  },
+  "gödel-escher-bach-an-eternal-golden-braid": {
+    "isbn": "9780465026562"
+  },
+  "harry-potter-and-the-goblet-of-fire": {
+    "isbn": "9780439139595"
+  },
+  "harry-potter-and-the-order-of-the-phoenix": {
+    "isbn": "9780439686525"
+  },
+  "harry-potter-and-the-prisoner-of-azkaban": {
+    "isbn": "9780439655484"
+  },
+  "harry-potter-and-the-sorcerers-stone": {
+    "isbn": "9780439554930"
+  },
+  "hayek-a-life-18991950": {
+    "isbn": "9780226816821"
+  },
+  "health-care-reform-what-it-is-why-its-necessary-how-it-works": {
+    "isbn": "9780809094622"
+  },
+  "holy-bible-new-international-version": {
+    "isbn": "9780310902713"
+  },
+  "house-of-huawei-the-secret-history-of-chinas-most-powerful-c": {
+    "isbn": "9780593544631"
+  },
+  "how-an-economy-grows-and-why-it-crashes": {
+    "isbn": "9780470526705"
+  },
+  "how-economics-can-save-the-world-simple-ideas-to-solve-our-b": {
+    "isbn": "9780241502723"
+  },
+  "how-emotions-are-made-the-secret-life-of-the-brain": {
+    "isbn": "9780544133310"
+  },
+  "how-finance-works-the-hbr-guide-to-thinking-smart-about-the": {
+    "isbn": "9781633696709"
+  },
+  "how-not-to-die-discover-the-foods-scientifically-proven-to-p": {
+    "isbn": "9781250066114"
+  },
+  "how-to-change-your-mind-the-new-science-of-psychedelics": {
+    "isbn": "9780241294222"
+  },
+  "how-to-live-a-life-of-montaigne-in-one-question-and-twenty-a": {
+    "isbn": "9780701178925"
+  },
+  "how-to-make-the-world-add-up-ten-rules-for-thinking-differen": {
+    "isbn": "9781408712245"
+  },
+  "how-to-speak-whale-the-power-and-wonder-of-listening-to-anim": {
+    "isbn": "9781538739112"
+  },
+  "human-action-a-treatise-on-economics-liberty-fund-library-of": {
+    "isbn": "9781614870265"
+  },
+  "human-capital-a-theoretical-and-empirical-analysis-with-spec": {
+    "isbn": "9780226041209"
+  },
+  "humankind-a-hopeful-history": {
+    "isbn": "9789781408892"
+  },
+  "i-am-dynamite-a-life-of-nietzsche": {
+    "isbn": "9781524760823"
+  },
+  "i-pencil-my-family-tree-as-told-to-leonard-e-read": {
+    "isbn": "9781572462090"
+  },
+  "illustrations-of-political-economy-selected-tales-broadview": {
+    "isbn": "9781551114415"
+  },
+  "imperialism-the-highest-stage-of-capitalism": {
+    "isbn": "9780745310350"
+  },
+  "in-a-different-voice-psychological-theory-and-womens-develop": {
+    "isbn": "9780674445444"
+  },
+  "in-die-sonne-schauen-wie-man-die-angst-vor-dem-tod-überwinde": {
+    "isbn": "9783442738380"
+  },
+  "inferno": {
+    "isbn": "9780812970067"
+  },
+  "inflation-reduction-act-of-2022-with-amendments": {
+    "isbn": "9798360698036"
+  },
+  "introduction-to-modern-economic-growth": {
+    "isbn": "9780691132921"
+  },
+  "irrational-exuberance": {
+    "isbn": "9780767923637"
+  },
+  "is-behavioral-economics-doomed-the-ordinary-versus-the-extra": {
+    "isbn": "9781906924928"
+  },
+  "jeder-mensch": {
+    "isbn": "9783641283742"
+  },
+  "judgement-in-managerial-decision-making": {
+    "isbn": "9780471859710"
+  },
+  "jugend-ohne-gott": {
+    "isbn": "9783518388747"
+  },
+  "jump-starting-america-how-breakthrough-science-can-revive-ec": {
+    "isbn": "9781541762480"
+  },
+  "justice-whats-the-right-thing-to-do": {
+    "isbn": "9780374180652"
+  },
+  "karl-marx": {
+    "isbn": "9781841151144"
+  },
+  "keynes-hayek-the-clash-that-defined-modern-economics": {
+    "isbn": "9780393343632"
+  },
+  "knowledge-and-decisions": {
+    "isbn": "9780465037384"
+  },
+  "létranger": {
+    "isbn": "9782070360024"
+  },
+  "labor-econ-versus-the-world-essays-on-the-worlds-greatest-ma": {
+    "isbn": "9798785872868"
+  },
+  "land-is-a-big-deal-why-rent-is-too-high-wages-too-low-and-wh": {
+    "isbn": "9798985322521"
+  },
+  "letter-to-a-christian-nation": {
+    "isbn": "9780307265777"
+  },
+  "letters-from-a-stoic": {
+    "isbn": "9780140442106"
+  },
+  "letters-to-a-young-contrarian": {
+    "isbn": "9780465030330"
+  },
+  "leviathan": {
+    "isbn": "9780140431957"
+  },
+  "liars-poker": {
+    "isbn": "9780393338690"
+  },
+  "liberalismus": {
+    "isbn": "9783883454283"
+  },
+  "licence-to-be-bad-how-economics-corrupted-us": {
+    "isbn": "9780241325438"
+  },
+  "life-time": {
+    "isbn": "9780241529300"
+  },
+  "lock-in": {
+    "isbn": "9780765375865"
+  },
+  "lord-of-the-flies": {
+    "isbn": "9780140283334"
+  },
+  "lucian-vi-how-to-write-history-the-dipsads-saturnalia-herodo": {
+    "isbn": "9780674994744"
+  },
+  "macbeth": {
+    "isbn": "9780743477109"
+  },
+  "madness-and-civilization-a-history-of-insanity-in-the-age-of": {
+    "isbn": "9780679721109"
+  },
+  "man-economy-and-state-power-and-market-government-and-econom": {
+    "isbn": "9780945466307"
+  },
+  "maos-great-famine-the-history-of-chinas-most-devastating-cat": {
+    "isbn": "9780747595083"
+  },
+  "martin-heidegger-between-good-and-evil": {
+    "isbn": "9780674387102"
+  },
+  "marx-wagner-nietzsche-welt-im-umbruch": {
+    "isbn": "9783737101059"
+  },
+  "massenpsychologie-und-ich-analyse-german-edition": {
+    "isbn": "9783954550791"
+  },
+  "master-of-the-senate": {
+    "isbn": "9780394720951"
+  },
+  "means-of-ascent": {
+    "isbn": "9780679733713"
+  },
+  "meditationen": {
+    "isbn": "9783787318865"
+  },
+  "meditations": {
+    "isbn": "9780140449334"
+  },
+  "metaphysics": {
+    "isbn": "9781888009033"
+  },
+  "microfoundations-and-macroeconomics-routledge-foundations-of": {
+    "isbn": "9780415197625"
+  },
+  "middlemarch": {
+    "isbn": "9780451529176"
+  },
+  "misbehaving-the-making-of-behavioral-economics": {
+    "isbn": "9780393352795"
+  },
+  "misunderstandings-false-beliefs-in-communication": {
+    "isbn": "9781783740512"
+  },
+  "mockingjay": {
+    "isbn": "9780439023511"
+  },
+  "modern-man-in-search-of-a-soul": {
+    "isbn": "9780156612067"
+  },
+  "moneyball": {
+    "isbn": "9780393324815"
+  },
+  "morning-star": {
+    "isbn": "9780345539847"
+  },
+  "murder-on-the-orient-express": {
+    "isbn": "9780007119318"
+  },
+  "my-own-life": {
+    "isbn": "9781616409616"
+  },
+  "mythos-the-greek-myths-retold": {
+    "isbn": "9780718188726"
+  },
+  "naked-statistics-stripping-the-dread-from-the-data": {
+    "isbn": "9780393347777"
+  },
+  "napoleon-a-life": {
+    "isbn": "9780670025329"
+  },
+  "narendra-modi-a-political-biography": {
+    "isbn": "9789351362180"
+  },
+  "neuroeconomics-decision-making-and-the-brain": {
+    "isbn": "9780123741769"
+  },
+  "never-split-the-difference-negotiating-as-if-your-life-depen": {
+    "isbn": "9780062407801"
+  },
+  "nietzsche-philosopher-psychologist-antichrist": {
+    "isbn": "9780691019833"
+  },
+  "no-rules-rules-netflix-and-the-culture-of-reinvention": {
+    "isbn": "9780593152386"
+  },
+  "noise-a-flaw-in-human-judgment": {
+    "isbn": "9780316451406"
+  },
+  "on-liberty-and-other-essays": {
+    "isbn": "9780192833846"
+  },
+  "on-practice-and-contradiction-revolutions": {
+    "isbn": "9781844675876"
+  },
+  "on-task-how-our-brain-gets-things-done": {
+    "isbn": "9780691175553"
+  },
+  "on-the-heights-of-despair": {
+    "isbn": "9780226106717"
+  },
+  "on-tyranny-twenty-lessons-from-the-twentieth-century": {
+    "isbn": "9780804190114"
+  },
+  "on-war": {
+    "isbn": "9780691018546"
+  },
+  "open-borders-the-science-and-ethics-of-immigration": {
+    "isbn": "9781250316967"
+  },
+  "operations-management-2": {
+    "isbn": "9780073377841"
+  },
+  "operations-management": {
+    "isbn": "9781260547610"
+  },
+  "organisation-und-koordination-eine-ökonomische-einführung-ge": {
+    "isbn": "9783834913876"
+  },
+  "outliers-the-story-of-success": {
+    "isbn": "9780316017923"
+  },
+  "outlive-the-science-art-of-longevity": {
+    "isbn": "9780593236598"
+  },
+  "paradise-lost": {
+    "isbn": "9780140424393"
+  },
+  "parasitic-mind-how-infectious-ideas-are-killing-common-sense": {
+    "isbn": "9789369521951"
+  },
+  "parmenides": {
+    "isbn": "9780941051965"
+  },
+  "peak-performance-elevate-your-game-avoid-burnout-and-thrive": {
+    "isbn": "9781623367930"
+  },
+  "peddling-prosperity-economic-sense-and-nonsense-in-an-age-of": {
+    "isbn": "9780393312928"
+  },
+  "permanent-record": {
+    "isbn": "9781250237231"
+  },
+  "phenomenology-of-perception": {
+    "isbn": "9780415278416"
+  },
+  "phenomenology-of-spirit": {
+    "isbn": "9780198245971"
+  },
+  "philosophical-investigations": {
+    "isbn": "9780631231271"
+  },
+  "plato-and-the-nerd-the-creative-partnership-of-humans-and-te": {
+    "isbn": "9780262036481"
+  },
+  "please-dont-say-youre-sorry-an-empowering-perspective-on-mar": {
+    "isbn": "9781637630815"
+  },
+  "politics": {
+    "isbn": "9780486414249"
+  },
+  "politics-murder-and-love-in-stalins-kremlin-the-story-of-nik": {
+    "isbn": "9780817910358"
+  },
+  "politische-ökonomie-der-finanzmärkte": {
+    "isbn": "9783879757367"
+  },
+  "power-and-progress-our-thousand-year-struggle-over-technolog": {
+    "isbn": "9781668626405"
+  },
+  "prediction-machines-the-simple-economics-of-artificial-intel": {
+    "isbn": "9781633695689"
+  },
+  "priced-out-the-economic-and-ethical-costs-of-american-health": {
+    "isbn": "9780691192178"
+  },
+  "pride-and-prejudice": {
+    "isbn": "9781441341709"
+  },
+  "principles-for-dealing-with-the-changing-world-order-why-nat": {
+    "isbn": "9781982160272"
+  },
+  "principles-of-economics": {
+    "isbn": "9780814753804"
+  },
+  "principles-of-synthetic-intelligence-psi-an-architecture-of": {
+    "isbn": "9780195370676"
+  },
+  "principles-life-and-work": {
+    "isbn": "9781508243243"
+  },
+  "principles-your-guided-journal-create-your-own-principles-to": {
+    "isbn": "9781668010198"
+  },
+  "progress-and-poverty-an-inquiry-in-the-cause-of-industrial-d": {
+    "isbn": "9780911312584"
+  },
+  "psychological-types": {
+    "isbn": "9780691018133"
+  },
+  "qualityland": {
+    "isbn": "9783550050237"
+  },
+  "quiet-the-power-of-introverts-in-a-world-that-cant-stop-talk": {
+    "isbn": "9780307352149"
+  },
+  "quotations-from-chairman-mao-tsetung": {
+    "isbn": "9780835123884"
+  },
+  "range-why-generalists-triumph-in-a-specialized-world": {
+    "isbn": "9780735214484"
+  },
+  "ready-player-one": {
+    "isbn": "9780307887436"
+  },
+  "reagan-the-life": {
+    "isbn": "9780385536394"
+  },
+  "red-famine-stalins-war-on-ukraine": {
+    "isbn": "9780771009303"
+  },
+  "reflections-on-the-revolution-in-france": {
+    "isbn": "9780192839787"
+  },
+  "reform-or-revolution": {
+    "isbn": "9780873483032"
+  },
+  "reinventing-the-bazaar-a-natural-history-of-markets": {
+    "isbn": "9780393323719"
+  },
+  "romeo-und-julia-auf-dem-dorfe": {
+    "isbn": "9783150061725"
+  },
+  "same-as-ever-a-guide-to-what-never-changes": {
+    "isbn": "9780593332702"
+  },
+  "samuelson-friedman-the-battle-over-the-free-market": {
+    "isbn": "9780393285185"
+  },
+  "saving-capitalism-from-the-capitalists-how-open-financial-ma": {
+    "isbn": "9780712621311"
+  },
+  "schopenhauer-die-kunst-recht-zu-behalten-eristische-dialekti": {
+    "isbn": "9783954185009"
+  },
+  "selfish-reasons-to-have-more-kids-why-being-a-great-parent-i": {
+    "isbn": "9780465018673"
+  },
+  "shadowplay-behind-the-lines-and-under-fire-the-inside-story": {
+    "isbn": "9781783964451"
+  },
+  "shoe-dog-a-memoir-by-the-creator-of-nike": {
+    "isbn": "9781501135910"
+  },
+  "six-easy-pieces-six-not-so-easy-pieces": {
+    "isbn": "9780738206509"
+  },
+  "skyward": {
+    "isbn": "9781473217850"
+  },
+  "social-choice-and-individual-values": {
+    "isbn": "9780300013641"
+  },
+  "socialism-an-economic-and-sociological-analysis": {
+    "isbn": "9780913966631"
+  },
+  "spiritual-enlightenment-the-damnedest-thing": {
+    "isbn": "9780971435230"
+  },
+  "stakeholder-capitalism-a-global-economy-that-works-for-progr": {
+    "isbn": "9781119756149"
+  },
+  "stalin-paradoxes-of-power-1878-1928": {
+    "isbn": "9781594203794"
+  },
+  "stalin-waiting-for-hitler-1929-1941": {
+    "isbn": "9781594203800"
+  },
+  "steppenwolf": {
+    "isbn": "9780140282580"
+  },
+  "steve-jobs": {
+    "isbn": "9781451648539"
+  },
+  "stolen-focus-why-you-cant-pay-attention-and-how-to-think-dee": {
+    "isbn": "9780593138519"
+  },
+  "strangers-to-ourselves-discovering-the-adaptive-unconscious": {
+    "isbn": "9780674013827"
+  },
+  "superfreakonomics-global-cooling-patriotic-prostitutes-and-w": {
+    "isbn": "9780060889579"
+  },
+  "superintelligence-paths-dangers-strategies": {
+    "isbn": "9780199678112"
+  },
+  "talmud": {
+    "isbn": "8613004105"
+  },
+  "tao-te-ching": {
+    "isbn": "9780679724346"
+  },
+  "that-which-is-seen-and-that-which-is-not-seen-the-unintended": {
+    "isbn": "9781600967061"
+  },
+  "the-48-laws-of-power": {
+    "isbn": "9780140280197"
+  },
+  "the-adventures-of-tom-sawyer": {
+    "isbn": "9780143039563"
+  },
+  "the-affluent-society": {
+    "isbn": "9780140285192"
+  },
+  "the-age-of-acrimony-how-americans-fought-to-fix-their-democr": {
+    "isbn": "9781635574623"
+  },
+  "the-age-of-em-work-love-and-life-when-robots-rule-the-earth": {
+    "isbn": "9780198754626"
+  },
+  "the-age-of-insight-the-quest-to-understand-the-unconscious-i": {
+    "isbn": "9781400068715"
+  },
+  "the-alchemy-of-finance-wiley-investment-classics": {
+    "isbn": "9780471445494"
+  },
+  "the-almanack-of-naval-ravikant-a-guide-to-wealth-and-happine": {
+    "isbn": "9781544514208"
+  },
+  "the-analects": {
+    "isbn": "9780140443486"
+  },
+  "the-anti-christ": {
+    "isbn": "9781421270531"
+  },
+  "the-anxious-generation-how-the-great-rewiring-of-childhood-c": {
+    "isbn": "9780593655030"
+  },
+  "the-art-of-living-the-classical-manual-on-virtue-happiness-a": {
+    "isbn": "9780062513465"
+  },
+  "the-ascent-of-money-a-financial-history-of-the-world": {
+    "isbn": "9781594201929"
+  },
+  "the-battle-of-the-labyrinth": {
+    "isbn": "9781423101468"
+  },
+  "the-bed-of-procrustes-philosophical-and-practical-aphorisms": {
+    "isbn": "9781400069972"
+  },
+  "the-better-angels-of-our-nature-why-violence-has-declined": {
+    "isbn": "9780143122012"
+  },
+  "the-big-short-inside-the-doomsday-machine-2": {
+    "isbn": "9780393072235"
+  },
+  "the-big-short-inside-the-doomsday-machine": {
+    "isbn": "9780393353150"
+  },
+  "the-birth-of-tragedy": {
+    "isbn": "9780140433395"
+  },
+  "the-black-tulip": {
+    "isbn": "9780140448924"
+  },
+  "the-blind-watchmaker-why-the-evidence-of-evolution-reveals-a": {
+    "isbn": "9780141026169"
+  },
+  "the-body-keeps-the-score-brain-mind-and-body-in-the-healing": {
+    "isbn": "9780670785933"
+  },
+  "the-body-a-guide-for-occupants": {
+    "isbn": "9780385539302"
+  },
+  "the-bond-king-how-one-man-made-a-market-built-an-empire-and": {
+    "isbn": "9781250120847"
+  },
+  "the-brothers-karamazov": {
+    "isbn": "9780140449242"
+  },
+  "the-captive-mind": {
+    "isbn": "9780679728566"
+  },
+  "the-case-against-education-why-the-education-system-is-a-was": {
+    "isbn": "9780691174655"
+  },
+  "the-case-against-reality-why-evolution-hid-the-truth-from-ou": {
+    "isbn": "9780393254693"
+  },
+  "the-castle": {
+    "isbn": "9780805211061"
+  },
+  "the-challenge-of-affluence-self-control-and-well-being-in-th": {
+    "isbn": "9780198208532"
+  },
+  "the-coddling-of-the-american-mind-how-good-intentions-and-ba": {
+    "isbn": "9780735224902"
+  },
+  "the-communist-manifesto": {
+    "isbn": "9780140447576"
+  },
+  "the-complacent-class-the-self-defeating-quest-for-the-americ": {
+    "isbn": "9781250108692"
+  },
+  "the-compleat-strategyst-complete-strategist-being-a-primer-o": {
+    "isbn": "9780070703964"
+  },
+  "the-concept-of-the-political": {
+    "isbn": "9780226738864"
+  },
+  "the-conscience-of-a-liberal": {
+    "isbn": "9780393060690"
+  },
+  "the-constitution-of-liberty": {
+    "isbn": "9780226320847"
+  },
+  "the-cost-of-sexism-how-the-economy-is-built-for-men-and-why": {
+    "isbn": "9780571374595"
+  },
+  "the-count-of-monte-cristo": {
+    "isbn": "9780140449266"
+  },
+  "the-creative-act-a-way-of-being": {
+    "isbn": "9780593652886"
+  },
+  "the-crisis-of-culture-identity-politics-and-the-empire-of-no": {
+    "isbn": "9781805261346"
+  },
+  "the-crucible": {
+    "isbn": "9780142437339"
+  },
+  "the-declaration-of-independence-the-constitution-of-the-unit": {
+    "isbn": "9780553214826"
+  },
+  "the-deficit-myth-modern-monetary-theory-and-the-birth-of-the": {
+    "isbn": "9781541736184"
+  },
+  "the-diamond-age-or-a-young-ladys-illustrated-primer": {
+    "isbn": "9780553380965"
+  },
+  "the-disappearance-of-rituals-a-topology-of-the-present": {
+    "isbn": "9781509542758"
+  },
+  "the-discovery-of-freedom-mans-struggle-against-authority": {
+    "isbn": "9780930073008"
+  },
+  "the-divine-comedy-inferno-purgatorio-paradiso": {
+    "isbn": "9780679433132"
+  },
+  "the-diviners": {
+    "isbn": "9780226469355"
+  },
+  "the-end-of-everything-how-wars-descend-into-annihilation": {
+    "isbn": "9781541673526"
+  },
+  "the-end-of-history-and-the-last-man": {
+    "isbn": "9780743284554"
+  },
+  "the-end-of-the-world-is-just-the-beginning-mapping-the-colla": {
+    "isbn": "9780063230477"
+  },
+  "the-essential-milton-friedman-essential-scholars": {
+    "isbn": "9780889755420"
+  },
+  "the-essential-women-of-liberty-essential-scholars": {
+    "isbn": "9780889756816"
+  },
+  "the-ethics-of-ambiguity": {
+    "isbn": "9780806501604"
+  },
+  "the-euro-trap-on-bursting-bubbles-budgets-and-beliefs": {
+    "isbn": "9780198702139"
+  },
+  "the-euro-how-a-common-currency-threatens-the-future-of-europ": {
+    "isbn": "9780393254020"
+  },
+  "the-evolution-of-cooperation": {
+    "isbn": "9780465005642"
+  },
+  "the-failure-of-the-new-economics": {
+    "isbn": "9781933550114"
+  },
+  "the-fall-vintage-international": {
+    "isbn": "9780679720225"
+  },
+  "the-fama-portfolio-selected-papers-of-eugene-f-fama": {
+    "isbn": "9780226426846"
+  },
+  "the-federalist-papers": {
+    "isbn": "9781542099424"
+  },
+  "the-fellowship-of-the-ring": {
+    "isbn": "9780618346257"
+  },
+  "the-feynman-lectures-on-physics": {
+    "isbn": "9780805390452"
+  },
+  "the-future-is-degrowth-a-guide-to-a-world-beyond-capitalism": {
+    "isbn": "9781839765841"
+  },
+  "the-great-gatsby": {
+    "isbn": "9780743273565"
+  },
+  "the-great-rebalancing-trade-conflict-and-the-perilous-road-a": {
+    "isbn": "9780691158686"
+  },
+  "the-great-stagnation-how-america-ate-all-the-low-hanging-fru": {
+    "isbn": "9781101502259"
+  },
+  "the-green-paradox-a-supply-side-approach-to-global-warming-m": {
+    "isbn": "9780262016681"
+  },
+  "the-hard-thing-about-hard-things-building-a-business-when-th": {
+    "isbn": "9780062273208"
+  },
+  "the-hill-we-climb-an-inaugural-poem-for-the-country": {
+    "isbn": "9780593465271"
+  },
+  "the-history-of-sexuality-volume-1-an-introduction": {
+    "isbn": "9780679724698"
+  },
+  "the-hunger-games": {
+    "isbn": "9780439023481"
+  },
+  "the-idiot": {
+    "isbn": "9780679642428"
+  },
+  "the-iliad": {
+    "isbn": "9780140275360"
+  },
+  "the-infidel-and-the-professor-david-hume-adam-smith-and-the": {
+    "isbn": "9780691177014"
+  },
+  "the-interpretation-of-dreams": {
+    "isbn": "9781566195768"
+  },
+  "the-last-olympian": {
+    "isbn": "9781423101475"
+  },
+  "the-law": {
+    "isbn": "9781933550145"
+  },
+  "the-laws-of-medicine-field-notes-from-an-uncertain-science-t": {
+    "isbn": "9781476784847"
+  },
+  "the-lightning-thief": {
+    "isbn": "9780786838653"
+  },
+  "the-limits-to-growth": {
+    "isbn": "9780451057679"
+  },
+  "the-limits-to-growth-revisited-energy-analysis": {
+    "isbn": "9781441994158"
+  },
+  "the-little-book-of-stoicism-timeless-wisdom-to-gain-resilien": {
+    "isbn": "9783952506912"
+  },
+  "the-little-prince": {
+    "isbn": "9780152023980"
+  },
+  "the-logic-of-scientific-discovery": {
+    "isbn": "9780415278447"
+  },
+  "the-lord-of-the-rings": {
+    "isbn": "9780618640157"
+  },
+  "the-machiavellians-defenders-of-freedom": {
+    "isbn": "9780895267856"
+  },
+  "the-man-from-the-future-the-visionary-life-of-john-von-neuma": {
+    "isbn": "9780241398852"
+  },
+  "the-man-who-solved-the-market-how-jim-simons-launched-the-qu": {
+    "isbn": "9780241309728"
+  },
+  "the-mars-project": {
+    "isbn": "9780252062278"
+  },
+  "the-martian": {
+    "isbn": "9780804139021"
+  },
+  "the-master-and-margarita": {
+    "isbn": "9780679760801"
+  },
+  "the-merchant-of-venice": {
+    "isbn": "9780743477567"
+  },
+  "the-metamorphosis": {
+    "isbn": "9780553213690"
+  },
+  "the-metamorphosis-of-prime-intellect": {
+    "isbn": "9781411602199"
+  },
+  "the-mind-illuminated-a-complete-meditation-guide-integrating": {
+    "isbn": "9780990847700"
+  },
+  "the-molecule-of-more-how-a-single-chemical-in-your-brain-dri": {
+    "isbn": "9781946885111"
+  },
+  "the-most-good-you-can-do-how-effective-altruism-is-changing": {
+    "isbn": "9780300180275"
+  },
+  "the-myth-of-sisyphus": {
+    "isbn": "9780141182001"
+  },
+  "the-myth-of-the-rational-voter-why-democracies-choose-bad-po": {
+    "isbn": "9780691129426"
+  },
+  "the-name-of-the-rose": {
+    "isbn": "9780156001311"
+  },
+  "the-new-right-a-journey-to-the-fringe-of-american-politics": {
+    "isbn": "9781250154668"
+  },
+  "the-nicomachean-ethics": {
+    "isbn": "9780140449495"
+  },
+  "the-old-man-and-the-sea": {
+    "isbn": "9780684830490"
+  },
+  "the-open-society-and-its-enemies-volume-one-the-spell-of-pla": {
+    "isbn": "9780691019680"
+  },
+  "the-origin-of-consciousness-in-the-breakdown-of-the-bicamera": {
+    "isbn": "9780618057078"
+  },
+  "the-origins-of-money": {
+    "isbn": "9781933550596"
+  },
+  "the-origins-of-political-order-from-prehuman-times-to-the-fr": {
+    "isbn": "9780374227340"
+  },
+  "the-origins-of-virtue-human-instincts-and-the-evolution-of-c": {
+    "isbn": "9780140264456"
+  },
+  "the-paper-menagerie-and-other-stories": {
+    "isbn": "9781481442541"
+  },
+  "the-passage-of-power": {
+    "isbn": "9780679405078"
+  },
+  "the-path-to-power": {
+    "isbn": "9780679729457"
+  },
+  "the-physics-of-climate-change": {
+    "isbn": "9781642938166"
+  },
+  "the-political-economy-of-education-implications-for-growth-a": {
+    "isbn": "9780262072564"
+  },
+  "the-politics-and-economics-of-the-transition-period": {
+    "isbn": "9780415313100"
+  },
+  "the-price-of-inequality-how-todays-divided-society-endangers": {
+    "isbn": "9780393345063"
+  },
+  "the-price-we-pay-what-broke-american-health-careand-how-to-f": {
+    "isbn": "9781635574111"
+  },
+  "the-prince": {
+    "isbn": "9780937832387"
+  },
+  "the-princess-diarist": {
+    "isbn": "9780399173592"
+  },
+  "the-prize-the-epic-quest-for-oil-money-and-power": {
+    "isbn": "9780671799328"
+  },
+  "the-problem-with-socialism": {
+    "isbn": "9781621575894"
+  },
+  "the-profit-paradox-how-thriving-firms-threaten-the-future-of": {
+    "isbn": "9780691214474"
+  },
+  "the-prophet": {
+    "isbn": "9780001000391"
+  },
+  "the-protestant-ethic-and-the-spirit-of-capitalism": {
+    "isbn": "9780486427034"
+  },
+  "the-psychedelic-explorers-guide-safe-therapeutic-and-sacred": {
+    "isbn": "9781594774027"
+  },
+  "the-psychology-of-intelligence": {
+    "isbn": "9780415254014"
+  },
+  "the-quran": {
+    "isbn": "9780140449204"
+  },
+  "the-rational-optimist-how-prosperity-evolves": {
+    "isbn": "9780061452055"
+  },
+  "the-rebel": {
+    "isbn": "9780679733843"
+  },
+  "the-red-book-liber-novus": {
+    "isbn": "9780393065671"
+  },
+  "the-red-queen-sex-and-the-evolution-of-human-nature": {
+    "isbn": "9780060556570"
+  },
+  "the-revolution-betrayed": {
+    "isbn": "9780486433981"
+  },
+  "the-road-to-serfdom": {
+    "isbn": "9780226320618"
+  },
+  "the-road-to-unfreedom-russia-europe-america": {
+    "isbn": "9780525574460"
+  },
+  "the-sea-of-monsters": {
+    "isbn": "9780786856862"
+  },
+  "the-secret-of-our-success-how-culture-is-driving-human-evolu": {
+    "isbn": "9780691166858"
+  },
+  "the-selfish-gene": {
+    "isbn": "9780199291151"
+  },
+  "the-signal-and-the-noise-why-so-many-predictions-failbut-som": {
+    "isbn": "9781594204111"
+  },
+  "the-singularity-is-near-when-humans-transcend-biology": {
+    "isbn": "9780143037880"
+  },
+  "the-snows-of-kilimanjaro-and-other-stories": {
+    "isbn": "9780684862217"
+  },
+  "the-song-of-the-cell-an-exploration-of-medicine-and-the-new": {
+    "isbn": "9781982117351"
+  },
+  "the-sovereign-individual-mastering-the-transition-to-the-inf": {
+    "isbn": "9780684832722"
+  },
+  "the-spirit-level-why-more-equal-societies-almost-always-do-b": {
+    "isbn": "9781846140396"
+  },
+  "the-state-and-revolution": {
+    "isbn": "9781419183478"
+  },
+  "the-symposium": {
+    "isbn": "9780140449273"
+  },
+  "the-theory-of-money-and-credit": {
+    "isbn": "9780913966709"
+  },
+  "the-theory-of-moral-sentiments": {
+    "isbn": "9780486452913"
+  },
+  "the-tortoise-and-the-hare": {
+    "isbn": "9780860682721"
+  },
+  "the-trial-and-death-of-socrates-euthyphro-apology-crito-phae": {
+    "isbn": "9780872205543"
+  },
+  "the-two-towers": {
+    "isbn": "9780618346264"
+  },
+  "the-two-parent-privilege-how-americans-stopped-getting-marri": {
+    "isbn": "9780226818115"
+  },
+  "the-undiscovered-self": {
+    "isbn": "9780451217325"
+  },
+  "the-undoing-project-a-friendship-that-changed-our-minds": {
+    "isbn": "9780393354775"
+  },
+  "the-unincorporated-man": {
+    "isbn": "9780765318992"
+  },
+  "the-upside-of-inequality-how-good-intentions-undermine-the-m": {
+    "isbn": "9781595231239"
+  },
+  "the-upside-of-irrationality-the-unexpected-benefits-of-defyi": {
+    "isbn": "9780061995033"
+  },
+  "the-value-of-a-whale-on-the-illusions-of-green-capitalism": {
+    "isbn": "9781526162632"
+  },
+  "the-vital-question-energy-evolution-and-the-origins-of-compl": {
+    "isbn": "9780393352979"
+  },
+  "the-voltage-effect-how-to-make-good-ideas-great-and-great-id": {
+    "isbn": "9780593239483"
+  },
+  "the-war-on-prices-how-popular-misconceptions-about-inflation": {
+    "isbn": "9781952223877"
+  },
+  "the-weirdest-people-in-the-world-how-the-west-became-psychol": {
+    "isbn": "9780374710453"
+  },
+  "the-world-as-will-and-representation-volume-i": {
+    "isbn": "9780486217611"
+  },
+  "the-world-for-sale-money-power-and-the-traders-who-barter-th": {
+    "isbn": "9781847942661"
+  },
+  "the-world-of-yesterday": {
+    "isbn": "9780803252240"
+  },
+  "the-worldly-philosophers": {
+    "isbn": "9780684862149"
+  },
+  "the-worm-at-the-core-on-the-role-of-death-in-life": {
+    "isbn": "9781400067473"
+  },
+  "the-yellow-wall-paper": {
+    "isbn": "9781558611580"
+  },
+  "theory-of-games-and-economic-behavior": {
+    "isbn": "9780691130613"
+  },
+  "think-again-the-power-of-knowing-what-you-dont-know": {
+    "isbn": "9781984878106"
+  },
+  "this-is-your-brain-on-birth-control-the-surprising-science-o": {
+    "isbn": "9780525536031"
+  },
+  "time-of-the-magicians-wittgenstein-benjamin-cassirer-heidegg": {
+    "isbn": "9780525559665"
+  },
+  "times-arrow-and-archimedes-point-new-directions-for-the-phys": {
+    "isbn": "9780195117981"
+  },
+  "to-kill-a-mockingbird": {
+    "isbn": "9780060935467"
+  },
+  "too-big-to-fail-the-inside-story-of-how-wall-street-and-wash": {
+    "isbn": "9780670021253"
+  },
+  "total-freedom-the-essential-krishnamurti": {
+    "isbn": "9780060648800"
+  },
+  "tractatus-logico-philosophicus": {
+    "isbn": "9780415254083"
+  },
+  "trillions-how-a-band-of-wall-street-renegades-invented-the-i": {
+    "isbn": "9780593087688"
+  },
+  "troy": {
+    "isbn": "9780241424582"
+  },
+  "umweltökonomie-und-umweltpolitik-german-edition": {
+    "isbn": "9783800643653"
+  },
+  "uncommon-sense-economic-insights-from-marriage-to-terrorism": {
+    "isbn": "9780226041018"
+  },
+  "undoing-the-demos-neoliberalisms-stealth-revolution-near-fut": {
+    "isbn": "9781935408536"
+  },
+  "unintended-consequences-why-everything-youve-been-told-about": {
+    "isbn": "9781591845508"
+  },
+  "utilitarianism": {
+    "isbn": "9780872206052"
+  },
+  "utopia": {
+    "isbn": "9780140449105"
+  },
+  "utopia-for-realists-how-we-can-build-the-ideal-world": {
+    "isbn": "9780316471909"
+  },
+  "war-and-peace": {
+    "isbn": "9780192833983"
+  },
+  "warum-es-so-schwer-ist-ein-guter-mensch-zu-sein-und-wie-wir": {
+    "isbn": "9783641288761"
+  },
+  "way-of-the-wolf-become-a-master-closer-with-straight-line-se": {
+    "isbn": "9781501164286"
+  },
+  "what-is-literature": {
+    "isbn": "9780415254045"
+  },
+  "what-it-takes-lessons-in-the-pursuit-of-excellence": {
+    "isbn": "9781508279143"
+  },
+  "what-we-owe-the-future": {
+    "isbn": "9781541618626"
+  },
+  "what-went-wrong-with-capitalism": {
+    "isbn": "9781668008263"
+  },
+  "whats-our-problem-a-self-help-book-for-societies": {
+    "isbn": "9798987722602"
+  },
+  "when-nietzsche-wept": {
+    "isbn": "9780060748128"
+  },
+  "where-keynes-went-wrong-and-why-world-governments-keep-creat": {
+    "isbn": "9781604190175"
+  },
+  "whistling-vivaldi-and-other-clues-to-how-stereotypes-affect": {
+    "isbn": "9780393062496"
+  },
+  "why-some-things-should-not-be-for-sale-the-moral-limits-of-m": {
+    "isbn": "9780195311594"
+  },
+  "why-we-eat-too-much-the-new-science-of-appetite": {
+    "isbn": "9780241400524"
+  },
+  "why-we-get-sick-the-hidden-epidemic-at-the-root-of-most-chro": {
+    "isbn": "9781950665174"
+  },
+  "willhelm-tell": {
+    "isbn": "9783126667814"
+  }
+}

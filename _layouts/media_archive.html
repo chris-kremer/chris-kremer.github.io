@@ -1,0 +1,150 @@
+---
+layout: default
+---
+{% assign _books_current  = site.books | where: "status", "currently reading" | sort: "title" | reverse %}
+{% assign _books_featured = site.books | where: "featured", true | sort: "title" | reverse %}
+{% assign _books_read     = site.books | where_exp: "b", "b.status != 'to read' and b.status != 'currently reading'" | sort: "date_read" | reverse %}
+{% assign _books_backlog  = site.books | where: "status", "to read" | sort: "title" %}
+
+<div class="container--wide">
+  <div class="container">
+    <h1>{{ page.title }}</h1>
+  </div>
+
+  {% assign _stripped = content | strip %}
+  {% if _stripped != "" %}
+  <div class="container">
+    <div class="media-intro">{{ content }}</div>
+  </div>
+  {% endif %}
+
+  {% if _books_featured.size > 0 %}
+  <div class="container">
+    <section class="media-section">
+      <div class="media-section__header">
+        <h2>Featured</h2>
+        <span class="section-count">{{ _books_featured.size }}</span>
+      </div>
+      <div class="cards cards--featured">
+        {% for book in _books_featured limit: 12 %}
+        {% include media_card.html item=book kind="book" %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  {% if _books_current.size > 0 %}
+  <div class="container">
+    <section class="media-section">
+      <div class="media-section__header">
+        <h2>Currently Reading</h2>
+        <span class="section-count">{{ _books_current.size }}</span>
+      </div>
+      <div class="cards">
+        {% for book in _books_current %}
+        {% include media_card.html item=book kind="book" status_label="reading" %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  {% if _books_read.size > 0 %}
+  <div class="container">
+    <section class="media-section">
+      <div class="media-section__header">
+        <h2>Recent Notes</h2>
+        <span class="section-count">Latest 24</span>
+      </div>
+      <div class="cards">
+        {% for book in _books_read limit: 24 %}
+        {% include media_card.html item=book kind="book" %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  <div class="container">
+    <section class="media-section media-archive" id="archive">
+      <div class="media-section__header media-section__header--stacked">
+        <div>
+          <h2>Archive</h2>
+          <span class="section-count">{{ site.books.size | plus: site.papers.size | plus: site.movies.size | plus: site.podcasts.size | plus: site.lectures.size }} items</span>
+        </div>
+        <div class="media-tools" aria-label="Media filters">
+          <input class="media-search" id="media-search" type="search" placeholder="Search title, person, tag">
+          <div class="media-filter" id="media-filter">
+            <button class="media-filter__btn active" type="button" data-filter="all">All</button>
+            <button class="media-filter__btn" type="button" data-filter="book">Books</button>
+            <button class="media-filter__btn" type="button" data-filter="paper">Papers</button>
+            <button class="media-filter__btn" type="button" data-filter="movie">Films</button>
+            <button class="media-filter__btn" type="button" data-filter="podcast">Podcasts</button>
+            <button class="media-filter__btn" type="button" data-filter="lecture">Lectures</button>
+            <button class="media-filter__btn" type="button" data-filter="to-read">Reading List</button>
+          </div>
+        </div>
+      </div>
+
+      <details class="media-archive__details">
+        <summary>Browse/search full archive</summary>
+        <div class="cards media-archive__grid" id="media-grid">
+          {% for book in _books_read %}
+          {% include media_card.html item=book kind="book" archive=true %}
+          {% endfor %}
+          {% for book in _books_backlog %}
+          {% include media_card.html item=book kind="book" archive=true archive_kind="to-read" status_label="to read" %}
+          {% endfor %}
+          {% for paper in site.papers %}
+          {% include media_card.html item=paper kind="paper" archive=true %}
+          {% endfor %}
+          {% for movie in site.movies %}
+          {% include media_card.html item=movie kind="movie" archive=true %}
+          {% endfor %}
+          {% for pod in site.podcasts %}
+          {% include media_card.html item=pod kind="podcast" archive=true %}
+          {% endfor %}
+          {% for lec in site.lectures %}
+          {% include media_card.html item=lec kind="lecture" archive=true %}
+          {% endfor %}
+        </div>
+        <p class="media-empty" id="media-empty" hidden>No matching items.</p>
+      </details>
+    </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  var search = document.getElementById('media-search');
+  var filter = document.getElementById('media-filter');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('[data-media-item]'));
+  var empty = document.getElementById('media-empty');
+  var active = 'all';
+
+  function applyFilters() {
+    var query = (search.value || '').trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function(card) {
+      var kindMatch = active === 'all' || card.dataset.kind === active || card.dataset.archiveKind === active;
+      var textMatch = !query || card.dataset.search.indexOf(query) !== -1;
+      var show = kindMatch && textMatch;
+      card.hidden = !show;
+      if (show) visible += 1;
+    });
+    empty.hidden = visible !== 0;
+  }
+
+  search.addEventListener('input', applyFilters);
+  filter.addEventListener('click', function(event) {
+    var button = event.target.closest('[data-filter]');
+    if (!button) return;
+    active = button.dataset.filter;
+    filter.querySelectorAll('[data-filter]').forEach(function(btn) {
+      btn.classList.toggle('active', btn === button);
+    });
+    applyFilters();
+  });
+})();
+</script>

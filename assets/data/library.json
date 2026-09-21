@@ -1,0 +1,28 @@
+---
+layout: null
+---
+[
+{% for book in site.books %}
+  {% assign artwork = site.data.library_artwork[book.slug] %}
+  {% assign status = book.status | default: 'read' %}
+  {% assign group = 'read' %}
+  {% if status contains 'reading' %}{% assign group = 'reading' %}{% elsif status == 'to read' %}{% assign group = 'unread' %}{% endif %}
+  {% assign prose = book.content | strip %}
+  {% assign author = book.author_name %}
+  {% unless author %}{% assign person = site.people | where: 'slug', book.author | first %}{% assign author = person.name | default: book.author | replace: '-', ' ' %}{% endunless %}
+  {
+    "id": {{ book.slug | jsonify }},
+    "title": {{ book.title | append: '' | jsonify }},
+    "author": {{ author | default: '' | jsonify }},
+    "status": {{ status | jsonify }},
+    "group": {{ group | jsonify }},
+    "featured": {% if book.featured %}true{% else %}false{% endif %},
+    "year": {{ book.year_published | jsonify }},
+    "genre": {{ book.genre | default: '' | jsonify }},
+    "notes": {% if prose != '' %}true{% else %}false{% endif %},
+    "isbn": {{ book.isbn | default: artwork.isbn | default: '' | jsonify }},
+    "cover": {% if artwork.cover %}{{ artwork.cover | relative_url | jsonify }}{% else %}""{% endif %},
+    "url": {{ book.url | relative_url | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

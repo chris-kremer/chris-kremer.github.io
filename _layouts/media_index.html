@@ -1,150 +1,45 @@
----
-layout: default
----
-{% assign _books_current  = site.books | where: "status", "currently reading" | sort: "title" | reverse %}
-{% assign _books_featured = site.books | where: "featured", true | sort: "title" | reverse %}
-{% assign _books_read     = site.books | where_exp: "b", "b.status != 'to read' and b.status != 'currently reading'" | sort: "date_read" | reverse %}
-{% assign _books_backlog  = site.books | where: "status", "to read" | sort: "title" %}
-
-<div class="container--wide">
-  <div class="container">
-    <h1>{{ page.title }}</h1>
-  </div>
-
-  {% assign _stripped = content | strip %}
-  {% if _stripped != "" %}
-  <div class="container">
-    <div class="media-intro">{{ content }}</div>
-  </div>
-  {% endif %}
-
-  {% if _books_featured.size > 0 %}
-  <div class="container">
-    <section class="media-section">
-      <div class="media-section__header">
-        <h2>Featured</h2>
-        <span class="section-count">{{ _books_featured.size }}</span>
-      </div>
-      <div class="cards cards--featured">
-        {% for book in _books_featured limit: 12 %}
-        {% include media_card.html item=book kind="book" %}
-        {% endfor %}
-      </div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A personal library of books on economics, human nature, and imagined worlds, with reading notes by Chris Kremer.">
+  <title>The library · Chris Kremer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "/assets/css/library.css" | relative_url }}">
+  <script src="{{ "/assets/js/library.js" | relative_url }}" defer></script>
+</head>
+<body data-books-url="{{ "/assets/data/library.json" | relative_url }}">
+  <header class="site-header"><a href="{{ "/" | relative_url }}" class="wordmark">Chris Kremer<span> / </span><span class="section-name">Library</span></a><a href="{{ "/media/archive/" | relative_url }}" class="text-link">Full media archive <span aria-hidden="true">↗</span></a></header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">A PERSONAL COLLECTION</p><h1>The library<span>.</span></h1><p class="lede">Ideas to get lost in. Books to come back to.</p></div>
+      <div class="collection-note"><span class="small-star" aria-hidden="true">✳</span><p>Economics, human nature, imagined worlds.<br>A shelf of what I’ve read — and what’s next.</p></div>
     </section>
-  </div>
-  {% endif %}
-
-  {% if _books_current.size > 0 %}
-  <div class="container">
-    <section class="media-section">
-      <div class="media-section__header">
-        <h2>Currently Reading</h2>
-        <span class="section-count">{{ _books_current.size }}</span>
-      </div>
-      <div class="cards">
-        {% for book in _books_current %}
-        {% include media_card.html item=book kind="book" status_label="reading" %}
-        {% endfor %}
-      </div>
-    </section>
-  </div>
-  {% endif %}
-
-  {% if _books_read.size > 0 %}
-  <div class="container">
-    <section class="media-section">
-      <div class="media-section__header">
-        <h2>Recent Notes</h2>
-        <span class="section-count">Latest 24</span>
-      </div>
-      <div class="cards">
-        {% for book in _books_read limit: 24 %}
-        {% include media_card.html item=book kind="book" %}
-        {% endfor %}
-      </div>
-    </section>
-  </div>
-  {% endif %}
-
-  <div class="container">
-    <section class="media-section media-archive" id="archive">
-      <div class="media-section__header media-section__header--stacked">
-        <div>
-          <h2>Archive</h2>
-          <span class="section-count">{{ site.books.size | plus: site.papers.size | plus: site.movies.size | plus: site.podcasts.size | plus: site.lectures.size }} items</span>
+    <noscript><p>Enable JavaScript for the interactive bookshelf, or <a href="{{ "/media/archive/" | relative_url }}">browse the full media archive</a>.</p><style>.library{display:none}</style></noscript>
+    <section class="library" aria-label="Book collection">
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="Filter books">
+          <button data-filter="all" aria-pressed="true">All books <span id="total-count"></span></button>
+          <button data-filter="featured" aria-pressed="false">Featured</button>
+          <button data-filter="reading" aria-pressed="false">Reading</button>
+          <button data-filter="read" aria-pressed="false">Read</button>
+          <button data-filter="unread" aria-pressed="false">To read</button>
         </div>
-        <div class="media-tools" aria-label="Media filters">
-          <input class="media-search" id="media-search" type="search" placeholder="Search title, person, tag">
-          <div class="media-filter" id="media-filter">
-            <button class="media-filter__btn active" type="button" data-filter="all">All</button>
-            <button class="media-filter__btn" type="button" data-filter="book">Books</button>
-            <button class="media-filter__btn" type="button" data-filter="paper">Papers</button>
-            <button class="media-filter__btn" type="button" data-filter="movie">Films</button>
-            <button class="media-filter__btn" type="button" data-filter="podcast">Podcasts</button>
-            <button class="media-filter__btn" type="button" data-filter="lecture">Lectures</button>
-            <button class="media-filter__btn" type="button" data-filter="to-read">Reading List</button>
-          </div>
-        </div>
+        <div class="tools"><label class="search"><span aria-hidden="true">⌕</span><input type="search" placeholder="Find a book or author" aria-label="Search books"></label><div class="view-switch" role="group" aria-label="Library view"><button data-view="shelf" aria-pressed="true" aria-label="Shelf view" title="Shelf view">▥</button><button data-view="grid" aria-pressed="false" aria-label="Grid view" title="Grid view">▦</button></div></div>
       </div>
-
-      <details class="media-archive__details">
-        <summary>Browse/search full archive</summary>
-        <div class="cards media-archive__grid" id="media-grid">
-          {% for book in _books_read %}
-          {% include media_card.html item=book kind="book" archive=true %}
-          {% endfor %}
-          {% for book in _books_backlog %}
-          {% include media_card.html item=book kind="book" archive=true archive_kind="to-read" status_label="to read" %}
-          {% endfor %}
-          {% for paper in site.papers %}
-          {% include media_card.html item=paper kind="paper" archive=true %}
-          {% endfor %}
-          {% for movie in site.movies %}
-          {% include media_card.html item=movie kind="movie" archive=true %}
-          {% endfor %}
-          {% for pod in site.podcasts %}
-          {% include media_card.html item=pod kind="podcast" archive=true %}
-          {% endfor %}
-          {% for lec in site.lectures %}
-          {% include media_card.html item=lec kind="lecture" archive=true %}
-          {% endfor %}
-        </div>
-        <p class="media-empty" id="media-empty" hidden>No matching items.</p>
-      </details>
+      <div id="shelf-view" class="shelf-view">
+        <div class="shelf-top"><span id="shelf-label">THE WHOLE SHELF</span><span class="browse-hint">DRAG TO EXPLORE <span aria-hidden="true">↔</span></span></div>
+        <div id="stage" class="stage" aria-label="Interactive bookshelf. Select a book, use arrow keys, or swipe to browse." tabindex="0"><div id="book-track" class="book-track"></div></div>
+        <div class="selection"><button class="arrow" id="previous" aria-label="Previous book">←</button><div id="book-info" class="book-info" aria-live="polite"></div><button class="arrow" id="next" aria-label="Next book">→</button></div>
+        <div class="shelf-bottom"><span id="position"></span><span>SELECT A COVER TO TAKE A CLOSER LOOK</span><button id="random">A little serendipity <span aria-hidden="true">↗</span></button></div>
+      </div>
+      <div id="grid-view" class="grid-view" hidden><div class="grid-heading"><span id="grid-count"></span><span>SELECT A BOOK TO EXPLORE</span></div><div id="book-grid" class="book-grid"></div><button id="load-more" class="load-more">Show more books</button></div>
+      <div id="empty" class="empty" hidden><h2>No books on this shelf.</h2><p>Try another title, author, or reading status.</p><button id="reset">Reset filters</button></div>
     </section>
-  </div>
-</div>
-
-<script>
-(function () {
-  var search = document.getElementById('media-search');
-  var filter = document.getElementById('media-filter');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('[data-media-item]'));
-  var empty = document.getElementById('media-empty');
-  var active = 'all';
-
-  function applyFilters() {
-    var query = (search.value || '').trim().toLowerCase();
-    var visible = 0;
-    cards.forEach(function(card) {
-      var kindMatch = active === 'all' || card.dataset.kind === active || card.dataset.archiveKind === active;
-      var textMatch = !query || card.dataset.search.indexOf(query) !== -1;
-      var show = kindMatch && textMatch;
-      card.hidden = !show;
-      if (show) visible += 1;
-    });
-    empty.hidden = visible !== 0;
-  }
-
-  search.addEventListener('input', applyFilters);
-  filter.addEventListener('click', function(event) {
-    var button = event.target.closest('[data-filter]');
-    if (!button) return;
-    active = button.dataset.filter;
-    filter.querySelectorAll('[data-filter]').forEach(function(btn) {
-      btn.classList.toggle('active', btn === button);
-    });
-    applyFilters();
-  });
-})();
-</script>
+    <footer><span>A growing collection, one book at a time.</span><span class="concept"><a href="{{ "/media/archive/" | relative_url }}">ALL MEDIA & REVIEWS ↗</a></span></footer>
+  </main>
+</body>
+</html>
