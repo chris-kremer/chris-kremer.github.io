@@ -3,12 +3,12 @@ layout: book
 title: "Frankenstein"
 author: mary-shelley
 author_name: Mary Shelley
-status: "currently reading"
+status: "read"
 year_published: 1818
 people: []
 ---
 
-Currently reading. The familiar outline of the plot hides a much stranger and more intellectually ambitious book than I expected.
+Finished. The familiar outline of the plot hides a much stranger and more intellectually ambitious book than I expected.
 
 ## The surprise of the form
 

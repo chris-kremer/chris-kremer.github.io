@@ -3,14 +3,14 @@ layout: book
 title: "Eichmann in Jerusalem: A Report on the Banality of Evil"
 author: hannah-arendt
 author_name: Hannah Arendt
-status: "currently reading"
+status: "read"
 year_published: 1963
 pages: 312
 goodreads_id: 52090
 people: []
 ---
 
-Currently reading. I am roughly halfway through and have been pleasantly surprised by how immediate and complicated the book is.
+Finished. The reflections below were captured roughly halfway through, when I had already been pleasantly surprised by how immediate and complicated the book was.
 
 ## More complicated than the shorthand
 
