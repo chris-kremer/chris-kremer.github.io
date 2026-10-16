@@ -3,7 +3,9 @@ layout: book
 title: Fear and Trembling
 author: søren-kierkegaard
 author_name: Søren Kierkegaard
-date_read: 2023-10-25
+date_read: 2026-10-16
+previous_read_dates:
+  - 2023-10-25
 status: "read"
 year_published: 1843
 pages: 152
