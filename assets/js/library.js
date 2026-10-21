@@ -9,7 +9,10 @@
     const el = document.createElement('div');
     el.className = 'cover'; el.setAttribute('aria-hidden', 'true'); el.style.setProperty('--book-color', color(b));
     el.innerHTML = `<div class="type-cover"><strong>${escaped(b.title)}</strong><small>${escaped(b.author)}</small></div>`;
-    const src = b.cover || (b.isbn ? `https://covers.openlibrary.org/b/isbn/${encodeURIComponent(b.isbn)}-L.jpg?default=false` : '');
+    const remoteCover = b.cover_id
+      ? `https://covers.openlibrary.org/b/id/${encodeURIComponent(b.cover_id)}-L.jpg?default=false`
+      : b.isbn ? `https://covers.openlibrary.org/b/isbn/${encodeURIComponent(b.isbn)}-L.jpg?default=false` : '';
+    const src = b.cover || remoteCover;
     if (src) { const img = new Image(); img.alt = ''; img.src = src; img.draggable = false; img.onload = () => {if(img.naturalWidth > 5) el.append(img);}; }
     return el;
   }

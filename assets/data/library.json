@@ -21,6 +21,7 @@ layout: null
     "genre": {{ book.genre | default: '' | jsonify }},
     "notes": {% if prose != '' %}true{% else %}false{% endif %},
     "isbn": {{ book.isbn | default: artwork.isbn | default: '' | jsonify }},
+    "cover_id": {{ artwork.cover_id | default: '' | jsonify }},
     "cover": {% if artwork.cover %}{{ artwork.cover | relative_url | jsonify }}{% else %}""{% endif %},
     "url": {{ book.url | relative_url | jsonify }}
   }{% unless forloop.last %},{% endunless %}
