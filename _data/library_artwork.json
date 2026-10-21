@@ -86,7 +86,10 @@
     "cover": "/assets/images/library/9780735213616.jpg"
   },
   "cant-hurt-me-master-your-mind-and-defy-the-odds": {
-    "isbn": "1544512260"
+    "isbn": "1544512260",
+    "cover_id": 8305903,
+    "cover_source": "https://openlibrary.org/works/OL18108064W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "capitalist-realism-is-there-no-alternative": {
     "isbn": "9781846943171",
@@ -125,17 +128,26 @@
     "cover_id": 8147013
   },
   "genius-foods-become-smarter-happier-and-more-productive-whil": {
-    "isbn": "9780062562890"
+    "isbn": "9780062562890",
+    "cover_id": 9222260,
+    "cover_source": "https://openlibrary.org/works/OL19732636W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "golden-son": {
-    "isbn": "9780345539823"
+    "isbn": "9780345539823",
+    "cover_id": 8454351,
+    "cover_source": "https://openlibrary.org/works/OL19340986W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "hamlet": {
     "isbn": "9780521618748",
     "cover_id": 349855
   },
   "hidden-games-the-surprising-power-of-game-theory-to-explain-": {
-    "isbn": "9781549193156"
+    "isbn": "9781549193156",
+    "cover_id": 14726047,
+    "cover_source": "https://openlibrary.org/works/OL25922918W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "how-to-avoid-a-climate-disaster-the-solutions-we-have-and-th": {
     "isbn": "9780241448304",
@@ -206,13 +218,22 @@
     "cover_id": 6739601
   },
   "the-code-of-capital-how-the-law-creates-wealth-and-inequalit": {
-    "isbn": "9780691178974"
+    "isbn": "9780691178974",
+    "cover": "/assets/images/books/the-code-of-capital-how-the-law-creates-wealth-and-inequalit.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780691178974",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "the-elephant-in-the-brain-hidden-motives-in-everyday-life": {
-    "isbn": "9780190496012"
+    "isbn": "9780190496012",
+    "cover_id": 9081429,
+    "cover_source": "https://openlibrary.org/works/OL19728362W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-essential-james-buchanan-essential-scholars": {
-    "isbn": "9780889756380"
+    "isbn": "9780889756380",
+    "cover": "/assets/images/books/the-essential-james-buchanan-essential-scholars.jpg",
+    "cover_source": "https://www.essentialscholars.org/buchanan",
+    "cover_note": "Official publisher artwork for The Essential James Buchanan."
   },
   "the-fatal-conceit-the-errors-of-socialism": {
     "isbn": "9780226320663",
@@ -259,7 +280,10 @@
     "cover_id": 10156204
   },
   "vigil-hong-kong-on-the-brink-columbia-global-reports": {
-    "isbn": "9781733623742"
+    "isbn": "9781733623742",
+    "cover": "/assets/images/books/vigil-hong-kong-on-the-brink-columbia-global-reports.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781733623742",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "waking-up-a-guide-to-spirituality-without-religion": {
     "isbn": "9781451636017",
@@ -294,7 +318,10 @@
     "cover_id": 373448
   },
   "a-game-of-thrones-1": {
-    "isbn": "9780345536150"
+    "isbn": "9780345536150",
+    "cover": "/assets/images/books/a-game-of-thrones-1.jpg",
+    "cover_source": "https://penguinrandomhouselibrary.com/book/?isbn=9780440423218",
+    "cover_note": "Daniel Abraham’s graphic adaptation, volume one, rather than the novel cover returned for the existing ISBN."
   },
   "a-man-called-ove": {
     "isbn": "9781476738017",
@@ -377,10 +404,16 @@
     "cover_id": 11113351
   },
   "anxious-people": {
-    "isbn": "9781982121600"
+    "isbn": "9781982121600",
+    "cover_id": 10087939,
+    "cover_source": "https://openlibrary.org/works/OL20793817W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "aphorismen-zur-lebensweisheit": {
-    "isbn": "9783458319238"
+    "isbn": "9783458319238",
+    "cover_id": 2010228,
+    "cover_source": "https://openlibrary.org/works/OL1183449W",
+    "cover_note": "English translation The Wisdom of Life, the same Schopenhauer work."
   },
   "aphorisms-on-love-and-hate": {
     "isbn": "9780141397900",
@@ -438,10 +471,16 @@
     "cover_id": 471286
   },
   "breakneck-chinas-quest-to-engineer-the-future": {
-    "isbn": "9781324106036"
+    "isbn": "9781324106036",
+    "cover_id": 15121652,
+    "cover_source": "https://openlibrary.org/works/OL42416011W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "build-baby-build-the-science-and-ethics-of-housing-regulatio": {
-    "isbn": "9781952223419"
+    "isbn": "9781952223419",
+    "cover": "/assets/images/books/build-baby-build-the-science-and-ethics-of-housing-regulatio.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781952223419",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "bureaucracy": {
     "isbn": "9780910884341",
@@ -476,7 +515,10 @@
     "cover_id": 859191
   },
   "china-the-bubble-that-never-pops": {
-    "isbn": "9780190877408"
+    "isbn": "9780190877408",
+    "cover": "/assets/images/books/china-the-bubble-that-never-pops.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780190877408",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "chip-war-the-fight-for-the-worlds-most-critical-technology": {
     "isbn": "9781982172008",
@@ -559,10 +601,16 @@
     "cover_id": 15104847
   },
   "deep-utopia-life-and-meaning-in-a-solved-world": {
-    "isbn": "9781646871643"
+    "isbn": "9781646871643",
+    "cover": "/assets/images/books/deep-utopia-life-and-meaning-in-a-solved-world.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781646871643",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "defending-the-undefendable": {
-    "isbn": "9780930073053"
+    "isbn": "9780930073053",
+    "cover_id": 8636265,
+    "cover_source": "https://openlibrary.org/works/OL16990837W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "demian-die-geschichte-von-emil-sinclairs-jugend": {
     "isbn": "9783518367063",
@@ -577,20 +625,32 @@
     "cover_id": 525980
   },
   "der-gang-vor-die-hunde": {
-    "isbn": "9783037920435"
+    "isbn": "9783037920435",
+    "cover_id": 9020411,
+    "cover_source": "https://openlibrary.org/works/OL20354201W",
+    "cover_note": "German audiobook artwork for the same novel."
   },
   "der-goldene-topf": {
-    "isbn": "9781409928256"
+    "isbn": "9781409928256",
+    "cover_id": 14365382,
+    "cover_source": "https://openlibrary.org/works/OL969612W",
+    "cover_note": "Alternative German edition of the same work."
   },
   "der-großinquisitor": {
-    "isbn": "9783150062562"
+    "isbn": "9783150062562",
+    "cover_id": 10330353,
+    "cover_source": "https://openlibrary.org/works/OL21164023W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "der-sandmann": {
     "isbn": "9783458326342",
     "cover_id": 1010629
   },
   "der-sozialismus-der-zukunft": {
-    "isbn": "9783406777349"
+    "isbn": "9783406777349",
+    "cover_id": 12786092,
+    "cover_source": "https://openlibrary.org/works/OL25799208W",
+    "cover_note": "English Time for Socialism collection artwork for Piketty’s German Der Sozialismus der Zukunft."
   },
   "der-zerbrochne-krug": {
     "isbn": "9783150000915",
@@ -639,14 +699,20 @@
     "cover_id": 14322877
   },
   "do-markets-corrupt-our-morals": {
-    "isbn": "9783030184155"
+    "isbn": "9783030184155",
+    "cover": "/assets/images/books/do-markets-corrupt-our-morals.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9783030184155",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "dominion-how-the-christian-revolution-remade-the-world": {
     "isbn": "9780465093502",
     "cover_id": 9272770
   },
   "dont-trust-your-gut-using-data-to-get-what-you-really-want-i": {
-    "isbn": "9780062880918"
+    "isbn": "9780062880918",
+    "cover_id": 14695616,
+    "cover_source": "https://openlibrary.org/works/OL25807247W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "doom-the-politics-of-catastrophe": {
     "isbn": "9780241488447",
@@ -693,17 +759,26 @@
     "cover_id": 14832082
   },
   "efficiently-inefficient-how-smart-money-invests-and-market-p": {
-    "isbn": "9780691166193"
+    "isbn": "9780691166193",
+    "cover": "/assets/images/books/efficiently-inefficient-how-smart-money-invests-and-market-p.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780691166193",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "ego-is-the-enemy": {
     "isbn": "9781591847816",
     "cover_id": 14860492
   },
   "einführung-in-das-controlling": {
-    "isbn": "9783791015040"
+    "isbn": "9783791015040",
+    "cover_id": 3259181,
+    "cover_source": "https://openlibrary.org/works/OL9263182W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "einführung-in-die-allgemeine-betriebswirtschaftslehre": {
-    "isbn": "9783800632541"
+    "isbn": "9783800632541",
+    "cover_id": 12668973,
+    "cover_source": "https://openlibrary.org/works/OL27686138W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "elon-musk": {
     "isbn": "9781982181284",
@@ -734,7 +809,10 @@
     "cover_id": 4480625
   },
   "eristische-dialektik-von": {
-    "isbn": "9781981729623"
+    "isbn": "9781981729623",
+    "cover": "/assets/images/books/eristische-dialektik-von.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781981729623",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "essays": {
     "isbn": "9780140178975",
@@ -749,7 +827,10 @@
     "cover_id": 103390
   },
   "ethics-in-the-real-world-86-brief-essays-on-things-that-matt": {
-    "isbn": "9781925355857"
+    "isbn": "9781925355857",
+    "cover_id": 8881658,
+    "cover_source": "https://openlibrary.org/works/OL20228183W",
+    "cover_note": "Expanded edition with 92 essays in place of the originally listed 86-essay edition."
   },
   "evolution-of-desire-a-life-of-rené-girard-studies-in-violenc": {
     "isbn": "9781611862836"
@@ -763,14 +844,20 @@
     "cover_id": 2355635
   },
   "expressivism-pragmatism-and-representationalism": {
-    "isbn": "9781107009844"
+    "isbn": "9781107009844",
+    "cover": "/assets/images/books/expressivism-pragmatism-and-representationalism.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781107009844",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "factfulness-ten-reasons-were-wrong-about-the-world-and-why-t": {
     "isbn": "9781473637467",
     "cover_id": 9168316
   },
   "false-alarm-how-climate-change-panic-costs-us-trillions-hurt": {
-    "isbn": "9781541647466"
+    "isbn": "9781541647466",
+    "cover_id": 11051143,
+    "cover_source": "https://openlibrary.org/works/OL21675187W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "faust": {
     "isbn": "9780385031141",
@@ -825,7 +912,10 @@
     "cover_id": 14841006
   },
   "gaming-the-metrics-misconduct-and-manipulation-in-academic-r": {
-    "isbn": "9780262537933"
+    "isbn": "9780262537933",
+    "cover": "/assets/images/books/gaming-the-metrics-misconduct-and-manipulation-in-academic-r.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780262537933",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "gekränkte-freiheit-aspekte-des-libertären-autoritarismus": {
     "isbn": "9783518430712",
@@ -860,7 +950,10 @@
     "cover_id": 111560
   },
   "guns-germs-and-steel-the-fates-of-human-societies": {
-    "isbn": "9780739467350"
+    "isbn": "9780739467350",
+    "cover_id": 7884018,
+    "cover_source": "https://openlibrary.org/works/OL276558W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "gödel-escher-bach-an-eternal-golden-braid": {
     "isbn": "9780465026562",
@@ -871,7 +964,10 @@
     "cover_id": 15244800
   },
   "harry-potter-and-the-order-of-the-phoenix": {
-    "isbn": "9780439686525"
+    "isbn": "9780439686525",
+    "cover_id": 15158666,
+    "cover_source": "https://openlibrary.org/works/OL82548W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "harry-potter-and-the-prisoner-of-azkaban": {
     "isbn": "9780439655484",
@@ -894,14 +990,20 @@
     "cover_id": 171982
   },
   "house-of-huawei-the-secret-history-of-chinas-most-powerful-c": {
-    "isbn": "9780593544631"
+    "isbn": "9780593544631",
+    "cover": "/assets/images/books/house-of-huawei-the-secret-history-of-chinas-most-powerful-c.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780593544631",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "how-an-economy-grows-and-why-it-crashes": {
     "isbn": "9780470526705",
     "cover_id": 8769887
   },
   "how-economics-can-save-the-world-simple-ideas-to-solve-our-b": {
-    "isbn": "9780241502723"
+    "isbn": "9780241502723",
+    "cover": "/assets/images/books/how-economics-can-save-the-world-simple-ideas-to-solve-our-b.jpg",
+    "cover_source": "https://openlibrary.org/works/OL27809297W",
+    "cover_note": "English print-edition cover of the same work; configured ebook ISBN retained."
   },
   "how-emotions-are-made-the-secret-life-of-the-brain": {
     "isbn": "9780544133310",
@@ -924,24 +1026,36 @@
     "cover_id": 15096140
   },
   "how-to-make-the-world-add-up-ten-rules-for-thinking-differen": {
-    "isbn": "9781408712245"
+    "isbn": "9781408712245",
+    "cover_id": 12646755,
+    "cover_source": "https://openlibrary.org/works/OL21652283W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "how-to-speak-whale-the-power-and-wonder-of-listening-to-anim": {
     "isbn": "9781538739112",
     "cover_id": 13136299
   },
   "human-action-a-treatise-on-economics-liberty-fund-library-of": {
-    "isbn": "9781614870265"
+    "isbn": "9781614870265",
+    "cover_id": 10487743,
+    "cover_source": "https://openlibrary.org/works/OL22705241W",
+    "cover_note": "Alternative edition jacket of the same work."
   },
   "human-capital-a-theoretical-and-empirical-analysis-with-spec": {
     "isbn": "9780226041209",
     "cover_id": 139671
   },
   "humankind-a-hopeful-history": {
-    "isbn": "9789781408892"
+    "isbn": "9789781408892",
+    "cover_id": 9410738,
+    "cover_source": "https://openlibrary.org/works/OL20726133W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "i-am-dynamite-a-life-of-nietzsche": {
-    "isbn": "9781524760823"
+    "isbn": "9781524760823",
+    "cover": "/assets/images/books/i-am-dynamite-a-life-of-nietzsche.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781524760823",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "i-pencil-my-family-tree-as-told-to-leonard-e-read": {
     "isbn": "9781572462090",
@@ -983,10 +1097,16 @@
     "cover_id": 7275162
   },
   "jeder-mensch": {
-    "isbn": "9783641283742"
+    "isbn": "9783641283742",
+    "cover_id": 10898437,
+    "cover_source": "https://openlibrary.org/works/OL24369166W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "judgement-in-managerial-decision-making": {
-    "isbn": "9780471859710"
+    "isbn": "9780471859710",
+    "cover_id": 4150301,
+    "cover_source": "https://openlibrary.org/works/OL1965643W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "jugend-ohne-gott": {
     "isbn": "9783518388747",
@@ -1020,7 +1140,10 @@
     "isbn": "9798785872868"
   },
   "land-is-a-big-deal-why-rent-is-too-high-wages-too-low-and-wh": {
-    "isbn": "9798985322521"
+    "isbn": "9798985322521",
+    "cover_id": 15096115,
+    "cover_source": "https://openlibrary.org/works/OL29195314W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "letter-to-a-christian-nation": {
     "isbn": "9780307265777",
@@ -1047,10 +1170,16 @@
     "cover_id": 10484954
   },
   "licence-to-be-bad-how-economics-corrupted-us": {
-    "isbn": "9780241325438"
+    "isbn": "9780241325438",
+    "cover_id": 13667406,
+    "cover_source": "https://openlibrary.org/works/OL21193489W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "life-time": {
-    "isbn": "9780241529300"
+    "isbn": "9780241529300",
+    "cover_id": 15112618,
+    "cover_source": "https://openlibrary.org/works/OL25338281W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "lock-in": {
     "isbn": "9780765375865",
@@ -1089,7 +1218,10 @@
     "cover_id": 12824705
   },
   "massenpsychologie-und-ich-analyse-german-edition": {
-    "isbn": "9783954550791"
+    "isbn": "9783954550791",
+    "cover_id": 246527,
+    "cover_source": "https://openlibrary.org/works/OL1069678W",
+    "cover_note": "English translation Group Psychology and the Analysis of the Ego, the same Freud work."
   },
   "master-of-the-senate": {
     "isbn": "9780394720951",
@@ -1100,7 +1232,10 @@
     "cover_id": 420159
   },
   "meditationen": {
-    "isbn": "9783787318865"
+    "isbn": "9783787318865",
+    "cover_id": 996636,
+    "cover_source": "https://openlibrary.org/works/OL7982244W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "meditations": {
     "isbn": "9780140449334",
@@ -1147,7 +1282,10 @@
     "cover_id": 10252139
   },
   "my-own-life": {
-    "isbn": "9781616409616"
+    "isbn": "9781616409616",
+    "cover": "/assets/images/books/my-own-life.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781616409616",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "mythos-the-greek-myths-retold": {
     "isbn": "9780718188726",
@@ -1162,7 +1300,10 @@
     "cover_id": 9133218
   },
   "narendra-modi-a-political-biography": {
-    "isbn": "9789351362180"
+    "isbn": "9789351362180",
+    "cover_id": 10460467,
+    "cover_source": "https://openlibrary.org/works/OL22441040W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "neuroeconomics-decision-making-and-the-brain": {
     "isbn": "9780123741769",
@@ -1177,7 +1318,10 @@
     "cover_id": 440362
   },
   "no-rules-rules-netflix-and-the-culture-of-reinvention": {
-    "isbn": "9780593152386"
+    "isbn": "9780593152386",
+    "cover_id": 10524294,
+    "cover_source": "https://openlibrary.org/works/OL21674578W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "noise-a-flaw-in-human-judgment": {
     "isbn": "9780316451406",
@@ -1220,7 +1364,10 @@
     "cover_id": 11716186
   },
   "organisation-und-koordination-eine-ökonomische-einführung-ge": {
-    "isbn": "9783834913876"
+    "isbn": "9783834913876",
+    "cover_id": 3187102,
+    "cover_source": "https://openlibrary.org/works/OL10026260W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "outliers-the-story-of-success": {
     "isbn": "9780316017923",
@@ -1235,13 +1382,22 @@
     "cover_id": 102947
   },
   "parasitic-mind-how-infectious-ideas-are-killing-common-sense": {
-    "isbn": "9789369521951"
+    "isbn": "9789369521951",
+    "cover_id": 10223915,
+    "cover_source": "https://openlibrary.org/works/OL20892343W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "parmenides": {
-    "isbn": "9780941051965"
+    "isbn": "9780941051965",
+    "cover_id": 14412159,
+    "cover_source": "https://openlibrary.org/works/OL51915W",
+    "cover_note": "Cover of Plato collection containing Parmenides, Cratylus and the Hippias dialogues."
   },
   "peak-performance-elevate-your-game-avoid-burnout-and-thrive-": {
-    "isbn": "9781623367930"
+    "isbn": "9781623367930",
+    "cover_id": 10405023,
+    "cover_source": "https://openlibrary.org/works/OL21782302W",
+    "cover_note": "Audiobook artwork of the same work."
   },
   "peddling-prosperity-economic-sense-and-nonsense-in-an-age-of": {
     "isbn": "9780393312928",
@@ -1264,7 +1420,10 @@
     "cover_id": 397102
   },
   "plato-and-the-nerd-the-creative-partnership-of-humans-and-te": {
-    "isbn": "9780262036481"
+    "isbn": "9780262036481",
+    "cover_id": 8835532,
+    "cover_source": "https://openlibrary.org/works/OL20186844W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "please-dont-say-youre-sorry-an-empowering-perspective-on-mar": {
     "isbn": "9781637630815"
@@ -1281,17 +1440,26 @@
     "isbn": "9783879757367"
   },
   "power-and-progress-our-thousand-year-struggle-over-technolog": {
-    "isbn": "9781668626405"
+    "isbn": "9781668626405",
+    "cover_id": 13213846,
+    "cover_source": "https://openlibrary.org/works/OL29200611W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "prediction-machines-the-simple-economics-of-artificial-intel": {
-    "isbn": "9781633695689"
+    "isbn": "9781633695689",
+    "cover_id": 12508574,
+    "cover_source": "https://openlibrary.org/works/OL19747345W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "priced-out-the-economic-and-ethical-costs-of-american-health": {
     "isbn": "9780691192178",
     "cover_id": 8801946
   },
   "pride-and-prejudice": {
-    "isbn": "9781441341709"
+    "isbn": "9781441341709",
+    "cover_id": 14348537,
+    "cover_source": "https://openlibrary.org/works/OL66554W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "principles-for-dealing-with-the-changing-world-order-why-nat": {
     "isbn": "9781982160272",
@@ -1322,7 +1490,10 @@
     "cover_id": 442955
   },
   "qualityland": {
-    "isbn": "9783550050237"
+    "isbn": "9783550050237",
+    "cover_id": 8596360,
+    "cover_source": "https://openlibrary.org/works/OL19792034W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "quiet-the-power-of-introverts-in-a-world-that-cant-stop-talk": {
     "isbn": "9780307352149",
@@ -1373,10 +1544,16 @@
     "cover_id": 12414821
   },
   "saving-capitalism-from-the-capitalists-how-open-financial-ma": {
-    "isbn": "9780712621311"
+    "isbn": "9780712621311",
+    "cover": "/assets/images/books/saving-capitalism-from-the-capitalists-how-open-financial-ma.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780712621311",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "schopenhauer-die-kunst-recht-zu-behalten-eristische-dialekti": {
-    "isbn": "9783954185009"
+    "isbn": "9783954185009",
+    "cover_id": 11515914,
+    "cover_source": "https://openlibrary.org/works/OL24765132W",
+    "cover_note": "Alternative German edition of the same work."
   },
   "selfish-reasons-to-have-more-kids-why-being-a-great-parent-i": {
     "isbn": "9780465018673",
@@ -1472,7 +1649,10 @@
     "cover_id": 11344427
   },
   "the-age-of-em-work-love-and-life-when-robots-rule-the-earth": {
-    "isbn": "9780198754626"
+    "isbn": "9780198754626",
+    "cover": "/assets/images/books/the-age-of-em-work-love-and-life-when-robots-rule-the-earth.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780198754626",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "the-age-of-insight-the-quest-to-understand-the-unconscious-i": {
     "isbn": "9781400068715",
@@ -1523,7 +1703,10 @@
     "cover_id": 9290193
   },
   "the-big-short-inside-the-doomsday-machine": {
-    "isbn": "9780393353150"
+    "isbn": "9780393353150",
+    "cover_id": 6386926,
+    "cover_source": "https://openlibrary.org/works/OL15118378W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-birth-of-tragedy": {
     "isbn": "9780140433395",
@@ -1546,7 +1729,10 @@
     "cover_id": 9312639
   },
   "the-bond-king-how-one-man-made-a-market-built-an-empire-and-": {
-    "isbn": "9781250120847"
+    "isbn": "9781250120847",
+    "cover": "/assets/images/books/the-bond-king-how-one-man-made-a-market-built-an-empire-and-.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781250120847",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "the-brothers-karamazov": {
     "isbn": "9780140449242",
@@ -1557,7 +1743,10 @@
     "cover_id": 7843943
   },
   "the-case-against-education-why-the-education-system-is-a-was": {
-    "isbn": "9780691174655"
+    "isbn": "9780691174655",
+    "cover_id": 10309009,
+    "cover_source": "https://openlibrary.org/works/OL20941339W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-case-against-reality-why-evolution-hid-the-truth-from-ou": {
     "isbn": "9780393254693",
@@ -1572,7 +1761,10 @@
     "cover_id": 129417
   },
   "the-coddling-of-the-american-mind-how-good-intentions-and-ba": {
-    "isbn": "9780735224902"
+    "isbn": "9780735224902",
+    "cover_id": 10138103,
+    "cover_source": "https://openlibrary.org/works/OL19664112W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-communist-manifesto": {
     "isbn": "9780140447576",
@@ -1658,17 +1850,26 @@
     "cover_id": 12911280
   },
   "the-essential-milton-friedman-essential-scholars": {
-    "isbn": "9780889755420"
+    "isbn": "9780889755420",
+    "cover": "/assets/images/books/the-essential-milton-friedman-essential-scholars.jpg",
+    "cover_source": "https://www.essentialscholars.org/friedman",
+    "cover_note": "Official publisher artwork for The Essential Milton Friedman."
   },
   "the-essential-women-of-liberty-essential-scholars": {
-    "isbn": "9780889756816"
+    "isbn": "9780889756816",
+    "cover": "/assets/images/books/the-essential-women-of-liberty-essential-scholars.jpg",
+    "cover_source": "https://www.essentialscholars.org/women-of-liberty",
+    "cover_note": "Official publisher book artwork."
   },
   "the-ethics-of-ambiguity": {
     "isbn": "9780806501604",
     "cover_id": 6985975
   },
   "the-euro-trap-on-bursting-bubbles-budgets-and-beliefs": {
-    "isbn": "9780198702139"
+    "isbn": "9780198702139",
+    "cover_id": 8876973,
+    "cover_source": "https://openlibrary.org/works/OL20010543W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-euro-how-a-common-currency-threatens-the-future-of-europ": {
     "isbn": "9780393254020",
@@ -1691,7 +1892,10 @@
     "cover_id": 8880793
   },
   "the-federalist-papers": {
-    "isbn": "9781542099424"
+    "isbn": "9781542099424",
+    "cover_id": 295900,
+    "cover_source": "https://openlibrary.org/works/OL16697597W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-fellowship-of-the-ring": {
     "isbn": "9780618346257",
@@ -1714,7 +1918,10 @@
     "cover_id": 7257774
   },
   "the-great-stagnation-how-america-ate-all-the-low-hanging-fru": {
-    "isbn": "9781101502259"
+    "isbn": "9781101502259",
+    "cover_id": 7839953,
+    "cover_source": "https://openlibrary.org/works/OL17569194W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-green-paradox-a-supply-side-approach-to-global-warming-m": {
     "isbn": "9780262016681",
@@ -1777,7 +1984,10 @@
     "cover_id": 9907600
   },
   "the-little-book-of-stoicism-timeless-wisdom-to-gain-resilien": {
-    "isbn": "9783952506912"
+    "isbn": "9783952506912",
+    "cover_id": 10413514,
+    "cover_source": "https://openlibrary.org/works/OL21930889W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-little-prince": {
     "isbn": "9780152023980",
@@ -1932,10 +2142,16 @@
     "cover_id": 14634809
   },
   "the-profit-paradox-how-thriving-firms-threaten-the-future-of": {
-    "isbn": "9780691214474"
+    "isbn": "9780691214474",
+    "cover_id": 11472109,
+    "cover_source": "https://openlibrary.org/works/OL24735719W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-prophet": {
-    "isbn": "9780001000391"
+    "isbn": "9780001000391",
+    "cover_id": 418324,
+    "cover_source": "https://openlibrary.org/works/OL318900W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-protestant-ethic-and-the-spirit-of-capitalism": {
     "isbn": "9780486427034",
@@ -2046,7 +2262,10 @@
     "cover_id": 14624667
   },
   "the-two-parent-privilege-how-americans-stopped-getting-marri": {
-    "isbn": "9780226818115"
+    "isbn": "9780226818115",
+    "cover_id": 14216067,
+    "cover_source": "https://openlibrary.org/works/OL35199835W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-undiscovered-self": {
     "isbn": "9780451217325",
@@ -2069,7 +2288,10 @@
     "cover_id": 11963670
   },
   "the-value-of-a-whale-on-the-illusions-of-green-capitalism": {
-    "isbn": "9781526162632"
+    "isbn": "9781526162632",
+    "cover_id": 15114862,
+    "cover_source": "https://openlibrary.org/works/OL27084254W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-vital-question-energy-evolution-and-the-origins-of-compl": {
     "isbn": "9780393352979",
@@ -2083,7 +2305,10 @@
     "isbn": "9781952223877"
   },
   "the-weirdest-people-in-the-world-how-the-west-became-psychol": {
-    "isbn": "9780374710453"
+    "isbn": "9780374710453",
+    "cover_id": 10154462,
+    "cover_source": "https://openlibrary.org/works/OL20844844W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "the-world-as-will-and-representation-volume-i": {
     "isbn": "9780486217611",
@@ -2122,7 +2347,10 @@
     "cover_id": 9007850
   },
   "time-of-the-magicians-wittgenstein-benjamin-cassirer-heidegg": {
-    "isbn": "9780525559665"
+    "isbn": "9780525559665",
+    "cover": "/assets/images/books/time-of-the-magicians-wittgenstein-benjamin-cassirer-heidegg.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780525559665",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "times-arrow-and-archimedes-point-new-directions-for-the-phys": {
     "isbn": "9780195117981",
@@ -2149,7 +2377,10 @@
     "cover_id": 11088748
   },
   "troy": {
-    "isbn": "9780241424582"
+    "isbn": "9780241424582",
+    "cover_id": 10657530,
+    "cover_source": "https://openlibrary.org/works/OL21697435W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "umweltökonomie-und-umweltpolitik-german-edition": {
     "isbn": "9783800643653"
@@ -2167,14 +2398,20 @@
     "cover_id": 8278660
   },
   "utilitarianism": {
-    "isbn": "9780872206052"
+    "isbn": "9780872206052",
+    "cover_id": 297806,
+    "cover_source": "https://openlibrary.org/works/OL1068228W",
+    "cover_note": "Collection cover containing Utilitarianism, On Liberty and Considerations on Representative Government."
   },
   "utopia": {
     "isbn": "9780140449105",
     "cover_id": 104340
   },
   "utopia-for-realists-how-we-can-build-the-ideal-world": {
-    "isbn": "9780316471909"
+    "isbn": "9780316471909",
+    "cover_id": 12684144,
+    "cover_source": "https://openlibrary.org/works/OL27689776W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "war-and-peace": {
     "isbn": "9780192833983",
@@ -2184,7 +2421,10 @@
     "isbn": "9783641288761"
   },
   "way-of-the-wolf-become-a-master-closer-with-straight-line-se": {
-    "isbn": "9781501164286"
+    "isbn": "9781501164286",
+    "cover_id": 8814984,
+    "cover_source": "https://openlibrary.org/works/OL20168722W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "what-is-literature": {
     "isbn": "9780415254045",
@@ -2199,7 +2439,10 @@
     "cover_id": 13110566
   },
   "what-went-wrong-with-capitalism": {
-    "isbn": "9781668008263"
+    "isbn": "9781668008263",
+    "cover": "/assets/images/books/what-went-wrong-with-capitalism.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781668008263",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "whats-our-problem-a-self-help-book-for-societies": {
     "isbn": "9798987722602",
@@ -2222,13 +2465,22 @@
     "cover_id": 12627804
   },
   "why-we-eat-too-much-the-new-science-of-appetite": {
-    "isbn": "9780241400524"
+    "isbn": "9780241400524",
+    "cover": "/assets/images/books/why-we-eat-too-much-the-new-science-of-appetite.jpg",
+    "cover_source": "https://openlibrary.org/works/OL20745651W",
+    "cover_note": "Alternative English edition of the same work."
   },
   "why-we-get-sick-the-hidden-epidemic-at-the-root-of-most-chro": {
-    "isbn": "9781950665174"
+    "isbn": "9781950665174",
+    "cover_id": 10394551,
+    "cover_source": "https://openlibrary.org/works/OL21703129W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "willhelm-tell": {
-    "isbn": "9783126667814"
+    "isbn": "9783126667814",
+    "cover_id": 8974155,
+    "cover_source": "https://openlibrary.org/works/OL207638W",
+    "cover_note": "Alternative German edition of the same work."
   },
   "sapiens-a-brief-history-of-humankind": {
     "isbn": "9780062316097",
@@ -2243,7 +2495,10 @@
     "cover": "/assets/images/library/9780691180960.jpg"
   },
   "average-is-over": {
-    "isbn": "9780142181119"
+    "isbn": "9780142181119",
+    "cover_id": 13048107,
+    "cover_source": "https://openlibrary.org/works/OL17362758W",
+    "cover_note": "Alternative edition cover of the same work."
   },
   "a-brief-history-of-everyone-who-ever-lived-the-human-story-r": {
     "isbn": "9780297609377",
@@ -2378,7 +2633,10 @@
     "cover_id": 10217486
   },
   "scientific-principles-of-hypertrophy-training-renaissance-pe": {
-    "isbn": "9798708998286"
+    "isbn": "9798708998286",
+    "cover": "/assets/images/books/scientific-principles-of-hypertrophy-training-renaissance-pe.jpg",
+    "cover_source": "https://rpstrength.com/products/the-scientific-principles-of-hypertrophy-training",
+    "cover_note": "Official publisher cover for the same work."
   },
   "siddhartha": {
     "isbn": "9780141181233",
@@ -2496,7 +2754,10 @@
     "cover_id": 427635
   },
   "unsere-welt-neu-denken-eine-einladung": {
-    "isbn": "9783550200793"
+    "isbn": "9783550200793",
+    "cover": "/assets/images/books/unsere-welt-neu-denken-eine-einladung.jpg",
+    "cover_source": "https://www.ullstein.de/werke/unsere-welt-neu-denken/hardcover/9783550200793",
+    "cover_note": "Flat cover downloaded from the publisher for the exact ISBN."
   },
   "utilitarianism-and-other-essays-classics": {
     "isbn": "9780140432725",
@@ -2519,10 +2780,16 @@
     "cover_id": 8392459
   },
   "climate-change-2022-impacts-adaptation-and-vulerability-work": {
-    "isbn": "9781009325837"
+    "isbn": "9781009325837",
+    "cover": "/assets/images/books/climate-change-2022-impacts-adaptation-and-vulerability-work.jpg",
+    "cover_source": "https://www.cambridge.org/9781009325837",
+    "cover_note": "Cambridge University Press artwork for the exact ISBN."
   },
   "flsk-undercover-i-en-svinestald": {
-    "isbn": "9788740054392"
+    "isbn": "9788740054392",
+    "cover": "/assets/images/books/flsk-undercover-i-en-svinestald.jpg",
+    "cover_source": "https://www.saxo.com/dk/flaesk_bog_9788740054392",
+    "cover_note": "Exact Danish edition cover; ISBN 9788740054392."
   },
   "how-to-think-like-a-roman-emperor-the-stoic-philosophy-of-ma": {
     "isbn": "9781250621436",
@@ -2533,17 +2800,26 @@
     "cover_id": 859221
   },
   "the-one-and-the-ninety-nine-forging-identity-in-the-age-of-s": {
-    "isbn": "9781250373038"
+    "isbn": "9781250373038",
+    "cover": "/assets/images/books/the-one-and-the-ninety-nine-forging-identity-in-the-age-of-s.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9781250373038",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "the-curious-culture-of-economic-theory": {
-    "isbn": "9780262548229"
+    "isbn": "9780262548229",
+    "cover": "/assets/images/books/the-curious-culture-of-economic-theory.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780262548229",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "the-hobbit-or-there-and-back-again": {
     "isbn": "9780261103344",
     "cover_id": 10522108
   },
   "the-judgment-and-other-stories": {
-    "isbn": "9788072531974"
+    "isbn": "9788072531974",
+    "cover_id": 12791587,
+    "cover_source": "https://openlibrary.org/works/OL498782W",
+    "cover_note": "German Das Urteil und andere Erzählungen collection cover, as requested; original English ISBN retained."
   },
   "don-quixote": {
     "isbn": "9780142437230",
@@ -2565,7 +2841,10 @@
     "cover_id": 13586740
   },
   "the-white-pill-a-tale-of-good-and-evil": {
-    "isbn": "9798366737548"
+    "isbn": "9798366737548",
+    "cover": "/assets/images/books/the-white-pill-a-tale-of-good-and-evil.jpg",
+    "cover_source": "https://michaelmalice.com/books/",
+    "cover_note": "Official cover on the author’s books page."
   },
   "jurassic-park": {
     "isbn": "9780345538987",
@@ -2584,7 +2863,10 @@
     "cover_id": 104302
   },
   "nausea": {
-    "isbn": "9780811220309"
+    "isbn": "9780811220309",
+    "cover": "/assets/images/books/nausea.jpg",
+    "cover_source": "https://images.penguinrandomhouse.com/cover/9780811220309",
+    "cover_note": "Publisher image service cover for the configured ISBN; visually checked against the title and author."
   },
   "the-hitchhikers-guide-to-the-galaxy": {
     "isbn": "9780345391803",
@@ -2628,5 +2910,35 @@
   "capital-and-interest": {
     "isbn": "9781627300919",
     "cover_id": 8938943
+  },
+  "goat-who-is-the-greatest-economist-of-all-time": {
+    "cover": "/assets/images/books/goat-who-is-the-greatest-economist-of-all-time.jpg",
+    "cover_source": "https://tylercowen.com/econgoat-generative-book/",
+    "cover_note": "Cover published on the author’s page for this free online book."
+  },
+  "government": {
+    "cover_id": 8740688,
+    "cover_source": "https://openlibrary.org/works/OL16572527W",
+    "cover_note": "Cover of The Law, the State, and Other Political Writings, the Bastiat collection containing The State / Government."
+  },
+  "harry-potter-and-the-methods-of-rationality": {
+    "cover_id": 8044459,
+    "cover_source": "https://openlibrary.org/works/OL17351743W",
+    "cover_note": "Alternative edition cover of the same work."
+  },
+  "nietzsche-genealogy-history": {
+    "cover_id": 565438,
+    "cover_source": "https://openlibrary.org/works/OL26849W",
+    "cover_note": "Cover of Language, Counter-Memory, Practice, the collection containing this essay."
+  },
+  "postscript-on-the-societies-of-control": {
+    "cover_id": 143998,
+    "cover_source": "https://openlibrary.org/works/OL16995802W",
+    "cover_note": "Cover of Negotiations, 1972–1990, the collection containing Postscript on Control Societies."
+  },
+  "the-use-of-knowledge-in-society": {
+    "cover_id": 13586552,
+    "cover_source": "https://openlibrary.org/works/OL34820161W",
+    "cover_note": "Cover of Individualism and Economic Order, the collection containing this essay."
   }
 }
