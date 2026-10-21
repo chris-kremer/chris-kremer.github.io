@@ -2244,5 +2244,389 @@
   },
   "average-is-over": {
     "isbn": "9780142181119"
+  },
+  "a-brief-history-of-everyone-who-ever-lived-the-human-story-r": {
+    "isbn": "9780297609377",
+    "cover_id": 10455589
+  },
+  "a-clash-of-kings": {
+    "isbn": "9780008115418",
+    "cover_id": 14818018
+  },
+  "american-prometheus-the-triumph-and-tragedy-of-j-robert-oppe": {
+    "isbn": "9780375412028",
+    "cover_id": 6824243
+  },
+  "an-economist-gets-lunch-new-rules-for-everyday-foodies": {
+    "isbn": "9780525952664",
+    "cover_id": 9740029
+  },
+  "animal-farm": {
+    "isbn": "9780141187389",
+    "cover_id": 108126
+  },
+  "caligula": {
+    "isbn": "9780573606694",
+    "cover_id": 5069770
+  },
+  "climate-future-averting-and-adapting-to-climate-change": {
+    "isbn": "9780197647349"
+  },
+  "confessions": {
+    "isbn": "9780872208162",
+    "cover_id": 13460460
+  },
+  "crime-and-punishment": {
+    "isbn": "9781435131828",
+    "cover_id": 13116014
+  },
+  "demons": {
+    "isbn": "9789354994920",
+    "cover_id": 15220861
+  },
+  "die-physiker": {
+    "isbn": "9783257230475",
+    "cover_id": 10721491
+  },
+  "dont-die": {
+    "isbn": "9781940556154"
+  },
+  "economics-for-the-common-good": {
+    "isbn": "9780691175164",
+    "cover_id": 13514281
+  },
+  "economics-in-one-lesson": {
+    "isbn": "9780983541462",
+    "cover_id": 10077343
+  },
+  "eichmann-in-jerusalem-a-report-on-the-banality-of-evil": {
+    "isbn": "9780140187656",
+    "cover_id": 15257412
+  },
+  "exhalation": {
+    "isbn": "9781101947883",
+    "cover_id": 8793546
+  },
+  "fahrenheit-451": {
+    "isbn": "9780671239770",
+    "cover_id": 12818806
+  },
+  "fathers-and-sons": {
+    "isbn": "9780241261972",
+    "cover_id": 11412653
+  },
+  "flow-the-psychology-of-optimal-experience": {
+    "isbn": "9780061339202",
+    "cover_id": 9783116
+  },
+  "frankenstein": {
+    "isbn": "9780192833662",
+    "cover_id": 119123
+  },
+  "harry-potter-and-the-chamber-of-secrets": {
+    "isbn": "9781408898123",
+    "cover_id": 15259462
+  },
+  "harry-potter-and-the-deathly-hallows": {
+    "isbn": "9781408894743",
+    "cover_id": 10183211
+  },
+  "harry-potter-and-the-half-blood-prince": {
+    "isbn": "9781408855706"
+  },
+  "industrial-society-and-its-future": {
+    "isbn": "9780994790149",
+    "cover_id": 9241274
+  },
+  "liberty-and-property": {
+    "isbn": "9781579703783"
+  },
+  "nathan-der-weise": {
+    "isbn": "9783379003957",
+    "cover_id": 10713204
+  },
+  "old-mans-war": {
+    "isbn": "9780330452168",
+    "cover_id": 8038392
+  },
+  "oliver-twist": {
+    "isbn": "9780140620467",
+    "cover_id": 105741
+  },
+  "on-liberty": {
+    "isbn": "9781613825648",
+    "cover_id": 8819929
+  },
+  "only-dull-people-are-brilliant-at-breakfast": {
+    "isbn": "9780241251805",
+    "cover_id": 13051784
+  },
+  "poor-charlies-almanack-the-wit-and-wisdom-of-charles-t-munge": {
+    "isbn": "9781578643387",
+    "cover_id": 8337563
+  },
+  "predictably-irrational-the-hidden-forces-that-shape-our-deci": {
+    "isbn": "9780061353239",
+    "cover_id": 2314080
+  },
+  "qualityland-20": {
+    "isbn": "9783548064819",
+    "cover_id": 14548245
+  },
+  "say-nothing-a-true-story-of-murder-and-memory-in-northern-ir": {
+    "isbn": "9780307279286",
+    "cover_id": 10217486
+  },
+  "scientific-principles-of-hypertrophy-training-renaissance-pe": {
+    "isbn": "9798708998286"
+  },
+  "siddhartha": {
+    "isbn": "9780141181233",
+    "cover_id": 107711
+  },
+  "snow-crash": {
+    "isbn": "9780553562613",
+    "cover_id": 7004665
+  },
+  "state-of-fear": {
+    "isbn": "9780007181605",
+    "cover_id": 12476
+  },
+  "stubborn-attachments-a-vision-for-a-society-of-free-prospero": {
+    "isbn": "9781732265134",
+    "cover_id": 12385566
+  },
+  "suicide-a-study-in-sociology": {
+    "isbn": "9780203994320",
+    "cover_id": 8724385
+  },
+  "the-anarchist-handbook": {
+    "isbn": "9798748719629",
+    "cover_id": 11206693
+  },
+  "the-death-of-ivan-ilych": {
+    "isbn": "9780553210354"
+  },
+  "the-denial-of-death": {
+    "isbn": "9780684832401",
+    "cover_id": 426312
+  },
+  "the-diary-of-a-young-girl": {
+    "isbn": "9780141007212",
+    "cover_id": 13526331
+  },
+  "the-emperor-of-all-maladies-a-biography-of-cancer": {
+    "isbn": "9781439107959",
+    "cover_id": 9213808
+  },
+  "the-essential-hayek-essential-scholars": {
+    "isbn": "9780889753082",
+    "cover_id": 14409729
+  },
+  "the-fountainhead": {
+    "isbn": "9781101136621",
+    "cover_id": 6412287
+  },
+  "the-gene-an-intimate-history": {
+    "isbn": "9781501150128",
+    "cover_id": 8899886
+  },
+  "the-great-mental-models-general-thinking-concepts": {
+    "isbn": "9781999449001",
+    "cover_id": 9778922
+  },
+  "the-lion-the-witch-and-the-wardrobe": {
+    "isbn": "9780060890155",
+    "cover_id": 9255466
+  },
+  "the-myth-of-sisyphus-and-other-essays": {
+    "isbn": "9780679733737",
+    "cover_id": 12727336
+  },
+  "the-narrow-corridor-states-societies-and-the-fate-of-liberty": {
+    "isbn": "9780735224407",
+    "cover_id": 14432409
+  },
+  "the-origin-of-species": {
+    "isbn": "9781101126752",
+    "cover_id": 6419741
+  },
+  "the-origins-of-totalitarianism": {
+    "isbn": "9780241316757",
+    "cover_id": 8118051
+  },
+  "the-return-of-the-king": {
+    "isbn": "9780008376147",
+    "cover_id": 15246805
+  },
+  "the-revolt-of-the-public-and-the-crisis-of-authority": {
+    "isbn": "9781732265141",
+    "cover_id": 10082646
+  },
+  "the-righteous-mind-why-good-people-are-divided-by-politics-a": {
+    "isbn": "9780141039169",
+    "cover_id": 9021761
+  },
+  "the-road-to-wigan-pier": {
+    "isbn": "9780141913889",
+    "cover_id": 6401359
+  },
+  "the-schopenhauer-cure": {
+    "isbn": "9780066214412",
+    "cover_id": 52811
+  },
+  "the-screwtape-letters": {
+    "isbn": "9780020867401",
+    "cover_id": 9184550
+  },
+  "the-selfish-giant": {
+    "isbn": "9780747541394",
+    "cover_id": 1390791
+  },
+  "the-theory-of-corporate-finance": {
+    "isbn": "9780691125565",
+    "cover_id": 444180
+  },
+  "the-titans-curse": {
+    "isbn": "9781423101482",
+    "cover_id": 13011693
+  },
+  "the-wasp-factory": {
+    "isbn": "9780684853154",
+    "cover_id": 427635
+  },
+  "unsere-welt-neu-denken-eine-einladung": {
+    "isbn": "9783550200793"
+  },
+  "utilitarianism-and-other-essays-classics": {
+    "isbn": "9780140432725",
+    "cover_id": 103180
+  },
+  "walden-or-life-in-the-woods": {
+    "isbn": "9780451527073",
+    "cover_id": 295624
+  },
+  "white-nights": {
+    "isbn": "9780241252086",
+    "cover_id": 13135777
+  },
+  "why-we-sleep-unlocking-the-power-of-sleep-and-dreams": {
+    "isbn": "9780141983769",
+    "cover_id": 10308777
+  },
+  "über-das-böse": {
+    "isbn": "9783492250634",
+    "cover_id": 8392459
+  },
+  "climate-change-2022-impacts-adaptation-and-vulerability-work": {
+    "isbn": "9781009325837"
+  },
+  "flsk-undercover-i-en-svinestald": {
+    "isbn": "9788740054392"
+  },
+  "how-to-think-like-a-roman-emperor-the-stoic-philosophy-of-ma": {
+    "isbn": "9781250621436",
+    "cover_id": 10109692
+  },
+  "life-and-fate": {
+    "isbn": "9781590172018",
+    "cover_id": 859221
+  },
+  "the-one-and-the-ninety-nine-forging-identity-in-the-age-of-s": {
+    "isbn": "9781250373038"
+  },
+  "the-curious-culture-of-economic-theory": {
+    "isbn": "9780262548229"
+  },
+  "the-hobbit-or-there-and-back-again": {
+    "isbn": "9780261103344",
+    "cover_id": 10522108
+  },
+  "the-judgment-and-other-stories": {
+    "isbn": "9788072531974"
+  },
+  "don-quixote": {
+    "isbn": "9780142437230",
+    "cover_id": 12137158
+  },
+  "the-time-machine": {
+    "isbn": "9780141439976"
+  },
+  "the-three-body-problem": {
+    "isbn": "9780765382030",
+    "cover_id": 8478888
+  },
+  "the-trouble-with-being-born": {
+    "isbn": "9780241467275",
+    "cover_id": 13240488
+  },
+  "the-renaissance-diet-20-renaissance-periodization-book-2": {
+    "isbn": "9781782551904",
+    "cover_id": 13586740
+  },
+  "the-white-pill-a-tale-of-good-and-evil": {
+    "isbn": "9798366737548"
+  },
+  "jurassic-park": {
+    "isbn": "9780345538987",
+    "cover_id": 8458864
+  },
+  "moby-dick-or-the-whale": {
+    "isbn": "9780142437247",
+    "cover_id": 110556
+  },
+  "homo-deus-a-history-of-tomorrow": {
+    "isbn": "9780062464316",
+    "cover_id": 12726713
+  },
+  "eugene-onegin": {
+    "isbn": "9780140448030",
+    "cover_id": 104302
+  },
+  "nausea": {
+    "isbn": "9780811220309"
+  },
+  "the-hitchhikers-guide-to-the-galaxy": {
+    "isbn": "9780345391803",
+    "cover_id": 8774325
+  },
+  "the-trial": {
+    "isbn": "9780805209990",
+    "cover_id": 15160439
+  },
+  "alices-adventures-in-wonderland": {
+    "isbn": "9780141321073",
+    "cover_id": 6460011
+  },
+  "thus-spoke-zarathustra": {
+    "isbn": "9780140441185",
+    "cover_id": 9279223
+  },
+  "the-art-of-war": {
+    "isbn": "9780877735373",
+    "cover_id": 671290
+  },
+  "grundgesetz-für-die-bundesrepublik-deutschland": {
+    "isbn": "9783150077856",
+    "cover_id": 996845
+  },
+  "the-happy-prince": {
+    "isbn": "9780192797506",
+    "cover_id": 11641834
+  },
+  "socialism-utopian-and-scientific": {
+    "isbn": "9780717801916"
+  },
+  "a-template-for-understanding-big-debt-crises": {
+    "isbn": "9781732689800",
+    "cover_id": 10934955
+  },
+  "the-gambler": {
+    "isbn": "9780812966930",
+    "cover_id": 605966
+  },
+  "capital-and-interest": {
+    "isbn": "9781627300919",
+    "cover_id": 8938943
   }
 }
