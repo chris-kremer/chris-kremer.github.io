@@ -153,3 +153,7 @@ body .map-controls{grid-template-columns:1.2fr 1fr 1.2fr .9fr 1fr}
 .project-status a{color:#5b6d60;text-decoration:none}.project-status a:hover{text-decoration:underline}
 .project-status>span{padding:3px 8px;border:1px solid #ddd0aa;border-radius:999px;background:#f4eddb;font-weight:600;white-space:nowrap}
 @media(max-width:760px){.project-status{padding:8px 16px;font-size:10px}}
+
+/* Explicit notice for the one missing US CPI month. */
+body .snapshot-warning{display:inline-block;padding:4px 7px;border:1px solid #e5d5ab;border-radius:4px;background:#fbf4e2;color:#89652c;font:10px/1.4 "DM Sans",sans-serif;max-width:215px}
+@media(max-width:760px){body .time-heading .snapshot-controls{flex-wrap:wrap}body .snapshot-warning{font-size:9px}}
