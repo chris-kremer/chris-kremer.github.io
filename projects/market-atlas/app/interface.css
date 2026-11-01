@@ -167,3 +167,16 @@ body .workspace.is-fullscreen .baseline,body .workspace.is-fullscreen .map-hint{
 body .workspace.is-fullscreen .map-meta{flex-shrink:0}
 body .workspace.is-fullscreen #tooltip{z-index:110}
 @media(max-width:760px){.map-actions{gap:6px}#map-area-label{display:none}#fullscreen-toggle{padding:6px}body .workspace.is-fullscreen .map-meta{margin-bottom:5px}body .workspace.is-fullscreen .map-footer{padding:7px 2px}body .workspace.is-fullscreen .scale-note{padding-top:5px}body .workspace.is-fullscreen .timeline #snapshot-context{display:none}}
+
+/* Separate sector clusters with industry cap circles and company pie slices. */
+body .map-controls{grid-template-columns:1fr 1.15fr 1fr 1.15fr .85fr 1.2fr}
+.sector-envelope{fill:#20392d;fill-opacity:.22;stroke:#567362;stroke-opacity:.55;stroke-dasharray:3 5;stroke-width:1}
+.circle-sector-label{fill:#b9ccbd;font:8px "IBM Plex Mono",monospace;letter-spacing:.35px;cursor:pointer}
+.industry-rim{fill:none;stroke:#8da491;stroke-width:1;pointer-events:none}
+.circle-industry-label{fill:#a6bdab;font:7px "DM Sans",sans-serif;cursor:pointer}
+.company-slice>path{stroke:#152420;stroke-width:.8px;cursor:pointer}
+.company-slice text{pointer-events:none}
+.company-slice:hover>path,.company-slice:focus>path{stroke:#f4f5dc;stroke-width:1.8px}
+.company-slice.is-selected>path{stroke:#f4f5dc;stroke-width:2px}
+@media(max-width:1100px){body .map-controls{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:850px){body .map-controls{grid-template-columns:1fr 1fr}}
