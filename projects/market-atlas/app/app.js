@@ -271,32 +271,49 @@ function createStableTreemap(items,w,h,companyMode,anchorFor){
  };
  return {root,frame:null,update,prepareLabels};
 }
-// Fit names in screen pixels so fixed-dollar scaling never creates microscopic type.
+// Fit company names to their actual screen area, including small fixed-scale tiles.
 function companyDisplayName(name){return String(name).replace(/,?\s+(?:(?:Inc(?:orporated)?|Corp(?:oration)?|Ltd|Limited)\.?|PLC)$/i,'').trim();}
 function fitCompanyLabel(text,width,height,measure){
- const empty={lines:[],font:11,lineHeight:13,value:false};
- if(width<38||height<20)return empty;
- const available=width-10,value=width>=58&&height>=56,reserve=value?18:0,maxHeight=height-8-reserve;
- const wrap=(font,maxLines)=>{
-  const words=text.split(/\s+/),lines=[];let line='';
-  for(const word of words){const next=line?line+' '+word:word;if(measure(next,font)<=available){line=next;continue;}if(line)lines.push(line);line=word;if(lines.length>=maxLines||measure(word,font)>available)return null;}
+ const minFont=3,maxFont=26,step=.5,empty={lines:[],font:minFont,lineHeight:minFont*1.15,value:false};
+ if(width<5||height<4||!text.trim())return empty;
+ const available=width-2*Math.min(4,width*.08),contentHeight=height-2*Math.min(3,height*.08),words=text.trim().split(/\s+/);
+ const wrap=(font,maxLines,breakWords=false)=>{
+  const lines=[];let line='';
+  for(const word of words){
+   const next=line?line+' '+word:word;
+   if(measure(next,font)<=available){line=next;continue;}
+   if(line){lines.push(line);line='';}
+   if(measure(word,font)>available){
+    if(!breakWords)return null;
+    for(const char of word){if(measure(line+char,font)>available){if(!line)return null;lines.push(line);line='';}line+=char;}
+   }else line=word;
+   if(lines.length>=maxLines)return null;
+  }
   if(line)lines.push(line);return lines.length<=maxLines?lines:null;
  };
- for(let font=26;font>=11;font--){const lineHeight=font*1.15,maxLines=Math.min(3,Math.floor(maxHeight/lineHeight));if(maxLines<1)continue;const lines=wrap(font,maxLines);if(lines)return {lines,font,lineHeight,value};}
- const font=11,lineHeight=13,maxLines=Math.min(3,Math.floor(maxHeight/lineHeight));if(maxLines<1)return empty;
- const clip=word=>{if(measure(word,font)<=available)return word;let n=word.length;while(n>0&&measure(word.slice(0,n).trimEnd()+'…',font)>available)n--;return word.slice(0,n).trimEnd()+'…';};
- const lines=[];let line='',overflow=false;
- for(const word of text.split(/\s+/)){
-  const next=line?line+' '+word:word;
-  if(measure(next,font)<=available){line=next;continue;}
-  if(line){lines.push(line);line='';}
-  if(lines.length>=maxLines){overflow=true;break;}
-  if(measure(word,font)>available)lines.push(clip(word));else line=word;
-  if(lines.length>=maxLines){overflow=true;break;}
+ const fit=(font,value,breakWords=false)=>{
+  const lineHeight=font*1.15,maxLines=Math.min(4,Math.floor((contentHeight-(value?18:0))/lineHeight));
+  if(maxLines<1)return null;
+  const lines=wrap(font,maxLines,breakWords);return lines?{lines,font,lineHeight,value}:null;
+ };
+ const largestFit=value=>{
+  let lo=0,hi=Math.round((maxFont-minFont)/step),best=null;
+  while(lo<=hi){const mid=Math.floor((lo+hi)/2),candidate=fit(minFont+mid*step,value);if(candidate){best=candidate;lo=mid+1;}else hi=mid-1;}
+  return best;
+ };
+ // Names take precedence over the secondary numeric value in tight tiles.
+ if(width>=68&&height>=60){const withValue=largestFit(true);if(withValue?.font>=10)return withValue;}
+ const full=largestFit(false)||fit(minFont,false,true);if(full)return full;
+ const font=minFont,lineHeight=font*1.15,maxLines=Math.min(4,Math.floor(contentHeight/lineHeight));if(maxLines<1)return empty;
+ const lines=[];let rest=text.trim();
+ for(let i=0;i<maxLines&&rest;i++){
+  if(measure(rest,font)<=available){lines.push(rest);rest='';break;}
+  const last=i===maxLines-1;let count=0;
+  while(count<rest.length&&measure(rest.slice(0,count+1)+(last?'…':''),font)<=available)count++;
+  if(!count)break;
+  lines.push(rest.slice(0,count).trimEnd()+(last?'…':''));rest=rest.slice(count).trimStart();
  }
- if(line&&lines.length<maxLines)lines.push(line);
- if(overflow&&lines.length){const last=lines.at(-1).replace(/…$/,'');lines[lines.length-1]=clip(last+'…');}
- return {lines,font,lineHeight,value};
+ return {lines,font,lineHeight,value:false};
 }
 let companyTextContext;
 const companyTextWidths=new Map();
@@ -355,7 +372,8 @@ function renderMap(){
  const companyNames=companyMode()&&state.labels==='name';
  tiles.classed('company-names',companyNames);
  const tileClips=tiles.selectAll('clipPath.tile-label-clip').data((d,i)=>[{node:d,id:'tile-label-clip-'+i}]).join('clipPath').attr('class','tile-label-clip').attr('id',d=>d.id);
- motion(tileClips.selectAll('rect').data(d=>[d.node]).join('rect')).attr('x',3).attr('y',3).attr('width',d=>Math.max(0,d.x1-d.x0-6)).attr('height',d=>Math.max(0,d.y1-d.y0-6));
+ const labelInset=companyNames?.25:3;
+ motion(tileClips.selectAll('rect').data(d=>[d.node]).join('rect')).attr('x',labelInset).attr('y',labelInset).attr('width',d=>Math.max(0,d.x1-d.x0-labelInset*2)).attr('height',d=>Math.max(0,d.y1-d.y0-labelInset*2));
  tiles.selectAll('.tile-name,.tile-value').attr('clip-path',(_,i,nodes)=>`url(#${nodes[i].parentNode.querySelector('.tile-label-clip').id})`);
  if(companyNames){
   tiles.each(function(d){

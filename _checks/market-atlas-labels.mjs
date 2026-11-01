@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const root=new URL('../projects/market-atlas/app/',import.meta.url);
+const node={addEventListener(){},querySelectorAll(){return[];}};
+const ctx={window:{addEventListener(){}},document:{querySelector(){return {...node}},getElementById(){return {...node}},querySelectorAll(){return[]},addEventListener(){}},fetch:()=>new Promise(()=>{}),console,setTimeout,clearTimeout};
+vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('app.js',root),'utf8'),ctx);
+const {fitCompanyLabel,companyDisplayName}=ctx.window.MarketAtlasMath;
+const measure=(text,font)=>text.length*font*.55;
+const compact=lines=>lines.join('').replace(/\s/g,'');
+let checked=0;
+for(const [name,width,height] of [['Microsoft',30,14],['Coca-Cola',20,12],['International Business Machines',36,22],['Berkshire Hathaway',12,45],['Alphabet',80,8],['Nvidia',6,8],['SAP',150,100]]){
+ const fit=fitCompanyLabel(name,width,height,measure);
+ assert.ok(fit.lines.length>0,`${name}: small tiles should retain a name`);
+ assert.ok(fit.font>=3&&fit.font<=26);
+ assert.ok(fit.lines.length<=4);
+ for(const line of fit.lines)assert.ok(measure(line,fit.font)<=width-2*Math.min(4,width*.08)+1e-9,`${name}: horizontal overflow`);
+ assert.ok(fit.lines.length*fit.lineHeight+(fit.value?18:0)<=height-2*Math.min(3,height*.08)+1e-9,`${name}: vertical overflow`);
+ assert.ok(fit.lines.some(line=>line.replace('…','').length>0),'Never render an ellipsis alone');
+ if(width<38||height<20)assert.ok(fit.font<11,'Compact names should shrink below the old threshold');
+ if(name!=='Nvidia')assert.equal(compact(fit.lines),name.replace(/\s/g,''),'Full names should fit where possible');
+ checked++;
+}
+const small=fitCompanyLabel('Microsoft',30,14,measure),large=fitCompanyLabel('Microsoft',130,80,measure);
+assert.ok(small.font<large.font);assert.equal(small.value,false);assert.equal(large.value,true);
+assert.equal(fitCompanyLabel('Microsoft',4,30,measure).lines.length,0);
+assert.equal(fitCompanyLabel('Microsoft',30,3,measure).lines.length,0);
+assert.equal(companyDisplayName('Microsoft Corporation'),'Microsoft');
+assert.equal(companyDisplayName('SAP SE'),'SAP SE');
+console.log(`PASS: ${checked} name-label geometries retain bounded labels, prioritize names, and shrink below the previous threshold.`);
