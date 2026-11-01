@@ -5,7 +5,7 @@ const root=new URL('../projects/market-atlas/app/',import.meta.url);
 const load=name=>JSON.parse(fs.readFileSync(new URL(name,root),'utf8'));
 const series=load('data-inflation.json');
 const node={addEventListener(){},querySelectorAll(){return[];}};
-const ctx={window:{addEventListener(){}},document:{getElementById(){return {...node}},querySelectorAll(){return[]},addEventListener(){}},fetch:()=>new Promise(()=>{}),console,setTimeout,clearTimeout};
+const ctx={window:{addEventListener(){}},document:{querySelector(){return {...node}},getElementById(){return {...node}},querySelectorAll(){return[]},addEventListener(){}},fetch:()=>new Promise(()=>{}),console,setTimeout,clearTimeout};
 vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('app.js',root),'utf8'),ctx);
 const {inflationPoint,dollarObservation}=ctx.window.MarketAtlasMath;
 assert.ok(!('2025-10' in series.observations),'The unavailable official CPI must remain absent');

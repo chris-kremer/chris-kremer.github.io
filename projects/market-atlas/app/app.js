@@ -484,7 +484,7 @@ $('dollar-basis').onchange=event=>{stop();state.dollars=event.target.value;rende
 $('tile-labels').onchange=event=>{state.labels=event.target.value;render();};
 $('palette').onchange=event=>{state.palette=event.target.value;render();};
 $('frequency').onchange=event=>{if(event.target.value===state.frequency)return;stop();const wasMonthly=monthlyMode(),frequency=event.target.value,toFrame=v=>!Number.isFinite(v)?v:wasMonthly?v/12|0:v*12;for(const key of ['year','baseline'])state[key]=toFrame(state[key]);state.frequency=frequency;viewNotice='Frequency changed by your selection. The same year is retained; annual-to-monthly uses January. Unsupported dates remain unavailable rather than switching to other data.';setupDataset();render();};
-$('month-picker').onchange=event=>{stop();state.year=+event.target.value;render();};
+$('month-picker').onchange=event=>{const selectedFrame=+event.target.value;stop();state.year=selectedFrame;render();};
 $('sector').onchange=event=>{state.sector=event.target.value;state.industry=null;if(!universe().some(e=>e.id===state.selected))state.selected=null;render();};
 $('search').oninput=event=>{state.query=event.target.value;render();};$('clear-search').onclick=()=>{state.query='';render();$('search').focus();};
 $('search').onkeydown=event=>{const items=[...$('search-results').querySelectorAll('[data-match]')];if(!items.length)return;if(event.key==='ArrowDown'||event.key==='ArrowUp'){event.preventDefault();searchIndex=Math.max(0,Math.min(items.length-1,searchIndex+(event.key==='ArrowDown'?1:-1)));items.forEach((b,i)=>b.setAttribute('aria-selected',String(i===searchIndex)));}else if(event.key==='Enter'){event.preventDefault();items[Math.max(0,searchIndex)].click();}else if(event.key==='Escape'){state.query='';render();}};
@@ -498,6 +498,35 @@ for(const [id,delta] of [['back',-1],['next',1]])$(id).onclick=()=>{stop();const
 const player=createTimelinePlayer({getFrames:years,getFrame:()=>state.year,showFrame:(y,{instant=false}={})=>{state.year=y;if(instant)mapLayoutCache=null;hideTip();render();},onProgress:paintTimeline,onChange:running=>{$('play').innerHTML=running?'Ⅱ <span>Pause</span>':'▶ <span>Play</span>';$('play').setAttribute('aria-label',running?'Pause timeline':'Play timeline');$('play').setAttribute('aria-pressed',String(running));document.querySelector('.workspace').classList.toggle('is-playing',running);if(!running)render();}});
  $('play').onclick=()=>player.running?player.stop():player.start();
  $('unselect').onclick=()=>{state.selected=null;render();};
+// Native fullscreen where supported, with the same viewport-filling layout as fallback.
+const chartWorkspace=document.querySelector('.workspace');
+let expandedChart=false,nativeChartFullscreen=false;
+function setExpandedChart(expanded){
+ expandedChart=expanded;hideTip();
+ chartWorkspace.classList.toggle('is-fullscreen',expanded);
+ document.body.classList.toggle('fullscreen-active',expanded);
+ const button=$('fullscreen-toggle'),label=expanded?'Exit full screen':'Full screen';
+ button.setAttribute('aria-label',expanded?'Exit chart full screen':'Expand chart to full screen');
+ button.setAttribute('aria-pressed',String(expanded));button.title=expanded?'Exit full screen (Esc)':'Full screen';button.querySelector('span').textContent=label;
+ requestAnimationFrame(()=>{mapLayoutCache=null;render();});
+}
+$('fullscreen-toggle').onclick=async()=>{
+ if(expandedChart){
+  if(document.fullscreenElement===chartWorkspace){try{await document.exitFullscreen();}catch{}}
+  nativeChartFullscreen=false;setExpandedChart(false);$('fullscreen-toggle').focus();return;
+ }
+ setExpandedChart(true);
+ if(chartWorkspace.requestFullscreen&&document.fullscreenEnabled){
+  try{await chartWorkspace.requestFullscreen();nativeChartFullscreen=document.fullscreenElement===chartWorkspace;}catch{/* The viewport layout remains available. */}
+ }
+};
+document.addEventListener('fullscreenchange',()=>{
+ if(document.fullscreenElement===chartWorkspace)nativeChartFullscreen=true;
+ else if(nativeChartFullscreen){nativeChartFullscreen=false;setExpandedChart(false);$('fullscreen-toggle').focus();}
+});
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'&&expandedChart){event.preventDefault();if(document.fullscreenElement===chartWorkspace)document.exitFullscreen().catch(()=>{});nativeChartFullscreen=false;setExpandedChart(false);$('fullscreen-toggle').focus();}
+});
 const openMethod=()=>{stop();$('method-dialog').showModal();};$('method').onclick=openMethod;document.querySelectorAll('.open-method').forEach(b=>b.onclick=openMethod);
 document.querySelectorAll('.close-dialog').forEach(b=>b.onclick=()=>b.closest('dialog').close());document.querySelectorAll('dialog').forEach(d=>d.onclick=event=>{if(event.target===d){const r=d.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)d.close();}});
 $('export').onclick=()=>{
