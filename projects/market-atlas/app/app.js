@@ -322,19 +322,19 @@ function measureCompanyText(text,size){
  companyTextContext??=document.createElement('canvas').getContext('2d');companyTextContext.font=`600 ${size}px "DM Sans", sans-serif`;
  const width=companyTextContext.measureText(text).width;if(companyTextWidths.size>12000)companyTextWidths.clear();companyTextWidths.set(key,width);return width;
 }
-function groupIndustryCaps(items,valueAt,companies=true){
+function groupSectorCaps(items,valueAt){
  const groups=new Map();
  for(const entity of items){
-  const name=companies?(entity.industry||entity.name):entity.name,key=entity.sector+'|'+(companies?name:entity.id);
-  if(!groups.has(key))groups.set(key,{key,name,sector:entity.sector,members:[],cap:0});
+  const key=entity.sector;
+  if(!groups.has(key))groups.set(key,{key,name:key,members:[],cap:0});
   const group=groups.get(key),value=valueAt(entity),cap=Number.isFinite(value)&&value>0?value:0;
   group.members.push({entity,cap});group.cap+=cap;
  }
  for(const group of groups.values())group.members.sort((a,b)=>a.entity.id.localeCompare(b.entity.id));
- return [...groups.values()].sort((a,b)=>sectorRank(a.sector)-sectorRank(b.sector)||a.key.localeCompare(b.key));
+ return [...groups.values()].sort((a,b)=>sectorRank(a.name)-sectorRank(b.name)||a.name.localeCompare(b.name));
 }
-function referenceIndustryCaps(items,companies=true){
- const groups=groupIndustryCaps(items,()=>0,companies);
+function referenceSectorCaps(items){
+ const groups=groupSectorCaps(items,()=>0);
  for(const group of groups){
   const totals=new Map();
   for(const {entity} of group.members)for(const point of historyOf(entity)){
@@ -345,42 +345,38 @@ function referenceIndustryCaps(items,companies=true){
  }
  return groups.filter(g=>g.cap>0);
 }
-// All industry circles share one radius-to-cap conversion. Sector outlines are containers.
-function packIndustryClusters(groups,width,height){
- const positive=groups.filter(g=>g.cap>0);if(!positive.length)return {sectors:[],industries:[],capScale:0};
- const unit=Math.max(...positive.map(g=>g.cap)),industryGap=.055,sectorGap=.16;
- const sectorGroups=d3.groups(positive,g=>g.sector).sort(([a],[b])=>sectorRank(a)-sectorRank(b));
- const clusters=sectorGroups.map(([name,industries])=>{
-  const circles=industries.map(group=>({group,r:Math.sqrt(group.cap/unit)+industryGap}));
-  d3.packSiblings(circles);const enclosing=d3.packEnclose(circles);
-  return {name,r:enclosing.r+.19,circles:circles.map(c=>({...c,x:c.x-enclosing.x,y:c.y-enclosing.y}))};
- });
- // Shelves use the rectangular viewport efficiently and keep sector order stable.
- const widest=Math.max(...clusters.map(c=>2*c.r)),totalWidth=clusters.reduce((n,c)=>n+2*c.r+sectorGap,0);
+// A common cap-to-area scale makes the sector disks directly comparable.
+function packSectorCircles(groups,width,height){
+ const positive=groups.filter(g=>g.cap>0);if(!positive.length)return {sectors:[],capScale:0};
+ const unit=Math.max(...positive.map(g=>g.cap)),gap=.24,caption=.23;
+ const circles=positive.map(group=>({...group,r:Math.sqrt(group.cap/unit)}));
+ const widest=Math.max(...circles.map(c=>2*c.r)),totalWidth=circles.reduce((n,c)=>n+2*c.r+gap,0);
  let best=null;
  for(let attempt=0;attempt<=32;attempt++){
   const limit=widest+(totalWidth-widest)*attempt/32,rows=[];let row={items:[],width:0,height:0};
-  for(const cluster of clusters){
-   const addition=2*cluster.r+(row.items.length?sectorGap:0);
+  for(const circle of circles){
+   const addition=2*circle.r+(row.items.length?gap:0);
    if(row.items.length&&row.width+addition>limit){rows.push(row);row={items:[],width:0,height:0};}
-   row.width+=2*cluster.r+(row.items.length?sectorGap:0);row.height=Math.max(row.height,2*cluster.r);row.items.push(cluster);
+   row.width+=2*circle.r+(row.items.length?gap:0);row.height=Math.max(row.height,2*circle.r);row.items.push(circle);
   }
   if(row.items.length)rows.push(row);
-  const bw=Math.max(...rows.map(r=>r.width)),bh=rows.reduce((n,r)=>n+r.height,0)+sectorGap*(rows.length-1),k=Math.min(Math.max(1,width-20)/bw,Math.max(1,height-20)/bh);
+  const bw=Math.max(...rows.map(r=>r.width)),bh=rows.reduce((n,r)=>n+r.height+caption,0)+gap*(rows.length-1),k=Math.min(Math.max(1,width-24)/bw,Math.max(1,height-24)/bh);
   if(!best||k>best.k)best={rows,bw,bh,k};
  }
- const sectors=[],industries=[];let y=(height-best.bh*best.k)/2;
+ const sectors=[];let y=(height-best.bh*best.k)/2;
  for(const row of best.rows){
   let x=(width-row.width*best.k)/2;
-  for(const cluster of row.items){
-   const cx=x+cluster.r*best.k,cy=y+row.height*best.k/2;
-   sectors.push({name:cluster.name,x:cx,y:cy,r:cluster.r*best.k});
-   for(const circle of cluster.circles)industries.push({...circle.group,x:cx+circle.x*best.k,y:cy+circle.y*best.k,r:Math.sqrt(circle.group.cap/unit)*best.k});
-   x+=(2*cluster.r+sectorGap)*best.k;
+  for(const circle of row.items){
+   sectors.push({...circle,x:x+circle.r*best.k,y:y+(caption+row.height/2)*best.k,r:circle.r*best.k});
+   x+=(2*circle.r+gap)*best.k;
   }
-  y+=(row.height+sectorGap)*best.k;
+  y+=(row.height+caption+gap)*best.k;
  }
- return {sectors,industries,capScale:best.k/Math.sqrt(unit),labelGap:2*industryGap*best.k};
+ return {sectors,capScale:best.k/Math.sqrt(unit)};
+}
+function sizeSectorCircles(layout,current){
+ const byKey=new Map(current.map(g=>[g.key,g]));
+ return layout.sectors.map(g=>{const present=byKey.get(g.key);return {...g,members:present?.members||[],cap:present?.cap||0,r:Math.sqrt(present?.cap||0)*layout.capScale};}).filter(g=>g.cap>0);
 }
 function companyPieSlices(members,radius){return d3.pie().sort(null).value(d=>d.cap)(members).map(d=>({...d,radius}));}
 function circleLabelBox(startAngle,endAngle,radius){
@@ -396,41 +392,31 @@ function showEntityTip(e,event){
 const circleReferenceCache=new Map();let circleLayoutCache=null;
 function renderCircleMap(holder,w,h,items,total,peak){
  const referenceKey=state.dataset+'|'+state.frequency+'|'+state.dollars;
- if(!circleReferenceCache.has(referenceKey))circleReferenceCache.set(referenceKey,referenceIndustryCaps(entities(),companyMode()));
- const current=groupIndustryCaps(items,e=>observation(e)?.marketCap,companyMode()),byKey=new Map(current.map(g=>[g.key,g]));
+ if(!circleReferenceCache.has(referenceKey))circleReferenceCache.set(referenceKey,referenceSectorCaps(entities()));
+ const current=groupSectorCaps(items,e=>observation(e)?.marketCap);
  const absolute=state.scale==='absolute',key=referenceKey+'|'+w+'|'+h+'|'+state.scale+'|'+state.sector+'|'+state.industry;
  const existing=circleLayoutCache?.key===key;
- if(!existing)circleLayoutCache={key,reference:packIndustryClusters(circleReferenceCache.get(referenceKey),w,h)};
+ if(!existing)circleLayoutCache={key,reference:packSectorCircles(circleReferenceCache.get(referenceKey),w,h)};
  const duration=existing&&circleLayoutCache.frame!==state.year?transitionMs():0;
  circleLayoutCache.frame=state.year;
- const layout=absolute?circleLayoutCache.reference:packIndustryClusters(current,w,h);
- const industries=layout.industries.map(g=>{const present=byKey.get(g.key);return {...g,members:present?.members||[],cap:present?.cap||0,r:Math.sqrt(present?.cap||0)*layout.capScale};}).filter(g=>g.cap>0);
- const activeSectors=new Set(industries.map(g=>g.sector));
- $('scale-note').textContent=(absolute?`Total cap: ${peak.total?(total/peak.total*100).toFixed(1):'0'}% of peak. Filled circle areas use a fixed cap scale across dates; industry positions stay fixed.`:'Relative size · Industry circles are packed to fit this snapshot; cluster positions can move as sizes change.')+(companyMode()?' Circle area = industry cap; each slice = company cap.':' Each filled circle is one source industry; company breakdowns are unavailable.')+' Sector outlines are grouping guides, not cap areas. Value basis: '+capBasis()+'.';
- $('map-area-label').textContent=absolute?'INDUSTRY CIRCLES · FIXED CAP SCALE':'INDUSTRY CIRCLES · RELATIVE SIZE';
- const svg=d3.select(holder).selectAll('svg').data([null]).join('svg').attr('data-layout','circles').attr('viewBox',`0 0 ${w} ${h}`).attr('role','group').attr('aria-label',companyMode()?'Separate sector clusters; industry circles divided into company market-cap slices':'Separate sector clusters; circles show source industry market caps without company breakdowns').attr('data-current-total',total).attr('data-cap-scale',layout.capScale);
+ const layout=absolute?circleLayoutCache.reference:packSectorCircles(current,w,h);
+ const sectors=sizeSectorCircles(layout,current);
+ $('scale-note').textContent=(absolute?`Total cap: ${peak.total?(total/peak.total*100).toFixed(1):'0'}% of peak. Sector circles grow and shrink on a fixed cap scale across dates; centers stay fixed.`:'Relative size · Sector circles are packed to fit this snapshot; positions can move as sizes change.')+(companyMode()?' Circle area = sector cap; each slice = company cap.':' Circle area = observed sector total; slices show source industries, with no company breakdown.')+' Value basis: '+capBasis()+'.';
+ $('map-area-label').textContent=absolute?'SECTOR CIRCLES · FIXED CAP SCALE':'SECTOR CIRCLES · RELATIVE SIZE';
+ const svg=d3.select(holder).selectAll('svg').data([null]).join('svg').attr('data-layout','circles').attr('viewBox',`0 0 ${w} ${h}`).attr('role','group').attr('aria-label',companyMode()?'Separate sector circles sized by market cap and divided into company slices':'Separate sector circles sized by market cap and divided into source industries').attr('data-current-total',total).attr('data-cap-scale',layout.capScale);
  svg.selectAll('*').interrupt('circles');
- const motion=s=>duration?s.transition('circles').duration(duration).ease(player.running?d3.easeLinear:d3.easeCubicInOut):s;
- const clusters=svg.selectAll('g.sector-cluster').data(layout.sectors.filter(s=>activeSectors.has(s.name)),s=>s.name).join(enter=>{const g=enter.append('g').attr('class','sector-cluster');g.append('circle');g.append('text');return g;});
- motion(clusters).attr('transform',s=>`translate(${s.x},${s.y})`);
- clusters.select('circle').attr('r',s=>s.r).attr('class','sector-envelope').attr('pointer-events','none');
- clusters.select('text').attr('class','circle-sector-label').attr('text-anchor','middle').attr('y',s=>-s.r+12).text(s=>s.name.toUpperCase()).attr('role','button').attr('tabindex',0).attr('aria-label',s=>'Explore '+s.name).on('click',(_,s)=>focusGroup(s.name)).on('keydown',(event,s)=>{if(event.key==='Enter')focusGroup(s.name);});
- const disks=svg.selectAll('g.industry-disk').data(industries,g=>g.key).join(enter=>{const g=enter.append('g').attr('class','industry-disk');g.append('circle').attr('class','industry-rim');g.append('text').attr('class','circle-industry-label');g.append('title');return g;});
+ const motion=selection=>duration?selection.transition('circles').duration(duration).ease(player.running?d3.easeLinear:d3.easeCubicInOut):selection;
+ const disks=svg.selectAll('g.sector-disk').data(sectors,g=>g.key).join(enter=>{const g=enter.append('g').attr('class','sector-disk');g.append('circle').attr('class','sector-rim');g.append('text').attr('class','sector-label-primary');g.append('text').attr('class','sector-cap-label');g.append('title');return g;});
  motion(disks).attr('transform',g=>`translate(${g.x},${g.y})`);
  motion(disks.select('circle')).attr('r',g=>g.r);
- disks.select('title').text(g=>`${g.name} · ${g.sector}\nIndustry market cap ${currency(g.cap)}\n${companyMode()?g.members.filter(m=>m.cap>0).length+' observed companies':'Source industry total; company breakdown unavailable'}`);
- const industryLabels=new Map(),labelBounds=[];
- const intersects=(a,b)=>a.x<b.x+b.width&&a.x+a.width>b.x&&a.y<b.y+b.height&&a.y+a.height>b.y;
- for(const g of [...industries].sort((a,b)=>b.r-a.r)){
-  if(g.r<24)continue;
-  const max=Math.floor(g.r*2/4),text=g.name.length>max?g.name.slice(0,max-1)+'…':g.name,width=measureCompanyText(text,7),box={x:g.x-width/2,y:g.y-g.r-11,width,height:9};
-  const blocked=industries.some(other=>{if(other.key===g.key)return false;const dx=Math.max(box.x-other.x,other.x-box.x-box.width,0),dy=Math.max(box.y-other.y,other.y-box.y-box.height,0);return dx*dx+dy*dy<(other.r+1)**2;})||labelBounds.some(b=>intersects(box,b))||layout.sectors.some(s=>intersects(box,{x:s.x-s.name.length*2.5,y:s.y-s.r+4,width:s.name.length*5,height:10}));
-  if(!blocked){industryLabels.set(g.key,text);labelBounds.push(box);}
- }
- disks.select('text.circle-industry-label').attr('text-anchor','middle').attr('y',g=>-g.r-3).text(g=>industryLabels.get(g.key)||'').attr('role','button').attr('tabindex',g=>industryLabels.has(g.key)?0:null).attr('aria-label',g=>'Explore '+g.name).on('click',(_,g)=>companyMode()?focusGroup(g.sector,g.name):select(g.members[0].entity.id)).on('keydown',(event,g)=>{if(event.key==='Enter')companyMode()?focusGroup(g.sector,g.name):select(g.members[0].entity.id);});
+ disks.select('title').text(g=>`${g.name}\nSector market cap ${currency(g.cap)}\n${g.members.filter(m=>m.cap>0).length} observed ${companyMode()?'companies':'source industries'}`);
+ const sectorTitles={'Communication services':'COMM. SERVICES','Consumer discretionary':'CONSUMER DISC.','Consumer staples':'CONSUMER STAPLES'};
+ const captions=disks.select('text.sector-label-primary').attr('text-anchor','middle').attr('font-size',w<600?8:10.5).text(g=>sectorTitles[g.name]||g.name.toUpperCase()).attr('role','button').attr('tabindex',0).attr('aria-label',g=>'Explore '+g.name).on('click',(_,g)=>focusGroup(g.name)).on('keydown',(event,g)=>{if(event.key==='Enter')focusGroup(g.name);});
+ motion(captions).attr('y',g=>-g.r-17);
+ const totals=disks.select('text.sector-cap-label').attr('text-anchor','middle').text(g=>currency(g.cap));motion(totals).attr('y',g=>-g.r-5);
  const names=companyMode()&&state.labels!=='ticker',dense=state.labels==='nameDense',arc=d3.arc().innerRadius(0).outerRadius(d=>d.radius);
- disks.each(function(industry){
-  const slices=d3.select(this).selectAll('g.company-slice').data(companyPieSlices(industry.members,industry.r).filter(d=>d.data.cap>0),d=>d.data.entity.id).join(enter=>{const g=enter.append('g').attr('class','company-slice tile').attr('tabindex',0).attr('role','button');g.append('path');g.append('text').attr('class','tile-name');g.append('text').attr('class','tile-value');g.append('title');return g;});
+ disks.each(function(sector){
+  const slices=d3.select(this).selectAll('g.company-slice').data(companyPieSlices(sector.members,sector.r).filter(d=>d.data.cap>0),d=>d.data.entity.id).join(enter=>{const g=enter.append('g').attr('class','company-slice tile').attr('tabindex',0).attr('role','button');g.append('path');g.append('text').attr('class','tile-name');g.append('text').attr('class','tile-value');g.append('title');return g;});
   slices.classed('company-names',names).classed('is-selected',d=>d.data.entity.id===state.selected).classed('is-dimmed',d=>!matches(d.data.entity)).attr('aria-label',d=>`${d.data.entity.name}, market cap ${currency(d.data.cap)}, forward P/E ${multiple(observation(d.data.entity)?.fpe)}`);
   const paths=slices.select('path').attr('fill',d=>colorOf(colorValue(d.data.entity,observation(d.data.entity))));
   if(duration)paths.transition('circles').duration(duration).ease(player.running?d3.easeLinear:d3.easeCubicInOut).attrTween('d',function(d){const previous=this._circleArc||{startAngle:d.startAngle,endAngle:d.startAngle,radius:d.radius},interpolate=d3.interpolate(previous,{startAngle:d.startAngle,endAngle:d.endAngle,radius:d.radius});return t=>{this._circleArc=interpolate(t);return arc(this._circleArc);};});
@@ -446,7 +432,7 @@ function renderCircleMap(holder,w,h,items,total,peak){
    const metric=metricText(e,observation(e));
    g.select('.tile-value').attr('text-anchor','middle').attr('font-size',10).attr('x',box.x).attr('y',top+fit.lines.length*fit.lineHeight+13).text(fit.value&&metric.length*6<box.side-10?metric:'');
   });
-  slices.select('title').text(d=>`${d.data.entity.name}\n${industry.name}\nMarket cap ${currency(d.data.cap)}\nIndustry share ${(d.data.cap/industry.cap*100).toFixed(1)}%\nForward P/E ${multiple(observation(d.data.entity)?.fpe)}`);
+  slices.select('title').text(d=>`${d.data.entity.name}\n${sector.name}\nMarket cap ${currency(d.data.cap)}\nSector share ${(d.data.cap/sector.cap*100).toFixed(1)}%\nForward P/E ${multiple(observation(d.data.entity)?.fpe)}`);
   slices.on('click',(_,d)=>select(d.data.entity.id)).on('keydown',(event,d)=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select(d.data.entity.id);}}).on('pointermove',(event,d)=>showEntityTip(d.data.entity,event)).on('pointerleave',hideTip);
  });
 }
@@ -582,7 +568,7 @@ function render(){
  renderDollarBasis();
  const capOnly=entities().some(e=>observation(e)?.marketCap>0)&&!entities().some(e=>validPE(observation(e)?.fpe));
  if(!['treemap','circles'].includes(state.layout))state.layout='treemap';
- $('map-layout').value=state.layout;$('treemap').setAttribute('aria-label',state.layout==='circles'?'Market capitalization by sector clusters and industry circles':'Market capitalization treemap');
+ $('map-layout').value=state.layout;$('treemap').setAttribute('aria-label',state.layout==='circles'?'Market capitalization by separate sector circles':'Market capitalization treemap');
  if(!['ticker','name','nameDense'].includes(state.labels))state.labels='ticker';
  $('tile-labels').value=state.labels;$('tile-labels').disabled=!companyMode();
  if(!palettes[state.palette])state.palette='atlas';
@@ -594,7 +580,7 @@ function render(){
  else if(!player.running&&capOnly)$('snapshot-context').textContent='';
  $('month-picker').value=state.year;$('map-scale').value=state.scale;
  $('baseline').value=state.baseline;$('color').value=state.color;$('sector').value=state.sector;$('search').value=state.query;$('clear-search').hidden=!state.query;
- const displayNames={layout:state.layout==='circles'?'Industry circles':'Treemap',color:$('color').selectedOptions[0]?.textContent||'',size:state.scale==='absolute'?'Fixed cap scale':'Relative size',dollars:state.dollars==='real'?'Inflation-adjusted '+shortMonth(inflationSeries().baseMonth)+' '+marketInfo().symbol:'Nominal '+marketInfo().currency,palette:(state.palette==='finviz'?'Finviz':'Atlas')+' palette',labels:companyMode()?(state.labels==='nameDense'?'Company names · small tiles':state.labels==='name'?'Company names':'Tickers'):'Industry names'};$('display-summary').textContent=Object.values(displayNames).join(' · ');
+ const displayNames={layout:state.layout==='circles'?'Sector circles':'Treemap',color:$('color').selectedOptions[0]?.textContent||'',size:state.scale==='absolute'?'Fixed cap scale':'Relative size',dollars:state.dollars==='real'?'Inflation-adjusted '+shortMonth(inflationSeries().baseMonth)+' '+marketInfo().symbol:'Nominal '+marketInfo().currency,palette:(state.palette==='finviz'?'Finviz':'Atlas')+' palette',labels:companyMode()?(state.labels==='nameDense'?'Company names · small tiles':state.labels==='name'?'Company names':'Tickers'):'Industry names'};$('display-summary').textContent=Object.values(displayNames).join(' · ');
  $('back').disabled=ys.indexOf(state.year)===0;$('next').disabled=ys.indexOf(state.year)===ys.length-1;
  $('year-ticks').querySelectorAll('button').forEach(b=>b.classList.toggle('active',+b.dataset.year===state.year));
  $('dataset-note').textContent=state.dataset==='companies'?'Complete current S&P 500 roster · Share classes consolidated into one company tile. Current membership is used throughout, not historical index membership. '+(monthlyMode()?'Real month-end market caps and forward P/E; missing values stay blank. Industry archives remain annual.':'Fiscal dates differ.')+' Forecast vintage is unverified.':state.dataset==='industries'?'NYU Stern / Aswath Damodaran · Annual January snapshots. Cap is approximately prior year-end; forward P/E is a simple industry average. Constituents change over time.':'Imported dated snapshots · Session only. Source quality, metric definitions, and date alignment are determined by your file.';
@@ -692,7 +678,7 @@ $('import-file').onchange=async event=>{const f=event.target.files[0];if(!f)retu
 window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(render,120);});document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
 async function init(){try{const load=async name=>{const res=await fetch(name+'?v='+(name==='data-inflation.json'?'cpi-gap-v1':'europe-v1'));if(!res.ok)throw Error('Dataset could not be loaded.');return res.json();};const [current,archive,inflation,europe]=await Promise.all([load('data.json'),load('data-history.json'),load('data-inflation.json'),load('data-europe.json')]);db=mergeHistoricalData(current,archive);db.inflation=inflation;db.europe=europe;Object.assign(db,europe.markets);if(!window.d3)throw Error('Chart library could not be loaded.');try{const saved=JSON.parse(localStorage.getItem('market-atlas-v3')||'null');if(saved&&['companies','industries','longrun','spIndustries','dax','cac','ftse'].includes(saved.dataset))Object.assign(state,Object.fromEntries(Object.keys(state).filter(key=>key in saved).map(key=>[key,saved[key]]))); }catch{}if(!['fpe','marketCap'].includes(state.historyMetric)){state.historyMetric='fpe';viewNotice='Automatic history-chart switching has been removed. Forward P/E is selected; use the chart selector to choose market cap explicitly.';}if(['longrun','spIndustries','dax','cac','ftse'].includes(state.dataset)&&state.frequency!=='monthly'||state.dataset==='industries'&&state.frequency!=='annual')Object.assign(state,selectionForDataset(state,state.dataset));setupDataset();render();document.querySelectorAll('[data-await-data]').forEach(e=>{e.removeAttribute('inert');e.setAttribute('aria-busy','false');});document.querySelectorAll('#dataset-picker').forEach(b=>b.disabled=false);}catch(err){$('treemap').innerHTML=`<div class="empty-state"><div><strong>Unable to load the map</strong><p>${esc(err.message)}</p><p>Reload the page to retry.</p></div></div>`;$('coverage').textContent='Data unavailable';document.querySelector('.workspace').setAttribute('aria-busy','false');document.querySelector('.workspace').removeAttribute('inert');document.querySelector('.toolbar').setAttribute('inert','');document.querySelector('.timeline').setAttribute('inert','');console.error(err);}}
 // Expose pure calculation helpers for reproducible checks, without mutation hooks.
-window.MarketAtlasMath={percentile,change,cagr,parseCSV,importCSV,annualObservation,monthKey,monthString,createTimelinePlayer,createStableTreemap,PLAYBACK,peakMarketCap,marketScaleGeometry,mergeHistoricalData,inflationPoint,adjustMarketCap,dollarObservation,timelineFrames,selectionForDataset,coverageWindow,aggregateCompanyIndustries,fitCompanyLabel,companyDisplayName,groupIndustryCaps,packIndustryClusters,companyPieSlices,circleLabelBox};
+window.MarketAtlasMath={percentile,change,cagr,parseCSV,importCSV,annualObservation,monthKey,monthString,createTimelinePlayer,createStableTreemap,PLAYBACK,peakMarketCap,marketScaleGeometry,mergeHistoricalData,inflationPoint,adjustMarketCap,dollarObservation,timelineFrames,selectionForDataset,coverageWindow,aggregateCompanyIndustries,fitCompanyLabel,companyDisplayName,groupSectorCaps,packSectorCircles,sizeSectorCircles,companyPieSlices,circleLabelBox};
 document.fonts?.ready.then(()=>{companyTextWidths.clear();if(db&&['name','nameDense'].includes(state.labels))renderMap();});
 init();
 })();
