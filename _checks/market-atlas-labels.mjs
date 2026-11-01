@@ -10,7 +10,7 @@ const measure=(text,font)=>text.length*font*.55;
 const compact=lines=>lines.join('').replace(/\s/g,'');
 let checked=0;
 for(const [name,width,height] of [['Microsoft',30,14],['Coca-Cola',20,12],['International Business Machines',36,22],['Berkshire Hathaway',12,45],['Alphabet',80,8],['Nvidia',6,8],['SAP',150,100]]){
- const fit=fitCompanyLabel(name,width,height,measure);
+ const fit=fitCompanyLabel(name,width,height,measure,true);
  assert.ok(fit.lines.length>0,`${name}: small tiles should retain a name`);
  assert.ok(fit.font>=3&&fit.font<=26);
  assert.ok(fit.lines.length<=4);
@@ -21,10 +21,13 @@ for(const [name,width,height] of [['Microsoft',30,14],['Coca-Cola',20,12],['Inte
  if(name!=='Nvidia')assert.equal(compact(fit.lines),name.replace(/\s/g,''),'Full names should fit where possible');
  checked++;
 }
-const small=fitCompanyLabel('Microsoft',30,14,measure),large=fitCompanyLabel('Microsoft',130,80,measure);
+const small=fitCompanyLabel('Microsoft',30,14,measure,true),large=fitCompanyLabel('Microsoft',130,80,measure,true);
 assert.ok(small.font<large.font);assert.equal(small.value,false);assert.equal(large.value,true);
 assert.equal(fitCompanyLabel('Microsoft',4,30,measure).lines.length,0);
 assert.equal(fitCompanyLabel('Microsoft',30,3,measure).lines.length,0);
+assert.equal(fitCompanyLabel('Microsoft',30,14,measure).lines.length,0,'Standard names retain the larger-text cutoff');
+const standard=fitCompanyLabel('International Business Machines',90,60,measure);
+assert.ok(standard.lines.length>0&&standard.font>=11,'Standard names keep their readable font floor');
 assert.equal(companyDisplayName('Microsoft Corporation'),'Microsoft');
 assert.equal(companyDisplayName('SAP SE'),'SAP SE');
 console.log(`PASS: ${checked} name-label geometries retain bounded labels, prioritize names, and shrink below the previous threshold.`);

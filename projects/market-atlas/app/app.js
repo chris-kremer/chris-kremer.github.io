@@ -273,10 +273,10 @@ function createStableTreemap(items,w,h,companyMode,anchorFor){
 }
 // Fit company names to their actual screen area, including small fixed-scale tiles.
 function companyDisplayName(name){return String(name).replace(/,?\s+(?:(?:Inc(?:orporated)?|Corp(?:oration)?|Ltd|Limited)\.?|PLC)$/i,'').trim();}
-function fitCompanyLabel(text,width,height,measure){
- const minFont=3,maxFont=26,step=.5,empty={lines:[],font:minFont,lineHeight:minFont*1.15,value:false};
- if(width<5||height<4||!text.trim())return empty;
- const available=width-2*Math.min(4,width*.08),contentHeight=height-2*Math.min(3,height*.08),words=text.trim().split(/\s+/);
+function fitCompanyLabel(text,width,height,measure,dense=false){
+ const minFont=dense?3:11,maxFont=26,step=.5,maxNameLines=dense?4:3,empty={lines:[],font:minFont,lineHeight:minFont*1.15,value:false};
+ if(width<(dense?5:38)||height<(dense?4:20)||!text.trim())return empty;
+ const available=width-(dense?2*Math.min(4,width*.08):10),contentHeight=height-(dense?2*Math.min(3,height*.08):8),words=text.trim().split(/\s+/);
  const wrap=(font,maxLines,breakWords=false)=>{
   const lines=[];let line='';
   for(const word of words){
@@ -292,7 +292,7 @@ function fitCompanyLabel(text,width,height,measure){
   if(line)lines.push(line);return lines.length<=maxLines?lines:null;
  };
  const fit=(font,value,breakWords=false)=>{
-  const lineHeight=font*1.15,maxLines=Math.min(4,Math.floor((contentHeight-(value?18:0))/lineHeight));
+  const lineHeight=font*1.15,maxLines=Math.min(maxNameLines,Math.floor((contentHeight-(value?18:0))/lineHeight));
   if(maxLines<1)return null;
   const lines=wrap(font,maxLines,breakWords);return lines?{lines,font,lineHeight,value}:null;
  };
@@ -303,8 +303,8 @@ function fitCompanyLabel(text,width,height,measure){
  };
  // Names take precedence over the secondary numeric value in tight tiles.
  if(width>=68&&height>=60){const withValue=largestFit(true);if(withValue?.font>=10)return withValue;}
- const full=largestFit(false)||fit(minFont,false,true);if(full)return full;
- const font=minFont,lineHeight=font*1.15,maxLines=Math.min(4,Math.floor(contentHeight/lineHeight));if(maxLines<1)return empty;
+ const full=largestFit(false)||(dense?fit(minFont,false,true):null);if(full)return full;
+ const font=minFont,lineHeight=font*1.15,maxLines=Math.min(maxNameLines,Math.floor(contentHeight/lineHeight));if(maxLines<1)return empty;
  const lines=[];let rest=text.trim();
  for(let i=0;i<maxLines&&rest;i++){
   if(measure(rest,font)<=available){lines.push(rest);rest='';break;}
@@ -369,15 +369,15 @@ function renderMap(){
  tiles.classed('is-selected',d=>d.data.entity.id===state.selected).classed('is-dimmed',d=>!matches(d.data.entity)).attr('aria-label',d=>`${d.data.entity.name}, ${(d.data.entity.symbols||[d.data.entity.id]).join(' / ')}, market cap ${currency(d.value)}, forward P/E ${multiple(observation(d.data.entity)?.fpe)}`);
  motion(tiles).attr('transform',d=>`translate(${d.x0},${d.y0})`).style('opacity',d=>matches(d.data.entity)?1:.15);
  motion(tiles.select('rect')).attr('width',d=>Math.max(0,d.x1-d.x0)).attr('height',d=>Math.max(0,d.y1-d.y0)).attr('fill',d=>colorOf(colorValue(d.data.entity,observation(d.data.entity))));
- const companyNames=companyMode()&&state.labels==='name';
+ const companyNames=companyMode()&&['name','nameDense'].includes(state.labels),denseNames=companyNames&&state.labels==='nameDense';
  tiles.classed('company-names',companyNames);
  const tileClips=tiles.selectAll('clipPath.tile-label-clip').data((d,i)=>[{node:d,id:'tile-label-clip-'+i}]).join('clipPath').attr('class','tile-label-clip').attr('id',d=>d.id);
- const labelInset=companyNames?.25:3;
+ const labelInset=denseNames?.25:3;
  motion(tileClips.selectAll('rect').data(d=>[d.node]).join('rect')).attr('x',labelInset).attr('y',labelInset).attr('width',d=>Math.max(0,d.x1-d.x0-labelInset*2)).attr('height',d=>Math.max(0,d.y1-d.y0-labelInset*2));
  tiles.selectAll('.tile-name,.tile-value').attr('clip-path',(_,i,nodes)=>`url(#${nodes[i].parentNode.querySelector('.tile-label-clip').id})`);
  if(companyNames){
   tiles.each(function(d){
-   const tw=d.x1-d.x0,th=d.y1-d.y0,factor=Math.max(.0001,scale.factor),fit=fitCompanyLabel(companyDisplayName(d.data.entity.name),tw*factor,th*factor,measureCompanyText),g=d3.select(this);
+   const tw=d.x1-d.x0,th=d.y1-d.y0,factor=Math.max(.0001,scale.factor),fit=fitCompanyLabel(companyDisplayName(d.data.entity.name),tw*factor,th*factor,measureCompanyText,denseNames),g=d3.select(this);
    const blockHeight=fit.lines.length*fit.lineHeight+(fit.value?18:0),top=(th*factor-blockHeight)/2;
    const name=g.select('.tile-name').text('').attr('text-anchor','middle').attr('font-family','"DM Sans", sans-serif').attr('font-weight',600).attr('font-size',fit.font/factor).attr('x',tw/2).attr('y',0);
    name.selectAll('tspan').data(fit.lines).join('tspan').text(line=>line).attr('x',tw/2).attr('y',(_,i)=>(top+fit.font+i*fit.lineHeight)/factor);
@@ -449,7 +449,7 @@ function render(){
  if(!['nominal','real'].includes(state.dollars))state.dollars='nominal';
  renderDollarBasis();
  const capOnly=entities().some(e=>observation(e)?.marketCap>0)&&!entities().some(e=>validPE(observation(e)?.fpe));
- if(!['ticker','name'].includes(state.labels))state.labels='ticker';
+ if(!['ticker','name','nameDense'].includes(state.labels))state.labels='ticker';
  $('tile-labels').value=state.labels;$('tile-labels').disabled=!companyMode();
  if(!palettes[state.palette])state.palette='atlas';
  colors=palettes[state.palette].colors;missingColor=palettes[state.palette].missing;
@@ -460,7 +460,7 @@ function render(){
  else if(!player.running&&capOnly)$('snapshot-context').textContent='';
  $('month-picker').value=state.year;$('map-scale').value=state.scale;
  $('baseline').value=state.baseline;$('color').value=state.color;$('sector').value=state.sector;$('search').value=state.query;$('clear-search').hidden=!state.query;
- const displayNames={color:$('color').selectedOptions[0]?.textContent||'',size:state.scale==='absolute'?'Fixed cap scale':'Relative size',dollars:state.dollars==='real'?'Inflation-adjusted '+shortMonth(inflationSeries().baseMonth)+' '+marketInfo().symbol:'Nominal '+marketInfo().currency,palette:(state.palette==='finviz'?'Finviz':'Atlas')+' palette',labels:companyMode()?(state.labels==='name'?'Company names':'Tickers'):'Industry names'};$('display-summary').textContent=Object.values(displayNames).join(' · ');
+ const displayNames={color:$('color').selectedOptions[0]?.textContent||'',size:state.scale==='absolute'?'Fixed cap scale':'Relative size',dollars:state.dollars==='real'?'Inflation-adjusted '+shortMonth(inflationSeries().baseMonth)+' '+marketInfo().symbol:'Nominal '+marketInfo().currency,palette:(state.palette==='finviz'?'Finviz':'Atlas')+' palette',labels:companyMode()?(state.labels==='nameDense'?'Company names · small tiles':state.labels==='name'?'Company names':'Tickers'):'Industry names'};$('display-summary').textContent=Object.values(displayNames).join(' · ');
  $('back').disabled=ys.indexOf(state.year)===0;$('next').disabled=ys.indexOf(state.year)===ys.length-1;
  $('year-ticks').querySelectorAll('button').forEach(b=>b.classList.toggle('active',+b.dataset.year===state.year));
  $('dataset-note').textContent=state.dataset==='companies'?'Complete current S&P 500 roster · Share classes consolidated into one company tile. Current membership is used throughout, not historical index membership. '+(monthlyMode()?'Real month-end market caps and forward P/E; missing values stay blank. Industry archives remain annual.':'Fiscal dates differ.')+' Forecast vintage is unverified.':state.dataset==='industries'?'NYU Stern / Aswath Damodaran · Annual January snapshots. Cap is approximately prior year-end; forward P/E is a simple industry average. Constituents change over time.':'Imported dated snapshots · Session only. Source quality, metric definitions, and date alignment are determined by your file.';
@@ -558,6 +558,6 @@ window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setT
 async function init(){try{const load=async name=>{const res=await fetch(name+'?v='+(name==='data-inflation.json'?'cpi-gap-v1':'europe-v1'));if(!res.ok)throw Error('Dataset could not be loaded.');return res.json();};const [current,archive,inflation,europe]=await Promise.all([load('data.json'),load('data-history.json'),load('data-inflation.json'),load('data-europe.json')]);db=mergeHistoricalData(current,archive);db.inflation=inflation;db.europe=europe;Object.assign(db,europe.markets);if(!window.d3)throw Error('Chart library could not be loaded.');try{const saved=JSON.parse(localStorage.getItem('market-atlas-v3')||'null');if(saved&&['companies','industries','longrun','spIndustries','dax','cac','ftse'].includes(saved.dataset))Object.assign(state,Object.fromEntries(Object.keys(state).filter(key=>key in saved).map(key=>[key,saved[key]]))); }catch{}if(!['fpe','marketCap'].includes(state.historyMetric)){state.historyMetric='fpe';viewNotice='Automatic history-chart switching has been removed. Forward P/E is selected; use the chart selector to choose market cap explicitly.';}if(['longrun','spIndustries','dax','cac','ftse'].includes(state.dataset)&&state.frequency!=='monthly'||state.dataset==='industries'&&state.frequency!=='annual')Object.assign(state,selectionForDataset(state,state.dataset));setupDataset();render();document.querySelectorAll('[data-await-data]').forEach(e=>{e.removeAttribute('inert');e.setAttribute('aria-busy','false');});document.querySelectorAll('#dataset-picker').forEach(b=>b.disabled=false);}catch(err){$('treemap').innerHTML=`<div class="empty-state"><div><strong>Unable to load the map</strong><p>${esc(err.message)}</p><p>Reload the page to retry.</p></div></div>`;$('coverage').textContent='Data unavailable';document.querySelector('.workspace').setAttribute('aria-busy','false');document.querySelector('.workspace').removeAttribute('inert');document.querySelector('.toolbar').setAttribute('inert','');document.querySelector('.timeline').setAttribute('inert','');console.error(err);}}
 // Expose pure calculation helpers for reproducible checks, without mutation hooks.
 window.MarketAtlasMath={percentile,change,cagr,parseCSV,importCSV,annualObservation,monthKey,monthString,createTimelinePlayer,createStableTreemap,PLAYBACK,peakMarketCap,marketScaleGeometry,mergeHistoricalData,inflationPoint,adjustMarketCap,dollarObservation,timelineFrames,selectionForDataset,coverageWindow,aggregateCompanyIndustries,fitCompanyLabel,companyDisplayName};
-document.fonts?.ready.then(()=>{companyTextWidths.clear();if(db&&state.labels==='name')renderMap();});
+document.fonts?.ready.then(()=>{companyTextWidths.clear();if(db&&['name','nameDense'].includes(state.labels))renderMap();});
 init();
 })();
