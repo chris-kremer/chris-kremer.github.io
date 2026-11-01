@@ -346,7 +346,7 @@ function referenceSectorCaps(items){
  return groups.filter(g=>g.cap>0);
 }
 // A common cap-to-area scale makes the sector disks directly comparable.
-function packSectorCircles(groups,width,height){
+function sectorShelfLayout(groups,width,height){
  const positive=groups.filter(g=>g.cap>0);if(!positive.length)return {sectors:[],capScale:0};
  const unit=Math.max(...positive.map(g=>g.cap)),gap=.24,caption=.23;
  const circles=positive.map(group=>({...group,r:Math.sqrt(group.cap/unit)}));
@@ -374,6 +374,60 @@ function packSectorCircles(groups,width,height){
  }
  return {sectors,capScale:best.k/Math.sqrt(unit)};
 }
+// Densify the stable reference layout with deterministic collision relaxation.
+function packSectorCircles(groups,width,height){
+ const baseline=sectorShelfLayout(groups,width,height);if(!baseline.sectors.length)return baseline;
+ const unit=Math.max(...baseline.sectors.map(g=>g.cap)),radii=baseline.sectors.map(g=>Math.sqrt(g.cap/unit)),padding=18;
+ const place=(k,seed)=>{
+  let random=seed+19;
+  const circles=baseline.sectors.map((g,i)=>{random=(Math.imul(random,1664525)+1013904223)>>>0;return {x:g.x+(random%21-10)*seed*.2,y:g.y-8,r:radii[i]*k+padding};});
+  for(let iteration=0;iteration<600;iteration++){
+   for(const c of circles){c.x=Math.max(c.r+3,Math.min(width-c.r-3,c.x));c.y=Math.max(c.r+3,Math.min(height-c.r-3,c.y));}
+   let worst=0;
+   for(let i=0;i<circles.length;i++)for(let j=0;j<i;j++){
+    const a=circles[i],b=circles[j];let dx=a.x-b.x,dy=a.y-b.y,distance=Math.hypot(dx,dy);
+    const overlap=a.r+b.r+2-distance;if(overlap<=0)continue;
+    if(distance<1e-6){dx=1;dy=.3;distance=Math.hypot(dx,dy);}
+    worst=Math.max(worst,overlap);const fraction=b.r*b.r/(a.r*a.r+b.r*b.r),move=overlap*.65;
+    dx/=distance;dy/=distance;a.x+=dx*move*fraction;a.y+=dy*move*fraction;b.x-=dx*move*(1-fraction);b.y-=dy*move*(1-fraction);
+   }
+   if(worst<.02)break;
+  }
+  for(const c of circles)if(c.x<c.r+2.9||c.x>width-c.r-2.9||c.y<c.r+2.9||c.y>height-c.r-2.9)return null;
+  for(let i=0;i<circles.length;i++)for(let j=0;j<i;j++)if(Math.hypot(circles[i].x-circles[j].x,circles[i].y-circles[j].y)<circles[i].r+circles[j].r+.9)return null;
+  return circles;
+ };
+ let low=baseline.capScale*Math.sqrt(unit),high=Math.min(width,height)/2-padding-5,best=null,bestK=low;
+ for(let attempt=0;attempt<9&&high>low;attempt++){
+  const k=(low+high)/2;let found=null;
+  for(let seed=0;seed<5&&!found;seed++)found=place(k,seed);
+  if(found){best=found;bestK=k;low=k;}else high=k;
+ }
+ return best?{sectors:baseline.sectors.map((g,i)=>({...g,x:best[i].x,y:best[i].y+8,r:radii[i]*bestK})),capScale:bestK/Math.sqrt(unit)}:baseline;
+}
+const OTHER_SHARE=.02;
+function groupSmallSlices(members,sector,threshold=OTHER_SHARE){
+ const observed=members.filter(m=>Number.isFinite(m.cap)&&m.cap>0),total=observed.reduce((n,m)=>n+m.cap,0);
+ const small=observed.filter(m=>m.cap/total<threshold),kept=observed.filter(m=>m.cap/total>=threshold);
+ if(!small.length)return observed;
+ return [...kept,{isOther:true,children:small,cap:small.reduce((n,m)=>n+m.cap,0),entity:{id:'OTHER::'+sector,name:'Other',sector,industry:sector,history:[],monthly:[]}}];
+}
+function showOtherTip(member,sector,event){
+ const unit=companyMode()?'companies':'industries';
+ showTip(`<strong>Other · ${esc(sector.name)}</strong><span>${member.children.length} ${unit} below 2% each · ${esc(frameLabel(state.year))}</span><br>Market cap (${esc(capBasis())}) <b>${currency(member.cap)}</b><br>Sector share <b>${(member.cap/sector.cap*100).toFixed(1)}%</b><br><span>Neutral grouping color; no combined valuation assigned.</span><br>Click to see all members.`,event.clientX,event.clientY);
+}
+function openOtherGroup(sectorName){
+ stop();hideTip();
+ const sector=groupSectorCaps(universe(),e=>observation(e)?.marketCap).find(g=>g.name===sectorName);
+ const other=sector&&groupSmallSlices(sector.members,sectorName).find(m=>m.isOther);if(!other)return;
+ const unit=companyMode()?'companies':'source industries';
+ $('other-title').textContent='Other · '+sectorName;
+ $('other-description').textContent=`${frameLabel(state.year)} · ${other.children.length} ${unit}, each below 2% of the sector. Combined market cap ${currency(other.cap)} (${(other.cap/sector.cap*100).toFixed(1)}% of the sector), in ${capBasis()}. Their caps remain in the sector total. The patterned slice is neutral; no combined valuation is assigned.`;
+ const members=[...other.children].sort((a,b)=>b.cap-a.cap);
+ $('other-members').innerHTML=`<table><thead><tr><th>${companyMode()?'COMPANY / TICKER':'INDUSTRY'}</th><th>MARKET CAP</th><th>FWD P/E</th></tr></thead><tbody>${members.map(m=>`<tr><td><button data-other-id="${esc(m.entity.id)}" title="${esc(m.entity.name)}">${esc(m.entity.name)}${companyMode()?`<small>${esc(m.entity.id)}</small>`:''}</button></td><td>${currency(m.cap)}</td><td>${multiple(observation(m.entity)?.fpe)}</td></tr>`).join('')}</tbody></table>`;
+ $('other-members').querySelectorAll('[data-other-id]').forEach(button=>button.onclick=()=>{$('other-dialog').close();select(button.dataset.otherId);if(expandedChart)$('fullscreen-toggle').click();});
+ $('other-dialog').showModal();
+}
 function sizeSectorCircles(layout,current){
  const byKey=new Map(current.map(g=>[g.key,g]));
  return layout.sectors.map(g=>{const present=byKey.get(g.key);return {...g,members:present?.members||[],cap:present?.cap||0,r:Math.sqrt(present?.cap||0)*layout.capScale};}).filter(g=>g.cap>0);
@@ -399,12 +453,17 @@ function renderCircleMap(holder,w,h,items,total,peak){
  if(!existing)circleLayoutCache={key,reference:packSectorCircles(circleReferenceCache.get(referenceKey),w,h)};
  const duration=existing&&circleLayoutCache.frame!==state.year?transitionMs():0;
  circleLayoutCache.frame=state.year;
- const layout=absolute?circleLayoutCache.reference:packSectorCircles(current,w,h);
+ const relativeKey=state.year+'|'+current.map(g=>g.cap).join(',');
+ if(!absolute&&circleLayoutCache.relativeKey!==relativeKey){circleLayoutCache.relative=packSectorCircles(current,w,h);circleLayoutCache.relativeKey=relativeKey;}
+ const layout=absolute?circleLayoutCache.reference:circleLayoutCache.relative;
  const sectors=sizeSectorCircles(layout,current);
- $('scale-note').textContent=(absolute?`Total cap: ${peak.total?(total/peak.total*100).toFixed(1):'0'}% of peak. Sector circles grow and shrink on a fixed cap scale across dates; centers stay fixed.`:'Relative size · Sector circles are packed to fit this snapshot; positions can move as sizes change.')+(companyMode()?' Circle area = sector cap; each slice = company cap.':' Circle area = observed sector total; slices show source industries, with no company breakdown.')+' Value basis: '+capBasis()+'.';
+ $('scale-note').textContent=(absolute?`Total cap: ${peak.total?(total/peak.total*100).toFixed(1):'0'}% of peak. Sector circles grow and shrink on a fixed cap scale across dates; centers stay fixed.`:'Relative size · Sector circles are packed to fit this snapshot; positions can move as sizes change.')+(companyMode()?' Circle area = sector cap; each slice = company cap.':' Circle area = observed sector total; slices show source industries, with no company breakdown.')+' Other groups slices below 2% each; click it to inspect members. Value basis: '+capBasis()+'.';
  $('map-area-label').textContent=absolute?'SECTOR CIRCLES · FIXED CAP SCALE':'SECTOR CIRCLES · RELATIVE SIZE';
  const svg=d3.select(holder).selectAll('svg').data([null]).join('svg').attr('data-layout','circles').attr('viewBox',`0 0 ${w} ${h}`).attr('role','group').attr('aria-label',companyMode()?'Separate sector circles sized by market cap and divided into company slices':'Separate sector circles sized by market cap and divided into source industries').attr('data-current-total',total).attr('data-cap-scale',layout.capScale);
  svg.selectAll('*').interrupt('circles');
+ const pattern=svg.selectAll('defs.other-defs').data([null]).join('defs').attr('class','other-defs').selectAll('pattern').data([null]).join('pattern').attr('id','other-sector-fill').attr('patternUnits','userSpaceOnUse').attr('width',7).attr('height',7);
+ pattern.selectAll('rect').data([null]).join('rect').attr('width',7).attr('height',7).attr('fill',missingColor);
+ pattern.selectAll('path').data([null]).join('path').attr('d','M-1,1L1,-1M0,7L7,0M6,8L8,6').attr('stroke','#9eafa5').attr('stroke-opacity',.35).attr('stroke-width',1);
  const motion=selection=>duration?selection.transition('circles').duration(duration).ease(player.running?d3.easeLinear:d3.easeCubicInOut):selection;
  const disks=svg.selectAll('g.sector-disk').data(sectors,g=>g.key).join(enter=>{const g=enter.append('g').attr('class','sector-disk');g.append('circle').attr('class','sector-rim');g.append('text').attr('class','sector-label-primary');g.append('text').attr('class','sector-cap-label');g.append('title');return g;});
  motion(disks).attr('transform',g=>`translate(${g.x},${g.y})`);
@@ -416,25 +475,28 @@ function renderCircleMap(holder,w,h,items,total,peak){
  const totals=disks.select('text.sector-cap-label').attr('text-anchor','middle').text(g=>currency(g.cap));motion(totals).attr('y',g=>-g.r-5);
  const names=companyMode()&&state.labels!=='ticker',dense=state.labels==='nameDense',arc=d3.arc().innerRadius(0).outerRadius(d=>d.radius);
  disks.each(function(sector){
-  const slices=d3.select(this).selectAll('g.company-slice').data(companyPieSlices(sector.members,sector.r).filter(d=>d.data.cap>0),d=>d.data.entity.id).join(enter=>{const g=enter.append('g').attr('class','company-slice tile').attr('tabindex',0).attr('role','button');g.append('path');g.append('text').attr('class','tile-name');g.append('text').attr('class','tile-value');g.append('title');return g;});
-  slices.classed('company-names',names).classed('is-selected',d=>d.data.entity.id===state.selected).classed('is-dimmed',d=>!matches(d.data.entity)).attr('aria-label',d=>`${d.data.entity.name}, market cap ${currency(d.data.cap)}, forward P/E ${multiple(observation(d.data.entity)?.fpe)}`);
-  const paths=slices.select('path').attr('fill',d=>colorOf(colorValue(d.data.entity,observation(d.data.entity))));
+  const slices=d3.select(this).selectAll('g.company-slice').data(companyPieSlices(groupSmallSlices(sector.members,sector.name),sector.r).filter(d=>d.data.cap>0),d=>d.data.entity.id).join(enter=>{const g=enter.append('g').attr('class','company-slice tile').attr('tabindex',0).attr('role','button');g.append('path');g.append('text').attr('class','tile-name');g.append('text').attr('class','tile-value');g.append('title');return g;});
+  slices.classed('company-names',names).classed('other-slice',d=>!!d.data.isOther).classed('is-selected',d=>d.data.isOther?d.data.children.some(m=>m.entity.id===state.selected):d.data.entity.id===state.selected).classed('is-dimmed',d=>d.data.isOther?!matches(d.data.entity)&&!d.data.children.some(m=>matches(m.entity)):!matches(d.data.entity)).attr('aria-label',d=>d.data.isOther?`Other in ${sector.name}, ${d.data.children.length} ${companyMode()?'companies':'industries'}, market cap ${currency(d.data.cap)}; inspect members`:`${d.data.entity.name}, market cap ${currency(d.data.cap)}, forward P/E ${multiple(observation(d.data.entity)?.fpe)}`);
+  const paths=slices.select('path').attr('fill',d=>d.data.isOther?'url(#other-sector-fill)':colorOf(colorValue(d.data.entity,observation(d.data.entity))));
   if(duration)paths.transition('circles').duration(duration).ease(player.running?d3.easeLinear:d3.easeCubicInOut).attrTween('d',function(d){const previous=this._circleArc||{startAngle:d.startAngle,endAngle:d.startAngle,radius:d.radius},interpolate=d3.interpolate(previous,{startAngle:d.startAngle,endAngle:d.endAngle,radius:d.radius});return t=>{this._circleArc=interpolate(t);return arc(this._circleArc);};});
   else paths.attr('d',function(d){this._circleArc={startAngle:d.startAngle,endAngle:d.endAngle,radius:d.radius};return arc(d);});
   slices.each(function(d){
    const e=d.data.entity,box=circleLabelBox(d.startAngle,d.endAngle,d.radius),g=d3.select(this),text=companyMode()?(names?companyDisplayName(e.name):e.id):e.name;
    let fit;
-   if(names||!companyMode())fit=fitCompanyLabel(text,box.side,box.side,measureCompanyText,dense);
+   if(d.data.isOther){const font=Math.min(16,box.side/3.5,box.side*.4);fit={lines:font>=5?['Other']:[],font,lineHeight:font*1.15,value:false};}
+   else if(names||!companyMode())fit=fitCompanyLabel(text,box.side,box.side,measureCompanyText,dense);
    else{const font=Math.min(20,box.side/Math.max(2,text.length*.65),box.side*.4);fit={lines:font>=7?[text]:[],font,lineHeight:font*1.15,value:false};}
    const block=fit.lines.length*fit.lineHeight+(fit.value?18:0),top=box.y-block/2;
    const label=g.select('.tile-name').text('').attr('text-anchor','middle').attr('font-size',fit.font).attr('x',box.x);
    label.selectAll('tspan').data(fit.lines).join('tspan').text(line=>line).attr('x',box.x).attr('y',(_,i)=>top+fit.font+i*fit.lineHeight);
-   const metric=metricText(e,observation(e));
+   const metric=d.data.isOther?'':metricText(e,observation(e));
    g.select('.tile-value').attr('text-anchor','middle').attr('font-size',10).attr('x',box.x).attr('y',top+fit.lines.length*fit.lineHeight+13).text(fit.value&&metric.length*6<box.side-10?metric:'');
   });
-  slices.select('title').text(d=>`${d.data.entity.name}\n${sector.name}\nMarket cap ${currency(d.data.cap)}\nSector share ${(d.data.cap/sector.cap*100).toFixed(1)}%\nForward P/E ${multiple(observation(d.data.entity)?.fpe)}`);
-  slices.on('click',(_,d)=>select(d.data.entity.id)).on('keydown',(event,d)=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select(d.data.entity.id);}}).on('pointermove',(event,d)=>showEntityTip(d.data.entity,event)).on('pointerleave',hideTip);
+  slices.select('title').text(d=>d.data.isOther?`Other · ${sector.name}\n${d.data.children.length} ${companyMode()?'companies':'industries'} below 2% each\nMarket cap ${currency(d.data.cap)}\nSector share ${(d.data.cap/sector.cap*100).toFixed(1)}%\nClick to inspect members; no combined valuation assigned.`:`${d.data.entity.name}\n${sector.name}\nMarket cap ${currency(d.data.cap)}\nSector share ${(d.data.cap/sector.cap*100).toFixed(1)}%\nForward P/E ${multiple(observation(d.data.entity)?.fpe)}`);
+  slices.on('click',(_,d)=>d.data.isOther?openOtherGroup(sector.name):select(d.data.entity.id)).on('keydown',(event,d)=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();d.data.isOther?openOtherGroup(sector.name):select(d.data.entity.id);}}).on('pointermove',(event,d)=>d.data.isOther?showOtherTip(d.data,sector,event):showEntityTip(d.data.entity,event)).on('pointerleave',hideTip);
  });
+ const hasOther=sectors.some(g=>groupSmallSlices(g.members,g.name).some(m=>m.isOther));
+ d3.select('#legend').selectAll('span.other-stop').data(hasOther?[null]:[]).join('span').attr('class','legend-stop other-stop').attr('title','Other: grouped slices below 2% of their sector; neutral color, no combined valuation.').text('Other');
 }
 function renderMap(){
  const holder=$('treemap'),w=holder.clientWidth,h=holder.clientHeight,all=universe();
@@ -664,7 +726,7 @@ document.addEventListener('fullscreenchange',()=>{
  else if(nativeChartFullscreen){nativeChartFullscreen=false;setExpandedChart(false);$('fullscreen-toggle').focus();}
 });
 document.addEventListener('keydown',event=>{
- if(event.key==='Escape'&&expandedChart){event.preventDefault();if(document.fullscreenElement===chartWorkspace)document.exitFullscreen().catch(()=>{});nativeChartFullscreen=false;setExpandedChart(false);$('fullscreen-toggle').focus();}
+ if(event.key==='Escape'&&expandedChart&&!document.querySelector('dialog[open]')){event.preventDefault();if(document.fullscreenElement===chartWorkspace)document.exitFullscreen().catch(()=>{});nativeChartFullscreen=false;setExpandedChart(false);$('fullscreen-toggle').focus();}
 });
 const openMethod=()=>{stop();$('method-dialog').showModal();};$('method').onclick=openMethod;document.querySelectorAll('.open-method').forEach(b=>b.onclick=openMethod);
 document.querySelectorAll('.close-dialog').forEach(b=>b.onclick=()=>b.closest('dialog').close());document.querySelectorAll('dialog').forEach(d=>d.onclick=event=>{if(event.target===d){const r=d.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)d.close();}});
@@ -678,7 +740,7 @@ $('import-file').onchange=async event=>{const f=event.target.files[0];if(!f)retu
 window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(render,120);});document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
 async function init(){try{const load=async name=>{const res=await fetch(name+'?v='+(name==='data-inflation.json'?'cpi-gap-v1':'europe-v1'));if(!res.ok)throw Error('Dataset could not be loaded.');return res.json();};const [current,archive,inflation,europe]=await Promise.all([load('data.json'),load('data-history.json'),load('data-inflation.json'),load('data-europe.json')]);db=mergeHistoricalData(current,archive);db.inflation=inflation;db.europe=europe;Object.assign(db,europe.markets);if(!window.d3)throw Error('Chart library could not be loaded.');try{const saved=JSON.parse(localStorage.getItem('market-atlas-v3')||'null');if(saved&&['companies','industries','longrun','spIndustries','dax','cac','ftse'].includes(saved.dataset))Object.assign(state,Object.fromEntries(Object.keys(state).filter(key=>key in saved).map(key=>[key,saved[key]]))); }catch{}if(!['fpe','marketCap'].includes(state.historyMetric)){state.historyMetric='fpe';viewNotice='Automatic history-chart switching has been removed. Forward P/E is selected; use the chart selector to choose market cap explicitly.';}if(['longrun','spIndustries','dax','cac','ftse'].includes(state.dataset)&&state.frequency!=='monthly'||state.dataset==='industries'&&state.frequency!=='annual')Object.assign(state,selectionForDataset(state,state.dataset));setupDataset();render();document.querySelectorAll('[data-await-data]').forEach(e=>{e.removeAttribute('inert');e.setAttribute('aria-busy','false');});document.querySelectorAll('#dataset-picker').forEach(b=>b.disabled=false);}catch(err){$('treemap').innerHTML=`<div class="empty-state"><div><strong>Unable to load the map</strong><p>${esc(err.message)}</p><p>Reload the page to retry.</p></div></div>`;$('coverage').textContent='Data unavailable';document.querySelector('.workspace').setAttribute('aria-busy','false');document.querySelector('.workspace').removeAttribute('inert');document.querySelector('.toolbar').setAttribute('inert','');document.querySelector('.timeline').setAttribute('inert','');console.error(err);}}
 // Expose pure calculation helpers for reproducible checks, without mutation hooks.
-window.MarketAtlasMath={percentile,change,cagr,parseCSV,importCSV,annualObservation,monthKey,monthString,createTimelinePlayer,createStableTreemap,PLAYBACK,peakMarketCap,marketScaleGeometry,mergeHistoricalData,inflationPoint,adjustMarketCap,dollarObservation,timelineFrames,selectionForDataset,coverageWindow,aggregateCompanyIndustries,fitCompanyLabel,companyDisplayName,groupSectorCaps,packSectorCircles,sizeSectorCircles,companyPieSlices,circleLabelBox};
+window.MarketAtlasMath={percentile,change,cagr,parseCSV,importCSV,annualObservation,monthKey,monthString,createTimelinePlayer,createStableTreemap,PLAYBACK,peakMarketCap,marketScaleGeometry,mergeHistoricalData,inflationPoint,adjustMarketCap,dollarObservation,timelineFrames,selectionForDataset,coverageWindow,aggregateCompanyIndustries,fitCompanyLabel,companyDisplayName,groupSectorCaps,packSectorCircles,sectorShelfLayout,groupSmallSlices,sizeSectorCircles,companyPieSlices,circleLabelBox};
 document.fonts?.ready.then(()=>{companyTextWidths.clear();if(db&&['name','nameDense'].includes(state.labels))renderMap();});
 init();
 })();
