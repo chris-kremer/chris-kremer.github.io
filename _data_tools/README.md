@@ -36,3 +36,47 @@ for months actually present in its firm-count and average-size source sections.
 Run the monthly-refresh Python check, the CPI/name/circle JavaScript checks, and
 the Jekyll production build. Review coverage and check the actual date/basis in
 the browser before publishing. The scripts intentionally do not schedule updates.
+
+## Independent US-listed large caps
+
+`python3 _data_tools/refresh_largecaps.py --cache /private/tmp/atlas-YYYY-MM-DD --as-of YYYY-MM-DD --through YYYY-MM`
+
+This separately refreshes `data-largecaps.json`; it does not change the S&P 500
+or European index files. Python dependencies: `beautifulsoup4` and `json5`.
+The roster stage parses public serialized data with JSON5, never by executing
+third-party JavaScript. It screens the US-listed stock directory, screens by
+source USD company capitalization, excludes shells / preferred-only securities /
+when-issued listings and corporate-unit symbol SOMN, and consolidates SEC CIKs.
+It inspects the leading 1,150 symbols to collect candidates, then rank 1,000 by dated cap; missing profiles
+or too few verified issuers fail the refresh rather than silently shrinking it.
+US-listed foreign companies and ADRs are included, so the universe differs from
+a US-domiciled-company ranking. The current roster applies to every past month.
+
+A new dated cache is required for every retrieval date/window. Raw source pages,
+profiles, response metadata and derived monthly series stay in that external
+cache. The free five-year window supplies added-company monthly observations;
+only completed months and actual month-end rows within three days are accepted.
+Known IPO dates exclude pre-listing rows. Missing / nonpositive P/E is not filled;
+its source date must exactly match the cap. Existing overlapping S&P histories
+are reused. The runtime adds the same saved FinHacker cap archive for overlapping
+issuers, keeping earlier coverage visibly partial.
+
+US-listing daily caps are USD. Some API metadata repeats the issuer's financial
+reporting currency even when the values are USD. Such series require an
+independent currency check against exact dated observations on the public USD
+market-cap page (at least one overlap, median relative error <=2%). Raw metadata,
+matched observation count and source URL are retained. Already-USD caps are never
+converted again. The directory's current-cap field is used for candidate
+screening only: the final 1,000 are ranked by verified dated month-end caps, with
+a buffer below the cutoff. This excludes the directory's implausible Telesat
+value. November 2 collection coverage is 1,000 October caps / 821 positive P/Es.
+
+Collected observations and dated membership snapshots remain in the permanent
+archive on refresh; inactive issuers are not removed from `entities`. Canonical
+IDs are retained by CIK. This preserves collected history without claiming the
+archive is a historical top-1,000 or delisted-stock database. New eligible IPOs
+enter on a manual refresh as soon as public source data is available; there is
+no index-admission delay and no scheduled/live feed. Private companies receive
+no invented ticker, cap, or P/E. `--build-only` reconstructs from a complete,
+date-matched cache without network calls. Run the large-cap regression check
+alongside the existing checks and production build before publication.
