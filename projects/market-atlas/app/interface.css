@@ -187,3 +187,21 @@ body .map-controls{grid-template-columns:1fr 1.15fr 1fr 1.15fr .85fr 1.2fr}
 #other-members th:first-child{width:58%}
 
 #show-nominal{margin-top:18px;background:#dce9db;color:#234833;border-color:#b2c9b1;font-size:12px;padding:10px 15px}#show-nominal:hover{background:#c9ddc9}
+
+/* Separate country baskets use one cap-to-area scale, including on narrow screens. */
+#treemap.comparing{overflow-x:auto;overflow-y:hidden;scrollbar-color:#77917f #20392e;scrollbar-width:thin}
+.comparison-country text{text-anchor:middle;pointer-events:none;fill:#edf1e7;font-family:"DM Sans",sans-serif}
+.comparison-country .country-name{font-size:11px;font-weight:700;letter-spacing:.7px;fill:#ccdbcb}
+.comparison-country .country-cap{font-size:20px;font-weight:600}
+.comparison-country .country-index,.comparison-country .country-ratio{font:10px "IBM Plex Mono",monospace;fill:#9fb39e}
+.comparison-country .country-coverage{font:9px "IBM Plex Mono",monospace;fill:#b5c4ae}
+.comparison-country .country-empty{font-size:10px;fill:#b8c7b5}
+.country-outline{fill:none;stroke:#a0b29b;stroke-opacity:.45;stroke-width:1;stroke-dasharray:3 4;pointer-events:none}
+.compare-tile rect,.compare-slice path{stroke:#172c21;stroke-width:.7px;cursor:pointer}
+.compare-tile text,.compare-slice text{font-weight:600}
+.compare-tile:hover rect,.compare-slice:hover path,.compare-tile:focus rect,.compare-slice:focus path,.compare-tile.is-selected rect,.compare-slice.is-selected path{stroke:#fcffdd;stroke-width:2px}
+.compare-tile.is-dimmed,.compare-slice.is-dimmed{opacity:.18}
+.comparison-country .country-name[role=button]{cursor:pointer;pointer-events:auto}
+.comparison-country .country-name[role=button]:hover,.comparison-country .country-name[role=button]:focus{text-decoration:underline;fill:#fff}
+.comparison-country .compare-value{font:10px "IBM Plex Mono",monospace;fill:#e0e8d8}
+.comparison-nominal{cursor:pointer}.comparison-nominal rect{fill:#d9e6d5;stroke:#aec6a4}.comparison-nominal text{fill:#244735;text-anchor:middle;font:12px "DM Sans",sans-serif;pointer-events:none}
