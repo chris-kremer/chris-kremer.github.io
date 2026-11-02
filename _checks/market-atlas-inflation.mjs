@@ -26,4 +26,4 @@ assert.equal(count,498);
 for(const [key,meta] of Object.entries(load('data-europe.json').meta)){
  const p=inflationPoint(sample,meta.inflation);assert.equal(p.month,'2025-10',key+' must keep its own October CPI');assert.equal(p.proxy,false);
 }
-console.log('PASS: October uses an explicit September US CPI proxy; actual market data, adjacent months, European CPI, missing-date rules, and export provenance are preserved.');
+console.log('PASS: October 2025 uses an explicit September 2025 US CPI proxy; actual market data, adjacent months, European CPI, missing-date rules, and export provenance are preserved.');

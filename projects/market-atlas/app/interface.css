@@ -185,3 +185,5 @@ body .map-controls{grid-template-columns:1fr 1.15fr 1fr 1.15fr .85fr 1.2fr}
 #other-members td:nth-child(2){font:10px var(--mono);color:#6b7a60;text-align:center}
 #other-members td:first-child{width:58%}
 #other-members th:first-child{width:58%}
+
+#show-nominal{margin-top:18px;background:#dce9db;color:#234833;border-color:#b2c9b1;font-size:12px;padding:10px 15px}#show-nominal:hover{background:#c9ddc9}
