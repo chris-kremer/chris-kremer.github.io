@@ -80,3 +80,43 @@ no index-admission delay and no scheduled/live feed. Private companies receive
 no invented ticker, cap, or P/E. `--build-only` reconstructs from a complete,
 date-matched cache without network calls. Run the large-cap regression check
 alongside the existing checks and production build before publication.
+
+## Japan / Nikkei 225
+
+`refresh_nikkei.py --cache CACHE --roster VERIFIED_ROSTER_JSON --as-of YYYY-MM-DD --through YYYY-MM --cpi-url OFFICIAL_CPI_CSV_URL [--build-only]`
+
+The roster JSON is a dated transcription of the public official Nikkei component
+list (`retrieved`, `source`, and 225 `companies` records containing `id`,
+`officialName`, `officialIndustry`). The November 2, 2026 roster includes the
+October review replacements. An inaccessible official page must be resolved
+using its public listing; do not substitute a stale Wikipedia roster or silently
+ignore new constituents. This is a company-cap basket, not a calculation or
+redistribution of the Nikkei's price-weighted index levels/weights.
+
+Dependencies: Python `beautifulsoup4`; public curl downloads. Cache manifests
+lock the retrieval date/window. Before running, place the official auxiliary
+inputs in that external cache: `ecb.csv` (full daily USD/JPY per EUR),
+`usdjpy.csv` (FRED DEXJPUS daily JPY per USD), and `japan-cpi.csv` (Statistics
+Bureau/e-Stat linked national all-items index, CP932 CSV). The CPI source is
+explicitly supplied via `--cpi-url`; `--cpi-base-year` defaults to 2025 and the
+purchasing-power reference `--base-month` stays September 2026 by default.
+Do not use Tokyo flash CPI as a replacement for missing national CPI.
+
+Provider symbols are verified TYO listings. Daily public free-window observations
+supply monthly caps and exactly date-matched forward P/E. Main/listing currency
+and cap metadata must both be JPY. Only actual month-end rows within three days
+are accepted. Earlier downloaded months are retained on refresh, previous roster
+snapshots are preserved, and removed companies remain in the archive.
+
+Standalone view uses nominal JPY or Japan CPI-adjusted JPY. Country comparison
+uses USD conversion at each exact cap date, then the common US CPI adjustment.
+JPY FX is merged separately and never overwrites existing EUR/GBP rates. ECB
+covers all saved cap dates except March 29, 2024 (ECB holiday); the exact-date
+Federal Reserve H.10 rate 151.22 JPY/USD covers that date. No previous-day FX or
+monthly average is used. October 2026: 225 cap observations, 222 positive FPEs;
+September: 225 / 223. Both have complete exact-date USD conversion. National CPI
+ends September 2026 (102.2 on the 2025 base); missing October remains unavailable.
+
+Run the Japan and country-comparison checks plus existing relevant regressions,
+and inspect standalone JPY, common-USD sizing and missing-CPI behavior before
+publishing. This is a saved data refresh, not a live or scheduled feed.
