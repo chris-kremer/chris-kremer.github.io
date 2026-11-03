@@ -1,0 +1,1493 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Index Performance Mockup — performance by founding year</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #fbfbfa;
+        --panel: #ffffff;
+        --panel-2: #f3f4f1;
+        --ink: #17222b;
+        --ink-2: #43525e;
+        --ink-3: #75828c;
+        --line: #dde1dc;
+        --line-strong: #c3cbc4;
+        --accent: #a35b00;
+        --accent-soft: #fdf3e3;
+        --flat: #b03a2e;
+        --flat-soft: #fbeeec;
+        --in-soft: #eaf4ef;
+        --in: #1c6b4f;
+        --grid: #e4e7e2;
+        --shadow: 0 1px 2px rgba(23, 34, 43, .05), 0 8px 28px rgba(23, 34, 43, .05);
+        --spx: #3f74b5;
+        --dow: #12836f;
+        --dax: #c07f00;
+        --cac: #8b5fb8;
+        --ftse: #bf4d74;
+        --nikkei: #cf5335;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #10161b;
+          --panel: #171f26;
+          --panel-2: #1d272f;
+          --ink: #e9edec;
+          --ink-2: #b3bfc4;
+          --ink-3: #85939b;
+          --line: #2b363e;
+          --line-strong: #3d4a53;
+          --accent: #e8a33d;
+          --accent-soft: #2c2417;
+          --flat: #ef8a7d;
+          --flat-soft: #33201d;
+          --in-soft: #18302a;
+          --in: #6fc7a5;
+          --grid: #232f37;
+          --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.25);
+          --spx: #6ea3dd;
+          --dow: #3ec2ab;
+          --dax: #eda92c;
+          --cac: #bb93dd;
+          --ftse: #e583a3;
+          --nikkei: #ef8465;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+        font-size: 16px;
+        line-height: 1.55;
+      }
+      .wrap { max-width: 1160px; margin: 0 auto; padding: 28px 20px 56px; }
+      .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+      /* ---------- header ---------- */
+      .topline {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .08em;
+        text-transform: uppercase; color: var(--ink-3);
+      }
+      .topline .tag {
+        border: 1px solid var(--line-strong); border-radius: 999px; padding: 2px 10px;
+        color: var(--ink-2);
+      }
+      .topline .tag.hot { border-color: var(--accent); color: var(--accent); }
+      h1 {
+        font-family: "IBM Plex Serif", Georgia, serif;
+        font-size: clamp(30px, 5.4vw, 46px); line-height: 1.08; font-weight: 700;
+        margin: 14px 0 10px; max-width: 19em;
+      }
+      .lede { max-width: 62em; color: var(--ink-2); margin: 0 0 4px; font-size: 17px; }
+      .lede strong { color: var(--ink); }
+      .lede .vw { color: var(--flat); font-weight: 600; }
+      .lede .sap { color: var(--in); font-weight: 600; }
+
+      /* ---------- panels ---------- */
+      .panel {
+        background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); margin-top: 20px;
+      }
+      .panel-head {
+        display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: baseline; justify-content: space-between;
+        padding: 16px 20px 0;
+      }
+      .panel-head h2 { font-size: 15px; font-weight: 700; margin: 0; letter-spacing: .01em; }
+      .panel-head .hint { font-size: 13px; color: var(--ink-3); }
+
+      /* index chips */
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px 18px; }
+      .chip {
+        display: inline-flex; align-items: center; gap: 8px;
+        font: inherit; font-size: 14px; font-weight: 600;
+        background: var(--panel-2); color: var(--ink-2);
+        border: 1px solid var(--line); border-radius: 8px; padding: 8px 13px; cursor: pointer;
+      }
+      .chip .dot { width: 10px; height: 10px; border-radius: 3px; background: var(--c); opacity: .35; }
+      .chip .basis { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 11px; color: var(--ink-3); }
+      .chip[aria-pressed="true"] { color: var(--ink); border-color: var(--c); background: var(--panel); box-shadow: inset 0 0 0 1px var(--c); }
+      .chip[aria-pressed="true"] .dot { opacity: 1; }
+      .chip:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+      /* ---------- filter panel ---------- */
+      .filter-panel { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent), var(--shadow); }
+      .filter-grid { display: grid; grid-template-columns: 1fr; gap: 6px; padding: 6px 20px 20px; }
+      @media (min-width: 860px) { .filter-grid { grid-template-columns: minmax(0,1fr) 300px; gap: 28px; } }
+      .year-readout { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-top: 10px; }
+      .year-big {
+        font-family: "IBM Plex Mono", monospace; font-size: clamp(52px, 9vw, 76px);
+        font-weight: 600; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums;
+      }
+      .year-caption { font-size: 15px; color: var(--ink-2); max-width: 26em; }
+      .year-caption strong { color: var(--ink); }
+      input[type="range"] {
+        -webkit-appearance: none; appearance: none; width: 100%; height: 34px; background: transparent; margin: 10px 0 0; cursor: pointer;
+      }
+      input[type="range"]::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--flat) 0%, var(--accent) 55%, var(--in) 100%); }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; width: 26px; height: 26px; margin-top: -10px; border-radius: 50%;
+        background: var(--panel); border: 3px solid var(--accent); box-shadow: 0 1px 5px rgba(0,0,0,.25);
+      }
+      input[type="range"]::-moz-range-track { height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--flat) 0%, var(--accent) 55%, var(--in) 100%); }
+      input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--panel); border: 3px solid var(--accent); box-shadow: 0 1px 5px rgba(0,0,0,.25); }
+      .ticks { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-3); padding: 0 2px; }
+      .presets { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+      .preset {
+        font: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+        background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; color: var(--ink-2);
+      }
+      .preset[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); font-weight: 600; }
+      .filter-side {
+        background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-top: 12px;
+        font-size: 14px; color: var(--ink-2);
+      }
+      @media (min-width: 860px) { .filter-side { margin-top: 10px; } }
+      .filter-side h3 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--ink-3); font-family: "IBM Plex Mono", monospace; font-weight: 600; }
+      .filter-side ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+      .filter-side li { display: flex; justify-content: space-between; gap: 10px; }
+      .filter-side .nm { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; color: var(--ink); }
+      .filter-side .nm i { width: 9px; height: 9px; border-radius: 3px; background: var(--c); display: inline-block; }
+      .filter-side .vl { font-family: "IBM Plex Mono", monospace; font-size: 13px; white-space: nowrap; }
+
+      /* ---------- chart ---------- */
+      .seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; }
+      .seg button {
+        font: inherit; font-size: 13px; font-weight: 600; padding: 6px 12px; cursor: pointer;
+        background: var(--panel); color: var(--ink-2); border: 0;
+      }
+      .seg button + button { border-left: 1px solid var(--line); }
+      .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+      .ghost-toggle {
+        font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--ink-2);
+        background: none; border: 0; display: inline-flex; gap: 7px; align-items: center; padding: 6px 2px;
+      }
+      .ghost-toggle .sw { width: 30px; height: 17px; border-radius: 999px; background: var(--line-strong); position: relative; flex: none; }
+      .ghost-toggle .sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 13px; height: 13px; border-radius: 50%; background: var(--panel); transition: left .15s ease; }
+      .ghost-toggle[aria-pressed="true"] .sw { background: var(--accent); }
+      .ghost-toggle[aria-pressed="true"] .sw::after { left: 15px; }
+      .chart-box { position: relative; padding: 8px 8px 2px; }
+      svg.chart { display: block; width: 100%; height: auto; }
+      svg.chart text { font-family: "IBM Plex Mono", monospace; fill: var(--ink-3); }
+      .tooltip {
+        position: absolute; pointer-events: none; display: none; z-index: 5;
+        background: var(--ink); color: var(--bg); border-radius: 8px; padding: 10px 12px;
+        font-size: 12.5px; line-height: 1.5; min-width: 178px; box-shadow: 0 6px 22px rgba(0,0,0,.25);
+      }
+      .tooltip .ty { font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+      .tooltip .row { display: flex; justify-content: space-between; gap: 14px; font-family: "IBM Plex Mono", monospace; }
+      .tooltip .row .n { display: inline-flex; gap: 6px; align-items: center; font-family: "IBM Plex Sans", sans-serif; }
+      .tooltip .row .n i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+      .tooltip .row .u { opacity: .55; }
+
+      .results { padding: 4px 20px 18px; overflow-x: visible; }
+      table { border-collapse: collapse; width: 100%; }
+      .results table th, .results table td { text-align: right; padding: 8px 8px; font-size: 14px; }
+      .results table th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); font-weight: 600; border-bottom: 1px solid var(--line-strong); }
+      .results table td { border-bottom: 1px solid var(--line); font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .results table th:first-child, .results table td:first-child { text-align: left; font-family: "IBM Plex Sans", sans-serif; }
+      .results .drag { color: var(--flat); font-weight: 600; }
+      .results .nodrag { color: var(--ink-3); }
+      @media (max-width: 640px) {
+        .results table th:nth-child(3), .results table td:nth-child(3) { display: none; }
+        .results table th, .results table td { padding: 8px 4px; font-size: 13px; }
+      }
+
+      /* ---------- method ---------- */
+      .method { display: grid; gap: 0; padding: 6px 20px 20px; }
+      @media (min-width: 860px) { .method { grid-template-columns: 1fr 1fr 1fr; gap: 26px; } }
+      .method > div { padding-top: 12px; }
+      .method h3 { font-size: 14px; margin: 0 0 6px; }
+      .method p { font-size: 14px; color: var(--ink-2); margin: 0 0 8px; }
+      .formula {
+        font-family: "IBM Plex Mono", monospace; font-size: 13px; background: var(--panel-2);
+        border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; color: var(--ink);
+        line-height: 1.7;
+      }
+      .lineage { margin: 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink-2); display: grid; gap: 8px; }
+      .lineage b { color: var(--ink); }
+      .lineage .yr { font-family: "IBM Plex Mono", monospace; color: var(--accent); font-weight: 600; }
+
+      /* ---------- constituents ---------- */
+      .tabs { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px 0; }
+      .tab {
+        font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; padding: 8px 16px;
+        border: 1px solid var(--line); border-bottom: 0; border-radius: 8px 8px 0 0;
+        background: var(--panel-2); color: var(--ink-2);
+      }
+      .tab[aria-selected="true"] { background: var(--panel); color: var(--ink); box-shadow: inset 0 2px 0 var(--c, var(--accent)); }
+      .constituent-meta { padding: 12px 20px 4px; font-size: 14px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px 22px; }
+      .constituent-meta .mono { color: var(--ink); font-weight: 600; }
+      .ctable { padding: 6px 20px 18px; }
+      .ctable table th, .ctable table td { padding: 7px 8px; font-size: 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      .ctable table th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); text-align: left; border-bottom: 1px solid var(--line-strong); }
+      .ctable table th.num, .ctable table td.num { text-align: right; font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .ctable .co { font-weight: 600; }
+      .ctable .note { display: block; font-weight: 400; font-size: 12.5px; color: var(--ink-3); margin-top: 1px; }
+      .badge { display: inline-block; font-size: 12px; font-weight: 600; border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+      .badge.in { background: var(--in-soft); color: var(--in); }
+      .badge.out { background: var(--flat-soft); color: var(--flat); }
+      tr.is-out .co, tr.is-out td.num { color: var(--ink-3); }
+      tr.is-out .co { text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: var(--flat); }
+      @media (max-width: 640px) {
+        .ctable table th:nth-child(3), .ctable table td:nth-child(3) { display: none; }
+        .ctable .note { display: none; }
+        .ctable table th, .ctable table td { padding: 7px 4px; font-size: 13px; }
+      }
+
+      /* constituents tools */
+      .ctable-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px 20px 2px; }
+      .ctable-tools input[type="search"] {
+        font: inherit; font-size: 14px; color: var(--ink); background: var(--panel-2);
+        border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 12px; flex: 1 1 230px; max-width: 420px;
+      }
+      .expand-btn {
+        font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; color: var(--ink);
+        background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 8px; padding: 8px 13px; white-space: nowrap;
+      }
+      .tools-note { font-size: 13px; color: var(--ink-3); }
+      .exttag {
+        font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600; letter-spacing: .05em;
+        text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px;
+        padding: 1px 7px; margin-left: 8px; vertical-align: 2px; white-space: nowrap;
+      }
+      .ctable tr.divider td {
+        background: var(--panel-2); font-size: 12.5px; font-weight: 600; color: var(--ink-2);
+        text-transform: uppercase; letter-spacing: .06em; padding-top: 10px; padding-bottom: 10px;
+      }
+      .ctable tr.noresults td { color: var(--ink-3); }
+
+      /* ---------- cdf chart ---------- */
+      .cdf-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 10px 20px 0; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
+      .cdf-legend span { display: inline-flex; align-items: center; gap: 7px; }
+      .cdf-legend i { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+      .cdf-note { padding: 2px 20px 0; font-size: 14px; color: var(--ink-2); max-width: 68em; margin: 8px 0 0; }
+      .cdf-note strong { color: var(--ink); }
+      @media (max-width: 640px) {
+        .cdf-results table th:nth-child(3), .cdf-results table td:nth-child(3),
+        .cdf-results table th:nth-child(4), .cdf-results table td:nth-child(4) { display: none; }
+      }
+
+      footer { margin-top: 26px; font-size: 13px; color: var(--ink-3); max-width: 74em; }
+      footer p { margin: 0 0 8px; }
+      @media (prefers-reduced-motion: reduce) {
+        .ghost-toggle .sw::after { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="topline"><a href="/projects/index-performance/">← Project overview</a><span class="tag hot">Work in progress</span><span class="tag">Illustrative mockup · not a backtest</span></div>
+      <h1>How much of your index was already old in 1980?</h1>
+
+      <!-- founding-year filter -->
+      <section class="panel filter-panel" aria-label="Founding year filter">
+        <div class="panel-head">
+          <h2>Founding-year filter</h2>
+          <span class="hint">Economic origin — spin-offs inherit their parent’s founding year</span>
+        </div>
+        <div class="filter-grid">
+          <div>
+            <div class="year-readout">
+              <div class="year-big" id="yearBig">1800</div>
+              <p class="year-caption" id="yearCaption"></p>
+            </div>
+            <input type="range" id="yearSlider" min="1800" max="2010" step="1" value="1800"
+                   aria-label="Exclude companies founded before this year" />
+            <div class="ticks"><span>1800</span><span>1850</span><span>1900</span><span>1950</span><span>2000</span><span>2010</span></div>
+            <div class="presets" id="presets" role="group" aria-label="Presets"></div>
+          </div>
+          <aside class="filter-side" aria-label="Flatlined weight per index">
+            <h3>Weight flatlined at 0%</h3>
+            <ul id="flatList"></ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- chart -->
+      <section class="panel" aria-label="Performance chart">
+        <div class="panel-head">
+          <h2>Performance, 1980 – 2025</h2>
+          <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+            <button class="ghost-toggle" id="ghostToggle" aria-pressed="true">
+              <span class="sw" aria-hidden="true"></span> Unfiltered (dashed)
+            </button>
+            <div class="seg" role="group" aria-label="Axis scale">
+              <button id="scaleLog" aria-pressed="true">Log</button>
+              <button id="scaleLin" aria-pressed="false">Linear</button>
+            </div>
+          </div>
+        </div>
+        <div class="chart-box" id="chartBox">
+          <svg class="chart" id="chart" viewBox="0 0 980 470" role="img"
+               aria-label="Line chart of filtered and unfiltered index performance from 1980 to 2025"></svg>
+          <div class="tooltip" id="tooltip"></div>
+        </div>
+        <div class="results" id="results"></div>
+      </section>
+
+      <!-- founding-date CDF -->
+      <section class="panel" aria-label="Cumulative distribution of founding dates">
+        <div class="panel-head">
+          <h2>Founding dates — cumulative distribution (CDF)</h2>
+          <span class="hint">All six indices in one chart · by index weight</span>
+        </div>
+        <p class="cdf-note">
+          Read a line left to right: at any year on the x-axis, its height is the <strong>share of that
+          index’s weight founded in or before that year</strong>. A line that climbs early belongs to an old
+          index; one that stays low until the 1970s–90s is a young index. The dashed vertical line is your
+          current cutoff — everything to its left is the weight the filter flatlines.
+          CAC 40, FTSE 100 and Nikkei 225 are drawn from their five founding-era cohorts, so their curves
+          are interpolated across the cohort bands (1900, 1950, 1970, 1990) rather than built from
+          individual companies. The curves are lightly smoothed; the table below keeps the exact shares.
+        </p>
+        <div class="cdf-legend" id="cdfLegend" aria-hidden="true"></div>
+        <div class="chart-box" id="cdfBox">
+          <svg class="chart" id="cdfChart" viewBox="0 0 980 380" role="img"
+               aria-label="Line chart showing, for each index, the cumulative share of index weight by company founding year"></svg>
+          <div class="tooltip" id="cdfTooltip"></div>
+        </div>
+        <div class="results cdf-results" id="cdfResults"></div>
+      </section>
+
+      <!-- method -->
+      <section class="panel" aria-label="How the filter works">
+        <div class="panel-head"><h2>How the adjustment works</h2></div>
+        <div class="method">
+          <div>
+            <h3>The rule</h3>
+            <p>Each constituent keeps its index weight for the whole period. If its founding year is before the
+               cutoff, its price is frozen at the 1980 level — a 0% return every year — while every younger
+               company compounds as modelled.</p>
+            <div class="formula">filtered(t) = Σ<sub>young</sub> w<sub>i</sub> · P<sub>i</sub>(t) &nbsp;+&nbsp; Σ<sub>old</sub> w<sub>i</sub> · 100</div>
+          </div>
+          <div>
+            <h3>Founding year = economic origin</h3>
+            <p>A spin-off, demerger or privatisation does not reset the clock. The year shown is when the
+               underlying business began, even if the listed vehicle is much younger — which is why the
+               “listed” column in the tables below is separate, and often decades later.</p>
+            <p>Today’s constituents are back-filled over the whole period (a survivorship-biased simplification,
+               fine for a mockup, worth stating out loud).</p>
+          </div>
+          <div>
+            <h3>Examples — lineage calls in this data</h3>
+            <ul class="lineage">
+              <li><b>Siemens Energy</b> — <span class="yr">1847</span>, not 2020. The spin-off inherited Siemens’ power business; the firm is 19th-century, the listing isn’t.</li>
+              <li><b>Deutsche Post (DHL)</b> — <span class="yr">1947</span>, not the 2000 IPO. Traced to the Deutsche Bundespost, founded in the British zone in 1947.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- constituents -->
+      <section class="panel" aria-label="Constituents">
+        <div class="panel-head">
+          <h2>Constituents — who gets flatlined?</h2>
+          <span class="hint">Weights are approximate current index weights, held constant</span>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Index constituents">
+          <button class="tab" id="tab-spx" role="tab" aria-selected="true" style="--c: var(--spx)">S&amp;P 500 · modelled</button>
+          <button class="tab" id="tab-dax" role="tab" aria-selected="false" style="--c: var(--dax)">DAX · 40</button>
+          <button class="tab" id="tab-dow" role="tab" aria-selected="false" style="--c: var(--dow)">Dow Jones · 30</button>
+        </div>
+        <div class="ctable-tools">
+          <input type="search" id="coSearch" placeholder="Search companies — try “Robinhood”" aria-label="Search constituents by name" />
+          <button class="expand-btn" id="expandBtn" aria-expanded="false" style="display:none"></button>
+          <span class="tools-note" id="toolsNote"></span>
+        </div>
+        <div class="constituent-meta" id="constituentMeta"></div>
+        <div class="ctable" id="ctable"></div>
+      </section>
+
+      <footer>
+        <p><strong>About this mockup.</strong> Index paths are modelled from approximate historical year-end levels
+           (S&amp;P 500, Dow Jones Industrial Average, DAX performance index, CAC 40, FTSE 100, Nikkei 225), rebased to
+           January 1980 = 100 and log-interpolated between anchor years. Individual company paths are stylised: each
+           constituent is given a persistent out- or under-performance tilt versus its index, rescaled so the weighted
+           average reproduces the index exactly. The S&amp;P 500 filter runs on all 500 constituents, each modelled individually
+           — the 70 largest, an extended tier of newer entrants and mid-caps (Robinhood, Coinbase, AppLovin,
+           DoorDash…), and the full remaining tail of 397 smaller constituents — with weights summing to 100%; for the CAC 40, FTSE 100 and Nikkei 225 the filter still uses
+           five founding-era cohorts per index rather than full constituent lists. Founding years reflect economic
+           origin as described above. Nothing here is a backtest or investment advice.</p>
+        <p>Drag the cutoff and watch 1989 Japan, the dot-com years and the post-2010 US tech run change character —
+           that, in one slider, is the argument about how much of “the market” is really a bet on old companies.</p>
+      </footer>
+    </div>
+<script>
+"use strict";
+/* ================= data =================
+   anchors: [year, level] with Jan-1980 = 100, modelled from approx. historical year-end levels.
+   entities: [name, foundingYear(economic origin), listedYear, weight, tilt, lineageNote]
+   tilt: persistent outperformance vs the index (rescaled so weighted avg = index). */
+var IDX = {
+  spx: { label: "S&P 500", short: "S&P 500", color: "var(--spx)", hex: "#3f74b5", detail: true,
+    anchors: [[1980,100],[1982,92],[1985,155],[1987,178],[1990,243],[1992,300],[1995,454],[1998,890],[2000,972],[2001,830],[2002,648],[2003,820],[2007,1081],[2008,665],[2009,820],[2012,1050],[2015,1505],[2018,1840],[2019,2380],[2020,2760],[2021,3510],[2022,2828],[2023,3510],[2024,4331],[2025,4420]],
+    entities: [
+      ["Apple",1976,1980,7.0,0.62,""],
+      ["Microsoft",1975,1986,6.8,0.55,""],
+      ["NVIDIA",1993,1999,6.2,0.85,""],
+      ["Amazon",1994,1997,3.9,0.42,""],
+      ["Alphabet (Google)",1998,2004,3.7,0.35,"Founded as Google in 1998; the Alphabet holding company (2015) does not reset the clock"],
+      ["Meta Platforms",2004,2012,2.9,0.40,"Founded as Facebook in 2004; renamed Meta in 2021"],
+      ["Broadcom",1961,2009,2.5,0.50,"Today's Broadcom is the former Avago — Hewlett-Packard's semiconductor division of 1961, which bought Broadcom Corp in 2016 and took its name"],
+      ["Tesla",2003,2010,2.2,0.45,""],
+      ["Eli Lilly",1876,1952,1.8,0.35,""],
+      ["Berkshire Hathaway",1965,1965,1.7,0.05,"Dated from 1965, when Warren Buffett took control and remade it as a holding company — the 1839 Valley Falls textile-mill predecessor is not counted"],
+      ["JPMorgan Chase",1799,2000,1.6,0.16,"Traced to the Bank of the Manhattan Company (1799), not the 2000 merger"],
+      ["Visa",1958,2008,1.5,0.40,"Launched as BankAmericard in 1958; IPO only in 2008"],
+      ["Walmart",1962,1970,1.4,0.30,"First Walmart store, Rogers, Arkansas"],
+      ["Mastercard",1966,2006,1.2,0.38,"Founded as the Interbank Card Association"],
+      ["GE Aerospace",1892,1892,1.0,0.00,"General Electric, formed 1892 from Edison's companies; renamed GE Aerospace after the 2023–24 break-up — the break-up does not reset the clock"],
+      ["Johnson & Johnson",1886,1944,1.0,0.06,""],
+      ["Oracle",1977,1986,0.9,0.30,""],
+      ["Procter & Gamble",1837,1890,0.9,0.08,""],
+      ["Exxon Mobil",1870,1870,0.9,0.02,"Standard Oil lineage, 1870; Exxon–Mobil merger 1999"],
+      ["Home Depot",1978,1981,0.9,0.38,""],
+      ["Netflix",1997,2002,0.9,0.55,"Founded as a DVD-by-mail service"],
+      ["Costco",1976,1985,0.9,0.35,"Traced to Price Club (1976), which merged into Costco in 1993; first Costco warehouse 1983"],
+      ["UnitedHealth",1977,1984,0.9,0.45,""],
+      ["Bank of America",1904,1904,0.9,0.10,"Founded as the Bank of Italy in San Francisco"],
+      ["AbbVie",1888,2013,0.9,0.20,"Spun off from Abbott Laboratories in 2013 — age inherited from Abbott (1888), not the spin-off"],
+      ["Chevron",1879,1879,0.8,0.02,"Born as Pacific Coast Oil"],
+      ["Merck & Co.",1891,1891,0.8,0.00,"US arm of Germany's Merck (1668), independent since 1917"],
+      ["Coca-Cola",1892,1919,0.8,0.08,"Drink first sold in 1886; company incorporated 1892"],
+      ["PepsiCo",1898,1965,0.7,-0.02,"Pepsi-Cola dates to 1898; PepsiCo formed in the 1965 merger with Frito-Lay"],
+      ["Abbott Laboratories",1888,1937,0.7,0.10,""],
+      ["Salesforce",1999,2004,0.7,0.30,""],
+      ["McDonald's",1940,1966,0.7,0.28,"McDonald brothers' restaurant, 1940; Ray Kroc's corporation 1955"],
+      ["Cisco",1984,1990,0.7,0.05,""],
+      ["IBM",1911,1911,0.7,0.02,"Founded as Computing-Tabulating-Recording Co."],
+      ["American Express",1850,1850,0.6,0.10,"Express mail company before cards"],
+      ["Goldman Sachs",1869,1999,0.6,0.10,"IPO only in 1999 — a partnership for 130 years"],
+      ["Pfizer",1849,1942,0.6,-0.05,""],
+      ["Walt Disney",1923,1940,0.6,0.05,"Founded as Disney Brothers Cartoon Studio"],
+      ["Accenture",1989,2001,0.6,0.15,"Began as Andersen Consulting, separated from Arthur Andersen in 2000"],
+      ["Palantir",2003,2020,0.6,0.50,"Direct listing in 2020, seventeen years after founding"],
+      ["Adobe",1982,1986,0.5,0.25,""],
+      ["AMD",1969,1972,0.5,0.30,""],
+      ["Qualcomm",1985,1991,0.5,0.15,""],
+      ["Texas Instruments",1930,1951,0.5,0.10,"Founded as Geophysical Service Inc. in 1930; renamed Texas Instruments in 1951"],
+      ["Amgen",1980,1983,0.5,0.05,"Founded as Applied Molecular Genetics"],
+      ["Honeywell",1906,1929,0.5,0.02,"Thermostat business of 1906; AlliedSignal merger 1999"],
+      ["Caterpillar",1925,1929,0.5,0.12,"Merger of Holt and Best tractor makers"],
+      ["ServiceNow",2004,2012,0.5,0.40,""],
+      ["Booking Holdings",1997,1999,0.5,0.35,"Founded as Priceline.com"],
+      ["Morgan Stanley",1935,1986,0.5,0.15,"Spun out of J.P. Morgan & Co. under Glass-Steagall"],
+      ["Wells Fargo",1852,1852,0.5,0.08,""],
+      ["Citigroup",1812,1998,0.4,0.05,"City Bank of New York, 1812; Citigroup formed in the 1998 Travelers merger"],
+      ["BlackRock",1988,1999,0.4,0.30,""],
+      ["Nike",1964,1980,0.4,0.18,"Founded as Blue Ribbon Sports"],
+      ["Starbucks",1971,1992,0.4,0.20,""],
+      ["Lowe's",1921,1961,0.4,0.20,""],
+      ["Boeing",1916,1916,0.4,-0.30,""],
+      ["3M",1902,1902,0.3,-0.18,"Founded as Minnesota Mining & Manufacturing"],
+      ["United Parcel Service",1907,1999,0.3,0.00,"Founded as a messenger service in Seattle; IPO in 1999"],
+      ["Altria",1847,1847,0.3,0.00,"Philip Morris founded in London, 1847; renamed Altria in 2003"],
+      ["Linde",1879,2018,0.3,0.05,"Linde AG founded 1879; today's Linde plc formed in the 2018 merger with Praxair — older parent used"],
+      ["S&P Global",1860,1860,0.3,0.15,"Poor's Publishing (railway manuals) 1860; Standard Statistics merger formed S&P in 1941"],
+      ["Micron Technology",1978,1984,0.3,0.25,""],
+      ["Applied Materials",1967,1972,0.3,0.15,""],
+      ["Lam Research",1980,1984,0.3,0.25,""],
+      ["Intuit",1983,1993,0.3,0.30,""],
+      ["Uber",2009,2019,0.3,0.30,""],
+      ["General Motors",1908,2010,0.2,-0.05,"Founded 1908; the 2010 listing followed the 2009 bankruptcy reorganisation — age not reset"],
+      ["Ford",1903,1956,0.2,-0.10,"Family-controlled until the landmark 1956 IPO"],
+      ["Target",1902,1967,0.2,0.05,"Founded as the Dayton Company in Minneapolis"]
+    ],
+    /* Extended tier: newer entrants & mid-caps beyond the 70 largest, modelled exactly the same way.
+       The Constituents table keeps them behind an expand control (search always finds them). */
+    ext: [
+      ["AppLovin",2012,2021,0.45,0.55,"Founded 2012; IPO 2021; joined the S&P 500 in September 2025 — a genuinely young company, no predecessor to inherit from"],
+      ["Palo Alto Networks",2005,2012,0.35,0.45,"Founded 2005 by Nir Zuk"],
+      ["Intuitive Surgical",1995,2000,0.30,0.40,""],
+      ["Gilead Sciences",1987,1992,0.30,0.15,""],
+      ["Robinhood Markets",2013,2021,0.25,0.55,"Founded 2013; IPO July 2021; joined the S&P 500 in September 2025. No predecessor business — 2013 is the real economic origin, so it counts at every cutoff up to 2013"],
+      ["Vertex Pharmaceuticals",1989,1991,0.25,0.30,""],
+      ["CrowdStrike",2011,2019,0.22,0.45,"Founded 2011; IPO 2019"],
+      ["KLA",1975,1980,0.22,0.30,"Formed in the 1997 merger of KLA Instruments (1975) and Tencor (1976) — older parent used"],
+      ["Coinbase Global",2012,2021,0.20,0.45,"Founded 2012; direct listing April 2021; joined the S&P 500 in May 2025 — no predecessor, 2012 is the origin"],
+      ["PayPal",1998,2015,0.20,0.15,"Founded as Confinity in 1998; owned by eBay 2002–2015 and spun off again — the spin-off/relisting does not reset the clock, so 1998, not 2015"],
+      ["Arista Networks",2004,2014,0.20,0.40,"Founded 2004; IPO 2014"],
+      ["Synopsys",1986,1992,0.20,0.30,""],
+      ["DoorDash",2013,2020,0.18,0.40,"Founded 2013; IPO December 2020; joined the S&P 500 in March 2025 — no predecessor, 2013 is the origin"],
+      ["Regeneron",1988,1991,0.18,0.30,""],
+      ["Marvell Technology",1995,2000,0.18,0.30,""],
+      ["Datadog",2010,2019,0.15,0.40,"Founded 2010; IPO 2019; joined the S&P 500 in July 2025"],
+      ["eBay",1995,1998,0.15,0.10,"Founded 1995 as AuctionWeb"],
+      ["Dell Technologies",1984,2018,0.15,0.20,"Founded 1984; taken private in 2013 and relisted in 2018 — going private does not reset the clock, so 1984, not 2018"],
+      ["Fortinet",2000,2009,0.15,0.40,"Founded 2000 by Ken and Michael Xie"],
+      ["Chipotle",1993,2006,0.15,0.35,"Founded 1993; McDonald's was a major investor 1998–2006 but never the origin — 1993 stands"],
+      ["Hilton",1919,2013,0.15,0.30,"Founded 1919; taken private by Blackstone in 2007 and relisted in 2013 — the relisting does not reset the clock"],
+      ["Carrier Global",1915,2020,0.15,0.15,"Founded 1915 by Willis Carrier; spun off from United Technologies in 2020 — age inherited, not the 2020 listing"],
+      ["Copart",1982,1994,0.15,0.35,""],
+      ["FedEx",1971,1978,0.15,0.10,"Founded 1971 as Federal Express; operations began 1973"],
+      ["Corning",1851,1851,0.15,0.10,"Founded 1851 as Bay State Glass"],
+      ["Block",2009,2015,0.12,0.25,"Founded as Square in 2009; renamed Block in 2021 — a rename does not reset the clock"],
+      ["Workday",2005,2012,0.12,0.25,"Founded 2005 by PeopleSoft founder Dave Duffield after the Oracle takeover"],
+      ["Otis Worldwide",1853,2020,0.12,0.10,"Founded 1853; spun off from United Technologies in 2020 — age inherited, not the 2020 listing"],
+      ["Axon Enterprise",1993,2001,0.12,0.40,"Founded as TASER International in 1993; renamed Axon in 2017 — a rename does not reset the clock"],
+      ["Fair Isaac",1956,1987,0.12,0.35,"Founded 1956 as Fair, Isaac and Company — the FICO score people"],
+      ["Kimberly-Clark",1872,1872,0.12,0.05,"Founded 1872 in Neenah, Wisconsin"],
+      ["Super Micro Computer",1993,2007,0.08,0.35,"Founded 1993; joined the S&P 500 in March 2024"],
+      ["Moderna",2010,2018,0.08,0.10,"Founded 2010 as a Flagship Pioneering venture"]
+    ],
+    /* Full index tier: the remaining 397 constituents, modelled exactly the same way, so the
+       S&P 500 table, filter, CDF and flatlined counts now cover all 500 companies (weights
+       across all three tiers sum to 100%). Kept behind the same expand control as the
+       extended tier; search always finds them. */
+    full: [
+      ["AT&T",1885,1885,0.21,0.05,"Bell System lineage, 1885; today's AT&T formed in the 2005 SBC merger"],
+      ["Verizon",1983,1983,0.23,-0.08,"Bell Atlantic, created in the 1984 AT&T break-up"],
+      ["T-Mobile US",1994,2007,0.27,0.19,"Founded as VoiceStream Wireless in 1994"],
+      ["Charter Communications",1993,1999,0.06,0.12,""],
+      ["Comcast",1963,1972,0.22,-0.15,""],
+      ["Warner Bros. Discovery",1923,2022,0.05,0.29,"Warner Bros. studio founded 1923; Discovery merger (2022) does not reset the clock"],
+      ["Fox Corporation",1986,2019,0.02,-0.21,"21st Century Fox lineage (1986); split in 2019 does not reset the clock"],
+      ["News Corp",1952,2013,0.01,0.29,"News Limited, Australia, 1952; 2013 split does not reset the clock"],
+      ["Omnicom Group",1986,1986,0.02,0.03,""],
+      ["Interpublic Group",1929,1971,0.02,0.34,"Founded as McCann Erickson agency lineage"],
+      ["Electronic Arts",1982,1990,0.01,-0.15,""],
+      ["Take-Two Interactive",1993,1997,0.01,-0.04,""],
+      ["Live Nation Entertainment",1996,2005,0.02,-0.13,"Founded as SFX Entertainment"],
+      ["TJX Companies",1919,1987,0.22,-0.17,"Marmaxx discount stores, 1919"],
+      ["Ross Stores",1982,1985,0.01,-0.03,""],
+      ["Marriott International",1927,1953,0.24,0.03,"Root beer stand, Washington DC, 1927"],
+      ["Airbnb",2008,2020,0.05,0.22,""],
+      ["Expedia Group",1996,1999,0.05,0.26,"Started inside Microsoft in 1996; spun out in 1999"],
+      ["Royal Caribbean",1968,1993,0.06,-0.15,""],
+      ["Carnival Corporation",1972,1987,0.05,-0.19,""],
+      ["Norwegian Cruise Line",1966,2013,0.02,-0.01,""],
+      ["Yum! Brands",1952,1997,0.05,0.18,"KFC founded 1952; spun out of PepsiCo in 1997"],
+      ["Domino's Pizza",1960,2004,0.01,-0.21,""],
+      ["Darden Restaurants",1938,1968,0.01,0.06,"First Red Lobster, 1938 lineage"],
+      ["Best Buy",1966,1985,0.02,0.30,"Founded as Sound of Music hi-fi stores"],
+      ["Ulta Beauty",1990,2007,0.01,-0.01,""],
+      ["Tractor Supply",1938,1994,0.01,-0.12,""],
+      ["Deckers Outdoor",1973,1993,0.02,0.00,""],
+      ["Tapestry",1941,2000,0.01,0.32,"Coach leatherware, 1941"],
+      ["Ralph Lauren",1967,1997,0.01,0.08,""],
+      ["Lululemon Athletica",1998,2007,0.02,-0.13,""],
+      ["Genuine Parts",1928,1948,0.01,0.18,""],
+      ["O'Reilly Automotive",1957,1993,0.02,-0.19,""],
+      ["AutoZone",1979,1991,0.01,-0.10,"Founded as Auto Shack"],
+      ["LKQ Corporation",1998,2003,0.01,0.02,""],
+      ["Aptiv",1994,2011,0.02,0.04,"Delphi lineage from GM's components business; Delphi spun out in 1999"],
+      ["BorgWarner",1880,1993,0.02,0.24,"Morse Chain Company, 1880"],
+      ["Hasbro",1923,1968,0.02,-0.06,""],
+      ["Mattel",1945,1960,0.02,0.10,""],
+      ["Caesars Entertainment",1937,2020,0.02,0.15,"Harrah's, Reno, 1937"],
+      ["MGM Resorts",1986,1986,0.01,0.11,"Grand Name / MGM Grand lineage"],
+      ["Wynn Resorts",2000,2002,0.01,0.29,""],
+      ["Las Vegas Sands",1988,2004,0.01,-0.04,""],
+      ["Mohawk Industries",1878,1992,0.02,-0.10,"Mohawk carpet mills, 1878"],
+      ["Lennar",1954,1971,0.01,0.27,""],
+      ["D.R. Horton",1978,1992,0.01,-0.11,""],
+      ["PulteGroup",1950,1969,0.01,-0.09,""],
+      ["NVR",1948,1993,0.01,0.04,"Ryan Homes, 1948"],
+      ["Garmin",1989,2000,0.01,-0.17,""],
+      ["Pool Corporation",1980,1995,0.01,-0.08,""],
+      ["Bath & Body Works",1963,2023,0.02,0.26,"L Brands founded 1963 as The Limited; renamed Bath & Body Works in 2021"],
+      ["Williams-Sonoma",1956,1983,0.02,-0.20,""],
+      ["CarMax",1993,1997,0.01,0.05,"Circuit City venture, spun out in 1997"],
+      ["Philip Morris International",1847,2008,0.23,0.12,"Philip Morris lineage 1847; spun out of Altria in 2008 — age inherited"],
+      ["Mondelez International",1903,2012,0.20,0.10,"Kraft founded 1903; Mondelez spun out in 2012 — age inherited"],
+      ["Hershey",1894,1927,0.06,0.17,""],
+      ["General Mills",1869,1928,0.25,0.22,"Washburn-Crosby milling, 1869"],
+      ["Kellanova",1906,1952,0.06,-0.10,"Kellogg's, Battle Creek, 1906"],
+      ["Kraft Heinz",1869,2015,0.05,-0.06,"Heinz founded 1869; 2015 Kraft merger does not reset the clock"],
+      ["Colgate-Palmolive",1806,1930,0.20,-0.12,"William Colgate & Co., 1806"],
+      ["Estee Lauder",1946,1995,0.05,-0.19,""],
+      ["Church & Dwight",1846,1887,0.02,0.15,"Arm & Hammer baking soda, 1846"],
+      ["Clorox",1913,1928,0.02,0.18,""],
+      ["Hormel Foods",1891,1928,0.02,0.33,""],
+      ["McCormick & Company",1889,1938,0.01,0.13,""],
+      ["Conagra Brands",1919,1926,0.01,-0.15,"Nebraska Consolidated Mills, 1919"],
+      ["Campbell's",1869,1954,0.01,-0.19,"Campbell Soup, Camden, 1869"],
+      ["J.M. Smucker",1897,1959,0.02,-0.10,""],
+      ["Tyson Foods",1935,1963,0.06,-0.03,""],
+      ["Sysco",1969,1970,0.05,-0.03,""],
+      ["Archer-Daniels-Midland",1902,1924,0.01,-0.18,""],
+      ["CVS Health",1963,1967,0.22,-0.05,"Consumer Value Stores, 1963"],
+      ["Dollar General",1955,1968,0.05,-0.15,"Founded 1955; taken private 2007 and relisted 2009 — age not reset"],
+      ["Dollar Tree",1986,1995,0.01,0.06,""],
+      ["Kroger",1883,1926,0.05,0.32,""],
+      ["Albertsons",1939,2020,0.02,0.08,"Founded 1939; relisted in 2020 after the Safeway merger"],
+      ["Brown-Forman",1870,1933,0.02,-0.18,"Old Forester bourbon, 1870"],
+      ["Constellation Brands",1945,1973,0.02,0.16,"Canandaigua wine company, 1945"],
+      ["Monster Beverage",1935,1995,0.02,0.07,"Hansen's juices, 1935"],
+      ["Keurig Dr Pepper",1981,1993,0.02,0.31,"Green Mountain Coffee Roasters, 1981"],
+      ["Lamb Weston",1950,2016,0.01,-0.22,"Founded 1950; spun out of Conagra in 2016 — age inherited"],
+      ["ConocoPhillips",1875,1875,0.20,-0.04,"Continental Oil, 1875"],
+      ["EOG Resources",1985,1989,0.05,-0.13,"Enron Oil & Gas lineage; spun out in 1999"],
+      ["SLB (Schlumberger)",1926,1962,0.05,0.25,""],
+      ["Phillips 66",1875,2012,0.05,0.10,"ConocoPhillips refining arm; spun out in 2012 — Conoco lineage (1875) inherited"],
+      ["Marathon Petroleum",1887,2011,0.05,0.06,"Marathon Oil, 1887; refining spun out in 2011 — age inherited"],
+      ["Valero Energy",1980,1997,0.05,-0.22,"Spun out of Coastal States Gas in 1980"],
+      ["Occidental Petroleum",1920,1960,0.06,0.09,""],
+      ["Baker Hughes",1907,1987,0.06,0.32,"Hughes Tool Company, 1907"],
+      ["Halliburton",1919,1960,0.06,0.08,""],
+      ["Kinder Morgan",1997,2011,0.05,-0.17,"Richard Kinder's buyout of Enron's pipeline assets"],
+      ["Williams Companies",1908,1957,0.02,0.06,""],
+      ["ONEOK",1906,1925,0.01,-0.02,"Oklahoma Natural Gas, 1906"],
+      ["Diamondback Energy",2007,2012,0.02,0.25,""],
+      ["Devon Energy",1971,1988,0.02,0.21,""],
+      ["Coterra Energy",1889,2021,0.01,0.30,"Cabot Oil & Gas lineage, 1889; renamed Coterra in the 2021 Cimarex merger"],
+      ["EQT Corporation",1888,1950,0.02,0.09,"Equitable Gas lineage, Pittsburgh, 1888"],
+      ["Targa Resources",2005,2010,0.02,-0.02,""],
+      ["Texas Pacific Land",1888,2021,0.01,0.22,"Texas Pacific Land Trust, 1888; converted to a corporation in 2021 — age not reset"],
+      ["Expand Energy",1989,1990,0.02,-0.13,"Chesapeake Energy, 1989; renamed Expand Energy in the 2024 Southwestern merger"],
+      ["Progressive",1937,1971,0.25,-0.21,""],
+      ["Chubb",1885,1984,0.23,0.05,"Chubb & Son underwriting, 1885 lineage"],
+      ["Marsh McLennan",1871,1962,0.06,0.05,"Marsh insurance broking, Chicago, 1871"],
+      ["Aon",1919,1982,0.05,0.32,"Combined Insurance lineage, 1919"],
+      ["Travelers",1853,2009,0.06,0.08,"Travelers insurance roots, 1853; Citigroup spin-off 2002"],
+      ["Aflac",1955,1974,0.02,0.03,""],
+      ["MetLife",1868,2000,0.06,0.14,"Metropolitan Life, 1868; demutualised and listed in 2000"],
+      ["Prudential Financial",1875,2001,0.06,0.14,"Widows & Orphans Friendly Society, Newark, 1875"],
+      ["Hartford Financial",1810,1970,0.01,-0.09,"Hartford Fire Insurance, 1810"],
+      ["Principal Financial",1879,2001,0.01,-0.17,"Bankers Life, Des Moines, 1879"],
+      ["Lincoln National",1905,1967,0.02,0.04,""],
+      ["Unum",1848,1986,0.02,0.05,"Union Mutual, Portland Maine, 1848"],
+      ["Loews",1946,1960,0.02,0.01,"Loews Hotels lineage from 1946"],
+      ["Cincinnati Financial",1950,1968,0.01,-0.10,""],
+      ["Brown & Brown",1939,1993,0.02,0.13,""],
+      ["Willis Towers Watson",1828,2010,0.02,0.19,"Willis insurance broking, London, 1828"],
+      ["Arthur J. Gallagher",1927,1984,0.01,0.31,""],
+      ["Everest Group",1973,1995,0.02,0.28,"Prudential Reinsurance lineage; spun out in 1995"],
+      ["W.R. Berkley",1967,1973,0.01,0.20,""],
+      ["Assurant",1892,2004,0.01,-0.07,"LaCrosse Mutual Aid lineage, 1892"],
+      ["Globe Life",1951,1980,0.01,0.02,"Torchmark lineage, 1951"],
+      ["AIG",1919,1969,0.05,0.05,"American Asiatic Underwriters, Shanghai, 1919"],
+      ["Allstate",1931,1993,0.05,-0.09,"Created inside Sears in 1931; spun out in 1993 — age inherited"],
+      ["CME Group",1848,2002,0.06,0.16,"Chicago Board of Trade, 1848"],
+      ["Intercontinental Exchange",2000,2005,0.05,0.15,""],
+      ["Nasdaq",1971,2002,0.01,-0.20,""],
+      ["Cboe Global Markets",1973,2010,0.01,-0.06,"Chicago Board Options Exchange, 1973"],
+      ["MarketAxess",2000,2004,0.01,0.05,""],
+      ["MSCI",1968,2007,0.01,0.01,"Morgan Stanley Capital International, 1968; IPO 2007"],
+      ["FactSet",1978,1996,0.01,0.22,""],
+      ["Moody's",1900,2000,0.05,0.10,"John Moody's manuals, 1900; spun out of Dun & Bradstreet in 2000"],
+      ["Fiserv",1984,1986,0.06,0.17,""],
+      ["Fidelity National Information",1968,2006,0.02,0.05,"Systematics lineage, 1968"],
+      ["Global Payments",1966,2001,0.02,0.11,"National Data Corporation payments lineage, 1966"],
+      ["Paychex",1971,1983,0.02,0.07,""],
+      ["Automatic Data Processing",1949,1961,0.02,-0.19,""],
+      ["Corpay",2000,2010,0.01,0.25,"Founded as FleetCor"],
+      ["Jack Henry & Associates",1976,1985,0.02,-0.10,""],
+      ["State Street",1792,1970,0.05,-0.17,"Union Bank of Boston lineage, 1792"],
+      ["Bank of New York Mellon",1784,1946,0.05,-0.15,"Bank of New York, founded by Alexander Hamilton, 1784"],
+      ["Northern Trust",1889,1967,0.01,-0.12,""],
+      ["M&T Bank",1856,1966,0.01,0.32,"Manufacturers & Traders Trust, Buffalo, 1856"],
+      ["Fifth Third Bancorp",1858,1958,0.01,0.32,"Bank of the Ohio Valley, 1858"],
+      ["Citizens Financial",1828,2014,0.02,-0.17,"High Street Bank, Providence, 1828; spun out of RBS in 2014"],
+      ["Regions Financial",1870,1976,0.02,-0.17,"First National Bank of Huntsville lineage, 1870"],
+      ["Huntington Bancshares",1866,1972,0.02,0.26,""],
+      ["KeyCorp",1825,1947,0.01,-0.13,"Commercial Bank of Albany, 1825"],
+      ["Truist Financial",1872,2019,0.05,-0.10,"BB&T founded 1872; Truist formed in the 2019 SunTrust merger — older parent used"],
+      ["PNC Financial",1852,1947,0.06,-0.12,"Pittsburgh Trust & Savings, 1852"],
+      ["Capital One",1988,1994,0.06,0.10,"Signet Bank card division, 1988; spun out in 1994"],
+      ["Synchrony Financial",1988,2014,0.01,0.21,"GE Capital retail finance lineage; spun out in 2014"],
+      ["Ally Financial",1919,2014,0.02,0.03,"GMAC, General Motors' finance arm, 1919"],
+      ["Charles Schwab",1971,1987,0.05,-0.13,""],
+      ["Raymond James",1962,1983,0.01,-0.20,""],
+      ["LPL Financial",1989,2010,0.01,0.15,"Linsco / Private Ledger merger, 1989"],
+      ["Ameriprise Financial",1894,2005,0.01,0.00,"Investors Diversified Services, 1894; spun out of American Express in 2005"],
+      ["T. Rowe Price",1937,1986,0.02,0.00,""],
+      ["Franklin Resources",1947,1971,0.01,0.35,""],
+      ["Invesco",1935,1997,0.02,0.11,"Citizens & Southern Realty lineage, Atlanta, 1935"],
+      ["First Citizens BancShares",1898,1986,0.02,0.08,"Bank of Smithfield, North Carolina, 1898"],
+      ["Comerica",1849,1974,0.02,0.35,"Detroit Savings Fund Society, 1849"],
+      ["Zions Bancorporation",1873,1966,0.02,-0.09,"Zion's Savings Bank, Salt Lake City, 1873"],
+      ["East West Bancorp",1973,1998,0.02,0.28,""],
+      ["Thermo Fisher Scientific",1956,1967,0.23,-0.20,"Thermo Electron, 1956"],
+      ["Danaher",1969,1986,0.26,-0.15,"Diversified Mortgage Investors lineage, 1969; renamed Danaher in 1984"],
+      ["Becton Dickinson",1897,1962,0.06,0.17,""],
+      ["Stryker",1941,1979,0.19,0.28,"Orthopedic Frame Company, 1941"],
+      ["Boston Scientific",1979,1992,0.05,0.20,""],
+      ["Medtronic",1949,1960,0.20,0.31,""],
+      ["Edwards Lifesciences",1958,2000,0.06,0.00,"Edwards Laboratories, 1958; spun out of Baxter in 2000 — age inherited"],
+      ["Baxter International",1931,1952,0.06,0.30,""],
+      ["Zimmer Biomet",1927,2001,0.02,-0.18,"Zimmer splint makers, 1927; spun out of Bristol-Myers in 2001"],
+      ["ResMed",1989,1995,0.01,0.16,""],
+      ["IDEXX Laboratories",1983,1991,0.02,-0.07,""],
+      ["Dexcom",1999,2005,0.02,-0.07,""],
+      ["Insulet",2000,2007,0.01,0.05,""],
+      ["HCA Healthcare",1968,2010,0.06,0.26,"Hospital Corporation of America, 1968; relisted 2011 after two take-privates"],
+      ["Tenet Healthcare",1967,1975,0.01,0.24,""],
+      ["Universal Health Services",1979,1991,0.01,0.04,""],
+      ["Labcorp",1978,1997,0.02,-0.09,"National Health Laboratories lineage; spun out of Roche in 1997"],
+      ["Quest Diagnostics",1967,1996,0.02,0.06,"MetPath, 1967; spun out of Corning in 1996 — age inherited"],
+      ["Agilent Technologies",1939,1999,0.05,0.33,"Hewlett-Packard's instruments business (1939), spun out in 1999 — HP lineage inherited, the same rule as Broadcom"],
+      ["Waters Corporation",1958,1995,0.01,-0.16,""],
+      ["Mettler Toledo",1945,1997,0.01,0.25,"Mettler balances, Switzerland, 1945"],
+      ["Revvity",1937,1974,0.01,0.10,"Perkin-Elmer, 1937"],
+      ["Bio-Rad Laboratories",1952,1966,0.01,-0.09,""],
+      ["Charles River Laboratories",1947,2000,0.01,0.10,""],
+      ["IQVIA",1982,2016,0.02,-0.08,"Quintiles, 1982; renamed IQVIA in the 2016 IMS Health merger"],
+      ["Cooper Companies",1958,1983,0.01,0.31,""],
+      ["STERIS",1985,1987,0.02,0.02,"American Sterilizer lineage (1894) via the 1985 merger"],
+      ["Hologic",1985,1990,0.02,0.06,""],
+      ["Dentsply Sirona",1877,1968,0.01,0.09,"Dentsply artificial teeth, 1877 lineage"],
+      ["Align Technology",1997,2001,0.01,-0.20,""],
+      ["GE HealthCare",1892,2023,0.05,0.14,"GE's medical business (1892 lineage), spun out in 2023 — age inherited, not the spin-off"],
+      ["Elevance Health",1944,2001,0.22,0.18,"Blue Cross of California / Associated Hospital Service lineage, 1944"],
+      ["Cigna",1792,1982,0.21,-0.14,"Insurance Company of North America, 1792 — the oldest lineage in the index; Cigna formed in 1982"],
+      ["Humana",1961,1974,0.02,-0.11,""],
+      ["Centene",1984,2001,0.02,0.08,""],
+      ["Molina Healthcare",1980,2003,0.01,-0.08,""],
+      ["Bristol Myers Squibb",1858,1929,0.20,-0.17,"Squibb pharmaceuticals, Brooklyn, 1858"],
+      ["Zoetis",1849,2013,0.01,-0.08,"Pfizer's animal-health business, spun out in 2013 — Pfizer lineage (1849) inherited, the same rule as AbbVie"],
+      ["Incyte",1991,1993,0.01,0.22,""],
+      ["Biogen",1978,1991,0.01,-0.17,""],
+      ["Solventum",1902,2024,0.02,0.26,"3M's health-care business, spun out in 2024 — 3M lineage (1902) inherited"],
+      ["Viatris",1961,2020,0.01,-0.07,"Mylan, 1961; renamed Viatris in the 2020 Upjohn merger — age not reset"],
+      ["GE Vernova",1892,2024,0.06,-0.13,"GE's power business, spun out in 2024 — GE lineage (1892) inherited"],
+      ["RTX",1922,1929,0.25,-0.13,"Raytheon, 1922; renamed RTX after the 2020 United Technologies merger — older parent used"],
+      ["Lockheed Martin",1912,1995,0.21,0.14,"Lockheed (1912) and Martin (1912) merged in 1995 — age not reset"],
+      ["Northrop Grumman",1939,1939,0.24,-0.12,"Northrop Aircraft, 1939"],
+      ["General Dynamics",1899,1952,0.23,-0.07,"Electric Boat Company, 1899"],
+      ["L3Harris Technologies",1895,2019,0.06,0.06,"Harris lineage, 1895; renamed in the 2019 L3 merger"],
+      ["Howmet Aerospace",1888,2016,0.02,0.01,"Alcoa lineage, 1888; spun out in 2016 — age inherited"],
+      ["TransDigm",1993,2006,0.01,0.20,""],
+      ["Parker Hannifin",1917,1964,0.05,0.00,""],
+      ["Eaton",1911,1923,0.25,0.04,""],
+      ["Emerson Electric",1890,1944,0.24,0.16,""],
+      ["Illinois Tool Works",1912,1947,0.05,0.25,""],
+      ["Trane Technologies",1871,2020,0.05,-0.11,"Ingersoll Rand lineage, 1871; renamed Trane in 2020 — age not reset"],
+      ["Johnson Controls",1885,1947,0.05,-0.15,"Warren Johnson's thermostat company, 1885"],
+      ["Cummins",1919,1957,0.06,0.19,""],
+      ["PACCAR",1905,1925,0.02,0.25,"Pacific Car & Foundry, Seattle, 1905"],
+      ["Deere & Company",1837,1868,0.24,-0.19,"John Deere's plough works, 1837"],
+      ["Union Pacific",1862,1862,0.21,0.24,"Chartered by Lincoln in 1862"],
+      ["CSX",1827,1980,0.06,-0.17,"Baltimore & Ohio Railroad lineage, 1827; CSX formed in 1980 — older lineage used"],
+      ["Norfolk Southern",1838,1982,0.05,-0.21,"Norfolk & Western lineage, 1838; Southern merger formed today's company in 1982"],
+      ["American Airlines",1926,2013,0.06,0.21,"Aviation Corporation consolidation, 1926 lineage"],
+      ["Delta Air Lines",1925,1929,0.06,-0.02,"Huff Daland crop-dusting, 1924; renamed Delta in 1928"],
+      ["Southwest Airlines",1967,1971,0.01,-0.18,""],
+      ["United Airlines",1926,1969,0.06,-0.01,"Varney Air Lines / Boeing Air Transport lineage, 1926"],
+      ["Old Dominion Freight",1934,1991,0.01,0.23,""],
+      ["J.B. Hunt",1961,1983,0.01,-0.06,""],
+      ["Expeditors International",1979,1984,0.02,-0.16,""],
+      ["C.H. Robinson",1905,1997,0.02,0.28,""],
+      ["XPO",2011,2011,0.01,-0.10,"Founded as Express-1 Expedited Solutions buyout vehicle"],
+      ["Republic Services",1981,1998,0.05,0.06,""],
+      ["Waste Management",1968,1971,0.06,0.12,"Ace Disposal, Chicago, 1968 lineage"],
+      ["Rollins",1901,1968,0.01,0.08,"Orkin pest control, 1901 lineage"],
+      ["Fastenal",1967,1987,0.02,0.28,""],
+      ["W.W. Grainger",1927,1967,0.01,-0.03,""],
+      ["Ferguson Enterprises",1887,2022,0.01,0.30,"Wolseley plumbing lineage, UK, 1887; primary listing moved to NYSE in 2022"],
+      ["Watsco",1947,1972,0.01,0.24,""],
+      ["United Rentals",1997,1997,0.02,0.06,""],
+      ["Quanta Services",1997,1998,0.02,0.15,""],
+      ["EMCOR Group",1994,1994,0.02,0.11,"Spun out of JWP in 1994; contracting lineage is older"],
+      ["Jacobs Solutions",1947,1970,0.02,-0.06,""],
+      ["AECOM",1990,2007,0.01,0.04,"Ashland engineering businesses merged in 1990"],
+      ["Leidos",1969,2013,0.02,-0.17,"SAIC, 1969; split in 2013 — age inherited"],
+      ["Booz Allen Hamilton",1914,2010,0.01,-0.11,"Edwin Booz's consultancy, Chicago, 1914"],
+      ["CACI International",1962,1968,0.01,0.24,""],
+      ["Science Applications International",1969,2013,0.01,0.00,"The other half of the 2013 SAIC split — 1969 inherited"],
+      ["Teledyne Technologies",1960,1961,0.01,-0.18,""],
+      ["Textron",1923,1947,0.02,-0.02,"Special Yarns, Boston, 1923"],
+      ["Huntington Ingalls",1886,2011,0.01,-0.11,"Newport News Shipbuilding, 1886; spun out of Northrop in 2011 — age inherited"],
+      ["Dover",1955,1955,0.01,0.21,""],
+      ["Ingersoll Rand",1859,2020,0.02,-0.07,"Gardner Denver, 1859; merged into Ingersoll Rand in 2020 — older parent used"],
+      ["IDEX Corporation",1988,1989,0.02,-0.03,"Spun out of Kohlberg Kravis portfolio in 1988"],
+      ["Nordson",1954,1968,0.02,0.12,"U.S. Automatic Corporation lineage from 1935; Nordson founded 1954"],
+      ["Pentair",1966,1975,0.02,0.27,""],
+      ["Xylem",1920,2011,0.01,-0.14,"ITT lineage (1920), spun out in 2011 — age inherited"],
+      ["Veralto",1969,2023,0.02,0.14,"Danaher's environmental arm, spun out in 2023 — Danaher lineage (1969) inherited"],
+      ["Fortive",1969,2016,0.01,-0.03,"Danaher's industrial arm, spun out in 2016 — Danaher lineage (1969) inherited"],
+      ["Intel",1968,1971,0.25,0.25,""],
+      ["Analog Devices",1965,1969,0.06,-0.01,""],
+      ["NXP Semiconductors",1891,2010,0.06,-0.21,"Philips' semiconductor business (Philips founded 1891), spun out in 2006 — lineage inherited"],
+      ["Microchip Technology",1989,1993,0.02,-0.05,"Spun out of General Instrument in 1989"],
+      ["ON Semiconductor",1928,2000,0.01,-0.21,"Motorola's chip business (Motorola 1928), spun out in 1999 — lineage inherited"],
+      ["Monolithic Power Systems",1997,2004,0.02,0.11,""],
+      ["Enphase Energy",2006,2012,0.01,-0.12,""],
+      ["First Solar",1999,2006,0.01,0.13,""],
+      ["Teradyne",1960,1961,0.01,0.09,""],
+      ["Trimble",1978,1990,0.01,-0.02,""],
+      ["HP Inc.",1939,2015,0.02,0.17,"The PC and printer half of Hewlett-Packard (1939) after the 2015 split — age inherited"],
+      ["Hewlett Packard Enterprise",1939,2015,0.02,-0.15,"The enterprise half of Hewlett-Packard (1939) after the 2015 split — age inherited"],
+      ["NetApp",1992,1995,0.01,-0.21,""],
+      ["Western Digital",1970,1970,0.05,-0.15,""],
+      ["Seagate Technology",1979,2000,0.05,0.02,"Founded 1979; relisted 2002 after take-private — age not reset"],
+      ["Jabil",1966,1993,0.01,-0.14,""],
+      ["Flex",1969,1994,0.02,0.09,"Flextronics, Singapore, 1969"],
+      ["Amphenol",1932,1991,0.06,0.26,""],
+      ["TE Connectivity",1941,2007,0.01,-0.04,"AMP connectors, 1941; spun out of Tyco in 2007 — age inherited"],
+      ["CDW",1984,2013,0.01,0.21,"Founded as MPK Computing; relisted 2013 after take-private — age not reset"],
+      ["Gartner",1979,1993,0.01,-0.03,""],
+      ["Cognizant",1994,1998,0.01,-0.17,"Dun & Bradstreet software arm, spun out in 1996"],
+      ["Gen Digital",1982,1989,0.02,-0.03,"Symantec, 1982; renamed Gen Digital in 2022"],
+      ["Akamai Technologies",1998,1999,0.02,0.14,""],
+      ["F5",1996,1999,0.01,-0.14,""],
+      ["GoDaddy",1997,2015,0.02,-0.18,""],
+      ["VeriSign",1995,1998,0.01,0.31,""],
+      ["Cadence Design Systems",1988,1988,0.06,0.02,""],
+      ["Autodesk",1982,1985,0.05,-0.22,""],
+      ["Tyler Technologies",1966,1966,0.02,-0.06,"Saturn Business Systems lineage, 1966"],
+      ["PTC",1985,1989,0.02,0.00,"Parametric Technology, 1985"],
+      ["Zebra Technologies",1969,1991,0.02,0.14,""],
+      ["Motorola Solutions",1928,1937,0.05,0.10,"Galvin Manufacturing (Motorola), Chicago, 1928"],
+      ["Skyworks Solutions",1962,2002,0.01,-0.20,"Alpha Industries, 1962; renamed in the 2002 Conexant merger"],
+      ["Qorvo",1991,2015,0.02,-0.06,"RF Micro Devices, 1991; renamed Qorvo in the 2015 TriQuint merger"],
+      ["Newmont",1921,1925,0.05,0.25,""],
+      ["Freeport-McMoRan",1912,1988,0.05,-0.17,"Freeport Texas sulphur company, 1912"],
+      ["Dow",1897,2019,0.05,-0.10,"Dow Chemical, 1897; today's Dow spun out of DowDuPont in 2019 — age inherited"],
+      ["DuPont",1802,2019,0.06,0.33,"E.I. du Pont gunpowder mills, Delaware, 1802; today's DuPont formed in the 2019 DowDuPont split — age inherited"],
+      ["LyondellBasell",2007,2010,0.02,-0.18,"Basell / Lyondell merger, 2007"],
+      ["PPG Industries",1883,1883,0.05,0.33,"Pittsburgh Plate Glass, 1883"],
+      ["Ecolab",1923,1937,0.05,-0.22,"Economics Laboratory, St Paul, 1923"],
+      ["Air Products",1940,1961,0.01,0.16,""],
+      ["CF Industries",1946,2005,0.02,0.27,"Central Farmers Fertilizer cooperative, 1946"],
+      ["Mosaic",1909,2004,0.01,-0.05,"IMC Global lineage, 1909; Mosaic formed in the 2004 Cargill merger"],
+      ["FMC",1883,1931,0.01,0.15,"Bean Spray Pump Company, 1883"],
+      ["Albemarle",1887,1994,0.02,-0.15,"Richmond paper company lineage, 1887; spun out of Ethyl in 1994"],
+      ["Celanese",1918,2005,0.01,0.30,"American Cellulose, 1918; spun out of Hoechst lineage in 1999/2005"],
+      ["Eastman Chemical",1920,1994,0.01,0.12,"Eastman Kodak's chemical arm (1920), spun out in 1994 — age inherited"],
+      ["International Paper",1898,1898,0.02,0.33,""],
+      ["Packaging Corporation of America",1867,1959,0.02,0.20,"Southern Container / PCA lineage, 1867"],
+      ["Smurfit Westrock",1846,2024,0.01,0.06,"Mead paper lineage, 1846; formed in the 2024 Smurfit Kappa merger — older parent used"],
+      ["Avery Dennison",1935,1965,0.02,-0.06,"Kum Kleen labels, Los Angeles, 1935"],
+      ["Ball",1880,1972,0.01,0.24,"Ball brothers' jars, Buffalo, 1880"],
+      ["Crown Holdings",1892,1992,0.01,0.10,"Crown Cork & Seal, Baltimore, 1892"],
+      ["Amcor",1860,2019,0.02,-0.05,"Australian Paper Manufacturers lineage, 1860; Amcor plc formed in the 2019 Bemis merger"],
+      ["Steel Dynamics",1993,1996,0.01,-0.03,""],
+      ["Nucor",1905,1966,0.01,0.35,"REO Motor Car (Ransom E. Olds, 1905) lineage; renamed Nucor in 1972"],
+      ["Vulcan Materials",1909,1956,0.02,-0.15,"Sloss-Sheffield Steel lineage, Birmingham, 1909"],
+      ["Martin Marietta",1939,1961,0.01,-0.02,"Glenn L. Martin / Marietta lineage; aggregates business from the 1994 spin lineage"],
+      ["Sherwin-Williams",1866,1964,0.05,-0.07,""],
+      ["Prologis",1983,1997,0.25,0.02,"AMB Property lineage, 1983"],
+      ["American Tower",1995,1998,0.22,0.16,"Spun out of American Radio Systems in 1998; founded 1995"],
+      ["Equinix",1998,2000,0.23,0.27,""],
+      ["Welltower",1970,1970,0.05,-0.22,"Health Care REIT, Toledo, 1970"],
+      ["Simon Property Group",1960,1993,0.24,-0.08,"Melvin Simon & Associates, 1960; IPO 1993"],
+      ["Realty Income",1969,1994,0.06,0.30,""],
+      ["Digital Realty",2004,2004,0.06,0.04,""],
+      ["Public Storage",1972,1980,0.05,-0.04,""],
+      ["Extra Space Storage",1977,2004,0.02,-0.11,""],
+      ["AvalonBay Communities",1978,1998,0.01,0.23,"Trammell Crow / Avalon lineage from 1978"],
+      ["Equity Residential",1969,1993,0.01,-0.21,"Sam Zell's Equity group, 1969"],
+      ["Ventas",1985,1998,0.05,-0.04,""],
+      ["SBA Communications",1989,1999,0.02,-0.20,""],
+      ["Crown Castle",1994,1998,0.06,-0.04,""],
+      ["Iron Mountain",1951,1996,0.02,0.17,""],
+      ["CBRE Group",1906,2004,0.06,0.34,"Coldwell Banker lineage, San Francisco, 1906"],
+      ["Mid-America Apartment Communities",1977,1994,0.02,0.05,""],
+      ["Essex Property Trust",1971,1994,0.02,-0.09,""],
+      ["Invitation Homes",2012,2017,0.01,-0.13,"Blackstone single-family rental vehicle, 2012"],
+      ["Sun Communities",1975,1993,0.01,0.06,""],
+      ["Regency Centers",1963,1991,0.01,-0.16,""],
+      ["Kimco Realty",1958,1991,0.01,0.19,""],
+      ["Federal Realty",1962,1962,0.02,0.00,""],
+      ["BXP",1970,1997,0.02,0.13,"Boston Properties, 1970"],
+      ["Alexandria Real Estate Equities",1994,1997,0.02,-0.16,""],
+      ["Healthpeak Properties",1985,1985,0.01,0.22,"Health Care Property Investors, 1985"],
+      ["UDR",1972,1972,0.02,0.06,"United Dominion Realty, 1972"],
+      ["Camden Property Trust",1982,1993,0.02,-0.16,""],
+      ["Weyerhaeuser",1900,1900,0.02,0.09,"Timber company, Tacoma, 1900"],
+      ["Host Hotels & Resorts",1927,1993,0.02,0.12,"Marriott (1927) lodging arm, split out in 1993 — age inherited"],
+      ["VICI Properties",1937,2018,0.01,-0.22,"Caesars (Harrah's, 1937) real-estate spin-out, 2015 — age inherited"],
+      ["CoStar Group",1987,1998,0.02,0.27,""],
+      ["NextEra Energy",1925,1926,0.22,-0.17,"Florida Power & Light, 1925"],
+      ["Duke Energy",1904,1906,0.24,0.24,"Duke Power / Southern Power, 1904"],
+      ["Southern Company",1945,1949,0.21,-0.05,"Holding company formed 1945 from Commonwealth & Southern assets"],
+      ["Constellation Energy",1816,2022,0.05,0.04,"Baltimore Gas Light Company, 1816; spun out of Exelon in 2022 — age inherited"],
+      ["Sempra",1881,1998,0.06,0.34,"San Diego Gas & Electric, 1881; Sempra formed in the 1998 merger — older parent used"],
+      ["Exelon",1881,2000,0.06,-0.15,"Philadelphia Electric (PECO), 1881; Exelon formed in the 2000 Unicom merger — older parent used"],
+      ["PG&E Corporation",1905,1905,0.06,0.09,""],
+      ["Edison International",1886,1888,0.06,0.03,"Southern California Edison lineage, 1886"],
+      ["Xcel Energy",1909,1925,0.01,-0.03,"Northern States Power, 1909"],
+      ["Public Service Enterprise Group",1903,1903,0.02,-0.06,"New Jersey utilities consolidation, 1903"],
+      ["American Electric Power",1906,1906,0.06,0.12,"American Gas & Electric, 1906"],
+      ["Dominion Energy",1909,1925,0.06,-0.02,"Virginia Railway & Power, 1909"],
+      ["Consolidated Edison",1823,1936,0.05,0.12,"New York Gas Light Company, 1823"],
+      ["WEC Energy Group",1896,1915,0.02,0.21,"Wisconsin Electric lineage, 1896"],
+      ["DTE Energy",1903,1903,0.01,-0.18,"Detroit Edison, 1903"],
+      ["Eversource Energy",1966,1966,0.02,0.11,"Northeast Utilities, 1966"],
+      ["Entergy",1913,1949,0.02,0.11,"Harvey Couch's Arkansas power companies, 1913"],
+      ["FirstEnergy",1930,1997,0.02,-0.03,"Ohio Edison lineage, 1930; FirstEnergy formed in 1997"],
+      ["PPL Corporation",1920,1920,0.01,0.10,"Pennsylvania Power & Light, 1920"],
+      ["Ameren",1902,1997,0.01,0.24,"Union Electric, St Louis, 1902; Ameren formed in 1997"],
+      ["NRG Energy",1992,2003,0.02,0.31,"Founded as NSP's unregulated arm; relisted 2003 after bankruptcy — age not reset"],
+      ["Evergy",1882,2018,0.01,0.27,"Kansas City Power & Light lineage, 1882; Evergy formed in 2018"],
+      ["CMS Energy",1886,1974,0.02,0.32,"Consumers Power lineage, Jackson Michigan, 1886"],
+      ["Alliant Energy",1917,1998,0.02,0.01,"Interstate Power lineage, Dubuque, 1917"],
+      ["CenterPoint Energy",1882,2002,0.01,-0.10,"Houston Electric Light lineage, 1882"],
+      ["NiSource",1912,1974,0.02,0.25,"Northern Indiana Public Service, 1912"],
+      ["AES Corporation",1981,1991,0.01,0.10,""],
+      ["Atmos Energy",1906,1983,0.01,0.26,"Amarillo gas distribution lineage, 1906"],
+      ["Dayforce",1992,2018,0.01,0.20,"Ceridian lineage (Control Data, 1932 software arm); Dayforce founded as Ceridian HCM in 1992"],
+      ["Apollo Global Management",1990,2011,0.05,0.05,"Founded by Leon Black and others from Drexel Burnham"],
+      ["KKR",1976,2010,0.05,0.33,"Kohlberg Kravis Roberts, New York, 1976"],
+      ["Equifax",1899,1927,0.01,0.01,"Retail Credit Company, Atlanta, 1899"],
+      ["Keysight Technologies",1939,2014,0.05,0.09,"Hewlett-Packard's test & measurement business (1939), spun out in 2014 — HP lineage inherited"],
+      ["Masco",1929,1936,0.01,0.23,"Alex Manoogian's Masco Screw Products, Detroit, 1929"],
+      ["McKesson",1833,1994,0.22,-0.03,"Olcott & McKesson drug importers, New York, 1833"],
+      ["Pinnacle West Capital",1884,1985,0.02,-0.16,"Arizona Public Service lineage, 1884"],
+      ["Rockwell Automation",1903,1996,0.02,0.08,"Allen-Bradley, Milwaukee, 1903"],
+      ["Roper Technologies",1890,1992,0.01,0.24,"George Roper pump company lineage, 1890"],
+      ["Snap-on",1920,1920,0.02,0.13,"Snap-on Wrench Company, Milwaukee, 1920"],
+      ["Stanley Black & Decker",1843,1966,0.02,-0.05,"Stanley's Bolt Manufactory, Connecticut, 1843"],
+      ["West Pharmaceutical Services",1923,1960,0.02,0.07,"Herman O. West's rubber products, 1923"],
+      ["Builders FirstSource",1998,2005,0.02,0.24,""],
+      ["Carlisle Companies",1917,1917,0.01,0.09,"Carlisle Tire & Rubber, 1917"]
+    ] },
+  dow: { label: "Dow Jones", short: "Dow", color: "var(--dow)", hex: "#12836f", detail: true,
+    anchors: [[1980,100],[1982,105],[1985,160],[1987,195],[1990,273],[1992,340],[1995,531],[1998,920],[2000,1119],[2001,1045],[2002,865],[2003,1085],[2007,1376],[2008,910],[2009,1080],[2012,1360],[2015,1808],[2018,2420],[2019,2960],[2020,3175],[2021,3770],[2022,3439],[2023,3910],[2024,4413],[2025,4560]],
+    entities: [
+      ["3M",1902,1902,2.6,-0.18,"Founded as Minnesota Mining & Manufacturing"],
+      ["Amazon",1994,1997,3.4,0.42,"Joined the Dow in 2024"],
+      ["American Express",1850,1850,4.6,0.10,"Express mail company before cards"],
+      ["Amgen",1980,1983,3.6,0.05,"Founded as Applied Molecular Genetics"],
+      ["Apple",1976,1980,3.4,0.62,""],
+      ["Boeing",1916,1916,2.6,-0.30,""],
+      ["Caterpillar",1925,1929,5.6,0.12,"Merger of Holt and Best tractor makers"],
+      ["Chevron",1879,1879,2.4,0.02,"Born as Pacific Coast Oil"],
+      ["Cisco",1984,1990,1.1,0.05,""],
+      ["Coca-Cola",1892,1919,1.2,0.08,"Drink first sold in 1886; company incorporated 1892"],
+      ["Goldman Sachs",1869,1999,8.6,0.10,"IPO only in 1999 — a partnership for 130 years"],
+      ["Home Depot",1978,1981,6.0,0.38,""],
+      ["Honeywell",1906,1929,3.6,0.02,"Thermostat business of 1906; AlliedSignal merger 1999"],
+      ["IBM",1911,1911,4.2,0.02,"Founded as Computing-Tabulating-Recording Co."],
+      ["Johnson & Johnson",1886,1944,2.6,0.06,""],
+      ["JPMorgan Chase",1799,2000,4.6,0.16,"Traced to the Bank of the Manhattan Company (1799), not the 2000 merger"],
+      ["McDonald's",1940,1966,4.8,0.28,"McDonald brothers' restaurant, 1940; Ray Kroc's corporation 1955"],
+      ["Merck & Co.",1891,1891,1.2,0.00,"US arm of Germany's Merck (1668), independent since 1917"],
+      ["Microsoft",1975,1986,6.8,0.55,""],
+      ["NVIDIA",1993,1999,2.8,0.85,"Joined the Dow in 2024"],
+      ["Nike",1964,1980,1.4,0.18,"Founded as Blue Ribbon Sports"],
+      ["Procter & Gamble",1837,1890,2.4,0.08,""],
+      ["Salesforce",1999,2004,4.6,0.30,""],
+      ["Sherwin-Williams",1866,1964,5.4,0.34,"Joined the Dow in 2024"],
+      ["Travelers",1853,2009,5.4,0.20,"Insurance roots 1853; Citigroup spin-off 2002"],
+      ["UnitedHealth",1977,1984,7.6,0.45,""],
+      ["Verizon",1983,1983,1.0,-0.08,"Bell Atlantic, created in the 1984 AT&T break-up"],
+      ["Visa",1958,2008,4.4,0.40,"Launched as BankAmericard in 1958; IPO 2008"],
+      ["Walmart",1962,1970,1.8,0.30,"First Walmart store, Rogers, Arkansas"],
+      ["Walt Disney",1923,1940,1.8,0.05,"Founded as Disney Brothers Cartoon Studio"]
+    ] },
+  dax: { label: "DAX", short: "DAX", color: "var(--dax)", hex: "#c07f00", detail: true,
+    anchors: [[1980,100],[1982,92],[1985,175],[1987,150],[1990,320],[1992,300],[1995,480],[1998,1050],[2000,1450],[2001,980],[2002,600],[2003,820],[2007,1680],[2008,1000],[2009,1240],[2012,1580],[2015,2230],[2018,2190],[2019,2760],[2020,2860],[2021,3300],[2022,2900],[2023,3490],[2024,4140],[2025,5050]],
+    entities: [
+      ["Adidas",1949,2006,2.2,0.10,"Gebrüder Dassler split: Adi Dassler's half, registered 1949"],
+      ["Airbus",1970,2000,7.0,0.22,"Airbus Industrie consortium founded 1970; listed as EADS in 2000"],
+      ["Allianz",1890,1890,7.6,0.12,""],
+      ["BASF",1865,1865,3.4,-0.05,"Badische Anilin- und Sodafabrik"],
+      ["Bayer",1863,1863,2.0,-0.28,""],
+      ["Beiersdorf",1882,1882,1.8,0.10,"NIVEA maker"],
+      ["BMW",1916,1916,3.2,0.10,"Started as an aircraft-engine maker"],
+      ["Brenntag",1874,2010,1.0,0.05,"Founded as an egg wholesaler in Berlin"],
+      ["Commerzbank",1870,1870,1.8,-0.10,""],
+      ["Continental",1871,1871,1.4,-0.05,"Rubber works, Hanover"],
+      ["Daimler Truck",1896,2021,2.0,0.02,"Daimler's truck business of the 1890s; spun off in 2021 — age inherited"],
+      ["Deutsche Bank",1870,1870,2.6,0.02,""],
+      ["Deutsche Börse",1992,2001,2.4,0.28,"The AG dates to 1992; the Frankfurt exchange itself to 1585"],
+      ["Deutsche Post (DHL)",1947,2000,3.4,0.18,"Traced to the Deutsche Bundespost (1947) — not the 2000 IPO"],
+      ["Deutsche Telekom",1947,1996,6.2,0.05,"The Bundespost's telephone arm until the 1995 split — not the 1996 IPO"],
+      ["E.ON",1923,2000,3.0,0.02,"Formed 2000 from VEBA (1929) and VIAG (1923) — older parent used"],
+      ["Fresenius",1912,1986,1.7,0.15,""],
+      ["Fresenius Medical Care",1912,1996,0.9,0.05,"Dialysis arm of Fresenius (1912); separate listing 1996 — age inherited"],
+      ["Hannover Rück",1966,1994,2.4,0.30,""],
+      ["Heidelberg Materials",1873,1873,2.0,0.05,"Founded as HeidelbergCement"],
+      ["Henkel",1876,1985,2.0,0.08,""],
+      ["Infineon",1847,2000,2.8,0.10,"Siemens' semiconductor division, spun off 1999 — Siemens (1847) lineage"],
+      ["Mercedes-Benz Group",1883,1926,4.2,0.05,"Benz & Cie. (1883); Daimler-Benz merger 1926"],
+      ["Merck KGaA",1668,1995,2.0,0.12,"Pharmacy in Darmstadt, 1668 — the DAX's oldest company"],
+      ["MTU Aero Engines",1934,2005,1.7,0.28,"BMW's aircraft-engine works, 1934"],
+      ["Munich Re",1880,1880,5.2,0.18,""],
+      ["Porsche AG",1931,2022,1.6,0.20,"Ferdinand Porsche's design bureau, 1931 — not the 2022 IPO"],
+      ["Porsche SE",1931,1984,0.9,0.0,"Holding company over the 1931 Porsche / VW lineage"],
+      ["Qiagen",1984,1996,0.8,0.0,""],
+      ["Rheinmetall",1889,1889,2.4,0.35,""],
+      ["RWE",1898,1898,2.8,0.05,"Rheinisch-Westfälisches Elektrizitätswerk"],
+      ["SAP",1972,1988,13.5,0.45,"Founded by five ex-IBM engineers in Weinheim"],
+      ["Sartorius",1870,1990,1.0,0.15,"Precision-balance maker, Göttingen"],
+      ["Siemens",1847,1899,9.5,0.15,"Telegraphen-Bauanstalt von Siemens & Halske"],
+      ["Siemens Energy",1847,2020,2.4,0.05,"Spun off from Siemens in 2020 — the business is Siemens' 1847 power division, so 1847 it is"],
+      ["Siemens Healthineers",1847,2018,1.8,0.15,"Siemens' medical arm (X-ray tubes since 1896); IPO 2018 — age inherited from Siemens"],
+      ["Symrise",1874,2006,1.2,0.15,"Roots in Haarmann & Reimer (1874), the first synthetic vanillin maker"],
+      ["Volkswagen",1937,1960,2.8,0.02,"Founded 1937 to build the KdF-Wagen"],
+      ["Vonovia",2001,2013,1.6,-0.05,"Founded as Deutsche Annington"],
+      ["Zalando",2008,2014,0.9,0.10,"The DAX's youngest company"]
+    ] },
+  cac: { label: "CAC 40", short: "CAC", color: "var(--cac)", hex: "#8b5fb8", detail: false,
+    anchors: [[1980,100],[1982,95],[1985,140],[1987,150],[1990,210],[1992,200],[1995,245],[1998,430],[2000,720],[2001,520],[2002,380],[2003,420],[2007,700],[2008,400],[2009,460],[2012,440],[2015,575],[2018,620],[2019,735],[2020,690],[2021,875],[2022,800],[2023,920],[2024,915],[2025,950]],
+    cohorts: [["Founded before 1900",1860,1900,30,-0.04],["1900 – 1949",1925,1949,24,-0.02],["1950 – 1969",1960,1969,14,0.02],["1970 – 1989",1980,1989,16,0.08],["1990 and later",2000,2010,16,0.10]] },
+  ftse: { label: "FTSE 100", short: "FTSE", color: "var(--ftse)", hex: "#bf4d74", detail: false,
+    anchors: [[1980,100],[1982,115],[1985,195],[1987,205],[1990,235],[1992,260],[1995,315],[1998,590],[2000,625],[2001,520],[2002,395],[2003,445],[2007,645],[2008,440],[2009,540],[2012,590],[2015,625],[2018,675],[2019,745],[2020,645],[2021,745],[2022,750],[2023,770],[2024,825],[2025,855]],
+    cohorts: [["Founded before 1900",1850,1900,34,-0.03],["1900 – 1949",1925,1949,24,-0.02],["1950 – 1969",1960,1969,13,0.01],["1970 – 1989",1980,1989,13,0.05],["1990 and later",2000,2010,16,0.08]] },
+  nikkei: { label: "Nikkei 225", short: "Nikkei", color: "var(--nikkei)", hex: "#cf5335", detail: false,
+    anchors: [[1980,100],[1982,105],[1985,184],[1987,320],[1989,547],[1990,335],[1992,240],[1995,279],[1998,200],[2000,194],[2001,150],[2002,121],[2003,150],[2007,215],[2008,125],[2009,148],[2012,146],[2015,268],[2018,315],[2019,333],[2020,386],[2021,405],[2022,367],[2023,471],[2024,561],[2025,555]],
+    cohorts: [["Founded before 1900",1870,1900,20,-0.06],["1900 – 1949",1925,1949,34,-0.03],["1950 – 1969",1960,1969,22,0.02],["1970 – 1989",1980,1989,13,0.06],["1990 and later",2000,2010,11,0.12]] }
+};
+var ORDER = ["spx","dow","dax","cac","ftse","nikkei"];
+var YEARS = []; for (var y = 1980; y <= 2025; y++) YEARS.push(y);
+
+function baseLevel(idx, year) {
+  var a = idx.anchors;
+  if (year <= a[0][0]) return a[0][1];
+  for (var i = 1; i < a.length; i++) {
+    if (year <= a[i][0]) {
+      var y0 = a[i-1][0], v0 = a[i-1][1], y1 = a[i][0], v1 = a[i][1];
+      var t = (year - y0) / (y1 - y0);
+      return Math.exp(Math.log(v0) + t * (Math.log(v1) - Math.log(v0)));
+    }
+  }
+  return a[a.length-1][1];
+}
+function entitiesOf(idx) {
+  if (idx.entities || idx.ext) {
+    var list = [];
+    (idx.entities || []).forEach(function(e){ list.push({name:e[0], founded:e[1], listed:e[2], w:e[3], tilt:e[4], note:e[5], ext:false}); });
+    (idx.ext || []).forEach(function(e){ list.push({name:e[0], founded:e[1], listed:e[2], w:e[3], tilt:e[4], note:e[5], ext:true}); });
+    (idx.full || []).forEach(function(e){ list.push({name:e[0], founded:e[1], listed:e[2], w:e[3], tilt:e[4], note:e[5], ext:true, full:true}); });
+    return list;
+  }
+  return idx.cohorts.map(function(c){ return {name:c[0], founded:c[1], listed:c[2], w:c[3], tilt:c[4], note:"Founding-era cohort (aggregate estimate)"}; });
+}
+/* Per-entity price paths, rescaled each year so the weighted average equals the index. */
+function entityPaths(idx) {
+  var ents = entitiesOf(idx);
+  var wsum = 0; ents.forEach(function(e){ wsum += e.w; });
+  ents.forEach(function(e){ e.wn = e.w / wsum; });
+  var paths = ents.map(function(){ return []; });
+  YEARS.forEach(function(yr, yi) {
+    var B = baseLevel(idx, yr);
+    var raw = ents.map(function(e){ return 100 * Math.pow(B/100, 1 + e.tilt); });
+    var avg = 0; raw.forEach(function(r, i){ avg += ents[i].wn * r; });
+    var scale = (avg === 100) ? 1 : (B - 100) / (avg - 100);
+    raw.forEach(function(r, i){ paths[i][yi] = 100 + (r - 100) * scale; });
+  });
+  return { ents: ents, paths: paths };
+}
+var MODEL = {};
+ORDER.forEach(function(k){ MODEL[k] = entityPaths(IDX[k]); });
+
+function filteredSeries(key, cutoff) {
+  var m = MODEL[key], out = [];
+  YEARS.forEach(function(yr, yi) {
+    var v = 0;
+    m.ents.forEach(function(e, i){ v += e.wn * (e.founded < cutoff ? 100 : m.paths[i][yi]); });
+    out.push(v);
+  });
+  return out;
+}
+function flatShare(key, cutoff) {
+  var s = 0, n = 0;
+  MODEL[key].ents.forEach(function(e){ if (e.founded < cutoff) { s += e.wn; n++; } });
+  return { share: s, count: n, total: MODEL[key].ents.length };
+}
+function cagr(v0, v1, yrs) { return (Math.pow(v1/v0, 1/yrs) - 1) * 100; }
+function fmt(n) { return Math.round(n).toLocaleString("en-US"); }
+function fmtPct(n, d) { return n.toFixed(d == null ? 1 : d) + "%"; }
+
+/* ================= state ================= */
+var state = { selected: { spx:true, dow:true, dax:true, cac:true, ftse:true, nikkei:true },
+              cutoff: 1800, scale: "log", ghost: true, tab: "spx", expanded: false, query: "" };
+var PRESETS = [[1800,"Exclude pre-1800"],[1900,"Exclude pre-1900"],[1950,"Exclude pre-1950"],[1970,"Exclude pre-1970"],[1990,"Exclude pre-1990"]];
+
+/* ================= controls ================= */
+var chipsEl = document.getElementById("chips");
+if (chipsEl) ORDER.forEach(function(k) {
+  var b = document.createElement("button");
+  b.className = "chip"; b.style.setProperty("--c", IDX[k].color);
+  b.setAttribute("aria-pressed", state.selected[k] ? "true" : "false");
+  b.innerHTML = '<span class="dot"></span>' + IDX[k].label +
+    '<span class="basis">' + (IDX[k].detail ? "constituents" : "cohorts") + "</span>";
+  b.addEventListener("click", function() {
+    state.selected[k] = !state.selected[k];
+    if (!ORDER.some(function(x){ return state.selected[x]; })) state.selected[k] = true;
+    b.setAttribute("aria-pressed", state.selected[k] ? "true" : "false");
+    render();
+  });
+  chipsEl.appendChild(b);
+});
+var presetsEl = document.getElementById("presets");
+PRESETS.forEach(function(p) {
+  var b = document.createElement("button");
+  b.className = "preset"; b.textContent = p[1]; b.dataset.year = p[0];
+  b.setAttribute("aria-pressed", p[0] === state.cutoff ? "true" : "false");
+  b.addEventListener("click", function() { setCutoff(p[0]); });
+  presetsEl.appendChild(b);
+});
+var slider = document.getElementById("yearSlider");
+slider.addEventListener("input", function() { setCutoff(parseInt(slider.value, 10)); });
+function setCutoff(v) {
+  state.cutoff = v; slider.value = v;
+  Array.prototype.forEach.call(presetsEl.children, function(b) {
+    b.setAttribute("aria-pressed", parseInt(b.dataset.year, 10) === v ? "true" : "false");
+  });
+  render();
+}
+document.getElementById("ghostToggle").addEventListener("click", function() {
+  state.ghost = !state.ghost;
+  this.setAttribute("aria-pressed", state.ghost ? "true" : "false");
+  render();
+});
+document.getElementById("scaleLog").addEventListener("click", function() { setScale("log"); });
+document.getElementById("scaleLin").addEventListener("click", function() { setScale("lin"); });
+function setScale(s) {
+  state.scale = s;
+  document.getElementById("scaleLog").setAttribute("aria-pressed", s === "log" ? "true" : "false");
+  document.getElementById("scaleLin").setAttribute("aria-pressed", s === "lin" ? "true" : "false");
+  render();
+}
+document.getElementById("tab-spx").textContent = "S&P 500 · " + MODEL.spx.ents.length + " modelled";
+document.getElementById("expandBtn").addEventListener("click", function() {
+  state.expanded = !state.expanded;
+  renderTable();
+});
+document.getElementById("coSearch").addEventListener("input", function() {
+  state.query = this.value.trim().toLowerCase();
+  renderTable();
+});
+["spx","dax","dow"].forEach(function(k) {
+  document.getElementById("tab-" + k).addEventListener("click", function() {
+    state.tab = k;
+    ["spx","dax","dow"].forEach(function(x) {
+      document.getElementById("tab-" + x).setAttribute("aria-selected", x === k ? "true" : "false");
+    });
+    renderTable();
+  });
+});
+
+/* ================= chart ================= */
+var svg = document.getElementById("chart"), tooltip = document.getElementById("tooltip"), chartBox = document.getElementById("chartBox");
+var W = 980, H = 470, ML = 58, MR = 96, MT = 16, MB = 34;
+var plotW = W - ML - MR, plotH = H - MT - MB;
+var cache = {}; /* key -> {base:[], filt:[]} for current cutoff */
+function computeCache() {
+  cache = {};
+  ORDER.forEach(function(k) {
+    if (!state.selected[k]) return;
+    cache[k] = { base: YEARS.map(function(yr){ return baseLevel(IDX[k], yr); }), filt: filteredSeries(k, state.cutoff) };
+  });
+}
+function yDomain() {
+  var lo = Infinity, hi = 0;
+  Object.keys(cache).forEach(function(k) {
+    cache[k].filt.forEach(function(v){ if (v < lo) lo = v; if (v > hi) hi = v; });
+    if (state.ghost) cache[k].base.forEach(function(v){ if (v < lo) lo = v; if (v > hi) hi = v; });
+  });
+  if (!isFinite(lo)) { lo = 80; hi = 5000; }
+  if (state.scale === "log") { lo = 50; hi = Math.max(1000, Math.pow(10, Math.ceil(Math.log10(hi)))); }
+  else { lo = 0; hi = hi * 1.06; }
+  return [lo, hi];
+}
+function xPix(yr) { return ML + (yr - 1980) / 45 * plotW; }
+function yPix(v, dom) {
+  if (state.scale === "log") {
+    var t = (Math.log10(Math.max(v, 1)) - Math.log10(dom[0])) / (Math.log10(dom[1]) - Math.log10(dom[0]));
+    return MT + plotH * (1 - t);
+  }
+  return MT + plotH * (1 - v / dom[1]);
+}
+function pathOf(series, dom) {
+  return series.map(function(v, i){ return (i ? "L" : "M") + xPix(YEARS[i]).toFixed(1) + " " + yPix(v, dom).toFixed(1); }).join(" ");
+}
+var hoverYear = null;
+function drawChart() {
+  var dom = yDomain(), s = "";
+  /* gridlines */
+  var ticks = [];
+  if (state.scale === "log") { for (var p = Math.ceil(Math.log10(dom[0])); p <= Math.log10(dom[1]) + 0.001; p++) ticks.push(Math.pow(10, p)); }
+  else { var step = dom[1] > 3000 ? 1000 : 500; for (var v = 0; v <= dom[1]; v += step) ticks.push(v); }
+  ticks.forEach(function(v) {
+    var yy = yPix(Math.max(v, dom[0]), dom);
+    if (yy < MT - 1 || yy > MT + plotH + 1) return;
+    s += '<line x1="' + ML + '" x2="' + (ML + plotW) + '" y1="' + yy + '" y2="' + yy + '" stroke="var(--grid)" stroke-width="1"/>';
+    s += '<text x="' + (ML - 8) + '" y="' + (yy + 4) + '" font-size="11" text-anchor="end">' + (v === 0 ? "0" : fmt(v)) + "</text>";
+  });
+  [1980,1990,2000,2010,2020,2025].forEach(function(yr) {
+    s += '<text x="' + xPix(yr) + '" y="' + (H - 10) + '" font-size="11" text-anchor="middle">' + yr + "</text>";
+  });
+  /* crash / event markers */
+  [[1990,"Nikkei peak ’89"],[2000,"Dot-com peak"],[2008,"Financial crisis"],[2020,"COVID"]].forEach(function(m) {
+    s += '<line x1="' + xPix(m[0]) + '" x2="' + xPix(m[0]) + '" y1="' + MT + '" y2="' + (MT + plotH) + '" stroke="var(--grid)" stroke-width="1"/>';
+  });
+  /* ghost (unfiltered) */
+  if (state.ghost) Object.keys(cache).forEach(function(k) {
+    s += '<path d="' + pathOf(cache[k].base, dom) + '" fill="none" stroke="' + IDX[k].hex + '" stroke-width="1.4" stroke-dasharray="5 4" opacity="0.45"/>';
+  });
+  /* filtered */
+  Object.keys(cache).forEach(function(k) {
+    s += '<path d="' + pathOf(cache[k].filt, dom) + '" fill="none" stroke="' + IDX[k].hex + '" stroke-width="2.4" stroke-linejoin="round"/>';
+  });
+  /* hover line */
+  if (hoverYear != null) {
+    s += '<line x1="' + xPix(hoverYear) + '" x2="' + xPix(hoverYear) + '" y1="' + MT + '" y2="' + (MT + plotH) + '" stroke="var(--ink-3)" stroke-width="1"/>';
+    Object.keys(cache).forEach(function(k) {
+      var i = hoverYear - 1980;
+      s += '<circle cx="' + xPix(hoverYear) + '" cy="' + yPix(cache[k].filt[i], dom) + '" r="4" fill="' + IDX[k].hex + '" stroke="var(--panel)" stroke-width="1.5"/>';
+    });
+  }
+  /* end labels */
+  var labels = Object.keys(cache).map(function(k) {
+    var last = cache[k].filt[cache[k].filt.length - 1];
+    return { k: k, v: last, y: yPix(last, dom) };
+  }).sort(function(a, b){ return a.y - b.y; });
+  for (var i = 1; i < labels.length; i++) if (labels[i].y - labels[i-1].y < 15) labels[i].y = labels[i-1].y + 15;
+  labels.forEach(function(l) {
+    s += '<text x="' + (ML + plotW + 10) + '" y="' + (l.y + 4) + '" font-size="12" font-weight="600" fill="' + IDX[l.k].hex + '" style="fill:' + IDX[l.k].hex + '">' + IDX[l.k].short + " " + fmt(l.v) + "</text>";
+  });
+  svg.innerHTML = s;
+}
+svg.addEventListener("pointermove", function(ev) {
+  var r = svg.getBoundingClientRect();
+  var x = (ev.clientX - r.left) / r.width * W;
+  var yr = Math.round(1980 + (x - ML) / plotW * 45);
+  if (yr < 1980 || yr > 2025) { hoverYear = null; tooltip.style.display = "none"; drawChart(); return; }
+  hoverYear = yr;
+  drawChart();
+  var i = yr - 1980, html = '<div class="ty">' + yr + "</div>";
+  Object.keys(cache).forEach(function(k) {
+    html += '<div class="row"><span class="n"><i style="background:' + IDX[k].hex + '"></i>' + IDX[k].short + '</span><span>' +
+            fmt(cache[k].filt[i]) + ' <span class="u">/ ' + fmt(cache[k].base[i]) + "</span></span></div>";
+  });
+  html += '<div style="opacity:.55; margin-top:3px">filtered / unfiltered</div>';
+  tooltip.innerHTML = html;
+  tooltip.style.display = "block";
+  var bw = chartBox.clientWidth, px = x / W * bw;
+  tooltip.style.left = Math.min(Math.max(px + 14, 6), bw - 196) + "px";
+  tooltip.style.top = "18px";
+});
+svg.addEventListener("pointerleave", function() { hoverYear = null; tooltip.style.display = "none"; drawChart(); });
+
+/* ================= renders ================= */
+function renderResults() {
+  var rows = ORDER.filter(function(k){ return state.selected[k]; }).map(function(k) {
+    var b = cache[k].base[45], f = cache[k].filt[45], fs = flatShare(k, state.cutoff);
+    var drag = b > 0 ? (f / b - 1) * 100 : 0;
+    return "<tr><td><strong>" + IDX[k].label + "</strong></td>" +
+      "<td>" + fmt(b) + "</td><td>" + fmt(f) + "</td>" +
+      "<td>" + fmtPct(cagr(100, b, 45)) + "</td><td>" + fmtPct(cagr(100, f, 45)) + "</td>" +
+      '<td class="' + (fs.share > 0.005 ? "drag" : "nodrag") + '">' + (fs.share > 0.005 ? fmtPct(drag) : "—") + "</td>" +
+      "<td>" + fmtPct(fs.share * 100, 0) + "</td></tr>";
+  }).join("");
+  document.getElementById("results").innerHTML =
+    "<table><thead><tr><th>Index</th><th>2025 unfiltered</th><th>2025 filtered</th><th>CAGR unfiltered</th><th>CAGR filtered</th><th>Gap</th><th>Weight flat</th></tr></thead><tbody>" +
+    rows + "</tbody></table>";
+}
+function renderSide() {
+  document.getElementById("yearBig").textContent = state.cutoff;
+  document.getElementById("yearCaption").innerHTML = "Every company founded <strong>before " + state.cutoff + "</strong> is frozen.";
+  document.getElementById("flatList").innerHTML = ORDER.filter(function(k){ return state.selected[k]; }).map(function(k) {
+    var fs = flatShare(k, state.cutoff);
+    var txt = IDX[k].detail ? fs.count + " of " + fs.total + " cos · " + fmtPct(fs.share * 100, 0)
+                            : fmtPct(fs.share * 100, 0) + " of weight";
+    return '<li><span class="nm"><i style="--c:' + IDX[k].color + '; background:' + IDX[k].hex + '"></i>' + IDX[k].short + '</span><span class="vl">' + txt + "</span></li>";
+  }).join("");
+}
+function renderTable() {
+  var k = state.tab, m = MODEL[k];
+  var fs = flatShare(k, state.cutoff);
+  document.getElementById("constituentMeta").innerHTML =
+    "<span>Cutoff <span class='mono'>" + state.cutoff + "</span></span>" +
+    "<span><span class='mono'>" + fs.count + "</span> of " + fs.total + " companies flatlined</span>" +
+    "<span><span class='mono'>" + fmtPct(fs.share * 100, 1) + "</span> of index weight at 0%</span>" +
+    "<span><span class='mono'>" + fmt(cache[k] ? cache[k].filt[45] : filteredSeries(k, state.cutoff)[45]) + "</span> filtered 2025 level (vs " + fmt(baseLevel(IDX[k], 2025)) + " unfiltered)</span>";
+  var coreCount = 0, extCount = 0;
+  m.ents.forEach(function(e){ if (e.ext) extCount++; else coreCount++; });
+  var btn = document.getElementById("expandBtn"), toolsNote = document.getElementById("toolsNote");
+  if (extCount > 0) {
+    btn.style.display = "";
+    btn.setAttribute("aria-expanded", state.expanded ? "true" : "false");
+    btn.textContent = state.expanded ? "▾ Collapse extended list" : "▸ Expand: show " + extCount + " more companies";
+    toolsNote.textContent = state.expanded
+      ? "Showing all " + m.ents.length + " constituents — the full index, nothing held back"
+      : "Showing the " + coreCount + " largest · " + extCount + " more (Robinhood, Coinbase, AppLovin… and the full tail of the index) sit in the extended & full list — expand or search to see them";
+  } else {
+    btn.style.display = "none";
+    toolsNote.textContent = "Full index — all " + m.ents.length + " constituents are modelled, nothing held back";
+  }
+  var q = state.query, shown = 0, dividerDone = false, rows = "";
+  m.ents.forEach(function(e) {
+    if (q && e.name.toLowerCase().indexOf(q) === -1) return;
+    if (e.ext && !state.expanded && !q) return;
+    if (e.ext && !dividerDone && !q) {
+      rows += '<tr class="divider"><td colspan="5">Extended &amp; full list — every remaining constituent beyond the ' + coreCount + ' largest, handled exactly the same way</td></tr>';
+      dividerDone = true;
+    }
+    shown++;
+    var out = e.founded < state.cutoff;
+    rows += '<tr class="' + (out ? "is-out" : "") + '"><td><span class="co">' + e.name + "</span>" +
+      (e.full ? '<span class="exttag">full 500</span>' : (e.ext ? '<span class="exttag">extended</span>' : "")) +
+      (e.note ? '<span class="note">' + e.note + "</span>" : "") + "</td>" +
+      '<td class="num">' + e.founded + '</td><td class="num">' + e.listed + '</td>' +
+      '<td class="num">' + (e.wn * 100).toFixed(1) + "%</td>" +
+      '<td><span class="badge ' + (out ? "out" : "in") + '">' + (out ? "0% · flatlined" : "Counts") + "</span></td></tr>";
+  });
+  if (!shown) rows = '<tr class="noresults"><td colspan="5">No company in this index matches that search.</td></tr>';
+  else if (q) rows = '<tr class="divider"><td colspan="5">' + shown + (shown === 1 ? " match" : " matches") + " across the full modelled list, extended tier included</td></tr>" + rows;
+  var coverageNote = "";
+  if (k === "spx") {
+    var rawSum = 0; m.ents.forEach(function(e){ rawSum += e.w; });
+    coverageNote = '<p style="font-size:12.5px; color:var(--ink-3); margin:6px 0 0">S&amp;P 500 scope: all ' + m.ents.length +
+      ' constituents are modelled individually — the ' + coreCount + ' largest, an extended tier of newer entrants and mid-caps, and the full remaining tail — ' +
+      'with weights summing to ≈' + Math.round(rawSum) + '% of the index, renormalised to 100% for the filter. Nothing is held back: the counts above (e.g. “X of 500 cos”) are the full index.</p>';
+  }
+  document.getElementById("ctable").innerHTML =
+    "<table><thead><tr><th>Company</th><th style='text-align:right'>Founded*</th><th style='text-align:right'>Listed</th><th style='text-align:right'>Weight</th><th>Status at cutoff</th></tr></thead><tbody>" +
+    rows + "</tbody></table>" +
+    '<p style="font-size:12.5px; color:var(--ink-3); margin:10px 0 0">* Economic origin: spin-offs, demergers and privatisations inherit the founding year of the business they came from.</p>' +
+    coverageNote;
+}
+/* ================= founding-date CDF =================
+   cdfPoints: [foundingYear, cumulative share of index weight founded in or before it].
+   Detail indices have a point at each company's founding year; cohort indices at the
+   cohort boundaries 1900 / 1950 / 1970 / 1990 / 2010. cdfAt keeps the exact step
+   values (used by the table); the chart itself is drawn smoothed — see cdfSmoothAt. */
+function cdfPoints(key) {
+  var idx = IDX[key], m = MODEL[key], pts = [], cum = 0;
+  if (idx.detail) {
+    var sorted = m.ents.slice().sort(function(a, b){ return a.founded - b.founded; });
+    sorted.forEach(function(e) {
+      cum += e.wn;
+      if (pts.length && pts[pts.length - 1][0] === e.founded) pts[pts.length - 1][1] = cum;
+      else pts.push([e.founded, cum]);
+    });
+  } else {
+    var ends = [1899, 1949, 1969, 1989, 2010];
+    m.ents.forEach(function(e, i) { cum += e.wn; pts.push([ends[i], cum]); });
+  }
+  return pts;
+}
+var CDF = {}; ORDER.forEach(function(k){ CDF[k] = cdfPoints(k); });
+function cdfAt(key, year) {
+  var v = 0;
+  CDF[key].forEach(function(p){ if (p[0] <= year) v = p[1]; });
+  return v;
+}
+function cdfMedian(key) {
+  var pts = CDF[key], prevY = 1800, prevC = 0;
+  for (var i = 0; i < pts.length; i++) {
+    if (pts[i][1] >= 0.5) {
+      if (!IDX[key].detail && pts[i][1] > prevC)
+        return { year: Math.round(prevY + (0.5 - prevC) / (pts[i][1] - prevC) * (pts[i][0] - prevY)), approx: true };
+      return { year: pts[i][0], approx: false };
+    }
+    prevY = pts[i][0]; prevC = pts[i][1];
+  }
+  return { year: pts[pts.length - 1][0], approx: false };
+}
+document.getElementById("cdfLegend").innerHTML = ORDER.map(function(k) {
+  return '<span><i style="background:' + IDX[k].hex + '"></i>' + IDX[k].label + "</span>";
+}).join("");
+var cdfSvg = document.getElementById("cdfChart"), cdfTooltip = document.getElementById("cdfTooltip"), cdfBox = document.getElementById("cdfBox");
+var CW = 980, CH = 380, CML = 58, CMR = 20, CMT = 18, CMB = 34;
+var cPlotW = CW - CML - CMR, cPlotH = CH - CMT - CMB, CX0 = 1800, CX1 = 2025;
+function cX(yr) { return CML + (yr - CX0) / (CX1 - CX0) * cPlotW; }
+function cY(share) { return CMT + cPlotH * (1 - share); }
+/* Smoothed CDF for display: each step is spread into a gentle S-ramp by a Gaussian
+   kernel (bandwidth CDF_H years) instead of a vertical jump, then renormalised so
+   every curve still starts at 0% and ends at exactly 100%. */
+var CDF_H = 10;
+function normCdf(z) {
+  var t = 1 / (1 + 0.2316419 * Math.abs(z));
+  var poly = t * (0.319381530 + t * (-0.356563782 + t * (1.781477937 + t * (-1.821255978 + t * 1.330274429))));
+  var p = 1 - Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI) * poly;
+  return z >= 0 ? p : 1 - p;
+}
+function cdfRawSmooth(key, year) {
+  var prev = 0, s = 0;
+  CDF[key].forEach(function(p) { s += (p[1] - prev) * normCdf((year - p[0]) / CDF_H); prev = p[1]; });
+  return s;
+}
+var CDF_NORM = {}, CDF_SAMPLES = {};
+ORDER.forEach(function(k) {
+  var lo = cdfRawSmooth(k, CX0), hi = cdfRawSmooth(k, CX1);
+  CDF_NORM[k] = { lo: lo, span: (hi - lo) || 1 };
+  var pts = [];
+  for (var yr = CX0; yr < CX1; yr += 2) pts.push([yr, cdfSmoothAt(k, yr)]);
+  pts.push([CX1, cdfSmoothAt(k, CX1)]);
+  CDF_SAMPLES[k] = pts;
+});
+function cdfSmoothAt(key, year) {
+  var v = (cdfRawSmooth(key, year) - CDF_NORM[key].lo) / CDF_NORM[key].span;
+  return v < 0 ? 0 : (v > 1 ? 1 : v);
+}
+var cdfHoverYear = null;
+function drawCDF() {
+  var s = "";
+  [0, 0.25, 0.5, 0.75, 1].forEach(function(v) {
+    var yy = cY(v);
+    s += '<line x1="' + CML + '" x2="' + (CML + cPlotW) + '" y1="' + yy + '" y2="' + yy + '" stroke="var(--grid)" stroke-width="1"/>';
+    s += '<text x="' + (CML - 8) + '" y="' + (yy + 4) + '" font-size="11" text-anchor="end">' + Math.round(v * 100) + "%</text>";
+  });
+  [1800, 1900, 1950, 2000, 2025].forEach(function(yr) {
+    s += '<text x="' + cX(yr) + '" y="' + (CH - 10) + '" font-size="11" text-anchor="middle">' + yr + "</text>";
+    s += '<line x1="' + cX(yr) + '" x2="' + cX(yr) + '" y1="' + CMT + '" y2="' + (CMT + cPlotH) + '" stroke="var(--grid)" stroke-width="1"/>';
+  });
+  s += '<text x="' + CML + '" y="' + (CMT - 6) + '" font-size="11">share of index weight founded by this year</text>';
+  if (state.cutoff >= CX0) {
+    s += '<line x1="' + cX(state.cutoff) + '" x2="' + cX(state.cutoff) + '" y1="' + CMT + '" y2="' + (CMT + cPlotH) + '" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="6 4"/>';
+    var anchor = state.cutoff > 1930 ? "end" : "start", lx = cX(state.cutoff) + (state.cutoff > 1930 ? -6 : 6);
+    s += '<text x="' + lx + '" y="' + (CMT + 12) + '" font-size="11.5" font-weight="600" text-anchor="' + anchor + '" style="fill:var(--accent)">cutoff ' + state.cutoff + "</text>";
+  }
+  if (cdfHoverYear != null) {
+    s += '<line x1="' + cX(cdfHoverYear) + '" x2="' + cX(cdfHoverYear) + '" y1="' + CMT + '" y2="' + (CMT + cPlotH) + '" stroke="var(--ink-3)" stroke-width="1"/>';
+  }
+  ORDER.forEach(function(k) {
+    if (!state.selected[k]) return;
+    var d = CDF_SAMPLES[k].map(function(p, i) {
+      return (i ? "L" : "M") + cX(p[0]).toFixed(1) + " " + cY(p[1]).toFixed(1);
+    }).join(" ");
+    s += '<path d="' + d + '" fill="none" stroke="' + IDX[k].hex + '" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>';
+    if (cdfHoverYear != null)
+      s += '<circle cx="' + cX(cdfHoverYear) + '" cy="' + cY(cdfSmoothAt(k, cdfHoverYear)) + '" r="4" fill="' + IDX[k].hex + '" stroke="var(--panel)" stroke-width="1.5"/>';
+  });
+  cdfSvg.innerHTML = s;
+}
+cdfSvg.addEventListener("pointermove", function(ev) {
+  var r = cdfSvg.getBoundingClientRect();
+  var x = (ev.clientX - r.left) / r.width * CW;
+  var yr = Math.round(CX0 + (x - CML) / cPlotW * (CX1 - CX0));
+  if (yr < CX0 || yr > CX1) { cdfHoverYear = null; cdfTooltip.style.display = "none"; drawCDF(); return; }
+  cdfHoverYear = yr;
+  drawCDF();
+  var html = '<div class="ty">Founded by ' + yr + "</div>";
+  ORDER.forEach(function(k) {
+    if (!state.selected[k]) return;
+    html += '<div class="row"><span class="n"><i style="background:' + IDX[k].hex + '"></i>' + IDX[k].short +
+            "</span><span>" + fmtPct(cdfSmoothAt(k, yr) * 100) + "</span></div>";
+  });
+  html += '<div style="opacity:.55; margin-top:3px">share of index weight</div>';
+  cdfTooltip.innerHTML = html;
+  cdfTooltip.style.display = "block";
+  var bw = cdfBox.clientWidth, px = x / CW * bw;
+  cdfTooltip.style.left = Math.min(Math.max(px + 14, 6), bw - 196) + "px";
+  cdfTooltip.style.top = "18px";
+});
+cdfSvg.addEventListener("pointerleave", function() { cdfHoverYear = null; cdfTooltip.style.display = "none"; drawCDF(); });
+function renderCdfResults() {
+  var rows = ORDER.filter(function(k){ return state.selected[k]; }).map(function(k) {
+    var med = cdfMedian(k), fs = flatShare(k, state.cutoff);
+    return "<tr><td><strong>" + IDX[k].label + "</strong>" + (IDX[k].detail ? "" : " · cohorts") + "</td>" +
+      "<td>" + (med.approx ? "≈" : "") + med.year + "</td>" +
+      "<td>" + fmtPct(cdfAt(k, 1900) * 100, 0) + "</td>" +
+      "<td>" + fmtPct(cdfAt(k, 1949) * 100, 0) + "</td>" +
+      "<td>" + fmtPct(cdfAt(k, 2000) * 100, 0) + "</td>" +
+      "<td>" + fmtPct(fs.share * 100, 0) + "</td></tr>";
+  }).join("");
+  document.getElementById("cdfResults").innerHTML =
+    "<table><thead><tr><th>Index</th><th>Median founding year*</th><th>Founded by 1900</th><th>Founded by 1950</th><th>Founded by 2000</th><th>Flatlined at cutoff " + state.cutoff + "</th></tr></thead><tbody>" +
+    rows + "</tbody></table>" +
+    '<p style="font-size:12.5px; color:var(--ink-3); margin:10px 0 0">* The founding year by which half the index’s weight was already founded. Cohort medians (≈) are interpolated inside the cohort band.</p>';
+}
+function render() { computeCache(); renderSide(); drawChart(); renderResults(); drawCDF(); renderCdfResults(); renderTable(); }
+render();
+</script>
+</body>
+</html>
